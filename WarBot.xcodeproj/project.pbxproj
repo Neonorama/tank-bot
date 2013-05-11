@@ -1,0 +1,308 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		91361128173E456200937A20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91361127173E456200937A20 /* UIKit.framework */; };
+		9136112A173E456200937A20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91361129173E456200937A20 /* Foundation.framework */; };
+		9136112C173E456200937A20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9136112B173E456200937A20 /* CoreGraphics.framework */; };
+		91361132173E456200937A20 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91361130173E456200937A20 /* InfoPlist.strings */; };
+		91361134173E456200937A20 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 91361133173E456200937A20 /* main.m */; };
+		91361138173E456200937A20 /* AJAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91361137173E456200937A20 /* AJAppDelegate.m */; };
+		9136113A173E456200937A20 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 91361139173E456200937A20 /* Default.png */; };
+		9136113C173E456200937A20 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9136113B173E456200937A20 /* Default@2x.png */; };
+		9136113E173E456200937A20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9136113D173E456200937A20 /* Default-568h@2x.png */; };
+		91361141173E456200937A20 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9136113F173E456200937A20 /* MainStoryboard.storyboard */; };
+		91361144173E456200937A20 /* AJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91361143173E456200937A20 /* AJViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		91361124173E456200937A20 /* WarBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WarBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		91361127173E456200937A20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		91361129173E456200937A20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9136112B173E456200937A20 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9136112F173E456200937A20 /* WarBot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WarBot-Info.plist"; sourceTree = "<group>"; };
+		91361131173E456200937A20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		91361133173E456200937A20 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		91361135173E456200937A20 /* WarBot-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WarBot-Prefix.pch"; sourceTree = "<group>"; };
+		91361136173E456200937A20 /* AJAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJAppDelegate.h; sourceTree = "<group>"; };
+		91361137173E456200937A20 /* AJAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJAppDelegate.m; sourceTree = "<group>"; };
+		91361139173E456200937A20 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		9136113B173E456200937A20 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		9136113D173E456200937A20 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		91361140173E456200937A20 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		91361142173E456200937A20 /* AJViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJViewController.h; sourceTree = "<group>"; };
+		91361143173E456200937A20 /* AJViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		91361121173E456200937A20 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91361128173E456200937A20 /* UIKit.framework in Frameworks */,
+				9136112A173E456200937A20 /* Foundation.framework in Frameworks */,
+				9136112C173E456200937A20 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9136111B173E456200937A20 = {
+			isa = PBXGroup;
+			children = (
+				9136112D173E456200937A20 /* WarBot */,
+				91361126173E456200937A20 /* Frameworks */,
+				91361125173E456200937A20 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		91361125173E456200937A20 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				91361124173E456200937A20 /* WarBot.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		91361126173E456200937A20 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				91361127173E456200937A20 /* UIKit.framework */,
+				91361129173E456200937A20 /* Foundation.framework */,
+				9136112B173E456200937A20 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9136112D173E456200937A20 /* WarBot */ = {
+			isa = PBXGroup;
+			children = (
+				91361136173E456200937A20 /* AJAppDelegate.h */,
+				91361137173E456200937A20 /* AJAppDelegate.m */,
+				9136113F173E456200937A20 /* MainStoryboard.storyboard */,
+				91361142173E456200937A20 /* AJViewController.h */,
+				91361143173E456200937A20 /* AJViewController.m */,
+				9136112E173E456200937A20 /* Supporting Files */,
+			);
+			path = WarBot;
+			sourceTree = "<group>";
+		};
+		9136112E173E456200937A20 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9136112F173E456200937A20 /* WarBot-Info.plist */,
+				91361130173E456200937A20 /* InfoPlist.strings */,
+				91361133173E456200937A20 /* main.m */,
+				91361135173E456200937A20 /* WarBot-Prefix.pch */,
+				91361139173E456200937A20 /* Default.png */,
+				9136113B173E456200937A20 /* Default@2x.png */,
+				9136113D173E456200937A20 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		91361123173E456200937A20 /* WarBot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91361147173E456200937A20 /* Build configuration list for PBXNativeTarget "WarBot" */;
+			buildPhases = (
+				91361120173E456200937A20 /* Sources */,
+				91361121173E456200937A20 /* Frameworks */,
+				91361122173E456200937A20 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WarBot;
+			productName = WarBot;
+			productReference = 91361124173E456200937A20 /* WarBot.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9136111C173E456200937A20 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AJ;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Ilya Rezyapkin";
+			};
+			buildConfigurationList = 9136111F173E456200937A20 /* Build configuration list for PBXProject "WarBot" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9136111B173E456200937A20;
+			productRefGroup = 91361125173E456200937A20 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				91361123173E456200937A20 /* WarBot */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		91361122173E456200937A20 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91361132173E456200937A20 /* InfoPlist.strings in Resources */,
+				9136113A173E456200937A20 /* Default.png in Resources */,
+				9136113C173E456200937A20 /* Default@2x.png in Resources */,
+				9136113E173E456200937A20 /* Default-568h@2x.png in Resources */,
+				91361141173E456200937A20 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		91361120173E456200937A20 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91361134173E456200937A20 /* main.m in Sources */,
+				91361138173E456200937A20 /* AJAppDelegate.m in Sources */,
+				91361144173E456200937A20 /* AJViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		91361130173E456200937A20 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91361131173E456200937A20 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9136113F173E456200937A20 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91361140173E456200937A20 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		91361145173E456200937A20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		91361146173E456200937A20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		91361148173E456200937A20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WarBot/WarBot-Prefix.pch";
+				INFOPLIST_FILE = "WarBot/WarBot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		91361149173E456200937A20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WarBot/WarBot-Prefix.pch";
+				INFOPLIST_FILE = "WarBot/WarBot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9136111F173E456200937A20 /* Build configuration list for PBXProject "WarBot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91361145173E456200937A20 /* Debug */,
+				91361146173E456200937A20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91361147173E456200937A20 /* Build configuration list for PBXNativeTarget "WarBot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91361148173E456200937A20 /* Debug */,
+				91361149173E456200937A20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9136111C173E456200937A20 /* Project object */;
+}
