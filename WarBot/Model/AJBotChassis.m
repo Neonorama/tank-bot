@@ -44,7 +44,7 @@
     int t = self.orientation;
     t += angle % 360;
     if (t < 0) {
-        self.orientation = 360 - t;
+        self.orientation = 360 + t;
     } else if (t >= 360) {
         self.orientation = t - 360;
     } else {
@@ -56,7 +56,7 @@
     int t = self.orientation;
     t -= angle % 360;
     if (t < 0) {
-        self.orientation = 360 - t;
+        self.orientation = 360 + t;
     } else if (t >= 360) {
         self.orientation = t - 360;
     } else {
@@ -68,7 +68,7 @@
     int t = self.orientation;
     t += angle % 360;
     if (t < 0) {
-        self.orientation = 360 - t;
+        self.orientation = 360 + t;
     } else if (t >= 360) {
         self.orientation = t - 360;
     } else {
