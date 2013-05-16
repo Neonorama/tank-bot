@@ -12,16 +12,16 @@
 @interface AJBotTurret : NSObject
 
 @property (nonatomic, assign) AJTurretType turretType;
-@property (nonatomic, assign) float orientation;
-@property (nonatomic, assign) float energy;
+@property (nonatomic, assign) int orientation; // -179 - 180
+@property (nonatomic, assign) int energy;
 @property (nonatomic, assign) CGPoint position;
 @property (nonatomic, assign) int charges;
 
 + (id) defaultBotTurret;
 
 - (void) fire;
-- (void) turnTurret:(float) angle;
-- (void) turnTurretLeft:(float) angle;
-- (void) turnTurretRight:(float) angle;
+- (void) turnTurret:(int) angle;
+- (void) turnTurretLeft:(int) angle;
+- (void) turnTurretRight:(int) angle;
 
 @end

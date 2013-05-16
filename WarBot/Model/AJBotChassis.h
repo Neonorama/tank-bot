@@ -12,7 +12,7 @@
 @interface AJBotChassis : NSObject
 
 @property (nonatomic, assign) AJChassisType chassisType;
-@property (nonatomic, assign) int orientation;
+@property (nonatomic, assign) int orientation; // 0 - 359
 @property (nonatomic, assign) int energy;
 @property (nonatomic, assign) CGPoint position;
 

@@ -29,23 +29,23 @@
 
 #pragma mark - Implementation chassis methods
 
-- (void) moveForward:(float) distance {
+- (void) moveForward:(int) distance {
     [self.chassis moveForward:distance];
 }
 
-- (void) moveBackward:(float) distance {
+- (void) moveBackward:(int) distance {
     [self.chassis moveBackward:distance];
 }
 
-- (void) turn:(float) angle {
+- (void) turn:(int) angle {
     [self.chassis turn:angle];
 }
 
-- (void) turnLeft:(float) angle {
+- (void) turnLeft:(int) angle {
     [self.chassis turnLeft:angle];
 }
 
-- (void) turnRight:(float) angle {
+- (void) turnRight:(int) angle {
     [self.chassis turnRight:angle];
 }
 
@@ -55,15 +55,15 @@
     [self.turret fire];
 }
 
-- (void) turnTurret:(float) angle {
+- (void) turnTurret:(int) angle {
     [self.turret turnTurret:angle];
 }
 
-- (void) turnTurretLeft:(float) angle {
+- (void) turnTurretLeft:(int) angle {
     [self.turret turnTurretLeft:angle];
 }
 
-- (void) turnTurretRight:(float) angle {
+- (void) turnTurretRight:(int) angle {
     [self.turret turnTurretRight:angle];
 }
 

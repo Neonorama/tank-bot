@@ -24,16 +24,16 @@
 + (id) defaultBot;
 
 // Chassis methods
-- (void) moveForward:(float) distance;
-- (void) moveBackward:(float) distance;
-- (void) turn:(float) angle;
-- (void) turnLeft:(float) angle;
-- (void) turnRight:(float) angle;
+- (void) moveForward:(int) distance;
+- (void) moveBackward:(int) distance;
+- (void) turn:(int) angle;
+- (void) turnLeft:(int) angle;
+- (void) turnRight:(int) angle;
 
 // Turret methods
 - (void) fire;
-- (void) turnTurret:(float) angle;
-- (void) turnTurretLeft:(float) angle;
-- (void) turnTurretRight:(float) angle;
+- (void) turnTurret:(int) angle;
+- (void) turnTurretLeft:(int) angle;
+- (void) turnTurretRight:(int) angle;
 
 @end
