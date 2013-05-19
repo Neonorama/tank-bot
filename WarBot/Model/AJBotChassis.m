@@ -29,15 +29,21 @@
 - (void) moveForward:(int) distance {
     CGPoint t = self.position;
     t.x += distance * cosf(self.orientation * M_PI / 180.0);
-    t.y += distance * sinf(self.orientation * M_PI / 180.0);
+    t.y += distance * -sinf(self.orientation * M_PI / 180.0);
     self.position = t;
+    
+    [self.stateController setNewPosition:self.position];
+    NSLog(@"Move forward by %d", distance);
 }
 
 - (void) moveBackward:(int) distance {
     CGPoint t = self.position;
     t.x -= distance * cosf(self.orientation * M_PI / 180.0);
-    t.y -= distance * sinf(self.orientation * M_PI / 180.0);
+    t.y -= distance * -sinf(self.orientation * M_PI / 180.0);
     self.position = t;
+
+    [self.stateController setNewPosition:self.position];
+    NSLog(@"Move backward by %d", distance);
 }
 
 - (void) turn:(int) angle {
@@ -50,6 +56,9 @@
     } else {
         self.orientation = t;
     }
+    
+    [self.stateController setNewOrientation:self.orientation];
+    NSLog(@"Turn by %d", angle);
 }
 
 - (void) turnLeft:(int) angle {
@@ -62,6 +71,9 @@
     } else {
         self.orientation = t;
     }
+
+    [self.stateController setNewOrientation:self.orientation];
+    NSLog(@"Turn left by %d", angle);
 }
 
 - (void) turnRight:(int) angle {
@@ -74,6 +86,9 @@
     } else {
         self.orientation = t;
     }
+
+    [self.stateController setNewOrientation:self.orientation];
+    NSLog(@"Turn right by %d", angle);
 }
 
 @end

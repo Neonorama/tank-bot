@@ -19,7 +19,9 @@
     self = [super init];
     if (self) {
         self.turret     = [AJBotTurret defaultBotTurret];
+        self.turret.stateController = self;
         self.chassis    = [AJBotChassis defaultBotChassis];
+        self.chassis.stateController = self;
         self.energy     = self.turret.energy + self.chassis.energy;
         self.fuel       = DEFAULT_FUEL;
         self.position   = CGPointMake(0.0, 0.0);
@@ -65,6 +67,17 @@
 
 - (void) turnTurretRight:(int) angle {
     [self.turret turnTurretRight:angle];
+}
+
+#pragma mark - Bot state protocol
+
+-(void)setNewPosition:(CGPoint)newPosition {
+    self.position = newPosition;
+    [self.turret changePosition:newPosition];
+}
+
+-(void)setNewOrientation:(int)newOrientation {
+    [self.turret changeOrientation:newOrientation];
 }
 
 @end

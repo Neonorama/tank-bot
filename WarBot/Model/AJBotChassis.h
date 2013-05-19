@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Utils.h"
+#import "AJBotStateProtocol.h"
 
 @interface AJBotChassis : NSObject
 
@@ -16,6 +17,8 @@
 @property (nonatomic, assign) int energy;
 @property (nonatomic, assign) CGPoint position;
 
+@property (nonatomic, assign) id <AJBotStateProtocol> stateController;
+
 + (id) defaultBotChassis;
 
 - (void) moveForward:(int) distance;
@@ -23,5 +26,7 @@
 - (void) turn:(int) angle;
 - (void) turnLeft:(int) angle;
 - (void) turnRight:(int) angle;
+
+
 
 @end

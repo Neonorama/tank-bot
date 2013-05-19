@@ -12,7 +12,7 @@
 #import "AJBotTurret.h"
 #import "Utils.h"
 
-@interface AJBot : NSObject
+@interface AJBot : NSObject <AJBotStateProtocol>
 
 @property (nonatomic, assign) int energy;
 @property (nonatomic, assign) int fuel;
@@ -20,6 +20,8 @@
 
 @property (nonatomic, retain) AJBotTurret *turret;
 @property (nonatomic, retain) AJBotChassis *chassis;
+
+@property (nonatomic, assign) id stateController;
 
 + (id) defaultBot;
 

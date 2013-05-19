@@ -14,6 +14,7 @@
 @class AJAvailableCommands;
 @class AJTriggers;
 @class AJRegisters;
+@class AJGameField;
 
 
 
@@ -27,6 +28,7 @@
 @property (nonatomic, retain) AJAvailableCommands *availableCommands;
 @property (nonatomic, retain) AJTriggers *triggers;
 @property (nonatomic, retain) AJRegisters *registers;
+@property (nonatomic, retain) AJGameField *gameField;
 
 @property (nonatomic, retain) AJBot *bot;
 

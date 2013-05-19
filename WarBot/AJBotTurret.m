@@ -18,7 +18,8 @@
 {
     self = [super init];
     if (self) {
-        self.orientation = 0;
+        self.localOrientation = 0;
+        self.absOrientation = 0;
         self.energy = DEFAULT_TURRET_ENERGY;
         self.turretType = kTurretTypeCannon;
         self.position   = CGPointMake(0.0, 0.0);
@@ -32,39 +33,50 @@
 }
 
 - (void) turnTurret:(int) angle {
-    int t = self.orientation;
+    int t = self.localOrientation;
     t += angle % 360;
     if (t <= -180) {
-        self.orientation = 360 + t;
+        self.localOrientation = 360 + t;
     } else if (t > 180) {
-        self.orientation = t - 360;
+        self.localOrientation = t - 360;
     } else {
-        self.orientation = t;
+        self.localOrientation = t;
     }
+    NSLog(@"Turn turret by %d", angle);
 }
 
 - (void) turnTurretLeft:(int) angle {
-    int t = self.orientation;
+    int t = self.localOrientation;
     t -= angle % 360;
     if (t <= -180) {
-        self.orientation = 360 + t;
+        self.localOrientation = 360 + t;
     } else if (t > 180) {
-        self.orientation = t - 360;
+        self.localOrientation = t - 360;
     } else {
-        self.orientation = t;
+        self.localOrientation = t;
     }
+    NSLog(@"Turn turret left by %d", angle);
 }
 
 - (void) turnTurretRight:(int) angle {
-    int t = self.orientation;
+    int t = self.localOrientation;
     t += angle % 360;
     if (t <= -180) {
-        self.orientation = 360 + t;
+        self.localOrientation = 360 + t;
     } else if (t > 180) {
-        self.orientation = t - 360;
+        self.localOrientation = t - 360;
     } else {
-        self.orientation = t;
+        self.localOrientation = t;
     }
+    NSLog(@"Turn turret right by %d", angle);
+}
+
+-(void)changeOrientation:(int)newOrientation{
+    self.absOrientation = newOrientation;
+}
+
+-(void)changePosition:(CGPoint)newPosition {
+    self.position = newPosition;
 }
 
 @end
