@@ -26,7 +26,7 @@
     return self;
 }
 
-- (void) moveForward:(int) distance {
+- (void) moveChassisForward:(int) distance {
     CGPoint t = self.position;
     t.x += distance * cosf(self.orientation * M_PI / 180.0);
     t.y += distance * -sinf(self.orientation * M_PI / 180.0);

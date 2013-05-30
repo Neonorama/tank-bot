@@ -21,7 +21,7 @@
 
 + (id) defaultBotChassis;
 
-- (void) moveForward:(int) distance;
+- (void) moveChassisForward:(int) distance;
 - (void) moveBackward:(int) distance;
 - (void) turn:(int) angle;
 - (void) turnLeft:(int) angle;

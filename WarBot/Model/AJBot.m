@@ -31,12 +31,12 @@
 
 #pragma mark - Implementation chassis methods
 
-- (void) moveForward:(int) distance {
-    [self.chassis moveForward:distance];
+- (void) moveForward:(NSNumber*) distance {
+    [self.chassis moveChassisForward:[distance intValue]];
 }
 
-- (void) moveBackward:(int) distance {
-    [self.chassis moveBackward:distance];
+- (void) moveBackward:(NSNumber *) distance {
+    [self.chassis moveBackward:[distance intValue]];
 }
 
 - (void) turn:(int) angle {

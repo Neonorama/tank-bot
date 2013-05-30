@@ -7,8 +7,8 @@
 //
 
 #import "AJViewController.h"
-#import "AJBot.h"
 #import "AJStateController.h"
+#import "AJGameManager.h"
 
 @interface AJViewController ()
 
@@ -21,24 +21,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    AJBot *testBot = [AJBot defaultBot];
-//    AJStateController *stateController = [[AJStateController alloc] init];
-//    testBot.stateController = stateController;
-//    testBot.chassis.stateController = stateController;
-//    testBot.turret.stateController = stateController;
-    
-    [testBot moveForward:20];
-    [testBot turnLeft:90];
-    [testBot turnTurret:45];
-    [testBot turnTurretLeft:90];
-    [testBot turnRight:45];
-    [testBot moveBackward:50];
-    [testBot turnLeft:45];
-    [testBot fire];
-    [testBot moveForward:50];
-    [testBot turnRight:90];
-    [testBot moveForward:50];
-    [testBot turnRight:90];
+    AJGameManager *testGM = [[AJGameManager alloc] init];
+
+    for (int i = 0; i < 10; i++) {
+        [testGM nextStep];
+    }
     
 }
 

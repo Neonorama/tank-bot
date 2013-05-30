@@ -26,8 +26,8 @@
 + (id) defaultBot;
 
 // Chassis methods
-- (void) moveForward:(int) distance;
-- (void) moveBackward:(int) distance;
+- (void) moveForward:(NSNumber *) distance;
+- (void) moveBackward:(NSNumber *) distance;
 - (void) turn:(int) angle;
 - (void) turnLeft:(int) angle;
 - (void) turnRight:(int) angle;

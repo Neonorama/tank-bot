@@ -9,14 +9,12 @@
 #import <Foundation/Foundation.h>
 
 #import "AJBot.h"
+#import "AJProgramField.h"
 
-@class AJProgramField;
 @class AJAvailableCommands;
 @class AJTriggers;
 @class AJRegisters;
 @class AJGameField;
-
-
 
 @interface AJGameManager : NSObject {
     
@@ -30,7 +28,7 @@
 @property (nonatomic, retain) AJRegisters *registers;
 @property (nonatomic, retain) AJGameField *gameField;
 
-@property (nonatomic, retain) AJBot *bot;
+@property (nonatomic, retain) AJBot *bot;   // done
 
 - (void) nextStep;
 - (void) checkCurrentState;

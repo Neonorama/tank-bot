@@ -43,4 +43,16 @@ typedef enum {
     
 } AJTurretType;
 
+typedef enum {
+    kTriggerWallCollision = 0,
+    kTriggerHitDetect,
+    kTriggerWaterDetect
+} AJTriggersType;
+
+typedef enum {
+    kCommandTypeDefault = 0,
+    kCommandTypeBot,
+    kCommandTypeProg
+} kCommandType;
+
 #endif
