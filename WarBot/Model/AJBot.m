@@ -19,7 +19,9 @@
     self = [super init];
     if (self) {
         self.turret     = [AJBotTurret defaultBotTurret];
+        self.turret.stateController = self;
         self.chassis    = [AJBotChassis defaultBotChassis];
+        self.chassis.stateController = self;
         self.energy     = self.turret.energy + self.chassis.energy;
         self.fuel       = DEFAULT_FUEL;
         self.position   = CGPointMake(0.0, 0.0);
@@ -29,23 +31,23 @@
 
 #pragma mark - Implementation chassis methods
 
-- (void) moveForward:(float) distance {
-    [self.chassis moveForward:distance];
+- (void) moveForward:(NSNumber*) distance {
+    [self.chassis moveChassisForward:[distance intValue]];
 }
 
-- (void) moveBackward:(float) distance {
-    [self.chassis moveBackward:distance];
+- (void) moveBackward:(NSNumber *) distance {
+    [self.chassis moveBackward:[distance intValue]];
 }
 
-- (void) turn:(float) angle {
+- (void) turn:(int) angle {
     [self.chassis turn:angle];
 }
 
-- (void) turnLeft:(float) angle {
+- (void) turnLeft:(int) angle {
     [self.chassis turnLeft:angle];
 }
 
-- (void) turnRight:(float) angle {
+- (void) turnRight:(int) angle {
     [self.chassis turnRight:angle];
 }
 
@@ -55,16 +57,27 @@
     [self.turret fire];
 }
 
-- (void) turnTurret:(float) angle {
+- (void) turnTurret:(int) angle {
     [self.turret turnTurret:angle];
 }
 
-- (void) turnTurretLeft:(float) angle {
+- (void) turnTurretLeft:(int) angle {
     [self.turret turnTurretLeft:angle];
 }
 
-- (void) turnTurretRight:(float) angle {
+- (void) turnTurretRight:(int) angle {
     [self.turret turnTurretRight:angle];
+}
+
+#pragma mark - Bot state protocol
+
+-(void)setNewPosition:(CGPoint)newPosition {
+    self.position = newPosition;
+    [self.turret changePosition:newPosition];
+}
+
+-(void)setNewOrientation:(int)newOrientation {
+    [self.turret changeOrientation:newOrientation];
 }
 
 @end

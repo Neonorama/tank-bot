@@ -21,6 +21,14 @@
 #define DEFAULT_CHASSIS_ENERGY 100;
 #define DEFAULT_FUEL 100;
 
+CG_INLINE CGFloat
+AJDistance(CGPoint p1, CGPoint p2)
+{
+    CGFloat xDist = (p2.x - p1.x);
+    CGFloat yDist = (p2.y - p1.y);
+    return sqrt((xDist * xDist) + (yDist * yDist));
+}
+
 typedef enum {
     kChassisTypeWheel = 0,
     kChassisTypeTrack,
@@ -34,5 +42,17 @@ typedef enum {
     kTurretTypeCannon,
     
 } AJTurretType;
+
+typedef enum {
+    kTriggerWallCollision = 0,
+    kTriggerHitDetect,
+    kTriggerWaterDetect
+} AJTriggersType;
+
+typedef enum {
+    kCommandTypeDefault = 0,
+    kCommandTypeBot,
+    kCommandTypeProg
+} kCommandType;
 
 #endif

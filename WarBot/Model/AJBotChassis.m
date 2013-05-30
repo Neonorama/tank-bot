@@ -19,31 +19,76 @@
     self = [super init];
     if (self) {
         self.energy = DEFAULT_CHASSIS_ENERGY;
-        self.orientation = 0.0f;
+        self.orientation = 0;    // 0-359
         self.chassisType = kChassisTypeWheel;
         self.position   = CGPointMake(0.0, 0.0);
     }
     return self;
 }
 
-- (void) moveForward:(float) distance {
+- (void) moveChassisForward:(int) distance {
+    CGPoint t = self.position;
+    t.x += distance * cosf(self.orientation * M_PI / 180.0);
+    t.y += distance * -sinf(self.orientation * M_PI / 180.0);
+    self.position = t;
     
+    [self.stateController setNewPosition:self.position];
+    NSLog(@"Move forward by %d", distance);
 }
 
-- (void) moveBackward:(float) distance {
-    
+- (void) moveBackward:(int) distance {
+    CGPoint t = self.position;
+    t.x -= distance * cosf(self.orientation * M_PI / 180.0);
+    t.y -= distance * -sinf(self.orientation * M_PI / 180.0);
+    self.position = t;
+
+    [self.stateController setNewPosition:self.position];
+    NSLog(@"Move backward by %d", distance);
 }
 
-- (void) turn:(float) angle {
+- (void) turn:(int) angle {
+    int t = self.orientation;
+    t += angle % 360;
+    if (t < 0) {
+        self.orientation = 360 + t;
+    } else if (t >= 360) {
+        self.orientation = t - 360;
+    } else {
+        self.orientation = t;
+    }
     
+    [self.stateController setNewOrientation:self.orientation];
+    NSLog(@"Turn by %d", angle);
 }
 
-- (void) turnLeft:(float) angle {
-    
+- (void) turnLeft:(int) angle {
+    int t = self.orientation;
+    t -= angle % 360;
+    if (t < 0) {
+        self.orientation = 360 + t;
+    } else if (t >= 360) {
+        self.orientation = t - 360;
+    } else {
+        self.orientation = t;
+    }
+
+    [self.stateController setNewOrientation:self.orientation];
+    NSLog(@"Turn left by %d", angle);
 }
 
-- (void) turnRight:(float) angle {
-    
+- (void) turnRight:(int) angle {
+    int t = self.orientation;
+    t += angle % 360;
+    if (t < 0) {
+        self.orientation = 360 + t;
+    } else if (t >= 360) {
+        self.orientation = t - 360;
+    } else {
+        self.orientation = t;
+    }
+
+    [self.stateController setNewOrientation:self.orientation];
+    NSLog(@"Turn right by %d", angle);
 }
 
 @end
