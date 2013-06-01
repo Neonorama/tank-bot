@@ -10,6 +10,10 @@
 
 @implementation AJCommand
 
++(AJCommand *)commandWithType:(kCommandType)type command:(NSString *)command param:(NSNumber *)param {
+    return [[self alloc] init];
+}
+
 - (id)init
 {
     self = [super init];
@@ -17,6 +21,16 @@
         self.type = kCommandTypeDefault;
         self.command = @"";
         self.param = [NSNumber numberWithInt:0];
+    }
+    return self;
+}
+
+-(id)initCommandWithType:(kCommandType)type command:(NSString *)command param:(NSNumber *)param {
+    self = [super init];
+    if (self) {
+        self.type = type;
+        self.command = command;
+        self.param = param;
     }
     return self;
 }

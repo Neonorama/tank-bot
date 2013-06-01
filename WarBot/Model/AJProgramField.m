@@ -19,7 +19,7 @@
 {
     self = [super init];
     if (self) {
-        self.commands = [[NSMutableDictionary alloc] init];
+        self.commands = [[NSMutableDictionary alloc] initWithCapacity:DEFAULT_PROGRAM_LENGTH];
         self.currentCommandIndex = 0;
     }
     return self;

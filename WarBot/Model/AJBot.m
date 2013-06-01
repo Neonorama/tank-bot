@@ -39,16 +39,16 @@
     [self.chassis moveBackward:[distance intValue]];
 }
 
-- (void) turn:(int) angle {
-    [self.chassis turn:angle];
+- (void) turn:(NSNumber *) angle {
+    [self.chassis turn:[angle intValue]];
 }
 
-- (void) turnLeft:(int) angle {
-    [self.chassis turnLeft:angle];
+- (void) turnLeft:(NSNumber *) angle {
+    [self.chassis turnLeft:[angle intValue]];
 }
 
-- (void) turnRight:(int) angle {
-    [self.chassis turnRight:angle];
+- (void) turnRight:(NSNumber *) angle {
+    [self.chassis turnRight:[angle intValue]];
 }
 
 #pragma mark - Implementation turret methods
@@ -57,16 +57,16 @@
     [self.turret fire];
 }
 
-- (void) turnTurret:(int) angle {
-    [self.turret turnTurret:angle];
+- (void) turnTurret:(NSNumber *) angle {
+    [self.turret turnTurret:[angle intValue]];
 }
 
-- (void) turnTurretLeft:(int) angle {
-    [self.turret turnTurretLeft:angle];
+- (void) turnTurretLeft:(NSNumber *) angle {
+    [self.turret turnTurretLeft:[angle intValue]];
 }
 
-- (void) turnTurretRight:(int) angle {
-    [self.turret turnTurretRight:angle];
+- (void) turnTurretRight:(NSNumber *) angle {
+    [self.turret turnTurretRight:[angle intValue]];
 }
 
 #pragma mark - Bot state protocol
