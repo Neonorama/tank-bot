@@ -80,4 +80,11 @@
     [self.turret changeOrientation:newOrientation];
 }
 
+#pragma mark -
+
+- (NSString *)description {
+    
+    return [NSString stringWithFormat:@"\nBot state:\n\tPosition: %@", NSStringFromCGPoint(self.position)];
+}
+
 @end

@@ -26,6 +26,7 @@
 }
 
 -(AJCommand *)getCurrentCommand {
+    self.currentCommandIndex++;
     return [self.commands objectForKey:[NSString stringWithFormat:@"%d",self.currentCommandIndex]];
 }
 

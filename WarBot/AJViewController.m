@@ -24,9 +24,11 @@
     AJGameManager *testGM = [[AJGameManager alloc] init];
 
     for (int i = 0; i < 10; i++) {
+        NSLog(@"%@", testGM.bot);
         [testGM nextStep];
     }
     
+    NSLog(@"Bot state: %@", testGM.bot);
 }
 
 - (void)didReceiveMemoryWarning

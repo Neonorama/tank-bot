@@ -28,8 +28,8 @@
 
 - (void) moveChassisForward:(int) distance {
     CGPoint t = self.position;
-    t.x += distance * cosf(self.orientation * M_PI / 180.0);
-    t.y += distance * -sinf(self.orientation * M_PI / 180.0);
+    t.x += round(distance * cosf(self.orientation * M_PI / 180.0));
+    t.y += round(distance * -sinf(self.orientation * M_PI / 180.0));
     self.position = t;
     
     [self.stateController setNewPosition:self.position];
@@ -38,8 +38,8 @@
 
 - (void) moveBackward:(int) distance {
     CGPoint t = self.position;
-    t.x -= distance * cosf(self.orientation * M_PI / 180.0);
-    t.y -= distance * -sinf(self.orientation * M_PI / 180.0);
+    t.x -= round(distance * cosf(self.orientation * M_PI / 180.0));
+    t.y -= round(distance * -sinf(self.orientation * M_PI / 180.0));
     self.position = t;
 
     [self.stateController setNewPosition:self.position];

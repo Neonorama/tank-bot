@@ -11,7 +11,7 @@
 @implementation AJCommand
 
 +(AJCommand *)commandWithType:(kCommandType)type command:(NSString *)command param:(NSNumber *)param {
-    return [[self alloc] init];
+    return [[self alloc] initCommandWithType:type command:command param:param];
 }
 
 - (id)init

@@ -8,13 +8,14 @@
 
 #import "AJGameManager.h"
 #import "AJStateController.h"
+#import "AJCommand.h"
 
 @implementation AJGameManager
 
 -(void)nextStep {
-    
-    NSNumber *num = [NSNumber numberWithInt:20];
-    [self.bot performSelector:NSSelectorFromString(@"moveBackward:") withObject:num];
+    [self checkCurrentState];
+    AJCommand *currCmd = [self.programField getCurrentCommand];
+    [self.bot performSelector:NSSelectorFromString(currCmd.command) withObject:currCmd.param];
 }
 
 -(void)checkCurrentState {
@@ -28,20 +29,37 @@
         self.bot = [AJBot defaultBot];
         self.programField = [AJProgramField defaultField];
         
-        /*
-        [self.bot moveForward:20];
-        [self.bot turnLeft:90];
-        [self.bot turnTurret:45];
-        [self.bot turnTurretLeft:90];
-        [self.bot turnRight:45];
-        [self.bot moveBackward:50];
-        [self.bot turnLeft:45];
-        [self.bot fire];
-        [self.bot moveForward:50];
-        [self.bot turnRight:90];
-        [self.bot moveForward:50];
-        [self.bot turnRight:90];
-         */
+        for (int i = 0; i <= 10; i++) {
+            int t = arc4random() % 7;
+            AJCommand *cmd;
+            switch (t) {
+                case 0:
+                    cmd = [AJCommand commandWithType:kCommandTypeBot command:@"moveForward:" param:[NSNumber numberWithInt:20]];
+                    break;
+                case 1:
+                    cmd = [AJCommand commandWithType:kCommandTypeBot command:@"moveBackward:" param:[NSNumber numberWithInt:20]];
+                    break;
+                case 2:
+                    cmd = [AJCommand commandWithType:kCommandTypeBot command:@"turnLeft:" param:[NSNumber numberWithInt:90]];
+                    break;
+                case 3:
+                    cmd = [AJCommand commandWithType:kCommandTypeBot command:@"turnRight:" param:[NSNumber numberWithInt:90]];
+                    break;
+                case 4:
+                    cmd = [AJCommand commandWithType:kCommandTypeBot command:@"fire" param:[NSNumber numberWithInt:20]];
+                    break;
+                case 5:
+                    cmd = [AJCommand commandWithType:kCommandTypeBot command:@"turnTurretLeft:" param:[NSNumber numberWithInt:90]];
+                    break;
+                case 6:
+                    cmd = [AJCommand commandWithType:kCommandTypeBot command:@"turnTurretRight:" param:[NSNumber numberWithInt:90]];
+                    break;
+                    
+                default:
+                    break;
+            }
+            [self.programField addCommand:cmd atIndex:i];
+        }
     }
     return self;
 }
