@@ -18,6 +18,6 @@
 
 -(AJCommand *)getCurrentCommand;
 -(void) addCommand: (AJCommand *) command atIndex:(int)index;
--(void) removeCommand: (AJCommand *) command atIndex:(int)index;
+-(void) removeCommandAtIndex:(int)index;
 
 @end
