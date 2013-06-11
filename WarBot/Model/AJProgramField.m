@@ -48,4 +48,13 @@
     [self.commands removeObjectForKey:[NSString stringWithFormat:@"%d",index]];
 }
 
+-(void)mov:(NSNumber *)param{
+    [self.delegate saveCurrentCommandIndex:self.currentCommandIndex];
+    self.currentCommandIndex = [param intValue];
+}
+
+-(void)ret{
+    self.currentCommandIndex = [self.delegate loadCurrentCommandIndex];
+}
+
 @end

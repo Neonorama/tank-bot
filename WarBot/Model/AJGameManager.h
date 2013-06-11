@@ -10,13 +10,13 @@
 
 #import "AJBot.h"
 #import "AJProgramField.h"
+#import "AJRegisters.h"
 
 @class AJAvailableCommands;
 @class AJTriggers;
-@class AJRegisters;
 @class AJGameField;
 
-@interface AJGameManager : NSObject {
+@interface AJGameManager : NSObject <AJProgramFieldProtocol> {
     
 }
 
