@@ -15,4 +15,7 @@
 @property (nonatomic, strong) NSString *command;
 @property (nonatomic, strong) NSNumber *param;
 
++(AJCommand *)commandWithType:(kCommandType)type command:(NSString  *)command param: (NSNumber *)param;
+
+
 @end

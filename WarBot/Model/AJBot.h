@@ -28,14 +28,14 @@
 // Chassis methods
 - (void) moveForward:(NSNumber *) distance;
 - (void) moveBackward:(NSNumber *) distance;
-- (void) turn:(int) angle;
-- (void) turnLeft:(int) angle;
-- (void) turnRight:(int) angle;
+- (void) turn:(NSNumber *) angle;
+- (void) turnLeft:(NSNumber *) angle;
+- (void) turnRight:(NSNumber *) angle;
 
 // Turret methods
 - (void) fire;
-- (void) turnTurret:(int) angle;
-- (void) turnTurretLeft:(int) angle;
-- (void) turnTurretRight:(int) angle;
+- (void) turnTurret:(NSNumber *) angle;
+- (void) turnTurretLeft:(NSNumber *) angle;
+- (void) turnTurretRight:(NSNumber *) angle;
 
 @end
