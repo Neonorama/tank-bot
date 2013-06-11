@@ -29,7 +29,7 @@
 -(void) addCommand: (AJCommand *) command atIndex:(int)index;
 -(void) removeCommandAtIndex:(int)index;
 
--(void) mov:(NSNumber *) param;
+-(void) jump:(NSNumber *) param;
 -(void) ret;
 
 @end

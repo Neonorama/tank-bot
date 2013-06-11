@@ -72,7 +72,7 @@
                     break;
 
                 case 8:
-                    cmd = [AJCommand commandWithType:kCommandTypeProg command:@"mov:" param:[NSNumber numberWithInt:50]];
+                    cmd = [AJCommand commandWithType:kCommandTypeProg command:@"jump:" param:[NSNumber numberWithInt:50]];
                     break;
                 case 9:
                     cmd = [AJCommand commandWithType:kCommandTypeProg command:@"ret" param:[NSNumber numberWithInt:0]];

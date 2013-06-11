@@ -48,7 +48,7 @@
     [self.commands removeObjectForKey:[NSString stringWithFormat:@"%d",index]];
 }
 
--(void)mov:(NSNumber *)param{
+-(void)jump:(NSNumber *)param{
     [self.delegate saveCurrentCommandIndex:self.currentCommandIndex];
     self.currentCommandIndex = [param intValue];
 }
