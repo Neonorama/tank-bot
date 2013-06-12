@@ -35,4 +35,8 @@
     return self;
 }
 
+-(NSString *)description {
+    return [NSString stringWithFormat:@"Command: type - %d, name - %@, param - %@", self.type, self.command, self.param];
+}
+
 @end

@@ -13,9 +13,10 @@
 @implementation AJGameManager
 
 -(void)nextStep {
+    NSLog(@"===============================================");
     [self checkCurrentState];
     AJCommand *currCmd = [self.programField getCurrentCommand];
-    
+    NSLog(@"%@", currCmd);
     switch (currCmd.type) {
         case kCommandTypeBot:
             [self.bot performSelector:NSSelectorFromString(currCmd.command) withObject:currCmd.param];
@@ -31,7 +32,7 @@
 }
 
 -(void)checkCurrentState {
-    ;
+    NSLog(@"%@", self.bot);
 }
 
 - (id)init

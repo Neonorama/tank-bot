@@ -84,7 +84,7 @@
 
 - (NSString *)description {
     
-    return [NSString stringWithFormat:@"\nBot state:\n\tPosition: %@", NSStringFromCGPoint(self.position)];
+    return [NSString stringWithFormat:@"Bot state:\tPosition: %@", NSStringFromCGPoint(self.position)];
 }
 
 @end
