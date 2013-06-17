@@ -11,16 +11,14 @@
 #import "AJBot.h"
 #import "AJProgramField.h"
 #import "AJRegisters.h"
+#import "AJAvailableCommands.h"
 
-@class AJAvailableCommands;
 @class AJTriggers;
 @class AJGameField;
 
 @interface AJGameManager : NSObject <AJProgramFieldProtocol> {
     
 }
-
-@property (nonatomic, assign) int programCounter;
 
 @property (nonatomic, retain) AJProgramField *programField;
 @property (nonatomic, retain) AJAvailableCommands *availableCommands;

@@ -44,45 +44,14 @@
         [self.programField setDelegate:self];
         
         self.registers = [AJRegisters defaultRegisters];
+        [self.registers setDelegate:self];
+        
+        self.availableCommands = [AJAvailableCommands defaultAvailableCommands];
         
         for (int i = 0; i < DEFAULT_PROGRAM_LENGTH; i++) {
-            int t = arc4random() % 20;
-            AJCommand *cmd;
-            switch (t) {
-                    // Bot command
-                case 0:
-                    cmd = [AJCommand commandWithType:kCommandTypeBot command:@"moveForward:" param:[NSNumber numberWithInt:20]];
-                    break;
-                case 1:
-                    cmd = [AJCommand commandWithType:kCommandTypeBot command:@"moveBackward:" param:[NSNumber numberWithInt:20]];
-                    break;
-                case 2:
-                    cmd = [AJCommand commandWithType:kCommandTypeBot command:@"turnLeft:" param:[NSNumber numberWithInt:90]];
-                    break;
-                case 3:
-                    cmd = [AJCommand commandWithType:kCommandTypeBot command:@"turnRight:" param:[NSNumber numberWithInt:90]];
-                    break;
-                case 4:
-                    cmd = [AJCommand commandWithType:kCommandTypeBot command:@"fire" param:[NSNumber numberWithInt:20]];
-                    break;
-                case 5:
-                    cmd = [AJCommand commandWithType:kCommandTypeBot command:@"turnTurretLeft:" param:[NSNumber numberWithInt:90]];
-                    break;
-                case 6:
-                    cmd = [AJCommand commandWithType:kCommandTypeBot command:@"turnTurretRight:" param:[NSNumber numberWithInt:90]];
-                    break;
-
-                case 8:
-                    cmd = [AJCommand commandWithType:kCommandTypeProg command:@"jump:" param:[NSNumber numberWithInt:50]];
-                    break;
-                case 9:
-                    cmd = [AJCommand commandWithType:kCommandTypeProg command:@"ret" param:[NSNumber numberWithInt:0]];
-                    break;
-
-                default:
-                    cmd = [AJCommand commandWithType:kCommandTypeDefault command:@"" param:[NSNumber numberWithInt:0]];
-                    break;
-            }
+            int t = arc4random() % [self.availableCommands.availableCommands count];
+            AJCommand *cmd = [self.availableCommands.availableCommands objectAtIndex:t];
+            
             [self.programField addCommand:cmd atIndex:i];
         }
     }

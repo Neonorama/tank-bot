@@ -25,6 +25,7 @@
 		919D69C11757DF9E00C50707 /* AJCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 919D69C01757DF9E00C50707 /* AJCommand.m */; };
 		91A1769917553BE60069264C /* AJProgramField.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A1769817553BE60069264C /* AJProgramField.m */; };
 		91B007F0174827EB00ACA5D4 /* AJStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B007EF174827EB00ACA5D4 /* AJStateController.m */; };
+		91C3F103176FC533004BFB0B /* AJAvailableCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C3F102176FC533004BFB0B /* AJAvailableCommands.m */; };
 		91F040081767D34800D4A4B8 /* AJRegisters.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F040071767D34800D4A4B8 /* AJRegisters.m */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,8 @@
 		91A1769817553BE60069264C /* AJProgramField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJProgramField.m; path = Model/AJProgramField.m; sourceTree = "<group>"; };
 		91B007EE174827EB00ACA5D4 /* AJStateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJStateController.h; path = Model/AJStateController.h; sourceTree = "<group>"; };
 		91B007EF174827EB00ACA5D4 /* AJStateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJStateController.m; path = Model/AJStateController.m; sourceTree = "<group>"; };
+		91C3F101176FC533004BFB0B /* AJAvailableCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJAvailableCommands.h; path = Model/AJAvailableCommands.h; sourceTree = "<group>"; };
+		91C3F102176FC533004BFB0B /* AJAvailableCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJAvailableCommands.m; path = Model/AJAvailableCommands.m; sourceTree = "<group>"; };
 		91F040061767D34800D4A4B8 /* AJRegisters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRegisters.h; sourceTree = "<group>"; };
 		91F040071767D34800D4A4B8 /* AJRegisters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJRegisters.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,6 +170,8 @@
 				919D69C01757DF9E00C50707 /* AJCommand.m */,
 				91F040061767D34800D4A4B8 /* AJRegisters.h */,
 				91F040071767D34800D4A4B8 /* AJRegisters.m */,
+				91C3F101176FC533004BFB0B /* AJAvailableCommands.h */,
+				91C3F102176FC533004BFB0B /* AJAvailableCommands.m */,
 				919C804D174916FC0079BC63 /* Protocols */,
 				91009C711741879E002D76EA /* Bot */,
 				912242E0174030C800A52C86 /* AJGameManager.h */,
@@ -279,6 +284,7 @@
 				91A1769917553BE60069264C /* AJProgramField.m in Sources */,
 				919D69C11757DF9E00C50707 /* AJCommand.m in Sources */,
 				91F040081767D34800D4A4B8 /* AJRegisters.m in Sources */,
+				91C3F103176FC533004BFB0B /* AJAvailableCommands.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

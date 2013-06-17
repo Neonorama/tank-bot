@@ -7,7 +7,6 @@
 //
 
 #import "AJRegisters.h"
-#import "Utils.h"
 
 @implementation AJRegisters
 
@@ -46,8 +45,6 @@
 -(int)getCurrentCommandIndex {
     return [[self getParamFromRegister:kRegistersB] intValue];
 }
-
-
 
 -(void) jump:(NSNumber *) param {
     [self move:kRegistersA :kRegistersB];
