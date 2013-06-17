@@ -7,18 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef enum {
-    kRegistersA = 0,    // return register
-    kRegistersB,        // 
-    kRegistersC,
-    kRegistersD,
-    kRegistersE,
-    kRegistersF,
-    kRegistersG,
-    kRegistersH
-    
-} kRegisters;
+#import "Utils.h"
 
 @interface AJRegisters : NSObject
 
@@ -28,7 +17,11 @@ typedef enum {
 
 +(id)defaultRegisters;
 
--(void) saveCurrentCommandIndex:(int) currentIndex;
--(int) loadCurrentCommandIndex;
+-(void) setCurrentCommandIndex:(int) currentIndex;
+-(int) getCurrentCommandIndex;
+-(void)setParam:(NSNumber *)param toRegister:(kRegisters)reg;
+-(NSNumber *)getParamFromRegister:(kRegisters)reg;
+-(void) jump:(NSNumber *) param;
+-(void) ret;
 
 @end

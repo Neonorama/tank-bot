@@ -91,13 +91,20 @@
 
 #pragma mark - AJProgramFieldProtocol
 
--(void) saveCurrentCommandIndex:(int) currentIndex {
-    [self.registers saveCurrentCommandIndex:currentIndex];
+-(void) setCurrentCommandIndex:(int) currentIndex {
+    [self.registers setCurrentCommandIndex:currentIndex];
 }
 
--(int) loadCurrentCommandIndex {
-    return [self.registers loadCurrentCommandIndex];
+-(int) getCurrentCommandIndex {
+    return [self.registers getCurrentCommandIndex];
 }
 
+-(void) jump:(NSNumber *) param {
+    [self.registers jump:param];
+}
+
+-(void) ret {
+    [self.registers ret];
+}
 
 @end

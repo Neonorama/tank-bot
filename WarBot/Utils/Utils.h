@@ -57,4 +57,16 @@ typedef enum {
     kCommandTypeProg
 } kCommandType;
 
+typedef enum {
+    kRegistersA = 0,    // return register
+    kRegistersB,        // program counter
+    kRegistersC,
+    kRegistersD,
+    kRegistersE,
+    kRegistersF,
+    kRegistersG,
+    kRegistersH
+    
+} kRegisters;
+
 #endif

@@ -25,17 +25,18 @@
         for (int i = 0; i < DEFAULT_PROGRAM_LENGTH; i++) {
             [self addCommand:defaultCommand atIndex:i];
         }
-        self.currentCommandIndex = 0;
     }
     return self;
 }
 
 -(AJCommand *)getCurrentCommand {
-    AJCommand *command = [self.commands objectForKey:[NSString stringWithFormat:@"%d",self.currentCommandIndex]];
-    self.currentCommandIndex++;
-    if (self.currentCommandIndex >= [self.commands count]) {
-        self.currentCommandIndex = 0;
+    int index = [self.delegate getCurrentCommandIndex];
+    AJCommand *command = [self.commands objectForKey:[NSString stringWithFormat:@"%d",index]];
+    index++;
+    if (index >= [self.commands count]) {
+        index = 0;
     }
+    [self.delegate setCurrentCommandIndex:index];
     return command;
 }
 
@@ -49,12 +50,11 @@
 }
 
 -(void)jump:(NSNumber *)param{
-    [self.delegate saveCurrentCommandIndex:self.currentCommandIndex];
-    self.currentCommandIndex = [param intValue];
+    [self.delegate jump:param];
 }
 
 -(void)ret{
-    self.currentCommandIndex = [self.delegate loadCurrentCommandIndex];
+    [self.delegate ret];
 }
 
 @end
