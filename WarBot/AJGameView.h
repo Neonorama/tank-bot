@@ -16,6 +16,8 @@
 
 @property AJGameManager *gameManager;
 @property NSTimer *timer;
+@property CCSprite *botBaseSprite;
+@property CCSprite *botCanonSprite;
 
 +(CCScene *) scene;
 

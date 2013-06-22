@@ -30,6 +30,8 @@
 		915133261775BC2200FB4007 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 915133241775BC2200FB4007 /* OpenGLES.framework */; };
 		915133291775BCC100FB4007 /* AJGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 915133281775BCC100FB4007 /* AJGameView.m */; };
 		9160297F1775C4B80039A3D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9160297E1775C4B80039A3D2 /* QuartzCore.framework */; };
+		916029831775D1C30039A3D2 /* bot.plist in Resources */ = {isa = PBXBuildFile; fileRef = 916029811775D1C30039A3D2 /* bot.plist */; };
+		916029841775D1C30039A3D2 /* bot.png in Resources */ = {isa = PBXBuildFile; fileRef = 916029821775D1C30039A3D2 /* bot.png */; };
 		919D69C11757DF9E00C50707 /* AJCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 919D69C01757DF9E00C50707 /* AJCommand.m */; };
 		91A1769917553BE60069264C /* AJProgramField.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A1769817553BE60069264C /* AJProgramField.m */; };
 		91B007F0174827EB00ACA5D4 /* AJStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B007EF174827EB00ACA5D4 /* AJStateController.m */; };
@@ -75,6 +77,8 @@
 		915133271775BCC100FB4007 /* AJGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJGameView.h; sourceTree = "<group>"; };
 		915133281775BCC100FB4007 /* AJGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJGameView.m; sourceTree = "<group>"; };
 		9160297E1775C4B80039A3D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		916029811775D1C30039A3D2 /* bot.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = bot.plist; path = Resources/bot.plist; sourceTree = "<group>"; };
+		916029821775D1C30039A3D2 /* bot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bot.png; path = Resources/bot.png; sourceTree = "<group>"; };
 		919C804E174917200079BC63 /* AJBotStateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AJBotStateProtocol.h; path = Model/AJBotStateProtocol.h; sourceTree = "<group>"; };
 		919D69BF1757DF9E00C50707 /* AJCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJCommand.h; path = Model/AJCommand.h; sourceTree = "<group>"; };
 		919D69C01757DF9E00C50707 /* AJCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJCommand.m; path = Model/AJCommand.m; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 				91361136173E456200937A20 /* AJAppDelegate.h */,
 				91361137173E456200937A20 /* AJAppDelegate.m */,
 				9136113F173E456200937A20 /* MainStoryboard.storyboard */,
+				916029801775D0FE0039A3D2 /* Resources */,
 				9136112E173E456200937A20 /* Supporting Files */,
 			);
 			path = WarBot;
@@ -231,6 +236,15 @@
 				91361143173E456200937A20 /* AJViewController.m */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		916029801775D0FE0039A3D2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				916029811775D1C30039A3D2 /* bot.plist */,
+				916029821775D1C30039A3D2 /* bot.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		919C804D174916FC0079BC63 /* Protocols */ = {
@@ -298,6 +312,8 @@
 				9136113C173E456200937A20 /* Default@2x.png in Resources */,
 				9136113E173E456200937A20 /* Default-568h@2x.png in Resources */,
 				91361141173E456200937A20 /* MainStoryboard.storyboard in Resources */,
+				916029831775D1C30039A3D2 /* bot.plist in Resources */,
+				916029841775D1C30039A3D2 /* bot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

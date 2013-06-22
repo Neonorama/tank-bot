@@ -21,6 +21,8 @@
 #define DEFAULT_CHASSIS_ENERGY 100;
 #define DEFAULT_FUEL 100;
 
+#define DEFAULT_TIME_INTERVAL 1.0
+
 //NSString const * kMoveForward = @"moveForward";
 
 CG_INLINE CGFloat
