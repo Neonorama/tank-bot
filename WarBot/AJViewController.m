@@ -8,7 +8,6 @@
 
 #import "AJViewController.h"
 #import "AJStateController.h"
-#import "AJGameManager.h"
 
 @interface AJViewController ()
 
@@ -20,15 +19,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    AJGameManager *testGM = [[AJGameManager alloc] init];
-
-    for (int i = 0; i < DEFAULT_PROGRAM_LENGTH; i++) {
-//        NSLog(@"%@", testGM.bot);
-        [testGM nextStep];
-    }
-    
-//    NSLog(@"Bot state: %@", testGM.bot);
 }
 
 - (void)didReceiveMemoryWarning

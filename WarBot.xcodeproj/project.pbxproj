@@ -22,6 +22,14 @@
 		9136113E173E456200937A20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9136113D173E456200937A20 /* Default-568h@2x.png */; };
 		91361141173E456200937A20 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9136113F173E456200937A20 /* MainStoryboard.storyboard */; };
 		91361144173E456200937A20 /* AJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91361143173E456200937A20 /* AJViewController.m */; };
+		9151331B1775B84200FB4007 /* CCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9151331A1775B84200FB4007 /* CCViewController.m */; };
+		9151331E1775BB8800FB4007 /* AJGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9151331D1775BB8800FB4007 /* AJGameViewController.m */; };
+		915133211775BBF800FB4007 /* libcocos2d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9151331F1775BBF800FB4007 /* libcocos2d.a */; };
+		915133221775BBF800FB4007 /* libkazmath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 915133201775BBF800FB4007 /* libkazmath.a */; };
+		915133251775BC2200FB4007 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 915133231775BC2200FB4007 /* OpenAL.framework */; };
+		915133261775BC2200FB4007 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 915133241775BC2200FB4007 /* OpenGLES.framework */; };
+		915133291775BCC100FB4007 /* AJGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 915133281775BCC100FB4007 /* AJGameView.m */; };
+		9160297F1775C4B80039A3D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9160297E1775C4B80039A3D2 /* QuartzCore.framework */; };
 		919D69C11757DF9E00C50707 /* AJCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 919D69C01757DF9E00C50707 /* AJCommand.m */; };
 		91A1769917553BE60069264C /* AJProgramField.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A1769817553BE60069264C /* AJProgramField.m */; };
 		91B007F0174827EB00ACA5D4 /* AJStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B007EF174827EB00ACA5D4 /* AJStateController.m */; };
@@ -56,6 +64,17 @@
 		91361142173E456200937A20 /* AJViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJViewController.h; sourceTree = "<group>"; };
 		91361143173E456200937A20 /* AJViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJViewController.m; sourceTree = "<group>"; };
 		9136114A173E469C00937A20 /* WarBot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WarBot.entitlements; sourceTree = "<group>"; };
+		915133191775B84200FB4007 /* CCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCViewController.h; sourceTree = "<group>"; };
+		9151331A1775B84200FB4007 /* CCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCViewController.m; sourceTree = "<group>"; };
+		9151331C1775BB8800FB4007 /* AJGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJGameViewController.h; sourceTree = "<group>"; };
+		9151331D1775BB8800FB4007 /* AJGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJGameViewController.m; sourceTree = "<group>"; };
+		9151331F1775BBF800FB4007 /* libcocos2d.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcocos2d.a; path = "../../../../Library/Developer/Xcode/DerivedData/AJGames-fysekijkyysnszffwxpzjsixpisu/Build/Products/Debug-iphoneos/libcocos2d.a"; sourceTree = "<group>"; };
+		915133201775BBF800FB4007 /* libkazmath.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libkazmath.a; path = "../../../../Library/Developer/Xcode/DerivedData/AJGames-fysekijkyysnszffwxpzjsixpisu/Build/Products/Debug-iphoneos/libkazmath.a"; sourceTree = "<group>"; };
+		915133231775BC2200FB4007 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		915133241775BC2200FB4007 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		915133271775BCC100FB4007 /* AJGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJGameView.h; sourceTree = "<group>"; };
+		915133281775BCC100FB4007 /* AJGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJGameView.m; sourceTree = "<group>"; };
+		9160297E1775C4B80039A3D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		919C804E174917200079BC63 /* AJBotStateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AJBotStateProtocol.h; path = Model/AJBotStateProtocol.h; sourceTree = "<group>"; };
 		919D69BF1757DF9E00C50707 /* AJCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJCommand.h; path = Model/AJCommand.h; sourceTree = "<group>"; };
 		919D69C01757DF9E00C50707 /* AJCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJCommand.m; path = Model/AJCommand.m; sourceTree = "<group>"; };
@@ -74,6 +93,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9160297F1775C4B80039A3D2 /* QuartzCore.framework in Frameworks */,
+				915133211775BBF800FB4007 /* libcocos2d.a in Frameworks */,
+				915133221775BBF800FB4007 /* libkazmath.a in Frameworks */,
+				915133251775BC2200FB4007 /* OpenAL.framework in Frameworks */,
+				915133261775BC2200FB4007 /* OpenGLES.framework in Frameworks */,
 				91361128173E456200937A20 /* UIKit.framework in Frameworks */,
 				9136112A173E456200937A20 /* Foundation.framework in Frameworks */,
 				9136112C173E456200937A20 /* CoreGraphics.framework in Frameworks */,
@@ -124,6 +148,11 @@
 		91361126173E456200937A20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9160297E1775C4B80039A3D2 /* QuartzCore.framework */,
+				9151331F1775BBF800FB4007 /* libcocos2d.a */,
+				915133201775BBF800FB4007 /* libkazmath.a */,
+				915133231775BC2200FB4007 /* OpenAL.framework */,
+				915133241775BC2200FB4007 /* OpenGLES.framework */,
 				91361127173E456200937A20 /* UIKit.framework */,
 				91361129173E456200937A20 /* Foundation.framework */,
 				9136112B173E456200937A20 /* CoreGraphics.framework */,
@@ -185,6 +214,8 @@
 		9136114C173E4B4E00937A20 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				915133271775BCC100FB4007 /* AJGameView.h */,
+				915133281775BCC100FB4007 /* AJGameView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -192,6 +223,10 @@
 		9136114D173E4B5800937A20 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9151331C1775BB8800FB4007 /* AJGameViewController.h */,
+				9151331D1775BB8800FB4007 /* AJGameViewController.m */,
+				915133191775B84200FB4007 /* CCViewController.h */,
+				9151331A1775B84200FB4007 /* CCViewController.m */,
 				91361142173E456200937A20 /* AJViewController.h */,
 				91361143173E456200937A20 /* AJViewController.m */,
 			);
@@ -285,6 +320,9 @@
 				919D69C11757DF9E00C50707 /* AJCommand.m in Sources */,
 				91F040081767D34800D4A4B8 /* AJRegisters.m in Sources */,
 				91C3F103176FC533004BFB0B /* AJAvailableCommands.m in Sources */,
+				9151331B1775B84200FB4007 /* CCViewController.m in Sources */,
+				9151331E1775BB8800FB4007 /* AJGameViewController.m in Sources */,
+				915133291775BCC100FB4007 /* AJGameView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +411,13 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WarBot/WarBot-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(COCOS2D_SOURCE)";
 				INFOPLIST_FILE = "WarBot/WarBot-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/AJGames-fysekijkyysnszffwxpzjsixpisu/Build/Products/Debug-iphoneos\"",
+				);
+				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -384,7 +428,13 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WarBot/WarBot-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(COCOS2D_SOURCE)";
 				INFOPLIST_FILE = "WarBot/WarBot-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/AJGames-fysekijkyysnszffwxpzjsixpisu/Build/Products/Debug-iphoneos\"",
+				);
+				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

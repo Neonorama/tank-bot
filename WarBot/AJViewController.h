@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AJGameManager.h"
+#import "CCViewController.h"
 
 @interface AJViewController : UIViewController
 
