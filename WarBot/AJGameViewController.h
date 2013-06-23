@@ -8,6 +8,15 @@
 
 #import "CCViewController.h"
 
+@class AJGameViewController;
+
+@protocol AJGameViewControllerDelegate
+- (void)gameViewControllerDidFinish:(AJGameViewController *)controller;
+@end
+
 @interface AJGameViewController : CCViewController
 
+@property (weak, nonatomic) id <AJGameViewControllerDelegate> delegate;
+
+- (IBAction)reset:(id)sender;
 @end

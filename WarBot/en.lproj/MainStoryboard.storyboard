@@ -7,7 +7,7 @@
         <!--View Controller-->
         <scene sceneID="4">
             <objects>
-                <viewController modalTransitionStyle="flipHorizontal" id="2" customClass="AJViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" id="2" customClass="AJViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="8ND-Tv-w2W" kind="modal" id="nvg-PH-3ND"/>
+                                    <segue destination="8ND-Tv-w2W" kind="modal" identifier="showGame" id="ShX-uZ-uch"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -51,7 +51,26 @@
                     <view key="view" contentMode="scaleToFill" id="nKc-n3-svT">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLh-GC-Dj0">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="reset:" destination="8ND-Tv-w2W" eventType="touchUpInside" id="Bqc-rb-gES"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="QLh-GC-Dj0" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="XWf-OV-DhF"/>
+                            <constraint firstAttribute="trailing" secondItem="QLh-GC-Dj0" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="pzs-dR-yoZ"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="xsM-do-6CE"/>
@@ -60,12 +79,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ff-12-h4H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1093" y="-65"/>
+            <point key="canvasLocation" x="1157" y="-65"/>
         </scene>
     </scenes>
     <classes>
         <class className="AJGameViewController" superclassName="CCViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AJGameViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="reset:"/>
+            </relationships>
         </class>
         <class className="AJViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AJViewController.h"/>

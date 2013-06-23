@@ -22,6 +22,8 @@
 		9136113E173E456200937A20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9136113D173E456200937A20 /* Default-568h@2x.png */; };
 		91361141173E456200937A20 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9136113F173E456200937A20 /* MainStoryboard.storyboard */; };
 		91361144173E456200937A20 /* AJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91361143173E456200937A20 /* AJViewController.m */; };
+		9137BE5C1777960F00306737 /* arrows.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9137BE5A1777960F00306737 /* arrows.plist */; };
+		9137BE5D1777960F00306737 /* arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 9137BE5B1777960F00306737 /* arrows.png */; };
 		9151331B1775B84200FB4007 /* CCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9151331A1775B84200FB4007 /* CCViewController.m */; };
 		9151331E1775BB8800FB4007 /* AJGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9151331D1775BB8800FB4007 /* AJGameViewController.m */; };
 		915133211775BBF800FB4007 /* libcocos2d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9151331F1775BBF800FB4007 /* libcocos2d.a */; };
@@ -66,6 +68,8 @@
 		91361142173E456200937A20 /* AJViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJViewController.h; sourceTree = "<group>"; };
 		91361143173E456200937A20 /* AJViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJViewController.m; sourceTree = "<group>"; };
 		9136114A173E469C00937A20 /* WarBot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WarBot.entitlements; sourceTree = "<group>"; };
+		9137BE5A1777960F00306737 /* arrows.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = arrows.plist; path = Resources/arrows.plist; sourceTree = "<group>"; };
+		9137BE5B1777960F00306737 /* arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrows.png; path = Resources/arrows.png; sourceTree = "<group>"; };
 		915133191775B84200FB4007 /* CCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCViewController.h; sourceTree = "<group>"; };
 		9151331A1775B84200FB4007 /* CCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCViewController.m; sourceTree = "<group>"; };
 		9151331C1775BB8800FB4007 /* AJGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJGameViewController.h; sourceTree = "<group>"; };
@@ -241,6 +245,8 @@
 		916029801775D0FE0039A3D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9137BE5A1777960F00306737 /* arrows.plist */,
+				9137BE5B1777960F00306737 /* arrows.png */,
 				916029811775D1C30039A3D2 /* bot.plist */,
 				916029821775D1C30039A3D2 /* bot.png */,
 			);
@@ -314,6 +320,8 @@
 				91361141173E456200937A20 /* MainStoryboard.storyboard in Resources */,
 				916029831775D1C30039A3D2 /* bot.plist in Resources */,
 				916029841775D1C30039A3D2 /* bot.png in Resources */,
+				9137BE5C1777960F00306737 /* arrows.plist in Resources */,
+				9137BE5D1777960F00306737 /* arrows.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

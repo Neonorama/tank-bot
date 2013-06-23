@@ -27,4 +27,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscapeLeft |
+    UIInterfaceOrientationMaskLandscapeRight;
+}
+
+- (void)gameViewControllerDidFinish:(AJGameViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showGame"]) {
+        [[segue destinationViewController] setDelegate:self];
+    }
+}
+
 @end

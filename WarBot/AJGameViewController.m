@@ -13,7 +13,9 @@
 
 @end
 
-@implementation AJGameViewController
+@implementation AJGameViewController {
+    id delegate;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +37,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscapeLeft |
+    UIInterfaceOrientationMaskLandscapeRight;
+}
+
+-(void)reset:(id)sender {
+    [self.delegate gameViewControllerDidFinish:self];
 }
 
 @end
