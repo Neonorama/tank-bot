@@ -19,4 +19,5 @@
 @property (weak, nonatomic) id <AJGameViewControllerDelegate> delegate;
 
 - (IBAction)reset:(id)sender;
+
 @end

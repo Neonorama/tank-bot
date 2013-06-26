@@ -22,6 +22,7 @@
 @property (nonatomic, retain) AJBotChassis *chassis;
 
 @property (nonatomic, assign) id stateController;
+@property (nonatomic, weak) id view;
 
 + (id) defaultBot;
 
@@ -37,5 +38,9 @@
 - (void) turnTurret:(NSNumber *) angle;
 - (void) turnTurretLeft:(NSNumber *) angle;
 - (void) turnTurretRight:(NSNumber *) angle;
+
+// Draw
+
+- (void) draw;
 
 @end

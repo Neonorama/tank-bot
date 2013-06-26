@@ -7,15 +7,13 @@
 //
 
 #import "AJGameViewController.h"
-#import "AJGameView.h"
+#import "AJGameScene.h"
 
 @interface AJGameViewController ()
 
 @end
 
-@implementation AJGameViewController {
-    id delegate;
-}
+@implementation AJGameViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,7 +28,7 @@
 {
     [super viewDidLoad];
 	
-    [[CCDirector sharedDirector] runWithScene:[AJGameView scene]];
+    [[CCDirector sharedDirector] runWithScene:[AJGameScene scene]];
 }
 
 - (void)didReceiveMemoryWarning
