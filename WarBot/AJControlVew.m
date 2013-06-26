@@ -17,7 +17,7 @@
         CGSize winSize = [[CCDirector sharedDirector] winSize];
         
         CCSprite *t = [CCSprite spriteWithSpriteFrameName:@"move_forward.png"];
-        CCLayerColor *background = [CCLayerColor layerWithColor:ccc4(200, 50, 50, 80) width:64*6 height:winSize.height];
+        CCLayerColor *background = [CCLayerColor layerWithColor:ccc4(200, 200, 200, 200) width:64*6 height:winSize.height];
         
         [self addChild:background z:-1 tag:1001];
         [self addChild:t];

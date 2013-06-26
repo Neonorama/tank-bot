@@ -31,6 +31,7 @@
 		915133251775BC2200FB4007 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 915133231775BC2200FB4007 /* OpenAL.framework */; };
 		915133261775BC2200FB4007 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 915133241775BC2200FB4007 /* OpenGLES.framework */; };
 		915133291775BCC100FB4007 /* AJGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 915133281775BCC100FB4007 /* AJGameView.m */; };
+		915459EE177B8B9B00439D58 /* AJConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 915459ED177B8B9B00439D58 /* AJConstants.m */; };
 		9160297F1775C4B80039A3D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9160297E1775C4B80039A3D2 /* QuartzCore.framework */; };
 		916029831775D1C30039A3D2 /* bot.plist in Resources */ = {isa = PBXBuildFile; fileRef = 916029811775D1C30039A3D2 /* bot.plist */; };
 		916029841775D1C30039A3D2 /* bot.png in Resources */ = {isa = PBXBuildFile; fileRef = 916029821775D1C30039A3D2 /* bot.png */; };
@@ -82,6 +83,8 @@
 		915133241775BC2200FB4007 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		915133271775BCC100FB4007 /* AJGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJGameView.h; sourceTree = "<group>"; };
 		915133281775BCC100FB4007 /* AJGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJGameView.m; sourceTree = "<group>"; };
+		915459EC177B8B9B00439D58 /* AJConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJConstants.h; path = Utils/AJConstants.h; sourceTree = "<group>"; };
+		915459ED177B8B9B00439D58 /* AJConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJConstants.m; path = Utils/AJConstants.m; sourceTree = "<group>"; };
 		9160297E1775C4B80039A3D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		916029811775D1C30039A3D2 /* bot.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = bot.plist; path = Resources/bot.plist; sourceTree = "<group>"; };
 		916029821775D1C30039A3D2 /* bot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bot.png; path = Resources/bot.png; sourceTree = "<group>"; };
@@ -138,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				912242E31740345D00A52C86 /* Utils.h */,
+				915459EC177B8B9B00439D58 /* AJConstants.h */,
+				915459ED177B8B9B00439D58 /* AJConstants.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 				915133291775BCC100FB4007 /* AJGameView.m in Sources */,
 				916DF52D177B748400A3BD97 /* AJGameScene.m in Sources */,
 				916DF530177B75D300A3BD97 /* AJControlVew.m in Sources */,
+				915459EE177B8B9B00439D58 /* AJConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
