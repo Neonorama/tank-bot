@@ -11,15 +11,16 @@
 
 @protocol AJProgramFieldProtocol <NSObject>
 
--(void) saveCurrentCommandIndex:(int) currentIndex;
--(int) loadCurrentCommandIndex;
+-(void) setCurrentCommandIndex:(int) currentIndex;
+-(int) getCurrentCommandIndex;
+-(void) jump:(NSNumber *) param;
+-(void) ret;
 
 @end
 
 
 @interface AJProgramField : NSObject
 
-@property (nonatomic, assign) int currentCommandIndex;
 @property (nonatomic, strong) NSMutableDictionary *commands;
 @property (nonatomic, assign) id <AJProgramFieldProtocol> delegate;
 
@@ -29,7 +30,7 @@
 -(void) addCommand: (AJCommand *) command atIndex:(int)index;
 -(void) removeCommandAtIndex:(int)index;
 
--(void) mov:(NSNumber *) param;
+-(void) jump:(NSNumber *) param;
 -(void) ret;
 
 @end

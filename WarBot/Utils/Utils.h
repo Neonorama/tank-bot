@@ -11,7 +11,7 @@
 
 #define ARC4RANDOM_MAX      0x100000000
 
-#define DEFAULT_PROGRAM_LENGTH 128
+#define DEFAULT_PROGRAM_LENGTH 64
 #define DEFAULT_AVAILIABLE_LENGTH 128
 #define DEFAULT_TRIGGERS_LENGTH 16
 #define DEFAULT_REGISTERS_LENGTH 8
@@ -20,6 +20,12 @@
 #define DEFAULT_TURRET_CHARGES 100;
 #define DEFAULT_CHASSIS_ENERGY 100;
 #define DEFAULT_FUEL 100;
+
+#define DEFAULT_TIME_INTERVAL 1.0
+
+#define DEFAULT_COLS 6
+#define DEFAULT_CELL_SIZE 64
+
 
 //NSString const * kMoveForward = @"moveForward";
 
@@ -56,5 +62,17 @@ typedef enum {
     kCommandTypeBot,
     kCommandTypeProg
 } kCommandType;
+
+typedef enum {
+    kRegistersA = 0,    // return register
+    kRegistersB,        // program counter
+    kRegistersC,
+    kRegistersD,
+    kRegistersE,
+    kRegistersF,
+    kRegistersG,
+    kRegistersH
+    
+} kRegisters;
 
 #endif

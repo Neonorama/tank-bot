@@ -7,7 +7,6 @@
 //
 
 #import "AJRegisters.h"
-#import "Utils.h"
 
 @implementation AJRegisters
 
@@ -27,12 +26,33 @@
     return self;
 }
 
--(void)saveCurrentCommandIndex:(int)currentIndex {
-    self.registers[kRegistersA] = [NSNumber numberWithInt:currentIndex];
+-(void)setParam:(NSNumber *)param toRegister:(kRegisters)reg {
+    self.registers[reg] = param;
 }
 
--(int)loadCurrentCommandIndex {
-    return [[self.registers objectAtIndex:kRegistersA] intValue];
+-(NSNumber *)getParamFromRegister:(kRegisters)reg {
+    return self.registers[reg];
+}
+
+-(void)move:(kRegisters) A :(kRegisters) B {
+    self.registers[A] = self.registers[B];
+}
+
+-(void)setCurrentCommandIndex:(int)currentIndex {
+    [self setParam:[NSNumber numberWithInt:currentIndex] toRegister:kRegistersB];
+}
+
+-(int)getCurrentCommandIndex {
+    return [[self getParamFromRegister:kRegistersB] intValue];
+}
+
+-(void) jump:(NSNumber *) param {
+    [self move:kRegistersA :kRegistersB];
+    [self setParam:param toRegister:kRegistersB];
+}
+
+-(void) ret {
+    [self move:kRegistersB :kRegistersA];
 }
 
 @end

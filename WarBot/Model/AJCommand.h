@@ -11,6 +11,7 @@
 
 @interface AJCommand : NSObject
 
+
 @property (nonatomic, assign) kCommandType type;
 @property (nonatomic, strong) NSString *command;
 @property (nonatomic, strong) NSNumber *param;
