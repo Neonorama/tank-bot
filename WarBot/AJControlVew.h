@@ -14,4 +14,7 @@
 
 @property AJGameManager *gameManager;
 
+- (void) showProg;
+- (CCSprite *) getCommandSprite: (AJCommand *) command;
+
 @end

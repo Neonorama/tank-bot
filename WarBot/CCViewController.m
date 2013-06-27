@@ -188,5 +188,11 @@
     [[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
 }
 
+- (NSInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscapeLeft |
+    UIInterfaceOrientationMaskLandscapeRight;
+}
+
 
 @end

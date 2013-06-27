@@ -7,6 +7,7 @@
 //
 
 #import "AJProgramField.h"
+#import "AJConstants.h"
 
 @implementation AJProgramField
 
@@ -47,6 +48,7 @@
 
 -(void)removeCommandAtIndex:(int)index {
     [self.commands removeObjectForKey:[NSString stringWithFormat:@"%d",index]];
+    [self.commands setObject:[AJCommand commandWithType:kCommandTypeDefault command:kCommandDefault param:@0] forKey:[NSString stringWithFormat:@"%d",index]];
 }
 
 -(void)jump:(NSNumber *)param{

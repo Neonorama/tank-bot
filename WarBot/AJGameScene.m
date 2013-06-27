@@ -39,6 +39,7 @@
         
         self.controlView = [[AJControlVew alloc] init];
         self.controlView.gameManager = gameManager;
+        [self.controlView showProg];
 
         [self addChild:self.gameView];
         [self addChild:self.controlView];
