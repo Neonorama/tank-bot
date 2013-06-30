@@ -20,6 +20,8 @@
         CCLayerColor *background = [CCLayerColor layerWithColor:ccc4(200, 200, 200, 200) width:DEFAULT_CELL_SIZE*DEFAULT_COLS height:winSize.height];
         
         [self addChild:background z:-1 tag:1001];
+        
+        self.touchEnabled = YES;
     }
     return self;
 }
@@ -27,7 +29,7 @@
 -(void)showProg {
     int xOffset, yOffset;
     NSDictionary *prog = self.gameManager.programField.commands;
-    CGSize winSize = [[CCDirector sharedDirector] winSize];
+//    CGSize winSize = [[CCDirector sharedDirector] winSize];
     
     for (int i = 0; i < prog.count; i++) {
 
@@ -42,6 +44,27 @@
         
         [self addChild:commandSprite z:1 tag:1002];
 
+    }
+}
+
+-(void)showAvailable {
+    int xOffset, yOffset;
+    NSArray *prog = self.gameManager.availableCommands.availableCommands;
+//    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    
+    for (int i = 0; i < prog.count; i++) {
+        
+        xOffset = (i % DEFAULT_COLS) * DEFAULT_CELL_SIZE + DEFAULT_CELL_SIZE / 2;
+        yOffset = (i / DEFAULT_COLS) * DEFAULT_CELL_SIZE + DEFAULT_CELL_SIZE / 2 + (self.gameManager.programField.commands.count / DEFAULT_COLS + 1) * DEFAULT_CELL_SIZE;
+        
+        CGPoint position = ccp(xOffset, yOffset);
+        position = [[CCDirector sharedDirector] convertToGL:position];
+        AJCommand *command = prog[i];
+        CCSprite *commandSprite = [self getCommandSprite: command];
+        commandSprite.position = position;
+        
+        [self addChild:commandSprite z:1 tag:1003];
+        
     }
 }
 
@@ -69,12 +92,41 @@
     } else if ([command.command isEqualToString:kCommandTurnTurretRight]) {
         commandSprite = [CCSprite spriteWithSpriteFrameName:@"turn_canon_right.png"];
         
+    } else if ([command.command isEqualToString:kCommandJump]) {
+        commandSprite = [CCSprite spriteWithSpriteFrameName:@"func.png"];
+        
+    } else if ([command.command isEqualToString:kCommandRet]) {
+        commandSprite = [CCSprite spriteWithSpriteFrameName:@"ret.png"];
+        
     } else {
         commandSprite = [CCLayerColor layerWithColor:ccc4(10, 10, 10, 255) width:32 height:32];
+//        commandSprite.anchorPoint = ccp(-1.0, -1.0);
     }
     
     [commandSprite addChild:label];
     return commandSprite;
+}
+
+-(void)update:(ccTime)delta {
+    ;
+}
+
+
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+
+    NSArray* allTouches = [[event allTouches] allObjects];
+    
+    UITouch* touchOne = [allTouches objectAtIndex:0];
+        
+    CGPoint touchLocationOne = [touchOne locationInView: [touchOne view]];
+    
+    for (CCSprite *station in [self children])
+    {
+        if (CGRectContainsPoint(station.boundingBox, touchLocationOne))
+        {
+            NSLog(@"Found sprite");
+        }
+    }
 }
 
 

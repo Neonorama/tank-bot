@@ -38,13 +38,24 @@
         self.gameView.gameManager = gameManager;
         
         self.controlView = [[AJControlVew alloc] init];
+        
         self.controlView.gameManager = gameManager;
         [self.controlView showProg];
-
+        [self.controlView showAvailable];
+        
         [self addChild:self.gameView];
         [self addChild:self.controlView];
+        
+//        [self schedule:@selector(update:) interval:DEFAULT_TIME_INTERVAL];
     }
+    
+    NSLog(@"%d",[[UIDevice currentDevice] orientation]);
     return self;
+}
+
+-(void)update:(ccTime)delta {
+    [self.gameView update:delta];
+    [self.controlView update:delta];
 }
 
 @end

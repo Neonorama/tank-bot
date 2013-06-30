@@ -11,7 +11,7 @@
 
 #define ARC4RANDOM_MAX      0x100000000
 
-#define DEFAULT_PROGRAM_LENGTH 64
+#define DEFAULT_PROGRAM_LENGTH 32
 #define DEFAULT_AVAILIABLE_LENGTH 128
 #define DEFAULT_TRIGGERS_LENGTH 16
 #define DEFAULT_REGISTERS_LENGTH 8
@@ -25,9 +25,6 @@
 
 #define DEFAULT_COLS 6
 #define DEFAULT_CELL_SIZE 64
-
-
-//NSString const * kMoveForward = @"moveForward";
 
 CG_INLINE CGFloat
 AJDistance(CGPoint p1, CGPoint p2)

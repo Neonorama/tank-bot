@@ -27,8 +27,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    [[CCDirector sharedDirector] runWithScene:[AJGameScene scene]];
+//    [[CCDirector sharedDirector] pushScene:[AJGameScene scene]];
+    
+    CCScene *scene = [AJGameScene scene];
+    AJGameView *layer = (AJGameView *) [scene.children objectAtIndex:0];
+    UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:layer action:@selector(handlePanFrom:)];
+    [self.view addGestureRecognizer:gestureRecognizer];
+    
+    [[CCDirector sharedDirector] pushScene:scene];
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,14 +43,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)reset:(id)sender {
+    [self.delegate gameViewControllerDidFinish:self];
+}
+
 - (NSInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskLandscapeLeft |
     UIInterfaceOrientationMaskLandscapeRight;
-}
-
--(void)reset:(id)sender {
-    [self.delegate gameViewControllerDidFinish:self];
 }
 
 @end

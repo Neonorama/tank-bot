@@ -34,9 +34,10 @@
         
         [self addChild:self.botBaseSprite];
         [self.botBaseSprite addChild:self.botCanonSprite];
+        
+//        self.touchEnabled = YES;
 
-		self.isTouchEnabled = YES;
-        [self schedule:@selector(update:) interval:DEFAULT_TIME_INTERVAL];
+//        [self schedule:@selector(update:) interval:DEFAULT_TIME_INTERVAL];
 
 	}
 	return self;
@@ -51,58 +52,5 @@
     [self.botBaseSprite runAction:[CCSpawn actions:botMove, botRotate, nil]];
     [self.botCanonSprite runAction:canonRotate];
 }
-
--(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
-{
-    return YES;
-}
-
--(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-
-}
-
--(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    NSArray* allTouches = [[event allTouches] allObjects];
-    
-    if (!isMoving) {
-        for (UITouch *touch in allTouches) {
-            CGPoint position = [touch locationInView:[touch view]];
-            position = [[CCDirector sharedDirector] convertToGL:position];
-        }
-    }
-    isMoving = NO;
-}
-
-
-
--(void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
-{    
-
-}
-
-
--(void) ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    isMoving = YES;
-
-    NSArray* allTouches = [[event allTouches] allObjects];
-
-    UITouch* touch = [allTouches objectAtIndex:0];
-
-    CGPoint touchLocation = [touch locationInView: [touch view]];
-    CGPoint prevLocation = [touch previousLocationInView: [touch view]];
-
-    touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
-    prevLocation = [[CCDirector sharedDirector] convertToGL: prevLocation];
-
-    CGPoint diff = ccpSub(touchLocation,prevLocation);
-    [self setPosition: ccpAdd(self.position, diff)];
-}
-
-- (void) dealloc
-{
-}
-
 
 @end
