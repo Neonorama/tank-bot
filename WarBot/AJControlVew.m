@@ -21,6 +21,9 @@
         
         [self addChild:background z:-1 tag:1001];
         
+        self.available = [NSMutableArray array];
+        self.program = [NSMutableArray array];
+        
         self.touchEnabled = YES;
     }
     return self;
@@ -62,6 +65,12 @@
         AJCommand *command = prog[i];
         CCSprite *commandSprite = [self getCommandSprite: command];
         commandSprite.position = position;
+        
+        NSMutableDictionary *available = [[NSMutableDictionary alloc] initWithCapacity:2];
+        [available setObject:command forKey:@"command"];
+        [available setObject:commandSprite forKey:@"sprite"];
+        
+        [self.available addObject:available];
         
         [self addChild:commandSprite z:1 tag:1003];
         
@@ -118,13 +127,13 @@
     
     UITouch* touchOne = [allTouches objectAtIndex:0];
         
-    CGPoint touchLocationOne = [touchOne locationInView: [touchOne view]];
+    CGPoint touchLocationOne =  [self convertTouchToNodeSpace:touchOne];
     
-    for (CCSprite *station in [self children])
+    for (NSDictionary *command in self.available)
     {
-        if (CGRectContainsPoint(station.boundingBox, touchLocationOne))
+        if (CGRectContainsPoint(((CCSprite *)[command objectForKey:@"sprite"]).boundingBox, touchLocationOne))
         {
-            NSLog(@"Found sprite");
+            NSLog(@"Found command: %@", [command objectForKey:@"command"]);
         }
     }
 }
