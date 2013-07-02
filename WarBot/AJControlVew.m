@@ -23,6 +23,7 @@
         
         self.available = [NSMutableArray array];
         self.program = [NSMutableArray array];
+        self.intermediateCommand = nil;
         
         self.touchEnabled = YES;
     }
@@ -45,6 +46,12 @@
         CCSprite *commandSprite = [self getCommandSprite: command];
         commandSprite.position = position;
         
+        NSMutableDictionary *commandTMP = [[NSMutableDictionary alloc] initWithCapacity:2];
+        [commandTMP setObject:command forKey:@"command"];
+        [commandTMP setObject:commandSprite forKey:@"sprite"];
+        
+        [self.program addObject:commandTMP];
+        
         [self addChild:commandSprite z:1 tag:1002];
 
     }
@@ -58,7 +65,7 @@
     for (int i = 0; i < prog.count; i++) {
         
         xOffset = (i % DEFAULT_COLS) * DEFAULT_CELL_SIZE + DEFAULT_CELL_SIZE / 2;
-        yOffset = (i / DEFAULT_COLS) * DEFAULT_CELL_SIZE + DEFAULT_CELL_SIZE / 2 + (self.gameManager.programField.commands.count / DEFAULT_COLS + 1) * DEFAULT_CELL_SIZE;
+        yOffset = (i / DEFAULT_COLS) * DEFAULT_CELL_SIZE + DEFAULT_CELL_SIZE / 2 + (self.gameManager.programField.commands.count / DEFAULT_COLS + 1) * DEFAULT_CELL_SIZE + 20;
         
         CGPoint position = ccp(xOffset, yOffset);
         position = [[CCDirector sharedDirector] convertToGL:position];
@@ -107,6 +114,9 @@
     } else if ([command.command isEqualToString:kCommandRet]) {
         commandSprite = [CCSprite spriteWithSpriteFrameName:@"ret.png"];
         
+    } else if ([command.command isEqualToString:kCommandDefault]) {
+        commandSprite = [CCSprite spriteWithSpriteFrameName:@"default.png"];
+        
     } else {
         commandSprite = [CCLayerColor layerWithColor:ccc4(10, 10, 10, 255) width:32 height:32];
 //        commandSprite.anchorPoint = ccp(-1.0, -1.0);
@@ -117,7 +127,11 @@
 }
 
 -(void)update:(ccTime)delta {
-    ;
+    int index = [self.gameManager getCurrentCommandIndex];
+    CCScaleTo *scale1 = [CCScaleTo actionWithDuration:DEFAULT_TIME_INTERVAL / 2 scale:1.2];
+    CCScaleTo *scale2 = [CCScaleTo actionWithDuration:DEFAULT_TIME_INTERVAL / 2 scale:1];
+    
+    [[[self.program objectAtIndex:index] objectForKey:@"sprite"] runAction:[CCSequence actions:scale1, scale2, nil]];
 }
 
 
@@ -133,9 +147,37 @@
     {
         if (CGRectContainsPoint(((CCSprite *)[command objectForKey:@"sprite"]).boundingBox, touchLocationOne))
         {
-            NSLog(@"Found command: %@", [command objectForKey:@"command"]);
+            self.intermediateCommand = [[command objectForKey:@"command"] copy];
+            NSLog(@"Found available command: %@", [command objectForKey:@"command"]);
         }
     }
+    
+    for (NSDictionary *command in self.program)
+    {
+        if (CGRectContainsPoint(((CCSprite *)[command objectForKey:@"sprite"]).boundingBox, touchLocationOne))
+        {
+            if (self.intermediateCommand) {
+                [self.gameManager.programField replaceCommand:[command objectForKey:@"command"] to:self.intermediateCommand];
+                self.intermediateCommand = nil;
+                
+            } else {
+//                self.intermediateCommand = [command objectForKey:@"command"];
+            }
+            NSLog(@"Found program command: %@", [command objectForKey:@"command"]);
+        }
+    }
+    [self removeAllChildrenWithCleanup:YES];
+    [self.program removeAllObjects];
+    [self.available removeAllObjects];
+    
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+
+    CCLayerColor *background = [CCLayerColor layerWithColor:ccc4(200, 200, 200, 200) width:DEFAULT_CELL_SIZE*DEFAULT_COLS height:winSize.height];
+    
+    [self addChild:background z:-1 tag:1001];
+    
+    [self showProg];
+    [self showAvailable];
 }
 
 

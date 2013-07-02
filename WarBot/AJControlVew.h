@@ -15,6 +15,7 @@
 @property AJGameManager *gameManager;
 @property NSMutableArray *available;
 @property NSMutableArray *program;
+@property AJCommand *intermediateCommand;
 
 - (void) showProg;
 - (void) showAvailable;

@@ -7,7 +7,6 @@
 //
 
 #import "AJGameViewController.h"
-#import "AJGameScene.h"
 
 @interface AJGameViewController ()
 
@@ -29,12 +28,12 @@
     [super viewDidLoad];
 //    [[CCDirector sharedDirector] pushScene:[AJGameScene scene]];
     
-    CCScene *scene = [AJGameScene scene];
-    AJGameView *layer = (AJGameView *) [scene.children objectAtIndex:0];
-    UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:layer action:@selector(handlePanFrom:)];
-    [self.view addGestureRecognizer:gestureRecognizer];
+    self.gameScene = [AJGameScene scene];
+//    AJGameView *layer = (AJGameView *) [scene.children objectAtIndex:0];
+//    UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:layer action:@selector(handlePanFrom:)];
+//    [self.view addGestureRecognizer:gestureRecognizer];
     
-    [[CCDirector sharedDirector] pushScene:scene];
+    [[CCDirector sharedDirector] pushScene:self.gameScene];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,6 +50,14 @@
 {
     return UIInterfaceOrientationMaskLandscapeLeft |
     UIInterfaceOrientationMaskLandscapeRight;
+}
+
+-(void)pause:(id)sender {
+    [self.gameScene pauseSchedulerAndActions];
+}
+
+-(void)resume:(id)sender {
+    [self.gameScene resumeSchedulerAndActions];
 }
 
 @end

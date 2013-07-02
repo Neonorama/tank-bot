@@ -20,4 +20,7 @@
 
 +(CCScene *) scene;
 
+-(void) pause;
+-(void) resume;
+
 @end

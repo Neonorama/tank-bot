@@ -7,6 +7,7 @@
 //
 
 #import "CCViewController.h"
+#import "AJGameScene.h"
 
 @class AJGameViewController;
 
@@ -17,7 +18,11 @@
 @interface AJGameViewController : CCViewController
 
 @property (weak, nonatomic) id <AJGameViewControllerDelegate> delegate;
+@property (nonatomic, strong) CCScene *gameScene;
 
 - (IBAction)reset:(id)sender;
+- (IBAction)pause:(id)sender;
+- (IBAction)resume:(id)sender;
+
 
 @end

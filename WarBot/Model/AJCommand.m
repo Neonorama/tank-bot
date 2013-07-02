@@ -39,4 +39,9 @@
     return [NSString stringWithFormat:@"Command: type - %d, name - %@, param - %@", self.type, self.command, self.param];
 }
 
+-(id)copy {
+    AJCommand *command = [AJCommand commandWithType:self.type command:self.command param:self.param];
+    return command;
+}
+
 @end

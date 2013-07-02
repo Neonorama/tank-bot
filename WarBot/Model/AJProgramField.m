@@ -22,8 +22,8 @@
     if (self) {
         self.commands = [[NSMutableDictionary alloc] initWithCapacity:DEFAULT_PROGRAM_LENGTH];
         
-        AJCommand *defaultCommand = [[AJCommand alloc] init];
         for (int i = 0; i < DEFAULT_PROGRAM_LENGTH; i++) {
+            AJCommand *defaultCommand = [[AJCommand alloc] init];
             [self addCommand:defaultCommand atIndex:i];
         }
     }
@@ -57,6 +57,11 @@
 
 -(void)ret{
     [self.delegate ret];
+}
+
+-(void)replaceCommand:(AJCommand *)cmd1 to:(AJCommand *)cmd2 {
+    NSArray *keys = [self.commands allKeysForObject:cmd1];
+    [self addCommand:cmd2 atIndex:[keys[0] integerValue]];
 }
 
 @end

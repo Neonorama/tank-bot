@@ -46,7 +46,7 @@
         [self addChild:self.gameView];
         [self addChild:self.controlView];
         
-//        [self schedule:@selector(update:) interval:DEFAULT_TIME_INTERVAL];
+        [self schedule:@selector(update:) interval:DEFAULT_TIME_INTERVAL];
     }
     
     NSLog(@"%d",[[UIDevice currentDevice] orientation]);
@@ -58,4 +58,11 @@
     [self.controlView update:delta];
 }
 
+-(void)pause {
+    [self pauseSchedulerAndActions];
+}
+
+-(void)resume {
+    [self resumeSchedulerAndActions];
+}
 @end
