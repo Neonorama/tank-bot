@@ -13,8 +13,12 @@
 @interface AJControlVew : CCLayer
 
 @property AJGameManager *gameManager;
+@property NSMutableArray *available;
+@property NSMutableArray *program;
+@property AJCommand *intermediateCommand;
 
 - (void) showProg;
+- (void) showAvailable;
 - (CCSprite *) getCommandSprite: (AJCommand *) command;
 
 @end

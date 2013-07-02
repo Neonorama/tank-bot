@@ -41,6 +41,7 @@
 		91A1769917553BE60069264C /* AJProgramField.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A1769817553BE60069264C /* AJProgramField.m */; };
 		91B007F0174827EB00ACA5D4 /* AJStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B007EF174827EB00ACA5D4 /* AJStateController.m */; };
 		91C3F103176FC533004BFB0B /* AJAvailableCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C3F102176FC533004BFB0B /* AJAvailableCommands.m */; };
+		91CCBDE9177E22E20079DC88 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CCBDE8177E22E20079DC88 /* CoreText.framework */; };
 		91F040081767D34800D4A4B8 /* AJRegisters.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F040071767D34800D4A4B8 /* AJRegisters.m */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		91B007EF174827EB00ACA5D4 /* AJStateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJStateController.m; path = Model/AJStateController.m; sourceTree = "<group>"; };
 		91C3F101176FC533004BFB0B /* AJAvailableCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJAvailableCommands.h; path = Model/AJAvailableCommands.h; sourceTree = "<group>"; };
 		91C3F102176FC533004BFB0B /* AJAvailableCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJAvailableCommands.m; path = Model/AJAvailableCommands.m; sourceTree = "<group>"; };
+		91CCBDE8177E22E20079DC88 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		91F040061767D34800D4A4B8 /* AJRegisters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRegisters.h; sourceTree = "<group>"; };
 		91F040071767D34800D4A4B8 /* AJRegisters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJRegisters.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91CCBDE9177E22E20079DC88 /* CoreText.framework in Frameworks */,
 				9160297F1775C4B80039A3D2 /* QuartzCore.framework in Frameworks */,
 				915133211775BBF800FB4007 /* libcocos2d.a in Frameworks */,
 				915133221775BBF800FB4007 /* libkazmath.a in Frameworks */,
@@ -167,6 +170,7 @@
 		91361126173E456200937A20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				91CCBDE8177E22E20079DC88 /* CoreText.framework */,
 				9160297E1775C4B80039A3D2 /* QuartzCore.framework */,
 				9151331F1775BBF800FB4007 /* libcocos2d.a */,
 				915133201775BBF800FB4007 /* libkazmath.a */,
@@ -461,6 +465,7 @@
 				);
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -478,6 +483,7 @@
 				);
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

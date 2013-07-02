@@ -49,12 +49,12 @@
         
         self.availableCommands = [AJAvailableCommands defaultAvailableCommands];
         
-        for (int i = 0; i < DEFAULT_PROGRAM_LENGTH; i++) {
-            int t = arc4random() % [self.availableCommands.availableCommands count];
-            AJCommand *cmd = [self.availableCommands.availableCommands objectAtIndex:t];
-            
-            [self.programField addCommand:cmd atIndex:i];
-        }
+//        for (int i = 0; i < DEFAULT_PROGRAM_LENGTH; i++) {
+//            int t = arc4random() % [self.availableCommands.availableCommands count];
+//            AJCommand *cmd = [self.availableCommands.availableCommands objectAtIndex:t];
+//            
+//            [self.programField addCommand:cmd atIndex:i];
+//        }
     }
     return self;
 }

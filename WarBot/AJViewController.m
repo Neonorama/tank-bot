@@ -27,12 +27,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskLandscapeLeft |
-    UIInterfaceOrientationMaskLandscapeRight;
-}
-
 - (void)gameViewControllerDidFinish:(AJGameViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];

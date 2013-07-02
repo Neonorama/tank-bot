@@ -7,15 +7,15 @@
         <!--View Controller-->
         <scene sceneID="4">
             <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" id="2" customClass="AJViewController" sceneMemberID="viewController">
+                <viewController id="2" customClass="AJViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uRk-GO-fVm">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="3sD-AG-OP2"/>
-                                    <constraint firstAttribute="width" constant="220" id="di1-UL-9nJ"/>
+                                    <constraint firstAttribute="height" constant="130" id="DsD-AB-Pya"/>
+                                    <constraint firstAttribute="width" constant="220" id="RBM-Mv-jV6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Play">
@@ -32,8 +32,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uRk-GO-fVm" firstAttribute="centerY" secondItem="5" secondAttribute="centerY" type="default" id="JNe-xF-whw"/>
-                            <constraint firstItem="uRk-GO-fVm" firstAttribute="centerX" secondItem="5" secondAttribute="centerX" type="default" id="Y5f-vE-q8f"/>
+                            <constraint firstItem="uRk-GO-fVm" firstAttribute="centerX" secondItem="5" secondAttribute="centerX" type="default" id="OgH-bs-ftX"/>
+                            <constraint firstItem="uRk-GO-fVm" firstAttribute="centerY" secondItem="5" secondAttribute="centerY" type="default" id="jnT-IR-99T"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -47,7 +47,7 @@
         <!--Game View Controller-->
         <scene sceneID="0XY-Ww-kwK">
             <objects>
-                <viewController id="8ND-Tv-w2W" customClass="AJGameViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" id="8ND-Tv-w2W" customClass="AJGameViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nKc-n3-svT">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -65,11 +65,41 @@
                                     <action selector="reset:" destination="8ND-Tv-w2W" eventType="touchUpInside" id="Bqc-rb-gES"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNx-rZ-IEI">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Resume">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resume:" destination="8ND-Tv-w2W" eventType="touchUpInside" id="hSi-60-tnq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thq-Qc-IQx">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Pause">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pause:" destination="8ND-Tv-w2W" eventType="touchUpInside" id="HUV-db-rh7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="QLh-GC-Dj0" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="XWf-OV-DhF"/>
-                            <constraint firstAttribute="trailing" secondItem="QLh-GC-Dj0" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="pzs-dR-yoZ"/>
+                            <constraint firstItem="QLh-GC-Dj0" firstAttribute="top" secondItem="jNx-rZ-IEI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="OWI-y1-7r2"/>
+                            <constraint firstAttribute="bottom" secondItem="QLh-GC-Dj0" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Pjc-Uj-vcq"/>
+                            <constraint firstItem="jNx-rZ-IEI" firstAttribute="top" secondItem="thq-Qc-IQx" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="QqV-bX-C4Z"/>
+                            <constraint firstAttribute="trailing" secondItem="QLh-GC-Dj0" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fEa-GL-Se8"/>
+                            <constraint firstAttribute="trailing" secondItem="jNx-rZ-IEI" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="g0L-v3-99i"/>
+                            <constraint firstAttribute="trailing" secondItem="thq-Qc-IQx" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="hqq-Kc-5ZC"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>

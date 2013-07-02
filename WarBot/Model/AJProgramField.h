@@ -29,6 +29,7 @@
 -(AJCommand *)getCurrentCommand;
 -(void) addCommand: (AJCommand *) command atIndex:(int)index;
 -(void) removeCommandAtIndex:(int)index;
+-(void) replaceCommand: (AJCommand *) cmd1 to: (AJCommand *)cmd2;
 
 -(void) jump:(NSNumber *) param;
 -(void) ret;
