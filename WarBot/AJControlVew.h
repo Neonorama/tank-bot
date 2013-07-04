@@ -5,12 +5,11 @@
 //  Created by Ilya Rezyapkin on 26.06.13.
 //  Copyright (c) 2013 Ilya Rezyapkin. All rights reserved.
 //
+#import <SpriteKit/SpriteKit.h>
 
-#import "CCLayer.h"
 #import "AJGameManager.h"
-#import "cocos2d.h"
 
-@interface AJControlVew : CCLayer
+@interface AJControlVew : SKView
 
 @property AJGameManager *gameManager;
 @property NSMutableArray *available;
@@ -19,6 +18,6 @@
 
 - (void) showProg;
 - (void) showAvailable;
-- (CCSprite *) getCommandSprite: (AJCommand *) command;
+- (SKSpriteNode *) getCommandSprite: (AJCommand *) command;
 
 @end

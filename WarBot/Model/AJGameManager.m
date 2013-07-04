@@ -9,7 +9,6 @@
 #import "AJGameManager.h"
 #import "AJStateController.h"
 #import "AJCommand.h"
-#import "cocos2d.h"
 
 @implementation AJGameManager
 

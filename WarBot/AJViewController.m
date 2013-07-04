@@ -2,12 +2,12 @@
 //  AJViewController.m
 //  WarBot
 //
-//  Created by Ilya Rezyapkin on 11.05.13.
+//  Created by Ilya Rezyapkin on 05.07.13.
 //  Copyright (c) 2013 Ilya Rezyapkin. All rights reserved.
 //
 
 #import "AJViewController.h"
-#import "AJStateController.h"
+#import "AJGameScene.h"
 
 @interface AJViewController ()
 
@@ -15,34 +15,36 @@
 
 @implementation AJViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    // Configure the view.
+    SKView * skView = (SKView *)self.view;
+    skView.showsFPS = YES;
+    skView.showsNodeCount = YES;
+    
+    // Create and configure the scene.
+    SKScene * scene = [AJGameScene sceneWithSize:skView.bounds.size];
+    scene.scaleMode = SKSceneScaleModeAspectFill;
+    
+    // Present the scene.
+    [skView presentScene:scene];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)gameViewControllerDidFinish:(AJGameViewController *)controller
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"showGame"]) {
-        [[segue destinationViewController] setDelegate:self];
-    }
-}
-
-- (NSInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskLandscapeLeft |
-    UIInterfaceOrientationMaskLandscapeRight;
 }
 
 @end
