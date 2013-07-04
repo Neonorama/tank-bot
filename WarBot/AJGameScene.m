@@ -29,6 +29,7 @@
 {
     self = [super init];
     if (self) {
+        
         AJGameManager *gameManager = [[AJGameManager alloc] init];
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bot.plist" textureFilename:@"bot.png"];
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"arrows.plist" textureFilename:@"arrows.png"];

@@ -23,17 +23,29 @@
     return self;
 }
 
+-(void) viewDidAppear:(BOOL)animated {
+    self.gameScene = [AJGameScene scene];
+    [[CCDirector sharedDirector] pushScene:self.gameScene];
+    NSLog(@"%@",[[CCDirector sharedDirector] debugDescription]);;
+}
+
+-(void) viewWillAppear:(BOOL)animated {
+    NSLog(@"%@",[[CCDirector sharedDirector] debugDescription]);;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [[CCDirector sharedDirector] pushScene:[AJGameScene scene]];
     
-    self.gameScene = [AJGameScene scene];
+//    self.gameScene = [AJGameScene scene];
+
+    NSLog(@"%@",[[CCDirector sharedDirector] debugDescription]);
+    
 //    AJGameView *layer = (AJGameView *) [scene.children objectAtIndex:0];
 //    UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:layer action:@selector(handlePanFrom:)];
 //    [self.view addGestureRecognizer:gestureRecognizer];
     
-    [[CCDirector sharedDirector] pushScene:self.gameScene];
+//    [[CCDirector sharedDirector] pushScene:self.gameScene];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +62,10 @@
 {
     return UIInterfaceOrientationMaskLandscapeLeft |
     UIInterfaceOrientationMaskLandscapeRight;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 -(void)pause:(id)sender {

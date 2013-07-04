@@ -39,4 +39,10 @@
     }
 }
 
+- (NSInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscapeLeft |
+    UIInterfaceOrientationMaskLandscapeRight;
+}
+
 @end
