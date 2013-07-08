@@ -2,12 +2,12 @@
 //  AJViewController.m
 //  WarBot
 //
-//  Created by Ilya Rezyapkin on 11.05.13.
+//  Created by Ilya Rezyapkin on 05.07.13.
 //  Copyright (c) 2013 Ilya Rezyapkin. All rights reserved.
 //
 
 #import "AJViewController.h"
-#import "AJStateController.h"
+#import "AJGameScene.h"
 
 @interface AJViewController ()
 
@@ -15,10 +15,33 @@
 
 @implementation AJViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    // Configure the view.
+    SKView * skView = (SKView *)self.view;
+    skView.showsFPS = YES;
+    skView.showsNodeCount = YES;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    
+    SKView * skView = (SKView *)self.view;
+    
+    SKScene * scene = [AJGameScene sceneWithSize:CGSizeMake(1024,768)];
+    scene.scaleMode = SKSceneScaleModeAspectFill;
+    
+    [skView presentScene:scene];
 }
 
 - (void)didReceiveMemoryWarning
@@ -27,22 +50,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)gameViewControllerDidFinish:(AJGameViewController *)controller
+- (NSUInteger)supportedInterfaceOrientations
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"showGame"]) {
-        [[segue destinationViewController] setDelegate:self];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        return UIInterfaceOrientationMaskAllButUpsideDown;
+    } else {
+        return UIInterfaceOrientationMaskLandscape;
     }
 }
 
-- (NSInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskLandscapeLeft |
-    UIInterfaceOrientationMaskLandscapeRight;
+-(BOOL)shouldAutorotate {
+    return YES;
 }
 
 @end

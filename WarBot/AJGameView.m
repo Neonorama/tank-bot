@@ -10,47 +10,54 @@
 
 @implementation AJGameView
 
--(id) init
+-(id)initWithSize:(CGSize)size
 {
-	if( (self=[super init]) ) {
-        
-        CGSize winSize = [[CCDirector sharedDirector] winSize];
-        self.position = ccp(winSize.width / 2, winSize.width / 2);
+    if (self = [super initWithSize:size]) {
                 
-        CCSprite *base = [CCSprite spriteWithSpriteFrameName:@"bot_base.png"];
-        CCSprite *canon = [CCSprite spriteWithSpriteFrameName:@"bot_canon_1.png"];
-        base.rotation = -90;
-        canon.rotation = -90;
+        SKTextureAtlas *texture = [SKTextureAtlas atlasNamed:@"bot"];
         
-        self.botBaseSprite = [[CCSprite alloc] init];
+        SKSpriteNode *base = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_base.png"]];
+        SKSpriteNode *canon = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_canon_1.png"]];
+        base.zRotation = M_PI / 2;
+        canon.zRotation = M_PI / 2;
+        
+        self.botBaseSprite = [[SKSpriteNode alloc] init];
         [self.botBaseSprite addChild:base];
-        self.botCanonSprite= [[CCSprite alloc] init];
+        self.botCanonSprite= [[SKSpriteNode alloc] init];
         [self.botCanonSprite addChild:canon];
         
-        self.botBaseSprite.anchorPoint = ccp(0.5, 0.5);
+        self.botBaseSprite.anchorPoint = CGPointMake(0.5, 0.5);
 
-        canon.anchorPoint = ccp(0.5, 0.8);
-        canon.position = ccp(self.botBaseSprite.contentSize.width * 7 / 10, self.botBaseSprite.contentSize.height / 2);
+        canon.anchorPoint = CGPointMake(0.5, 0.8);
+        canon.position = CGPointMake(self.botBaseSprite.size.width * 7 / 10, self.botBaseSprite.size.height / 2);
         
-        [self addChild:self.botBaseSprite];
         [self.botBaseSprite addChild:self.botCanonSprite];
-        
-//        self.touchEnabled = YES;
-
-//        [self schedule:@selector(update:) interval:DEFAULT_TIME_INTERVAL];
-
+        [self addChild:self.botBaseSprite];
+        self.botBaseSprite.position = CGPointMake(size.width * 2 / 3, size.height / 2);
 	}
 	return self;
 }
 
--(void)update:(ccTime)dt{
+-(void)nextStep:(NSTimeInterval)delta{
     [self.gameManager nextStep];
-    id botMove = [CCMoveTo actionWithDuration:DEFAULT_TIME_INTERVAL position:self.gameManager.bot.position];
-    id botRotate = [CCRotateTo actionWithDuration:DEFAULT_TIME_INTERVAL angle:self.gameManager.bot.chassis.orientation];
-    id canonRotate = [CCRotateTo actionWithDuration:DEFAULT_TIME_INTERVAL angle:self.gameManager.bot.turret.localOrientation];
+    SKAction *botMove = [SKAction moveTo: CGPointMake(self.gameManager.bot.position.x, self.gameManager.bot.position.y)  duration:delta];
+//    SKAction *botMove = [SKAction moveTo: CGPointMake(self.gameManager.bot.position.x + self.botBaseSprite.position.x, self.gameManager.bot.position.y + self.botBaseSprite.position.y)  duration:delta];
+    SKAction *botRotate = [SKAction rotateToAngle:(self.gameManager.bot.chassis.orientation * M_PI / 180) duration:delta];
+    SKAction *canonRotate = [SKAction rotateToAngle:(self.gameManager.bot.turret.localOrientation * M_PI / 180) duration:delta];
 
-    [self.botBaseSprite runAction:[CCSpawn actions:botMove, botRotate, nil]];
+    [self.botBaseSprite runAction:[SKAction group:@[botMove, botRotate]]];
     [self.botCanonSprite runAction:canonRotate];
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    NSArray* allTouches = [[event allTouches] allObjects];
+    
+    UITouch* touchOne = [allTouches objectAtIndex:0];
+    
+    CGPoint touchLocationOne = [touchOne locationInView:self.view];
+    
+    NSLog(@"Game view touch %@", NSStringFromCGPoint(touchLocationOne));
 }
 
 @end

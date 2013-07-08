@@ -21,18 +21,14 @@
 		9136113C173E456200937A20 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9136113B173E456200937A20 /* Default@2x.png */; };
 		9136113E173E456200937A20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9136113D173E456200937A20 /* Default-568h@2x.png */; };
 		91361141173E456200937A20 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9136113F173E456200937A20 /* MainStoryboard.storyboard */; };
-		91361144173E456200937A20 /* AJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91361143173E456200937A20 /* AJViewController.m */; };
 		9137BE5C1777960F00306737 /* arrows.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9137BE5A1777960F00306737 /* arrows.plist */; };
 		9137BE5D1777960F00306737 /* arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 9137BE5B1777960F00306737 /* arrows.png */; };
-		9151331B1775B84200FB4007 /* CCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9151331A1775B84200FB4007 /* CCViewController.m */; };
-		9151331E1775BB8800FB4007 /* AJGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9151331D1775BB8800FB4007 /* AJGameViewController.m */; };
-		915133211775BBF800FB4007 /* libcocos2d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9151331F1775BBF800FB4007 /* libcocos2d.a */; };
-		915133221775BBF800FB4007 /* libkazmath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 915133201775BBF800FB4007 /* libkazmath.a */; };
-		915133251775BC2200FB4007 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 915133231775BC2200FB4007 /* OpenAL.framework */; };
-		915133261775BC2200FB4007 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 915133241775BC2200FB4007 /* OpenGLES.framework */; };
+		913BEAC317860E5A00E8A483 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 913BEAC217860E5A00E8A483 /* SpriteKit.framework */; };
+		913BEAC517860F2700E8A483 /* bot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 913BEAC417860F2700E8A483 /* bot.atlas */; };
+		913BEAC717860F3200E8A483 /* controls.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 913BEAC617860F3200E8A483 /* controls.atlas */; };
+		9141CD7017861FFF0041C643 /* AJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 913BEB1117861D7200E8A483 /* AJViewController.m */; };
 		915133291775BCC100FB4007 /* AJGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 915133281775BCC100FB4007 /* AJGameView.m */; };
 		915459EE177B8B9B00439D58 /* AJConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 915459ED177B8B9B00439D58 /* AJConstants.m */; };
-		9160297F1775C4B80039A3D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9160297E1775C4B80039A3D2 /* QuartzCore.framework */; };
 		916029831775D1C30039A3D2 /* bot.plist in Resources */ = {isa = PBXBuildFile; fileRef = 916029811775D1C30039A3D2 /* bot.plist */; };
 		916029841775D1C30039A3D2 /* bot.png in Resources */ = {isa = PBXBuildFile; fileRef = 916029821775D1C30039A3D2 /* bot.png */; };
 		916DF52D177B748400A3BD97 /* AJGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 916DF52C177B748400A3BD97 /* AJGameScene.m */; };
@@ -69,15 +65,14 @@
 		9136113B173E456200937A20 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9136113D173E456200937A20 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		91361140173E456200937A20 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		91361142173E456200937A20 /* AJViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJViewController.h; sourceTree = "<group>"; };
-		91361143173E456200937A20 /* AJViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJViewController.m; sourceTree = "<group>"; };
 		9136114A173E469C00937A20 /* WarBot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WarBot.entitlements; sourceTree = "<group>"; };
 		9137BE5A1777960F00306737 /* arrows.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = arrows.plist; path = Resources/arrows.plist; sourceTree = "<group>"; };
 		9137BE5B1777960F00306737 /* arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrows.png; path = Resources/arrows.png; sourceTree = "<group>"; };
-		915133191775B84200FB4007 /* CCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCViewController.h; sourceTree = "<group>"; };
-		9151331A1775B84200FB4007 /* CCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCViewController.m; sourceTree = "<group>"; };
-		9151331C1775BB8800FB4007 /* AJGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJGameViewController.h; sourceTree = "<group>"; };
-		9151331D1775BB8800FB4007 /* AJGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJGameViewController.m; sourceTree = "<group>"; };
+		913BEAC217860E5A00E8A483 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		913BEAC417860F2700E8A483 /* bot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bot.atlas; sourceTree = "<group>"; };
+		913BEAC617860F3200E8A483 /* controls.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = controls.atlas; sourceTree = "<group>"; };
+		913BEB1017861D7200E8A483 /* AJViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AJViewController.h; sourceTree = "<group>"; };
+		913BEB1117861D7200E8A483 /* AJViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AJViewController.m; sourceTree = "<group>"; };
 		9151331F1775BBF800FB4007 /* libcocos2d.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcocos2d.a; path = "../../../../Library/Developer/Xcode/DerivedData/AJGames-fysekijkyysnszffwxpzjsixpisu/Build/Products/Debug-iphoneos/libcocos2d.a"; sourceTree = "<group>"; };
 		915133201775BBF800FB4007 /* libkazmath.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libkazmath.a; path = "../../../../Library/Developer/Xcode/DerivedData/AJGames-fysekijkyysnszffwxpzjsixpisu/Build/Products/Debug-iphoneos/libkazmath.a"; sourceTree = "<group>"; };
 		915133231775BC2200FB4007 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -112,12 +107,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				913BEAC317860E5A00E8A483 /* SpriteKit.framework in Frameworks */,
 				91CCBDE9177E22E20079DC88 /* CoreText.framework in Frameworks */,
-				9160297F1775C4B80039A3D2 /* QuartzCore.framework in Frameworks */,
-				915133211775BBF800FB4007 /* libcocos2d.a in Frameworks */,
-				915133221775BBF800FB4007 /* libkazmath.a in Frameworks */,
-				915133251775BC2200FB4007 /* OpenAL.framework in Frameworks */,
-				915133261775BC2200FB4007 /* OpenGLES.framework in Frameworks */,
 				91361128173E456200937A20 /* UIKit.framework in Frameworks */,
 				9136112A173E456200937A20 /* Foundation.framework in Frameworks */,
 				9136112C173E456200937A20 /* CoreGraphics.framework in Frameworks */,
@@ -170,6 +161,7 @@
 		91361126173E456200937A20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				913BEAC217860E5A00E8A483 /* SpriteKit.framework */,
 				91CCBDE8177E22E20079DC88 /* CoreText.framework */,
 				9160297E1775C4B80039A3D2 /* QuartzCore.framework */,
 				9151331F1775BBF800FB4007 /* libcocos2d.a */,
@@ -251,12 +243,8 @@
 		9136114D173E4B5800937A20 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9151331C1775BB8800FB4007 /* AJGameViewController.h */,
-				9151331D1775BB8800FB4007 /* AJGameViewController.m */,
-				915133191775B84200FB4007 /* CCViewController.h */,
-				9151331A1775B84200FB4007 /* CCViewController.m */,
-				91361142173E456200937A20 /* AJViewController.h */,
-				91361143173E456200937A20 /* AJViewController.m */,
+				913BEB1017861D7200E8A483 /* AJViewController.h */,
+				913BEB1117861D7200E8A483 /* AJViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -264,6 +252,8 @@
 		916029801775D0FE0039A3D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				913BEAC617860F3200E8A483 /* controls.atlas */,
+				913BEAC417860F2700E8A483 /* bot.atlas */,
 				9137BE5A1777960F00306737 /* arrows.plist */,
 				9137BE5B1777960F00306737 /* arrows.png */,
 				916029811775D1C30039A3D2 /* bot.plist */,
@@ -335,12 +325,14 @@
 				91361132173E456200937A20 /* InfoPlist.strings in Resources */,
 				9136113A173E456200937A20 /* Default.png in Resources */,
 				9136113C173E456200937A20 /* Default@2x.png in Resources */,
+				913BEAC717860F3200E8A483 /* controls.atlas in Resources */,
 				9136113E173E456200937A20 /* Default-568h@2x.png in Resources */,
 				91361141173E456200937A20 /* MainStoryboard.storyboard in Resources */,
 				916029831775D1C30039A3D2 /* bot.plist in Resources */,
 				916029841775D1C30039A3D2 /* bot.png in Resources */,
 				9137BE5C1777960F00306737 /* arrows.plist in Resources */,
 				9137BE5D1777960F00306737 /* arrows.png in Resources */,
+				913BEAC517860F2700E8A483 /* bot.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,9 +343,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9141CD7017861FFF0041C643 /* AJViewController.m in Sources */,
 				91361134173E456200937A20 /* main.m in Sources */,
 				91361138173E456200937A20 /* AJAppDelegate.m in Sources */,
-				91361144173E456200937A20 /* AJViewController.m in Sources */,
 				912242E2174030C800A52C86 /* AJGameManager.m in Sources */,
 				91009C74174187C9002D76EA /* AJBot.m in Sources */,
 				91009C7717440F4B002D76EA /* AJBotChassis.m in Sources */,
@@ -363,8 +355,6 @@
 				919D69C11757DF9E00C50707 /* AJCommand.m in Sources */,
 				91F040081767D34800D4A4B8 /* AJRegisters.m in Sources */,
 				91C3F103176FC533004BFB0B /* AJAvailableCommands.m in Sources */,
-				9151331B1775B84200FB4007 /* CCViewController.m in Sources */,
-				9151331E1775BB8800FB4007 /* AJGameViewController.m in Sources */,
 				915133291775BCC100FB4007 /* AJGameView.m in Sources */,
 				916DF52D177B748400A3BD97 /* AJGameScene.m in Sources */,
 				916DF530177B75D300A3BD97 /* AJControlVew.m in Sources */,
@@ -422,6 +412,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -447,6 +438,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -457,14 +449,12 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WarBot/WarBot-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(COCOS2D_SOURCE)";
 				INFOPLIST_FILE = "WarBot/WarBot-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/AJGames-fysekijkyysnszffwxpzjsixpisu/Build/Products/Debug-iphoneos\"",
-				);
-				OTHER_LDFLAGS = "-lz";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "CD523812-6181-45A8-BB11-97EBF9CDA750";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -475,14 +465,12 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WarBot/WarBot-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(COCOS2D_SOURCE)";
 				INFOPLIST_FILE = "WarBot/WarBot-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/AJGames-fysekijkyysnszffwxpzjsixpisu/Build/Products/Debug-iphoneos\"",
-				);
-				OTHER_LDFLAGS = "-lz";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "CD523812-6181-45A8-BB11-97EBF9CDA750";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};

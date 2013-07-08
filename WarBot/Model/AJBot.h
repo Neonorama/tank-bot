@@ -39,8 +39,4 @@
 - (void) turnTurretLeft:(NSNumber *) angle;
 - (void) turnTurretRight:(NSNumber *) angle;
 
-// Draw
-
-- (void) draw;
-
 @end

@@ -10,60 +10,54 @@
 
 @implementation AJGameScene
 
-+(CCScene *) scene
+-(id)initWithSize:(CGSize)size 
 {
-	// 'scene' is an autorelease object.
-	CCScene *scene = [CCScene node];
-	
-	// 'layer' is an autorelease object.
-	AJGameScene *layer = [AJGameScene node];
-	
-	// add layer as a child to scene
-	[scene addChild: layer];
-	
-	// return the scene
-	return scene;
-}
+    if (self = [super initWithSize:size]) {
+        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.4 blue:0.15 alpha:0.8];
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
+        self.gameManager = [[AJGameManager alloc] init];
         
-        AJGameManager *gameManager = [[AJGameManager alloc] init];
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bot.plist" textureFilename:@"bot.png"];
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"arrows.plist" textureFilename:@"arrows.png"];
+        self.gameView = [[AJGameView alloc] initWithSize:size];
+        self.gameManager.bot.chassis.position = self.gameView.botBaseSprite.position;
+        self.gameManager.bot.position = self.gameView.botBaseSprite.position;
+        self.gameView.gameManager =  self.gameManager;
 
+        self.controlView = [[AJControlVew alloc] initWithSize:size];
 
-        self.gameView = [[AJGameView alloc] init];
-        self.gameView.gameManager = gameManager;
-        
-        self.controlView = [[AJControlVew alloc] init];
-        
-        self.controlView.gameManager = gameManager;
+        self.controlView.gameManager =  self.gameManager;
         [self.controlView showProg];
         [self.controlView showAvailable];
-        
+
         [self addChild:self.gameView];
         [self addChild:self.controlView];
-        
-        [self schedule:@selector(update:) interval:DEFAULT_TIME_INTERVAL];
-    }
     
-    NSLog(@"%d",[[UIDevice currentDevice] orientation]);
+        self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:DEFAULT_TIME_INTERVAL target:self selector:@selector(nextStep:) userInfo:nil repeats:YES];
+
+    }
     return self;
 }
 
--(void)update:(ccTime)delta {
-    [self.gameView update:delta];
-    [self.controlView update:delta];
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    NSArray* allTouches = [[event allTouches] allObjects];
+    
+    UITouch* touchOne = [allTouches objectAtIndex:0];
+    
+    CGPoint touchLocationOne = [touchOne locationInView:self.view];
+    
+    NSLog(@"Game scene touch %@", NSStringFromCGPoint(touchLocationOne));
+}
+
+- (void) nextStep: (NSTimer*) timer {
+    [self.gameView nextStep:timer.timeInterval];
+    [self.controlView nextStep:timer.timeInterval];
 }
 
 -(void)pause {
-    [self pauseSchedulerAndActions];
+    ;
 }
 
 -(void)resume {
-    [self resumeSchedulerAndActions];
+    ;
 }
 @end

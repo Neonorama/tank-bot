@@ -6,16 +6,17 @@
 //  Copyright (c) 2013 Ilya Rezyapkin. All rights reserved.
 //
 
-#import "cocos2d.h"
-#import "CCLayer.h"
+#import <SpriteKit/SpriteKit.h>
 #import "AJGameManager.h"
 
-@interface AJGameView : CCLayer {
+@interface AJGameView : SKScene {
     BOOL isMoving;
 }
 
 @property AJGameManager *gameManager;
-@property CCSprite *botBaseSprite;
-@property CCSprite *botCanonSprite;
+@property SKSpriteNode *botBaseSprite;
+@property SKSpriteNode *botCanonSprite;
+
+-(void)nextStep:(NSTimeInterval)delta;
 
 @end
