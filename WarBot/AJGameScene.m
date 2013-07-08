@@ -48,6 +48,10 @@
     NSLog(@"Game scene touch %@", NSStringFromCGPoint(touchLocationOne));
 }
 
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+}
+
 - (void) nextStep: (NSTimer*) timer {
     [self.gameView nextStep:timer.timeInterval];
     [self.controlView nextStep:timer.timeInterval];

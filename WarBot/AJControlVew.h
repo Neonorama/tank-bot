@@ -15,6 +15,7 @@
 @property NSMutableArray *available;
 @property NSMutableArray *program;
 @property AJCommand *intermediateCommand;
+@property SKSpriteNode *intermediateSprite;
 
 - (void) showProg;
 - (void) showAvailable;
