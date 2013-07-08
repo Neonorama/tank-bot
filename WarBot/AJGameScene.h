@@ -13,8 +13,10 @@
 
 @interface AJGameScene : SKScene
 
-@property AJGameView *gameView;
-@property AJControlVew *controlView;
+@property (nonatomic, strong) AJGameManager *gameManager;
+@property (nonatomic, strong) AJGameView *gameView;
+@property (nonatomic, strong) AJControlVew *controlView;
+@property (nonatomic, strong) NSTimer *gameTimer;
 
 -(void) pause;
 -(void) resume;

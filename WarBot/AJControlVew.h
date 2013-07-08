@@ -9,7 +9,7 @@
 
 #import "AJGameManager.h"
 
-@interface AJControlVew : SKView
+@interface AJControlVew : SKScene
 
 @property AJGameManager *gameManager;
 @property NSMutableArray *available;
@@ -19,5 +19,7 @@
 - (void) showProg;
 - (void) showAvailable;
 - (SKSpriteNode *) getCommandSprite: (AJCommand *) command;
+
+-(void)nextStep:(NSTimeInterval)delta;
 
 @end

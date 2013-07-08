@@ -10,34 +10,48 @@
 
 @implementation AJGameScene
 
-- (id)init
+-(id)initWithSize:(CGSize)size 
 {
-    self = [super init];
-    if (self) {
-        
-        AJGameManager *gameManager = [[AJGameManager alloc] init];
-        
-        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
+    if (self = [super initWithSize:size]) {
+        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.4 blue:0.15 alpha:0.8];
 
-//        self.gameView = [[AJGameView alloc] init];
-//        self.gameView.gameManager = gameManager;
-//        
-//        self.controlView = [[AJControlVew alloc] init];
-//        
-//        self.controlView.gameManager = gameManager;
-//        [self.controlView showProg];
-//        [self.controlView showAvailable];
-//        
-//        [self addChild:self.gameView];
-//        [self addChild:self.controlView];
+        self.gameManager = [[AJGameManager alloc] init];
+        
+        self.gameView = [[AJGameView alloc] initWithSize:size];
+        self.gameManager.bot.chassis.position = self.gameView.botBaseSprite.position;
+        self.gameManager.bot.position = self.gameView.botBaseSprite.position;
+        self.gameView.gameManager =  self.gameManager;
+
+        self.controlView = [[AJControlVew alloc] initWithSize:size];
+
+        self.controlView.gameManager =  self.gameManager;
+        [self.controlView showProg];
+        [self.controlView showAvailable];
+
+        [self addChild:self.gameView];
+        [self addChild:self.controlView];
+    
+        self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:DEFAULT_TIME_INTERVAL target:self selector:@selector(nextStep:) userInfo:nil repeats:YES];
+
     }
     return self;
 }
 
-//-(void)update:(ccTime)delta {
-//    [self.gameView update:delta];
-//    [self.controlView update:delta];
-//}
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    NSArray* allTouches = [[event allTouches] allObjects];
+    
+    UITouch* touchOne = [allTouches objectAtIndex:0];
+    
+    CGPoint touchLocationOne = [touchOne locationInView:self.view];
+    
+    NSLog(@"Game scene touch %@", NSStringFromCGPoint(touchLocationOne));
+}
+
+- (void) nextStep: (NSTimer*) timer {
+    [self.gameView nextStep:timer.timeInterval];
+    [self.controlView nextStep:timer.timeInterval];
+}
 
 -(void)pause {
     ;

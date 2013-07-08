@@ -9,12 +9,14 @@
 #import <SpriteKit/SpriteKit.h>
 #import "AJGameManager.h"
 
-@interface AJGameView : SKView {
+@interface AJGameView : SKScene {
     BOOL isMoving;
 }
 
 @property AJGameManager *gameManager;
 @property SKSpriteNode *botBaseSprite;
 @property SKSpriteNode *botCanonSprite;
+
+-(void)nextStep:(NSTimeInterval)delta;
 
 @end

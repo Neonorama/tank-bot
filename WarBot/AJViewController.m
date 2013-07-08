@@ -32,12 +32,15 @@
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
     
-    // Create and configure the scene.
-    SKScene * scene = [AJGameScene sceneWithSize:skView.bounds.size];
+    SKView * skView = (SKView *)self.view;
+    
+    SKScene * scene = [AJGameScene sceneWithSize:CGSizeMake(1024,768)];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
-    // Present the scene.
     [skView presentScene:scene];
 }
 
@@ -45,6 +48,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        return UIInterfaceOrientationMaskAllButUpsideDown;
+    } else {
+        return UIInterfaceOrientationMaskLandscape;
+    }
+}
+
+-(BOOL)shouldAutorotate {
+    return YES;
 }
 
 @end

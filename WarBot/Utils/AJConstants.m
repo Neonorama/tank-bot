@@ -17,7 +17,7 @@ NSString *const kCommandTurnTurretLeft = @"turnTurretLeft:";
 NSString *const kCommandTurnTurretRight = @"turnTurretRight:";
 NSString *const kCommandJump = @"jump:";
 NSString *const kCommandRet = @"ret";
-NSString *const kCommandDefault = @"";
+NSString *const kCommandDefault = @"default";
 
 
 @implementation AJConstants
