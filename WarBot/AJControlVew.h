@@ -14,11 +14,13 @@
 @property AJGameManager *gameManager;
 @property NSMutableArray *available;
 @property NSMutableArray *program;
+@property NSMutableArray *registers;
 @property AJCommand *intermediateCommand;
 @property SKSpriteNode *intermediateSprite;
 
 - (void) showProg;
 - (void) showAvailable;
+- (void) showRegisters;
 - (SKSpriteNode *) getCommandSprite: (AJCommand *) command;
 
 -(void)nextStep:(NSTimeInterval)delta;

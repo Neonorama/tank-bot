@@ -27,6 +27,7 @@
         self.controlView.gameManager =  self.gameManager;
         [self.controlView showProg];
         [self.controlView showAvailable];
+        [self.controlView showRegisters];
 
         [self addChild:self.gameView];
         [self addChild:self.controlView];
@@ -53,8 +54,8 @@
 }
 
 - (void) nextStep: (NSTimer*) timer {
-    [self.gameView nextStep:timer.timeInterval];
     [self.controlView nextStep:timer.timeInterval];
+    [self.gameView nextStep:timer.timeInterval];
 }
 
 -(void)pause {

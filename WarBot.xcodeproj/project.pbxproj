@@ -447,6 +447,7 @@
 		91361148173E456200937A20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ILYA REZYAPKIN (637ZXQ6LTG)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WarBot/WarBot-Prefix.pch";
 				INFOPLIST_FILE = "WarBot/WarBot-Info.plist";
@@ -463,6 +464,7 @@
 		91361149173E456200937A20 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ILYA REZYAPKIN (637ZXQ6LTG)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WarBot/WarBot-Prefix.pch";
 				INFOPLIST_FILE = "WarBot/WarBot-Info.plist";

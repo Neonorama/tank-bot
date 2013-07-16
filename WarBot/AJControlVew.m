@@ -19,12 +19,33 @@
         ground.anchorPoint = CGPointMake(0, 0);
         self.available = [NSMutableArray array];
         self.program = [NSMutableArray array];
+        self.registers = [NSMutableArray array];
         self.intermediateCommand = nil;
         self.intermediateSprite = [[SKSpriteNode alloc] init];
         
         [self addChild:ground];
     }
     return self;
+}
+
+- (void) showRegisters {
+    for (int i = 0; i < self.gameManager.registers.registers.count; i++) {
+        SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Courier New"];
+        label.fontSize = 20;
+        label.fontColor = [SKColor whiteColor];
+        label.text = [self.gameManager.registers.registers[i] stringValue];
+        
+        label.position = CGPointMake(DEFAULT_CELL_SIZE * i / 2 + DEFAULT_CELL_SIZE / 2, 10);
+        
+        [self addChild:label];
+        [self.registers addObject:label];
+    }
+}
+
+- (void) updateRegisters {
+    for (int i = 0; i < self.registers.count; i++) {
+        [(SKLabelNode *)self.registers[i] setText:[self.gameManager.registers.registers[i] stringValue]];
+    }
 }
 
 -(void)showProg {
@@ -46,6 +67,13 @@
         [commandTMP setObject:commandSprite forKey:@"sprite"];
         
         [self.program addObject:commandTMP];
+        
+        SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        label.fontSize = 10;
+        label.fontColor = [SKColor whiteColor];
+        label.text = [NSString stringWithFormat: @"%d",i ];
+        label.position = CGPointMake(-20, -20);
+        [commandSprite addChild:label];
         
         [self addChild:commandSprite];
 
@@ -80,10 +108,9 @@
 -(SKSpriteNode *) getCommandSprite: (AJCommand *) command {
     SKSpriteNode *commandSprite;
     SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
-    label.fontSize = 10;
+    label.fontSize = 20;
     label.fontColor = [SKColor whiteColor];
-    label.position = CGPointMake(10, 10);
-    
+    label.text = [[command param] stringValue];
     
     if ([command.command isEqualToString:kCommandMoveForward]) {
         commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"move_forward.png"];
@@ -114,7 +141,6 @@
         
     } else {
         commandSprite = [SKSpriteNode spriteNodeWithColor:[SKColor blackColor] size:CGSizeMake(DEFAULT_CELL_SIZE, DEFAULT_CELL_SIZE)];
-//        commandSprite.anchorPoint = ccp(-1.0, -1.0);
     }
     
     label.zPosition = 1;
@@ -128,6 +154,7 @@
     SKAction *scale1 = [SKAction scaleBy:1.2 duration:delta /2];
     SKAction *scale2 = [SKAction scaleTo:1 duration:delta /2];
     [[[self.program objectAtIndex:index] objectForKey:@"sprite"] runAction:[SKAction sequence:@[scale1, scale2]]];
+    [self updateRegisters];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -159,10 +186,7 @@
             [self addChild:self.intermediateSprite];
             SKAction *scale = [SKAction scaleTo:1.5 duration:0.3];
             [self.intermediateSprite runAction:scale];
-//            if (self.intermediateCommand) {
-//                [self.gameManager.programField replaceCommand:[command objectForKey:@"command"] to:self.intermediateCommand];
-//                self.intermediateCommand = nil;
-//            } 
+            self.intermediateCommand = [[command objectForKey:@"command"] copy];
         }
     }
 }
@@ -185,6 +209,7 @@
     UITouch* touchOne = [allTouches objectAtIndex:0];
     
     CGPoint touchLocationOne = [touchOne locationInNode:self.parent];
+    BOOL inProg = NO;
     
     for (NSDictionary *command in self.program)
     {
@@ -194,15 +219,23 @@
             if (self.intermediateCommand) {
                 [self.gameManager.programField replaceCommand:[command objectForKey:@"command"] to:self.intermediateCommand];
                 self.intermediateCommand = nil;
-            } 
+            }
+            inProg = YES;
+            SKAction *scale = [SKAction scaleTo:1.0 duration:0.2];
+            SKAction *remove = [SKAction removeFromParent];
+            SKAction *group = [SKAction group:@[move, scale]];
+            [self.intermediateSprite runAction:[SKAction sequence:@[group, remove]]];
         }
     }
     
-    SKAction *fade = [SKAction fadeAlphaTo:0 duration:0.2];
-    SKAction *scale = [SKAction scaleTo:1.0 duration:0.2];
-    SKAction *remove = [SKAction removeFromParent];
-    SKAction *group = [SKAction group:@[move, fade, scale]];
-    [self.intermediateSprite runAction:[SKAction sequence:@[group, remove]]];
+    if (!inProg) {
+        SKAction *scale = [SKAction scaleTo:0.0 duration:0.2];
+        SKAction *remove = [SKAction removeFromParent];
+        SKAction *group = [SKAction group:@[scale]];
+        [self.intermediateSprite runAction:[SKAction sequence:@[group, remove]]];
+        self.intermediateCommand = nil;
+    }
+    
     
     [self performSelector:@selector(refresh) withObject:nil afterDelay:0.2];
     self.intermediateCommand = nil;
@@ -212,6 +245,7 @@
     [self removeAllChildren];
     [self.program removeAllObjects];
     [self.available removeAllObjects];
+    [self.registers removeAllObjects];
     
     
     SKSpriteNode *background = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:0.3 green:0.4 blue:0.5 alpha:0.8] size:CGSizeMake(DEFAULT_CELL_SIZE*DEFAULT_COLS, self.size.height)];
@@ -221,6 +255,7 @@
     
     [self showProg];
     [self showAvailable];
+    [self showRegisters];
 }
 
 
