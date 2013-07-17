@@ -59,10 +59,11 @@
 }
 
 -(void)pause {
-    ;
+    [self.gameTimer invalidate];
+    self.gameTimer = nil;
 }
 
 -(void)resume {
-    ;
+    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:DEFAULT_TIME_INTERVAL target:self selector:@selector(nextStep:) userInfo:nil repeats:YES];;
 }
 @end

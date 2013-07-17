@@ -11,4 +11,7 @@
 
 @interface AJViewController : UIViewController
 
+- (IBAction)pause:(id)sender;
+- (IBAction)resume:(id)sender;
+
 @end

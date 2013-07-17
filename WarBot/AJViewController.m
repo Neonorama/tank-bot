@@ -32,6 +32,7 @@
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
+    skView.showsDrawCount = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -63,4 +64,15 @@
     return YES;
 }
 
+- (IBAction)pause:(id)sender {
+    SKView * skView = (SKView *)self.view;
+    AJGameScene *gameScene = (AJGameScene *)skView.scene;
+    [gameScene pause];
+}
+
+- (IBAction)resume:(id)sender {
+    SKView * skView = (SKView *)self.view;
+    AJGameScene *gameScene = (AJGameScene *)skView.scene;
+    [gameScene resume];
+}
 @end
