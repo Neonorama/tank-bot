@@ -75,4 +75,10 @@
     AJGameScene *gameScene = (AJGameScene *)skView.scene;
     [gameScene resume];
 }
+
+- (IBAction)nextStep:(id)sender {
+    SKView * skView = (SKView *)self.view;
+    AJGameScene *gameScene = (AJGameScene *)skView.scene;
+    [gameScene next];
+}
 @end

@@ -32,7 +32,7 @@
         [self addChild:self.gameView];
         [self addChild:self.controlView];
     
-        self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:DEFAULT_TIME_INTERVAL target:self selector:@selector(nextStep:) userInfo:nil repeats:YES];
+//        self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:DEFAULT_TIME_INTERVAL target:self selector:@selector(nextStep:) userInfo:nil repeats:YES];
 
     }
     return self;
@@ -64,6 +64,13 @@
 }
 
 -(void)resume {
-    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:DEFAULT_TIME_INTERVAL target:self selector:@selector(nextStep:) userInfo:nil repeats:YES];;
+    [self.gameTimer invalidate];
+    self.gameTimer = nil;
+    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:DEFAULT_TIME_INTERVAL target:self selector:@selector(nextStep:) userInfo:nil repeats:YES];
+}
+
+-(void)next {
+    [self.controlView nextStep:DEFAULT_TIME_INTERVAL];
+    [self.gameView nextStep:DEFAULT_TIME_INTERVAL];
 }
 @end

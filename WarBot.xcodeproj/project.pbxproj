@@ -21,16 +21,12 @@
 		9136113C173E456200937A20 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9136113B173E456200937A20 /* Default@2x.png */; };
 		9136113E173E456200937A20 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9136113D173E456200937A20 /* Default-568h@2x.png */; };
 		91361141173E456200937A20 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9136113F173E456200937A20 /* MainStoryboard.storyboard */; };
-		9137BE5C1777960F00306737 /* arrows.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9137BE5A1777960F00306737 /* arrows.plist */; };
-		9137BE5D1777960F00306737 /* arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 9137BE5B1777960F00306737 /* arrows.png */; };
 		913BEAC317860E5A00E8A483 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 913BEAC217860E5A00E8A483 /* SpriteKit.framework */; };
 		913BEAC517860F2700E8A483 /* bot.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 913BEAC417860F2700E8A483 /* bot.atlas */; };
 		913BEAC717860F3200E8A483 /* controls.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 913BEAC617860F3200E8A483 /* controls.atlas */; };
 		9141CD7017861FFF0041C643 /* AJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 913BEB1117861D7200E8A483 /* AJViewController.m */; };
 		915133291775BCC100FB4007 /* AJGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 915133281775BCC100FB4007 /* AJGameView.m */; };
 		915459EE177B8B9B00439D58 /* AJConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 915459ED177B8B9B00439D58 /* AJConstants.m */; };
-		916029831775D1C30039A3D2 /* bot.plist in Resources */ = {isa = PBXBuildFile; fileRef = 916029811775D1C30039A3D2 /* bot.plist */; };
-		916029841775D1C30039A3D2 /* bot.png in Resources */ = {isa = PBXBuildFile; fileRef = 916029821775D1C30039A3D2 /* bot.png */; };
 		916DF52D177B748400A3BD97 /* AJGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 916DF52C177B748400A3BD97 /* AJGameScene.m */; };
 		916DF530177B75D300A3BD97 /* AJControlVew.m in Sources */ = {isa = PBXBuildFile; fileRef = 916DF52F177B75D300A3BD97 /* AJControlVew.m */; };
 		919D69C11757DF9E00C50707 /* AJCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 919D69C01757DF9E00C50707 /* AJCommand.m */; };
@@ -66,8 +62,6 @@
 		9136113D173E456200937A20 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		91361140173E456200937A20 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		9136114A173E469C00937A20 /* WarBot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WarBot.entitlements; sourceTree = "<group>"; };
-		9137BE5A1777960F00306737 /* arrows.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = arrows.plist; path = Resources/arrows.plist; sourceTree = "<group>"; };
-		9137BE5B1777960F00306737 /* arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrows.png; path = Resources/arrows.png; sourceTree = "<group>"; };
 		913BEAC217860E5A00E8A483 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		913BEAC417860F2700E8A483 /* bot.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bot.atlas; sourceTree = "<group>"; };
 		913BEAC617860F3200E8A483 /* controls.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = controls.atlas; sourceTree = "<group>"; };
@@ -82,8 +76,6 @@
 		915459EC177B8B9B00439D58 /* AJConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJConstants.h; path = Utils/AJConstants.h; sourceTree = "<group>"; };
 		915459ED177B8B9B00439D58 /* AJConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJConstants.m; path = Utils/AJConstants.m; sourceTree = "<group>"; };
 		9160297E1775C4B80039A3D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		916029811775D1C30039A3D2 /* bot.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = bot.plist; path = Resources/bot.plist; sourceTree = "<group>"; };
-		916029821775D1C30039A3D2 /* bot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bot.png; path = Resources/bot.png; sourceTree = "<group>"; };
 		916DF52B177B748400A3BD97 /* AJGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJGameScene.h; sourceTree = "<group>"; };
 		916DF52C177B748400A3BD97 /* AJGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJGameScene.m; sourceTree = "<group>"; };
 		916DF52E177B75D300A3BD97 /* AJControlVew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJControlVew.h; sourceTree = "<group>"; };
@@ -254,10 +246,6 @@
 			children = (
 				913BEAC617860F3200E8A483 /* controls.atlas */,
 				913BEAC417860F2700E8A483 /* bot.atlas */,
-				9137BE5A1777960F00306737 /* arrows.plist */,
-				9137BE5B1777960F00306737 /* arrows.png */,
-				916029811775D1C30039A3D2 /* bot.plist */,
-				916029821775D1C30039A3D2 /* bot.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -328,10 +316,6 @@
 				913BEAC717860F3200E8A483 /* controls.atlas in Resources */,
 				9136113E173E456200937A20 /* Default-568h@2x.png in Resources */,
 				91361141173E456200937A20 /* MainStoryboard.storyboard in Resources */,
-				916029831775D1C30039A3D2 /* bot.plist in Resources */,
-				916029841775D1C30039A3D2 /* bot.png in Resources */,
-				9137BE5C1777960F00306737 /* arrows.plist in Resources */,
-				9137BE5D1777960F00306737 /* arrows.png in Resources */,
 				913BEAC517860F2700E8A483 /* bot.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

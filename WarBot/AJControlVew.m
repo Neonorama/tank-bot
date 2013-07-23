@@ -62,20 +62,21 @@
         SKSpriteNode *commandSprite = [self getCommandSprite: command];
         commandSprite.position = position;
 
-        NSMutableDictionary *commandTMP = [[NSMutableDictionary alloc] initWithCapacity:2];
-        [commandTMP setObject:command forKey:@"command"];
-        [commandTMP setObject:commandSprite forKey:@"sprite"];
-        
-        [self.program addObject:commandTMP];
-        
         SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         label.fontSize = 10;
         label.fontColor = [SKColor whiteColor];
         label.text = [NSString stringWithFormat: @"%d",i ];
         label.position = CGPointMake(-20, -20);
+        label.name = @"index";
         [commandSprite addChild:label];
         
         [self addChild:commandSprite];
+        
+        NSMutableDictionary *commandTMP = [[NSMutableDictionary alloc] initWithCapacity:2];
+        [commandTMP setObject:command forKey:@"command"];
+        [commandTMP setObject:commandSprite forKey:@"sprite"];
+        
+        [self.program addObject:commandTMP];
 
     }
 }
@@ -111,12 +112,14 @@
     label.fontSize = 20;
     label.fontColor = [SKColor whiteColor];
     label.text = [[command param] stringValue];
+    label.name = @"param";
+    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"controls"];
     
     if ([command.command isEqualToString:kCommandMoveForward]) {
-        commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"move_forward.png"];
+        commandSprite = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"move_forward.png"]];
         
     } else if ([command.command isEqualToString:kCommandMoveBackward]) {
-        commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"move_backward.png"];
+        commandSprite = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"move_backward.png"]];
         
     } else if ([command.command isEqualToString:kCommandTurnLeft]) {
         commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"turn_left.png"];
@@ -225,6 +228,21 @@
             SKAction *remove = [SKAction removeFromParent];
             SKAction *group = [SKAction group:@[move, scale]];
             [self.intermediateSprite runAction:[SKAction sequence:@[group, remove]]];
+        }
+    }
+    
+    for (NSDictionary *command in self.available)
+    {
+        if (CGRectContainsPoint(((SKSpriteNode *)[command objectForKey:@"sprite"]).frame, touchLocationOne))
+        {
+            AJCommand *cmd =[command objectForKey:@"command"];
+            SKSpriteNode *cmdSprite = (SKSpriteNode *)[command objectForKey:@"sprite"];
+            
+            if ([cmd.command isEqualToString:kCommandJump]) {
+                NSString *indexString = ((SKLabelNode *)[self.intermediateSprite childNodeWithName:@"index"]).text;
+                cmd.param = [NSNumber numberWithInteger:[indexString integerValue]];
+                NSLog(@"Jump command detect!!! %@", indexString);
+            }
         }
     }
     

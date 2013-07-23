@@ -20,5 +20,6 @@
 
 -(void) pause;
 -(void) resume;
+-(void) next;
 
 @end
