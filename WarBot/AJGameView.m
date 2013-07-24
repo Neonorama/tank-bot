@@ -33,7 +33,7 @@
         
         [self.botBaseSprite addChild:self.botCanonSprite];
         [self addChild:self.botBaseSprite];
-        self.botBaseSprite.position = CGPointMake(size.width * 2 / 3, size.height / 2);
+        self.botBaseSprite.position = CGPointMake(round(size.width * 2 / 3), round(size.height / 2));
 	}
 	return self;
 }
@@ -41,8 +41,8 @@
 -(void)nextStep:(NSTimeInterval)delta{
     [self.gameManager nextStep];
     SKAction *botMove = [SKAction moveTo: CGPointMake(self.gameManager.bot.position.x, self.gameManager.bot.position.y)  duration:delta];
-//    SKAction *botMove = [SKAction moveTo: CGPointMake(self.gameManager.bot.position.x + self.botBaseSprite.position.x, self.gameManager.bot.position.y + self.botBaseSprite.position.y)  duration:delta];
-    SKAction *botRotate = [SKAction rotateToAngle:(self.gameManager.bot.chassis.orientation * M_PI / 180) duration:delta];
+    float rotateRad = (self.gameManager.bot.chassis.orientation * M_PI / 180) ;
+    SKAction *botRotate = [SKAction rotateToAngle:rotateRad duration:delta];
     SKAction *canonRotate = [SKAction rotateToAngle:(self.gameManager.bot.turret.localOrientation * M_PI / 180) duration:delta];
 
     [self.botBaseSprite runAction:[SKAction group:@[botMove, botRotate]]];
