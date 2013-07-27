@@ -1,10 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4471.1" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="fUX-U4-U8W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4471.1" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="bx3-q3-xaX">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3697.3"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="eDP-It-nAR">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="bx3-q3-xaX" sceneMemberID="viewController">
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gNE-vF-ntO">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3vB-9S-64f" kind="relationship" relationship="rootViewController" id="os4-Bk-t2g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Fi-lY-SF0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-844" y="-1025"/>
+        </scene>
+        <!--Main Menu View Controller-->
+        <scene sceneID="pys-CM-vwL">
+            <objects>
+                <viewController id="3vB-9S-64f" customClass="AJMainMenuViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ABR-sy-wsC">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UoN-Pp-XZZ">
+                                <rect key="frame" x="476" y="311" width="73" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="play:" destination="3vB-9S-64f" eventType="touchUpInside" id="Jvh-D2-iyi"/>
+                                    <segue destination="fUX-U4-U8W" kind="push" id="Kwd-iz-h0W"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="keU-C7-LoY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v6m-9F-ELL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="277" y="-1025"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="zXA-pa-hsg">
             <objects>
@@ -78,12 +128,14 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="l45-xd-70B"/>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tr-br-oZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-95" y="-234"/>
+            <point key="canvasLocation" x="1403" y="-1025"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -34,6 +34,8 @@
         [self.botBaseSprite addChild:self.botCanonSprite];
         [self addChild:self.botBaseSprite];
         self.botBaseSprite.position = CGPointMake(round(size.width * 2 / 3), round(size.height / 2));
+        
+        [self generateLevel:@"testLevel"];
 	}
 	return self;
 }
@@ -59,5 +61,96 @@
     
     NSLog(@"Game view touch %@", NSStringFromCGPoint(touchLocationOne));
 }
+
+-(void)generateLevel:(NSString *)levelName {
+    NSError *error;
+    NSString *levelFileName = [[NSBundle mainBundle] pathForResource:@"testLevel" ofType:@"json"];
+    NSData *levelData = [NSData dataWithContentsOfFile:levelFileName];
+    NSDictionary *levelDict = [NSJSONSerialization
+                          JSONObjectWithData:levelData
+                          options:kNilOptions
+                          error:&error];
+    
+    NSArray *layers = [levelDict objectForKey:@"layers"];
+    NSArray *tilesets = [levelDict objectForKey:@"tilesets"];
+    
+    NSDictionary *tileSet = (NSDictionary *)tilesets[0];
+    
+    NSString *tileSetFileName = [[NSBundle mainBundle] pathForResource:[[tileSet objectForKey:@"image"] stringByDeletingPathExtension] ofType:@"png"];
+    SKTexture *tileTexture = [SKTexture textureWithImageNamed:tileSetFileName];
+    
+    int imageheight = [[tileSet objectForKey:@"imageheight"] integerValue];
+    int imagewidth = [[tileSet objectForKey:@"imagewidth"] integerValue];
+    int tileheight = [[tileSet objectForKey:@"tileheight"] integerValue];
+    int tilewidth = [[tileSet objectForKey:@"tilewidth"] integerValue];
+    
+    int tileHeightCount = (imageheight / tileheight);
+    int tileWidthCount = (imagewidth / tilewidth);
+    int tileCount = tileHeightCount * tileWidthCount;
+
+    NSMutableArray *tiles = [NSMutableArray arrayWithCapacity:tileCount];
+    
+    for (int i = 0; i < tileCount; i++) {
+        float height = (float)tileheight / (float)imageheight;
+        float width = (float)tilewidth / (float)imagewidth;
+        float xOffset = (float)(1 + (i % tileWidthCount) + (i % tileWidthCount)*tilewidth) / (float)imagewidth;
+        float yOffset = 1-(float)(1 + (i / tileWidthCount) + (i / tileWidthCount)*tileheight) / (float)imageheight - height;
+        CGRect rect = CGRectMake(xOffset, yOffset, width, height);
+        SKTexture *tile = [SKTexture textureWithRect:rect inTexture:tileTexture];
+        [tiles addObject:tile];
+    }
+    
+    SKSpriteNode *qwe = [SKSpriteNode spriteNodeWithTexture:tiles[1]];
+    qwe.position = CGPointMake(400, 400);
+//    [self addChild:qwe];
+    
+    NSDictionary *layer = layers[0];
+    int layerHeight = [[layer objectForKey:@"height"] integerValue];
+    int layerWidth = [[layer objectForKey:@"width"] integerValue];
+    NSArray *layerData = [layer objectForKey:@"data"];
+    NSMutableArray *layerTiles = [NSMutableArray arrayWithCapacity:[layerData count]];
+    
+    for (int i = 0; i < [layerData count]; i++) {
+        int tileIndex = [layerData[i] integerValue];
+        SKSpriteNode *tile = [SKSpriteNode spriteNodeWithTexture:tiles[tileIndex-1]];
+        int xOffset = (i % layerWidth) * tilewidth;
+        int yOffset = (i / layerWidth) * tileheight;
+        tile.position = CGPointMake(xOffset, self.size.height - yOffset);
+        [layerTiles addObject:tile];
+    }
+    
+    SKNode *ground = [SKNode node];
+    
+    for (int i = 0; i < [layerTiles count]; i++) {
+        [ground addChild:layerTiles[i]];
+    }
+    ground.zPosition  = 10;
+    ground.position = CGPointMake(DEFAULT_CELL_SIZE * DEFAULT_COLS + 16, 0);
+    [self addChild:ground];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

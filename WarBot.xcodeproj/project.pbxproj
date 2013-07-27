@@ -31,6 +31,9 @@
 		916DF530177B75D300A3BD97 /* AJControlVew.m in Sources */ = {isa = PBXBuildFile; fileRef = 916DF52F177B75D300A3BD97 /* AJControlVew.m */; };
 		919D69C11757DF9E00C50707 /* AJCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 919D69C01757DF9E00C50707 /* AJCommand.m */; };
 		91A1769917553BE60069264C /* AJProgramField.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A1769817553BE60069264C /* AJProgramField.m */; };
+		91A67F3317A3DA5E00186F3F /* AJMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A67F3217A3DA5E00186F3F /* AJMainMenuViewController.m */; };
+		91A67F3617A469E900186F3F /* testLevel.json in Resources */ = {isa = PBXBuildFile; fileRef = 91A67F3417A430B700186F3F /* testLevel.json */; };
+		91A67F3717A469EC00186F3F /* testLevel.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A67F3517A430B700186F3F /* testLevel.png */; };
 		91B007F0174827EB00ACA5D4 /* AJStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B007EF174827EB00ACA5D4 /* AJStateController.m */; };
 		91C3F103176FC533004BFB0B /* AJAvailableCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C3F102176FC533004BFB0B /* AJAvailableCommands.m */; };
 		91CCBDE9177E22E20079DC88 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CCBDE8177E22E20079DC88 /* CoreText.framework */; };
@@ -85,6 +88,10 @@
 		919D69C01757DF9E00C50707 /* AJCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJCommand.m; path = Model/AJCommand.m; sourceTree = "<group>"; };
 		91A1769717553BE60069264C /* AJProgramField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJProgramField.h; path = Model/AJProgramField.h; sourceTree = "<group>"; };
 		91A1769817553BE60069264C /* AJProgramField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJProgramField.m; path = Model/AJProgramField.m; sourceTree = "<group>"; };
+		91A67F3117A3DA5E00186F3F /* AJMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJMainMenuViewController.h; sourceTree = "<group>"; };
+		91A67F3217A3DA5E00186F3F /* AJMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJMainMenuViewController.m; sourceTree = "<group>"; };
+		91A67F3417A430B700186F3F /* testLevel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = testLevel.json; path = Resources/testLevel.json; sourceTree = "<group>"; };
+		91A67F3517A430B700186F3F /* testLevel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = testLevel.png; path = Resources/testLevel.png; sourceTree = "<group>"; };
 		91B007EE174827EB00ACA5D4 /* AJStateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJStateController.h; path = Model/AJStateController.h; sourceTree = "<group>"; };
 		91B007EF174827EB00ACA5D4 /* AJStateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJStateController.m; path = Model/AJStateController.m; sourceTree = "<group>"; };
 		91C3F101176FC533004BFB0B /* AJAvailableCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJAvailableCommands.h; path = Model/AJAvailableCommands.h; sourceTree = "<group>"; };
@@ -237,6 +244,8 @@
 			children = (
 				913BEB1017861D7200E8A483 /* AJViewController.h */,
 				913BEB1117861D7200E8A483 /* AJViewController.m */,
+				91A67F3117A3DA5E00186F3F /* AJMainMenuViewController.h */,
+				91A67F3217A3DA5E00186F3F /* AJMainMenuViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -244,6 +253,8 @@
 		916029801775D0FE0039A3D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				91A67F3417A430B700186F3F /* testLevel.json */,
+				91A67F3517A430B700186F3F /* testLevel.png */,
 				913BEAC617860F3200E8A483 /* controls.atlas */,
 				913BEAC417860F2700E8A483 /* bot.atlas */,
 			);
@@ -311,11 +322,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				91361132173E456200937A20 /* InfoPlist.strings in Resources */,
+				91A67F3717A469EC00186F3F /* testLevel.png in Resources */,
 				9136113A173E456200937A20 /* Default.png in Resources */,
 				9136113C173E456200937A20 /* Default@2x.png in Resources */,
 				913BEAC717860F3200E8A483 /* controls.atlas in Resources */,
 				9136113E173E456200937A20 /* Default-568h@2x.png in Resources */,
 				91361141173E456200937A20 /* MainStoryboard.storyboard in Resources */,
+				91A67F3617A469E900186F3F /* testLevel.json in Resources */,
 				913BEAC517860F2700E8A483 /* bot.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +354,7 @@
 				91C3F103176FC533004BFB0B /* AJAvailableCommands.m in Sources */,
 				915133291775BCC100FB4007 /* AJGameView.m in Sources */,
 				916DF52D177B748400A3BD97 /* AJGameScene.m in Sources */,
+				91A67F3317A3DA5E00186F3F /* AJMainMenuViewController.m in Sources */,
 				916DF530177B75D300A3BD97 /* AJControlVew.m in Sources */,
 				915459EE177B8B9B00439D58 /* AJConstants.m in Sources */,
 			);

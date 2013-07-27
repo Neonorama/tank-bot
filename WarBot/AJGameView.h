@@ -18,5 +18,5 @@
 @property SKSpriteNode *botCanonSprite;
 
 -(void)nextStep:(NSTimeInterval)delta;
-
+-(void)generateLevel: (NSString *)levelName;
 @end
