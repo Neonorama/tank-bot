@@ -8,7 +8,9 @@
         <!--Navigation Controller-->
         <scene sceneID="eDP-It-nAR">
             <objects>
-                <navigationController definesPresentationContext="YES" id="bx3-q3-xaX" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="bx3-q3-xaX" sceneMemberID="viewController">
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gNE-vF-ntO">
                         <autoresizingMask key="autoresizingMask"/>
@@ -50,6 +52,9 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="keU-C7-LoY"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6m-9F-ELL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

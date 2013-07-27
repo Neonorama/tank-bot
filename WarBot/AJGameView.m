@@ -125,7 +125,7 @@
         [ground addChild:layerTiles[i]];
     }
     ground.zPosition  = 10;
-    ground.position = CGPointMake(DEFAULT_CELL_SIZE * DEFAULT_COLS + 16, 0);
+    ground.position = CGPointMake(DEFAULT_CELL_SIZE * DEFAULT_COLS + 16, -16);
     [self addChild:ground];
 }
 
