@@ -12,7 +12,7 @@
 
 -(id)initWithSize:(CGSize)size
 {
-    if (self = [super initWithSize:size]) {
+    if (self = [super init]) {
                 
         SKTextureAtlas *texture = [SKTextureAtlas atlasNamed:@"bot"];
         
@@ -20,7 +20,9 @@
         SKSpriteNode *canon = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_canon_1.png"]];
         base.zRotation = M_PI / 2;
         canon.zRotation = M_PI / 2;
-        
+        self.size = size;
+        [self generateLevel:@"testLevel"];
+
         self.botBaseSprite = [[SKSpriteNode alloc] init];
         [self.botBaseSprite addChild:base];
         self.botCanonSprite= [[SKSpriteNode alloc] init];
@@ -33,9 +35,8 @@
         
         [self.botBaseSprite addChild:self.botCanonSprite];
         [self addChild:self.botBaseSprite];
-        self.botBaseSprite.position = CGPointMake(round(size.width * 2 / 3), round(size.height / 2));
+        self.botBaseSprite.position = self.startPoint;
         
-        [self generateLevel:@"testLevel"];
 	}
 	return self;
 }
@@ -57,9 +58,9 @@
     
     UITouch* touchOne = [allTouches objectAtIndex:0];
     
-    CGPoint touchLocationOne = [touchOne locationInView:self.view];
-    
-    NSLog(@"Game view touch %@", NSStringFromCGPoint(touchLocationOne));
+//    CGPoint touchLocationOne = [touchOne locationInView:self.view];
+//    
+//    NSLog(@"Game view touch %@", NSStringFromCGPoint(touchLocationOne));
 }
 
 -(void)generateLevel:(NSString *)levelName {
@@ -104,7 +105,39 @@
     qwe.position = CGPointMake(400, 400);
 //    [self addChild:qwe];
     
-    NSDictionary *layer = layers[0];
+    NSDictionary __block *layer;
+    NSDictionary __block *wall;
+    NSDictionary __block *goals;
+    
+    [layers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj[@"name"] isEqualToString:@"ground"] ) {
+            layer = (NSDictionary *)obj;
+        }
+        if ([obj[@"name"] isEqualToString:@"wall"] ) {
+            wall = (NSDictionary *)obj;
+        }
+        if ([obj[@"name"] isEqualToString:@"goals"] ) {
+            goals = (NSDictionary *)obj;
+        }
+    }];
+    
+    NSDictionary __block *start;
+    NSDictionary __block *finish;
+    
+    [goals[@"objects"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj[@"name"] isEqualToString:@"start"] ) {
+            start = (NSDictionary *)obj;
+        }
+        if ([obj[@"name"] isEqualToString:@"finish"] ) {
+            finish = (NSDictionary *)obj;
+        }
+    }];
+
+    CGRect startArea = CGRectMake([start[@"x"] integerValue],
+                                  self.size.height - [start[@"y"] integerValue] - [start[@"height"] integerValue],
+                                  [start[@"width"] integerValue],
+                                  [start[@"height"] integerValue]);
+    self.startPoint = CGPointMake(CGRectGetMidX(startArea), CGRectGetMidY(startArea)) ;
     int layerHeight = [[layer objectForKey:@"height"] integerValue];
     int layerWidth = [[layer objectForKey:@"width"] integerValue];
     NSArray *layerData = [layer objectForKey:@"data"];
@@ -125,7 +158,7 @@
         [ground addChild:layerTiles[i]];
     }
     ground.zPosition  = 10;
-    ground.position = CGPointMake(DEFAULT_CELL_SIZE * DEFAULT_COLS + 16, -16);
+    ground.position = CGPointMake(16, -16);
     [self addChild:ground];
 }
 

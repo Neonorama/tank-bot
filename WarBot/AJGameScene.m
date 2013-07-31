@@ -21,6 +21,7 @@
         self.gameManager.bot.chassis.position = self.gameView.botBaseSprite.position;
         self.gameManager.bot.position = self.gameView.botBaseSprite.position;
         self.gameView.gameManager =  self.gameManager;
+        self.gameView.position = CGPointMake(DEFAULT_COLS * DEFAULT_CELL_SIZE, 0);
 
         self.controlView = [[AJControlVew alloc] initWithSize:size];
 
