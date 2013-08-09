@@ -15,7 +15,7 @@
 {
     if (self = [super initWithSize:size]) {
 //        self.backgroundColor = [SKColor colorWithRed:0.3 green:0.4 blue:0.1 alpha:0.8];
-        SKSpriteNode *ground = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:0.3 green:0.4 blue:0.5 alpha:0.8] size:CGSizeMake(DEFAULT_CELL_SIZE*DEFAULT_COLS, size.height)];
+        SKSpriteNode *ground = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0] size:CGSizeMake(DEFAULT_CELL_SIZE*DEFAULT_COLS, size.height)];
         ground.anchorPoint = CGPointMake(0, 0);
         self.available = [NSMutableArray array];
         self.program = [NSMutableArray array];
@@ -107,31 +107,33 @@
 }
 
 -(SKSpriteNode *) getCommandSprite: (AJCommand *) command {
-    SKSpriteNode *commandSprite;
+    SKSpriteNode *commandSprite = [[SKSpriteNode alloc] init];
     SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
-    label.fontSize = 20;
+    label.fontSize = 10;
     label.fontColor = [SKColor whiteColor];
     label.text = [[command param] stringValue];
     label.name = @"param";
+    label.position = CGPointMake(15, 12);
     SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"controls"];
+    SKSpriteNode *commandSpriteBase = [SKSpriteNode spriteNodeWithImageNamed:@"control_button_base.png"];
     
     if ([command.command isEqualToString:kCommandMoveForward]) {
-        commandSprite = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"move_forward.png"]];
+        commandSprite = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"control_button_base_forward.png"]];
         
     } else if ([command.command isEqualToString:kCommandMoveBackward]) {
-        commandSprite = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"move_backward.png"]];
+        commandSprite = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"control_button_base_backward.png"]];
         
     } else if ([command.command isEqualToString:kCommandTurnLeft]) {
-        commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"turn_left.png"];
+        commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"control_button_base_turn_left.png"];
         
     } else if ([command.command isEqualToString:kCommandTurnRight]) {
-        commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"turn_right.png"];
+        commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"control_button_base_turn_right.png"];
         
     } else if ([command.command isEqualToString:kCommandTurnTurretLeft]) {
-        commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"turn_canon_left.png"];
+        commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"control_button_tower_turn_left.png"];
         
     } else if ([command.command isEqualToString:kCommandTurnTurretRight]) {
-        commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"turn_canon_right.png"];
+        commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"control_button_tower_turn_right.png"];
         
     } else if ([command.command isEqualToString:kCommandJump]) {
         commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"func.png"];
@@ -140,7 +142,7 @@
         commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"ret.png"];
         
     } else if ([command.command isEqualToString:kCommandDefault]) {
-        commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"defaultcmd.png"];
+        commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"control_button_base.png"];
         
     } else {
         commandSprite = [SKSpriteNode spriteNodeWithColor:[SKColor blackColor] size:CGSizeMake(DEFAULT_CELL_SIZE, DEFAULT_CELL_SIZE)];
@@ -148,8 +150,9 @@
     
     label.zPosition = 1;
     [commandSprite addChild:label];
-    return commandSprite;
-    return nil;
+    
+    [commandSpriteBase addChild:commandSprite];
+    return commandSpriteBase;
 }
 
 -(void)nextStep:(NSTimeInterval)delta {
@@ -266,7 +269,7 @@
     [self.registers removeAllObjects];
     
     
-    SKSpriteNode *background = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:0.3 green:0.4 blue:0.5 alpha:0.8] size:CGSizeMake(DEFAULT_CELL_SIZE*DEFAULT_COLS, self.size.height)];
+    SKSpriteNode *background = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0] size:CGSizeMake(DEFAULT_CELL_SIZE*DEFAULT_COLS, self.size.height)];
     background.anchorPoint = CGPointMake(0, 0);
     
     [self addChild:background];

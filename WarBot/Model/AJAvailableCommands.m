@@ -23,8 +23,8 @@
     if (self) {
         self.availableCommands = [NSMutableArray arrayWithCapacity:DEFAULT_AVAILIABLE_LENGTH];
         
-        [self.availableCommands addObject:[AJCommand commandWithType:kCommandTypeBot command:kCommandMoveForward param:[NSNumber numberWithInt:20]]];
-        [self.availableCommands addObject:[AJCommand commandWithType:kCommandTypeBot command:kCommandMoveBackward param:[NSNumber numberWithInt:20]]];
+        [self.availableCommands addObject:[AJCommand commandWithType:kCommandTypeBot command:kCommandMoveForward param:[NSNumber numberWithInt:DEFAULT_CELL_SIZE]]];
+        [self.availableCommands addObject:[AJCommand commandWithType:kCommandTypeBot command:kCommandMoveBackward param:[NSNumber numberWithInt:DEFAULT_CELL_SIZE]]];
         [self.availableCommands addObject:[AJCommand commandWithType:kCommandTypeBot command:kCommandTurnLeft param:[NSNumber numberWithInt:90]]];
         [self.availableCommands addObject:[AJCommand commandWithType:kCommandTypeBot command:kCommandTurnRight param:[NSNumber numberWithInt:90]]];
 //        [self.availableCommands addObject:[AJCommand commandWithType:kCommandTypeBot command:kCommandFire param:[NSNumber numberWithInt:20]]];
