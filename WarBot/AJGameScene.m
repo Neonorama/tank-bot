@@ -8,10 +8,6 @@
 
 #import "AJGameScene.h"
 
-static const uint32_t botCategory       = 0x1 << 0;
-static const uint32_t wallCategory      = 0x1 << 1;
-static const uint32_t bulletCategory    = 0x1 << 2;
-
 @implementation AJGameScene
 
 -(id)initWithSize:(CGSize)size 

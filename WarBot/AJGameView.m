@@ -8,10 +8,6 @@
 
 #import "AJGameView.h"
 
-static const uint32_t botCategory       = 0x1 << 0;
-static const uint32_t wallCategory      = 0x1 << 1;
-static const uint32_t bulletCategory    = 0x1 << 2;
-
 @implementation AJGameView
 
 -(id)initWithSize:(CGSize)size
@@ -53,11 +49,19 @@ static const uint32_t bulletCategory    = 0x1 << 2;
 
 -(void)nextStep:(NSTimeInterval)delta{
     self.gameManager.isPrevious = NO;
+    
+    float prevRotateRad = (self.gameManager.bot.chassis.orientation * M_PI / 180) ;
+    float prevCanonRotateRad = self.gameManager.bot.turret.absOrientation * M_PI / 180;
+    
     [self.gameManager nextStep];
+    
     SKAction *botMove = [SKAction moveTo: CGPointMake(self.gameManager.bot.position.x, self.gameManager.bot.position.y)  duration:delta];
+    
     float rotateRad = (self.gameManager.bot.chassis.orientation * M_PI / 180) ;
-    SKAction *botRotate = [SKAction rotateToAngle:rotateRad duration:delta];
-    SKAction *canonRotate = [SKAction rotateToAngle:(self.gameManager.bot.turret.localOrientation * M_PI / 180) duration:delta];
+    float canonRotateRad = self.gameManager.bot.turret.absOrientation * M_PI / 180;
+
+    SKAction *botRotate = [SKAction rotateByAngle:(rotateRad - prevRotateRad) duration:delta];
+    SKAction *canonRotate = [SKAction rotateByAngle:(canonRotateRad - prevCanonRotateRad) duration:delta];
 
     [self.botBaseSprite runAction:[SKAction group:@[botMove, botRotate]]];
     [self.botCanonSprite runAction:canonRotate];
