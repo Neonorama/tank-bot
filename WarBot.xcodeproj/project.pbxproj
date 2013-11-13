@@ -96,7 +96,6 @@
 		91B007EF174827EB00ACA5D4 /* AJStateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJStateController.m; path = Model/AJStateController.m; sourceTree = "<group>"; };
 		91C3F101176FC533004BFB0B /* AJAvailableCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJAvailableCommands.h; path = Model/AJAvailableCommands.h; sourceTree = "<group>"; };
 		91C3F102176FC533004BFB0B /* AJAvailableCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJAvailableCommands.m; path = Model/AJAvailableCommands.m; sourceTree = "<group>"; };
-		91C4520B17B40A0B00225B4C /* controls@2x.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "controls@2x.atlas"; sourceTree = "<group>"; };
 		91C4520C17B425C900225B4C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		91CCBDE8177E22E20079DC88 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		91F040061767D34800D4A4B8 /* AJRegisters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRegisters.h; sourceTree = "<group>"; };
@@ -255,7 +254,6 @@
 		916029801775D0FE0039A3D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				91C4520B17B40A0B00225B4C /* controls@2x.atlas */,
 				91A67F3417A430B700186F3F /* testLevel.json */,
 				91A67F3517A430B700186F3F /* testLevel.png */,
 				913BEAC617860F3200E8A483 /* controls.atlas */,

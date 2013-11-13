@@ -8,6 +8,10 @@
 
 #import "AJGameScene.h"
 
+static const uint32_t botCategory       = 0x1 << 0;
+static const uint32_t wallCategory      = 0x1 << 1;
+static const uint32_t bulletCategory    = 0x1 << 2;
+
 @implementation AJGameScene
 
 -(id)initWithSize:(CGSize)size 
@@ -34,7 +38,25 @@
         [self addChild:self.controlView];
     
 //        self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:DEFAULT_TIME_INTERVAL target:self selector:@selector(nextStep:) userInfo:nil repeats:YES];
-
+        
+        self.backgroundColor = [SKColor blackColor];
+        self.scaleMode = SKSceneScaleModeAspectFit;
+        self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+        self.physicsWorld.gravity = CGVectorMake(0,0);
+        self.physicsWorld.contactDelegate = self;
+        
+        
+//        SKTextureAtlas *texture = [SKTextureAtlas atlasNamed:@"bot"];
+//        
+//        SKSpriteNode *base = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_base.png"]];
+//        base.zPosition = 200;
+//        base.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:base.size];
+//        base.physicsBody.categoryBitMask = botCategory;
+//        base.physicsBody.collisionBitMask = botCategory | wallCategory;
+//        base.physicsBody.contactTestBitMask = botCategory | wallCategory;
+//        base.position = CGPointMake(300, 300);
+//        base.zRotation = 20;
+//        [self addChild:base];
     }
     return self;
 }
@@ -73,5 +95,29 @@
 -(void)next {
     [self.controlView nextStep:DEFAULT_TIME_INTERVAL];
     [self.gameView nextStep:DEFAULT_TIME_INTERVAL];
+}
+
+- (void)didBeginContact:(SKPhysicsContact *)contact
+{
+    SKPhysicsBody *firstBody, *secondBody;
+    
+    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask)
+    {
+        firstBody = contact.bodyA;
+        secondBody = contact.bodyB;
+    }
+    else
+    {
+        firstBody = contact.bodyB;
+        secondBody = contact.bodyA;
+    }
+    if ((firstBody.categoryBitMask & botCategory) != 0)
+    {
+        if (!self.gameManager.isPrevious) {
+            NSLog(@"Contact!!!");
+            [self.gameView prevStep:DEFAULT_TIME_INTERVAL];
+            [self.gameManager jump:[self.gameManager.registers getParamFromRegister:kRegistersC]];
+        }
+    }
 }
 @end

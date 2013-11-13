@@ -8,6 +8,10 @@
 
 #import "AJGameView.h"
 
+static const uint32_t botCategory       = 0x1 << 0;
+static const uint32_t wallCategory      = 0x1 << 1;
+static const uint32_t bulletCategory    = 0x1 << 2;
+
 @implementation AJGameView
 
 -(id)initWithSize:(CGSize)size
@@ -24,11 +28,17 @@
         [self generateLevel:@"testLevel"];
 
         self.botBaseSprite = [[SKSpriteNode alloc] init];
+//        self.botBaseSprite.size = base.size;
         [self.botBaseSprite addChild:base];
         self.botCanonSprite= [[SKSpriteNode alloc] init];
         [self.botCanonSprite addChild:canon];
         
         self.botBaseSprite.anchorPoint = CGPointMake(0.5, 0.5);
+        self.botBaseSprite.zPosition = 100;
+        self.botBaseSprite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:base.size];
+        self.botBaseSprite.physicsBody.categoryBitMask = botCategory;
+        self.botBaseSprite.physicsBody.collisionBitMask = botCategory | wallCategory;
+        self.botBaseSprite.physicsBody.contactTestBitMask = botCategory | wallCategory;
 
         canon.anchorPoint = CGPointMake(0.5, 0.8);
         canon.position = CGPointMake(self.botBaseSprite.size.width * 7 / 10, self.botBaseSprite.size.height / 2);
@@ -42,12 +52,25 @@
 }
 
 -(void)nextStep:(NSTimeInterval)delta{
+    self.gameManager.isPrevious = NO;
     [self.gameManager nextStep];
     SKAction *botMove = [SKAction moveTo: CGPointMake(self.gameManager.bot.position.x, self.gameManager.bot.position.y)  duration:delta];
     float rotateRad = (self.gameManager.bot.chassis.orientation * M_PI / 180) ;
     SKAction *botRotate = [SKAction rotateToAngle:rotateRad duration:delta];
     SKAction *canonRotate = [SKAction rotateToAngle:(self.gameManager.bot.turret.localOrientation * M_PI / 180) duration:delta];
 
+    [self.botBaseSprite runAction:[SKAction group:@[botMove, botRotate]]];
+    [self.botCanonSprite runAction:canonRotate];
+}
+
+-(void)prevStep:(NSTimeInterval)delta{
+    self.gameManager.isPrevious = YES;
+    [self.gameManager prevStep];
+    SKAction *botMove = [SKAction moveTo: CGPointMake(self.gameManager.bot.position.x, self.gameManager.bot.position.y)  duration:delta];
+    float rotateRad = (self.gameManager.bot.chassis.orientation * M_PI / 180) ;
+    SKAction *botRotate = [SKAction rotateToAngle:rotateRad duration:delta];
+    SKAction *canonRotate = [SKAction rotateToAngle:(self.gameManager.bot.turret.localOrientation * M_PI / 180) duration:delta];
+    
     [self.botBaseSprite runAction:[SKAction group:@[botMove, botRotate]]];
     [self.botCanonSprite runAction:canonRotate];
 }
@@ -101,10 +124,6 @@
         [tiles addObject:tile];
     }
     
-    SKSpriteNode *qwe = [SKSpriteNode spriteNodeWithTexture:tiles[1]];
-    qwe.position = CGPointMake(400, 400);
-//    [self addChild:qwe];
-    
     NSDictionary __block *layer;
     NSDictionary __block *wall;
     NSDictionary __block *goals;
@@ -120,6 +139,36 @@
             goals = (NSDictionary *)obj;
         }
     }];
+    
+    // Generate walls
+    
+    NSArray *walls = [NSArray arrayWithArray:[wall objectForKey:@"objects"]];
+    [walls enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        CGPathRef wallPath = [self createPathRefFromArrayOfPoint:[obj objectForKey:@"polygon"]];
+        
+        SKShapeNode * wallPart = [SKShapeNode node];
+        wallPart.path = wallPath;
+        wallPart.strokeColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
+        wallPart.fillColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
+        wallPart.lineWidth = 1.0;
+        wallPart.zPosition = 200;
+        wallPart.position = CGPointMake([[obj objectForKey:@"x"] integerValue], self.size.height - [[obj objectForKey:@"y"] integerValue]);
+        wallPart.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:wallPath];
+        wallPart.physicsBody.categoryBitMask = wallCategory;
+        wallPart.physicsBody.collisionBitMask = botCategory | wallCategory;
+        wallPart.physicsBody.contactTestBitMask = botCategory | wallCategory;
+        
+        [self addChild:wallPart];
+    }];
+    
+    
+    
+    
+//    SKPhysicsBody *testWall = [SKPhysicsBody bodyWithEdgeLoopFromPath:wallPath];
+//    SKNode *wall1 = [SKNode node];
+//    wall1.physicsBody = testWall;
+    
+    
     
     NSDictionary __block *start;
     NSDictionary __block *finish;
@@ -161,6 +210,24 @@
     ground.position = CGPointMake(16, -16);
     [self addChild:ground];
 }
+
+-(CGPathRef) createPathRefFromArrayOfPoint:(NSArray *) pointsArray {
+    
+    CGMutablePathRef path = CGPathCreateMutable();
+    if (pointsArray && pointsArray.count > 0) {
+        NSDictionary *val = [pointsArray objectAtIndex:0];
+        CGPoint p = CGPointMake([val[@"x"] integerValue], [val[@"y"] integerValue]);
+        CGPathMoveToPoint(path, nil, p.x, p.y);
+        for (int i = 1; i < pointsArray.count; i++) {
+            NSDictionary *val = [pointsArray objectAtIndex:i];
+            CGPoint p = CGPointMake([val[@"x"] integerValue], [val[@"y"] integerValue] * -1);
+            CGPathAddLineToPoint(path, nil, p.x, p.y);
+        }
+    }
+    
+    return path;
+}
+
 
 
 

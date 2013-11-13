@@ -9,7 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "AJGameManager.h"
 
-@interface AJGameView : SKNode {
+@interface AJGameView : SKNode <SKPhysicsContactDelegate> {
     BOOL isMoving;
 }
 
@@ -21,6 +21,8 @@
 @property CGSize size;
 
 -(void)nextStep:(NSTimeInterval)delta;
+-(void)prevStep:(NSTimeInterval)delta;
+
 -(void)generateLevel: (NSString *)levelName;
 -(id)initWithSize:(CGSize)size;
 @end

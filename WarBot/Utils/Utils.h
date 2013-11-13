@@ -63,7 +63,7 @@ typedef enum {
 typedef enum {
     kRegistersA = 0,    // return register
     kRegistersB,        // program counter
-    kRegistersC,
+    kRegistersC,        // wall contact register
     kRegistersD,
     kRegistersE,
     kRegistersF,

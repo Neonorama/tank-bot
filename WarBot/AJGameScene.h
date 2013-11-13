@@ -11,7 +11,7 @@
 #import "AJControlVew.h"
 #import "AJGameManager.h"
 
-@interface AJGameScene : SKScene
+@interface AJGameScene : SKScene <SKPhysicsContactDelegate>
 
 @property (nonatomic, strong) AJGameManager *gameManager;
 @property (nonatomic, strong) AJGameView *gameView;

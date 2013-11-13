@@ -87,4 +87,26 @@
     return [NSString stringWithFormat:@"Bot state:\tPosition: %@", NSStringFromCGPoint(self.position)];
 }
 
+#pragma mark - NSCopy protocol
+
+-(id)copyWithZone:(NSZone *)zone {
+    
+    AJBot *newBot = [AJBot defaultBot];
+    
+    newBot.energy     = self.turret.energy + self.chassis.energy;
+    newBot.fuel       = self.fuel;
+    newBot.position   = self.position;
+    newBot.chassis.position = self.chassis.position;
+    newBot.chassis.orientation = self.chassis.orientation;
+    newBot.turret.position = self.turret.position;
+    newBot.turret.localOrientation = self.turret.localOrientation;
+
+    return newBot;
+}
+
+
+
+
+
+
 @end
