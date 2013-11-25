@@ -25,13 +25,10 @@
 @property (nonatomic, retain) AJTriggers *triggers;
 @property (nonatomic, retain) AJRegisters *registers;
 @property (nonatomic, retain) AJGameField *gameField;
-@property (nonatomic, assign) BOOL isPrevious;
 
 @property (nonatomic, retain) AJBot *bot;
-@property (nonatomic, retain) AJBot *prevBot;
 
 - (void) nextStep;
-- (void) prevStep;
 - (void) checkCurrentState;
 - (void) reset;
 

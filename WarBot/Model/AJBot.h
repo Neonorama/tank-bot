@@ -8,23 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
-#import "AJBotChassis.h"
-#import "AJBotTurret.h"
 #import "Utils.h"
+#import <SpriteKit/SpriteKit.h>
 
-@interface AJBot : NSObject <AJBotStateProtocol, NSCopying>
+@interface AJBot : NSObject
 
 @property (nonatomic, assign) int energy;
 @property (nonatomic, assign) int fuel;
-@property (nonatomic, assign) CGPoint position;
 
-@property (nonatomic, retain) AJBotTurret *turret;
-@property (nonatomic, retain) AJBotChassis *chassis;
+@property (nonatomic, retain) SKSpriteNode *chassis;
+@property (nonatomic, retain) SKSpriteNode *turret;
 
-@property (nonatomic, assign) id stateController;
-@property (nonatomic, weak) id view;
+//@property (nonatomic, assign) id stateController;
+//@property (nonatomic, weak) SKNode *view;
 
 + (id) defaultBot;
++ (id) botWithChassisName: (NSString *) chassisName andTurretName: (NSString *) turretName;
+
+- (void) initPhysics;
 
 // Chassis methods
 - (void) moveForward:(NSNumber *) distance;

@@ -18,8 +18,6 @@
         self.gameManager = [[AJGameManager alloc] init];
         
         self.gameView = [[AJGameView alloc] initWithSize:size];
-        self.gameManager.bot.chassis.position = self.gameView.botBaseSprite.position;
-        self.gameManager.bot.position = self.gameView.botBaseSprite.position;
         self.gameView.gameManager =  self.gameManager;
         self.gameView.position = CGPointMake(DEFAULT_COLS * DEFAULT_CELL_SIZE, 0);
 
@@ -32,6 +30,10 @@
 
         [self addChild:self.gameView];
         [self addChild:self.controlView];
+        
+        [self.gameView addChild:self.gameManager.bot.chassis];
+        self.gameManager.bot.chassis.position = self.gameView.startPoint;
+        self.gameManager.bot.chassis.zPosition = 10;
     
 //        self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:DEFAULT_TIME_INTERVAL target:self selector:@selector(nextStep:) userInfo:nil repeats:YES];
         
@@ -40,6 +42,7 @@
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsWorld.gravity = CGVectorMake(0,0);
         self.physicsWorld.contactDelegate = self;
+        [self.gameManager.bot initPhysics];
         
     }
     return self;
@@ -101,13 +104,9 @@
     }
     if ((firstBody.categoryBitMask & botCategory) != 0)
     {
-        if (!self.gameManager.isPrevious) {
             NSLog(@"Contact!!!");
-//            [self.gameView prevStep:DEFAULT_TIME_INTERVAL];
-//            [self.gameManager jump:[self.gameManager.registers getParamFromRegister:kRegistersC]];
             [self reset];
             [self pause];
-        }
     }
 }
 @end

@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		91009C74174187C9002D76EA /* AJBot.m in Sources */ = {isa = PBXBuildFile; fileRef = 91009C73174187C9002D76EA /* AJBot.m */; };
-		91009C7717440F4B002D76EA /* AJBotChassis.m in Sources */ = {isa = PBXBuildFile; fileRef = 91009C7617440F4B002D76EA /* AJBotChassis.m */; };
-		91009C7A17440F5D002D76EA /* AJBotTurret.m in Sources */ = {isa = PBXBuildFile; fileRef = 91009C7917440F5D002D76EA /* AJBotTurret.m */; };
 		912242E2174030C800A52C86 /* AJGameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 912242E1174030C800A52C86 /* AJGameManager.m */; };
 		91361128173E456200937A20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91361127173E456200937A20 /* UIKit.framework */; };
 		9136112A173E456200937A20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91361129173E456200937A20 /* Foundation.framework */; };
@@ -43,10 +41,6 @@
 /* Begin PBXFileReference section */
 		91009C72174187C9002D76EA /* AJBot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJBot.h; path = Model/AJBot.h; sourceTree = "<group>"; };
 		91009C73174187C9002D76EA /* AJBot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJBot.m; path = Model/AJBot.m; sourceTree = "<group>"; };
-		91009C7517440F4B002D76EA /* AJBotChassis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJBotChassis.h; path = Model/AJBotChassis.h; sourceTree = "<group>"; };
-		91009C7617440F4B002D76EA /* AJBotChassis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJBotChassis.m; path = Model/AJBotChassis.m; sourceTree = "<group>"; };
-		91009C7817440F5D002D76EA /* AJBotTurret.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJBotTurret.h; sourceTree = "<group>"; };
-		91009C7917440F5D002D76EA /* AJBotTurret.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJBotTurret.m; sourceTree = "<group>"; };
 		912242E0174030C800A52C86 /* AJGameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJGameManager.h; path = Model/AJGameManager.h; sourceTree = "<group>"; };
 		912242E1174030C800A52C86 /* AJGameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJGameManager.m; path = Model/AJGameManager.m; sourceTree = "<group>"; };
 		912242E31740345D00A52C86 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Utils/Utils.h; sourceTree = "<group>"; };
@@ -123,10 +117,6 @@
 			children = (
 				91009C72174187C9002D76EA /* AJBot.h */,
 				91009C73174187C9002D76EA /* AJBot.m */,
-				91009C7517440F4B002D76EA /* AJBotChassis.h */,
-				91009C7617440F4B002D76EA /* AJBotChassis.m */,
-				91009C7817440F5D002D76EA /* AJBotTurret.h */,
-				91009C7917440F5D002D76EA /* AJBotTurret.m */,
 			);
 			name = Bot;
 			sourceTree = "<group>";
@@ -347,8 +337,6 @@
 				91361138173E456200937A20 /* AJAppDelegate.m in Sources */,
 				912242E2174030C800A52C86 /* AJGameManager.m in Sources */,
 				91009C74174187C9002D76EA /* AJBot.m in Sources */,
-				91009C7717440F4B002D76EA /* AJBotChassis.m in Sources */,
-				91009C7A17440F5D002D76EA /* AJBotTurret.m in Sources */,
 				91B007F0174827EB00ACA5D4 /* AJStateController.m in Sources */,
 				91A1769917553BE60069264C /* AJProgramField.m in Sources */,
 				919D69C11757DF9E00C50707 /* AJCommand.m in Sources */,

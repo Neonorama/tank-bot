@@ -14,14 +14,11 @@
 }
 
 @property (nonatomic, retain) AJGameManager *gameManager;
-@property (nonatomic, retain) SKSpriteNode *botBaseSprite;
-@property (nonatomic, retain) SKSpriteNode *botCanonSprite;
 @property (nonatomic, assign) CGPoint startPoint;
 @property (nonatomic, assign) CGRect finishArea;
 @property (nonatomic, assign) CGSize size;
 
 -(void) nextStep:(NSTimeInterval)delta;
--(void) prevStep:(NSTimeInterval)delta;
 -(void) reset;
 
 -(void)generateLevel: (NSString *)levelName;

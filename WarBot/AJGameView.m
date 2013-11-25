@@ -13,86 +13,21 @@
 -(id)initWithSize:(CGSize)size
 {
     if (self = [super init]) {
-                
-        SKTextureAtlas *texture = [SKTextureAtlas atlasNamed:@"bot"];
-        
-        SKSpriteNode *base = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_base.png"]];
-        SKSpriteNode *canon = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_canon_1.png"]];
-        base.zRotation = M_PI / 2;
-        canon.zRotation = M_PI / 2;
         self.size = size;
         [self generateLevel:@"testLevel"];
-
-        self.botBaseSprite = [[SKSpriteNode alloc] init];
-//        self.botBaseSprite.size = base.size;
-        [self.botBaseSprite addChild:base];
-        self.botCanonSprite= [[SKSpriteNode alloc] init];
-        [self.botCanonSprite addChild:canon];
         
-        self.botBaseSprite.anchorPoint = CGPointMake(0.5, 0.5);
-        self.botBaseSprite.zPosition = 100;
-        self.botBaseSprite.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:base.size];
-        self.botBaseSprite.physicsBody.categoryBitMask = botCategory;
-        self.botBaseSprite.physicsBody.collisionBitMask = botCategory | wallCategory;
-        self.botBaseSprite.physicsBody.contactTestBitMask = botCategory | wallCategory;
-
-        canon.anchorPoint = CGPointMake(0.5, 0.8);
-        canon.position = CGPointMake(self.botBaseSprite.size.width * 7 / 10, self.botBaseSprite.size.height / 2);
-        
-        [self.botBaseSprite addChild:self.botCanonSprite];
-        [self addChild:self.botBaseSprite];
-        self.botBaseSprite.position = self.startPoint;
         
 	}
 	return self;
 }
 
 -(void)nextStep:(NSTimeInterval)delta{
-    self.gameManager.isPrevious = NO;
-    
-    float prevRotateRad = (self.gameManager.bot.chassis.orientation * M_PI / 180) ;
-    float prevCanonRotateRad = self.gameManager.bot.turret.absOrientation * M_PI / 180;
     
     [self.gameManager nextStep];
-    
-    SKAction *botMove = [SKAction moveTo: CGPointMake(self.gameManager.bot.position.x, self.gameManager.bot.position.y)  duration:delta];
-    
-    float rotateRad = (self.gameManager.bot.chassis.orientation * M_PI / 180) ;
-    float canonRotateRad = self.gameManager.bot.turret.absOrientation * M_PI / 180;
-
-    SKAction *botRotate = [SKAction rotateByAngle:(rotateRad - prevRotateRad) duration:delta];
-    SKAction *canonRotate = [SKAction rotateByAngle:(canonRotateRad - prevCanonRotateRad) duration:delta];
-
-    [self.botBaseSprite runAction:[SKAction group:@[botMove, botRotate]]];
-    [self.botCanonSprite runAction:canonRotate];
-}
-
--(void)prevStep:(NSTimeInterval)delta{
-    self.gameManager.isPrevious = YES;
-    [self.gameManager prevStep];
-    SKAction *botMove = [SKAction moveTo: CGPointMake(self.gameManager.bot.position.x, self.gameManager.bot.position.y)  duration:delta];
-    float rotateRad = (self.gameManager.bot.chassis.orientation * M_PI / 180) ;
-    SKAction *botRotate = [SKAction rotateToAngle:rotateRad duration:delta];
-    SKAction *canonRotate = [SKAction rotateToAngle:(self.gameManager.bot.turret.localOrientation * M_PI / 180) duration:delta];
-    
-    [self.botBaseSprite runAction:[SKAction group:@[botMove, botRotate]]];
-    [self.botCanonSprite runAction:canonRotate];
 }
 
 - (void) reset {
-    self.gameManager.isPrevious = YES;
     [self.gameManager reset];
-    [self.botBaseSprite removeAllActions];
-    [self.botCanonSprite removeAllActions];
-    self.botBaseSprite.position = self.startPoint;
-    [self.botBaseSprite runAction:[SKAction moveTo:self.startPoint duration:0.0f]];
-    [self.botBaseSprite runAction:[SKAction rotateToAngle:0.0f duration:0.0f]];
-    [self.botCanonSprite runAction:[SKAction rotateToAngle:0.0f duration:0.0f]];
-    self.gameManager.bot.chassis.position = self.botBaseSprite.position;
-    self.gameManager.bot.position = self.botBaseSprite.position;
-    self.gameManager.bot.chassis.orientation = 0.0f;
-    self.gameManager.bot.turret.localOrientation = 0.0f;
-    self.gameManager.bot.turret.absOrientation = 0.0f;
     [self.gameManager.registers setParam:@0 toRegister:kRegistersB];
 }
 

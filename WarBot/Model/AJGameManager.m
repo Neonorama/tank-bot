@@ -16,7 +16,6 @@
     NSLog(@"===============================================");
     [self checkCurrentState];
     
-    self.prevBot = [self.bot copy];
     AJCommand *currCmd = [self.programField getCurrentCommand];
     NSLog(@"%@", currCmd);
     switch (currCmd.type) {
@@ -33,10 +32,6 @@
     }
 }
 
--(void)prevStep {
-    self.bot = self.prevBot;
-}
-
 -(void)checkCurrentState {
     NSLog(@"%@", self.bot);
 }
@@ -45,7 +40,6 @@
 {
     self = [super init];
     if (self) {
-        self.isPrevious = NO;
         self.bot = [AJBot defaultBot];
         self.programField = [AJProgramField defaultField];
         [self.programField setDelegate:self];
