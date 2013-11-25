@@ -79,6 +79,23 @@
     [self.botCanonSprite runAction:canonRotate];
 }
 
+- (void) reset {
+    self.gameManager.isPrevious = YES;
+    [self.gameManager reset];
+    [self.botBaseSprite removeAllActions];
+    [self.botCanonSprite removeAllActions];
+    self.botBaseSprite.position = self.startPoint;
+    [self.botBaseSprite runAction:[SKAction moveTo:self.startPoint duration:0.0f]];
+    [self.botBaseSprite runAction:[SKAction rotateToAngle:0.0f duration:0.0f]];
+    [self.botCanonSprite runAction:[SKAction rotateToAngle:0.0f duration:0.0f]];
+    self.gameManager.bot.chassis.position = self.botBaseSprite.position;
+    self.gameManager.bot.position = self.botBaseSprite.position;
+    self.gameManager.bot.chassis.orientation = 0.0f;
+    self.gameManager.bot.turret.localOrientation = 0.0f;
+    self.gameManager.bot.turret.absOrientation = 0.0f;
+    [self.gameManager.registers setParam:@0 toRegister:kRegistersB];
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     NSArray* allTouches = [[event allTouches] allObjects];

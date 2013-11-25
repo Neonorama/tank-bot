@@ -83,4 +83,8 @@
     [self.registers ret];
 }
 
+-(void)reset {
+    
+}
+
 @end

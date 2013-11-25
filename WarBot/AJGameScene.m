@@ -41,18 +41,6 @@
         self.physicsWorld.gravity = CGVectorMake(0,0);
         self.physicsWorld.contactDelegate = self;
         
-        
-//        SKTextureAtlas *texture = [SKTextureAtlas atlasNamed:@"bot"];
-//        
-//        SKSpriteNode *base = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_base.png"]];
-//        base.zPosition = 200;
-//        base.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:base.size];
-//        base.physicsBody.categoryBitMask = botCategory;
-//        base.physicsBody.collisionBitMask = botCategory | wallCategory;
-//        base.physicsBody.contactTestBitMask = botCategory | wallCategory;
-//        base.position = CGPointMake(300, 300);
-//        base.zRotation = 20;
-//        [self addChild:base];
     }
     return self;
 }
@@ -93,6 +81,10 @@
     [self.gameView nextStep:DEFAULT_TIME_INTERVAL];
 }
 
+- (void) reset {
+    [self.gameView reset];
+}
+
 - (void)didBeginContact:(SKPhysicsContact *)contact
 {
     SKPhysicsBody *firstBody, *secondBody;
@@ -111,8 +103,10 @@
     {
         if (!self.gameManager.isPrevious) {
             NSLog(@"Contact!!!");
-            [self.gameView prevStep:DEFAULT_TIME_INTERVAL];
-            [self.gameManager jump:[self.gameManager.registers getParamFromRegister:kRegistersC]];
+//            [self.gameView prevStep:DEFAULT_TIME_INTERVAL];
+//            [self.gameManager jump:[self.gameManager.registers getParamFromRegister:kRegistersC]];
+            [self reset];
+            [self pause];
         }
     }
 }

@@ -33,5 +33,6 @@
 - (void) nextStep;
 - (void) prevStep;
 - (void) checkCurrentState;
+- (void) reset;
 
 @end
