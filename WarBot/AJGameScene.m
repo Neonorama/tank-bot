@@ -86,6 +86,9 @@
 
 - (void) reset {
     [self.gameView reset];
+    
+    
+    self.gameManager.bot.chassis.position = self.gameView.startPoint;
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact
@@ -104,9 +107,9 @@
     }
     if ((firstBody.categoryBitMask & botCategory) != 0)
     {
-            NSLog(@"Contact!!!");
-            [self reset];
-            [self pause];
+        NSLog(@"Contact!!!");
+        [self pause];
+        [self reset];
     }
 }
 @end

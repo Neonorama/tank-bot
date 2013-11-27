@@ -28,6 +28,9 @@
 
 - (void) reset {
     [self.gameManager reset];
+    [self.gameManager.bot.chassis runAction:[SKAction moveTo:self.startPoint duration:0.0]];
+    [self.gameManager.bot.chassis  runAction:[SKAction rotateToAngle:0.0 duration:0.0]];
+    [self.gameManager.bot.turret  runAction:[SKAction rotateToAngle:0.0 duration:0.0]];
     [self.gameManager.registers setParam:@0 toRegister:kRegistersB];
 }
 
@@ -44,7 +47,7 @@
 
 -(void)generateLevel:(NSString *)levelName {
     NSError *error;
-    NSString *levelFileName = [[NSBundle mainBundle] pathForResource:@"testLevel" ofType:@"json"];
+    NSString *levelFileName = [[NSBundle mainBundle] pathForResource:@"level1" ofType:@"json"];
     NSData *levelData = [NSData dataWithContentsOfFile:levelFileName];
     NSDictionary *levelDict = [NSJSONSerialization
                           JSONObjectWithData:levelData

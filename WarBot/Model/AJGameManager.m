@@ -78,7 +78,8 @@
 }
 
 -(void)reset {
-    
+    [self.bot.chassis removeAllActions];
+    [self.bot.turret removeAllActions];
 }
 
 @end
