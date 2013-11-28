@@ -8,6 +8,7 @@
 
 #import "AJViewController.h"
 #import "AJGameScene.h"
+#import "AJMainMenuScene.h"
 
 @interface AJViewController ()
 
@@ -39,10 +40,11 @@
     
     SKView * skView = (SKView *)self.view;
     
-    SKScene * scene = [AJGameScene sceneWithSize:CGSizeMake(1024,768)];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
+    SKScene * scene = [AJMainMenuScene sceneWithSize:CGSizeMake(1024,768)];
     
-    [skView presentScene:scene];
+    SKTransition *reveal = [SKTransition revealWithDirection:SKTransitionDirectionDown duration:1.0];
+    
+    [skView presentScene:scene transition:reveal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,21 +66,4 @@
     return YES;
 }
 
-- (IBAction)pause:(id)sender {
-    SKView * skView = (SKView *)self.view;
-    AJGameScene *gameScene = (AJGameScene *)skView.scene;
-    [gameScene pause];
-}
-
-- (IBAction)resume:(id)sender {
-    SKView * skView = (SKView *)self.view;
-    AJGameScene *gameScene = (AJGameScene *)skView.scene;
-    [gameScene resume];
-}
-
-- (IBAction)nextStep:(id)sender {
-    SKView * skView = (SKView *)self.view;
-    AJGameScene *gameScene = (AJGameScene *)skView.scene;
-    [gameScene next];
-}
 @end
