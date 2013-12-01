@@ -7,6 +7,8 @@
 //
 
 #import "AJGameScene.h"
+#import "AJMenuNode.h"
+#import "AJFinishLevelScene.h"
 
 @implementation AJGameScene
 
@@ -43,6 +45,13 @@
         self.physicsWorld.gravity = CGVectorMake(0,0);
         self.physicsWorld.contactDelegate = self;
         [self.gameManager.bot initPhysics];
+        
+        [self addChild: [AJMenuNode menuLabelNodeWithName:@"PlayButton"
+                                                     text:@"Play!"
+                                                 position:CGPointMake(10,10)
+                                                    block:^{
+                                                        [self resume];
+                                                    }]];
         
     }
     return self;
@@ -91,6 +100,14 @@
     self.gameManager.bot.chassis.position = self.gameView.startPoint;
 }
 
+- (void) finish
+{
+    SKTransition *reveal = [SKTransition revealWithDirection:SKTransitionDirectionDown duration:0.5];
+    AJFinishLevelScene *newScene = [[AJFinishLevelScene alloc] initWithSize: CGSizeMake(1024,768)];
+    //  Optionally, insert code to configure the new scene.
+    [self.scene.view presentScene: newScene transition: reveal];
+}
+
 - (void)didBeginContact:(SKPhysicsContact *)contact
 {
     SKPhysicsBody *firstBody, *secondBody;
@@ -105,11 +122,24 @@
         firstBody = contact.bodyB;
         secondBody = contact.bodyA;
     }
-    if ((firstBody.categoryBitMask & botCategory) != 0)
+    
+    if ((secondBody.categoryBitMask & wallCategory) != 0)
     {
-        NSLog(@"Contact!!!");
+        NSLog(@"Wall contact!!!");
         [self pause];
         [self reset];
     }
+    
+    if ((secondBody.categoryBitMask & finishCategory) != 0)
+    {
+        NSLog(@"Finish contact!!!");
+        [self pause];
+        [self finish];
+    }
 }
+
+-(void)dealloc {
+    
+}
+
 @end

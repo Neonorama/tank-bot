@@ -8,6 +8,7 @@
 
 #import "AJFinishLevelScene.h"
 #import "AJMainMenuScene.h"
+#import "AJMenuNode.h"
 
 @implementation AJFinishLevelScene
 
@@ -30,34 +31,29 @@
 }
 
 - (void) createSceneContents {
-    self.backgroundColor = [SKColor greenColor];
+    self.backgroundColor = [SKColor purpleColor];
     self.scaleMode = SKSceneScaleModeAspectFit;
-    [self addChild: [self mainMenuNode]];
-}
-
-- (SKLabelNode *)mainMenuNode
-{
-    SKLabelNode *playNode = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    playNode.text = @"Main menu";
-    playNode.fontSize = 42;
-    playNode.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame));
-    playNode.name = @"PlayButton";
-    return playNode;
+    [self addChild: [AJMenuNode menuLabelNodeWithName:@"BackToMenu"
+                                                 text:@"Main menu"
+                                             position:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame))
+                                                block:^{
+                                                    [self backToMainMenu];
+                                                }]];
 }
 
 #pragma mark - touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSArray* allTouches = [[event allTouches] allObjects];
-    
-    UITouch* touchOne = [allTouches objectAtIndex:0];
-    
-    CGPoint touchLocationOne = [touchOne locationInNode:self];
+//    NSArray* allTouches = [[event allTouches] allObjects];
+//    
+//    UITouch* touchOne = [allTouches objectAtIndex:0];
+//    
+//    CGPoint touchLocationOne = [touchOne locationInNode:self];
 }
 
 #pragma mark - Menu
 
-- (void) play
+- (void) backToMainMenu
 {
     SKTransition *reveal = [SKTransition revealWithDirection:SKTransitionDirectionDown duration:1.0];
     AJMainMenuScene *newScene = [[AJMainMenuScene alloc] initWithSize: CGSizeMake(1024,768)];

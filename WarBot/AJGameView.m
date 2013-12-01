@@ -36,9 +36,9 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    NSArray* allTouches = [[event allTouches] allObjects];
-    
-    UITouch* touchOne = [allTouches objectAtIndex:0];
+//    NSArray* allTouches = [[event allTouches] allObjects];
+//    
+//    UITouch* touchOne = [allTouches objectAtIndex:0];
     
 //    CGPoint touchLocationOne = [touchOne locationInView:self.view];
 //    
@@ -120,14 +120,11 @@
         [self addChild:wallPart];
     }];
     
-    
-    
-    
 //    SKPhysicsBody *testWall = [SKPhysicsBody bodyWithEdgeLoopFromPath:wallPath];
 //    SKNode *wall1 = [SKNode node];
 //    wall1.physicsBody = testWall;
     
-    
+    // Generate start and finish area
     
     NSDictionary __block *start;
     NSDictionary __block *finish;
@@ -145,8 +142,34 @@
                                   self.size.height - [start[@"y"] integerValue] - [start[@"height"] integerValue],
                                   [start[@"width"] integerValue],
                                   [start[@"height"] integerValue]);
+    
+    CGRect finishArea = CGRectMake([finish[@"x"] integerValue],
+                                  self.size.height - [finish[@"y"] integerValue] - [finish[@"height"] integerValue],
+                                  [finish[@"width"] integerValue],
+                                  [finish[@"height"] integerValue]);
+
     self.startPoint = CGPointMake(CGRectGetMidX(startArea), CGRectGetMidY(startArea)) ;
-    int layerHeight = [[layer objectForKey:@"height"] integerValue];
+    
+    SKShapeNode * finishShape = [SKShapeNode node];
+    
+    CGMutablePathRef finishPath = CGPathCreateMutable();
+    CGPathAddRect(finishPath, NULL, CGRectMake(0, 0, finishArea.size.width, finishArea.size.height));
+//    CGPathAddArc(finishPath, NULL, 0,0, 50, 0, M_PI*2, YES);
+    
+    finishShape.path = finishPath;
+    finishShape.strokeColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
+    finishShape.fillColor = [SKColor colorWithRed:1.0 green:1.0 blue:0 alpha:0.5];
+    finishShape.lineWidth = 1.0;
+    finishShape.zPosition = 300;
+    finishShape.position = CGPointMake(100, 200);// CGPointMake(finishArea.origin.x, finishArea.origin.y);
+    finishShape.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:finishPath];
+    finishShape.physicsBody.categoryBitMask = finishCategory;
+    finishShape.physicsBody.collisionBitMask = botCategory | finishCategory;
+    finishShape.physicsBody.contactTestBitMask = botCategory | finishCategory;
+    [self addChild:finishShape];
+    
+    // Load tiles
+//    int layerHeight = [[layer objectForKey:@"height"] integerValue];
     int layerWidth = [[layer objectForKey:@"width"] integerValue];
     NSArray *layerData = [layer objectForKey:@"data"];
     NSMutableArray *layerTiles = [NSMutableArray arrayWithCapacity:[layerData count]];
