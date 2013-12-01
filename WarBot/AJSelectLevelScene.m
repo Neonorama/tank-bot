@@ -8,6 +8,7 @@
 
 #import "AJSelectLevelScene.h"
 #import "AJGameScene.h"
+#import "AJMenuNode.h"
 
 @implementation AJSelectLevelScene
 
@@ -32,32 +33,22 @@
 - (void) createSceneContents {
     self.backgroundColor = [SKColor greenColor];
     self.scaleMode = SKSceneScaleModeAspectFit;
-    [self addChild: [self newPlayNode]];
-}
-
-- (SKLabelNode *)newPlayNode
-{
-    SKLabelNode *playNode = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    playNode.text = @"Select Level!";
-    playNode.fontSize = 84;
-    playNode.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame));
-    playNode.name = @"PlayButton";
-    return playNode;
+    [self addChild: [AJMenuNode menuLabelNodeWithName:@"SelectLevel"
+                                                 text:@"Select level"
+                                             position:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame))
+                                                block:^{
+                                                    [self play];
+                                                }]];
 }
 
 #pragma mark - touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSArray* allTouches = [[event allTouches] allObjects];
-    
-    UITouch* touchOne = [allTouches objectAtIndex:0];
-    
-    CGPoint touchLocationOne = [touchOne locationInNode:self];
-    
-    if ([[self childNodeWithName:@"PlayButton"] containsPoint:touchLocationOne]) {
-        NSLog(@"Play!");
-        [self play];
-    }
+//    NSArray* allTouches = [[event allTouches] allObjects];
+//    
+//    UITouch* touchOne = [allTouches objectAtIndex:0];
+//    
+//    CGPoint touchLocationOne = [touchOne locationInNode:self];
 }
 
 #pragma mark - Menu

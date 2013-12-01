@@ -8,6 +8,7 @@
 
 #import "AJMainMenuScene.h"
 #import "AJSelectLevelScene.h"
+#import "AJMenuNode.h"
 
 #define PlayTagButton 101
 
@@ -36,32 +37,24 @@
 - (void) createSceneContents {
     self.backgroundColor = [SKColor blueColor];
     self.scaleMode = SKSceneScaleModeAspectFit;
-    [self addChild: [self newPlayNode]];
-}
+    [self addChild: [AJMenuNode menuLabelNodeWithName:@"PlayButton"
+                                                 text:@"Play!"
+                                             position:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame))
+                                             block:^{
+                                                 [self play];
+                                             }]];
 
-- (SKLabelNode *)newPlayNode
-{
-    SKLabelNode *playNode = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    playNode.text = @"Play!";
-    playNode.fontSize = 84;
-    playNode.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame));
-    playNode.name = @"PlayButton";
-    return playNode;
 }
 
 #pragma mark - touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSArray* allTouches = [[event allTouches] allObjects];
+//    NSArray* allTouches = [[event allTouches] allObjects];
+//    
+//    UITouch* touchOne = [allTouches objectAtIndex:0];
+//    
+//    CGPoint touchLocationOne = [touchOne locationInNode:self];
     
-    UITouch* touchOne = [allTouches objectAtIndex:0];
-    
-    CGPoint touchLocationOne = [touchOne locationInNode:self];
-    
-    if ([[self childNodeWithName:@"PlayButton"] containsPoint:touchLocationOne]) {
-        NSLog(@"Select level.");
-        [self play];
-    }
 }
 
 #pragma mark - Menu
