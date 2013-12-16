@@ -24,7 +24,7 @@
         SKTextureAtlas *texture = [SKTextureAtlas atlasNamed:@"bot"];
         
         SKSpriteNode *chassis_ = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_base.png"]];
-        SKSpriteNode *turret_ = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_canon_1.png"]];
+        SKSpriteNode *turret_ = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_tower.png"]];
         chassis_.zRotation = M_PI_2;
         turret_.zRotation = M_PI_2;
         
@@ -51,7 +51,7 @@
         SKTextureAtlas *texture = [SKTextureAtlas atlasNamed:@"bot"];
         
         self.chassis = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_base.png"]];
-        self.turret = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_canon_1.png"]];
+        self.turret = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_tower.png"]];
         
         [self.chassis addChild:self.turret];
     }
