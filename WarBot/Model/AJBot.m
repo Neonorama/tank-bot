@@ -25,8 +25,8 @@
         
         SKSpriteNode *chassis_ = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_base.png"]];
         SKSpriteNode *turret_ = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_tower.png"]];
-        chassis_.zRotation = M_PI_2;
-        turret_.zRotation = M_PI_2;
+        chassis_.zRotation = 0;
+        turret_.zRotation = 0;
         
         self.chassis = [SKSpriteNode spriteNodeWithColor:Nil size:chassis_.size];
         [self.chassis addChild:chassis_];

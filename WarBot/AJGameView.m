@@ -107,9 +107,9 @@
         
         SKShapeNode * wallPart = [SKShapeNode node];
         wallPart.path = wallPath;
-        wallPart.strokeColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
-        wallPart.fillColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
-        wallPart.lineWidth = 1.0;
+//        wallPart.strokeColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
+//        wallPart.fillColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
+        wallPart.lineWidth = 0.0;
         wallPart.zPosition = 200;
         wallPart.position = CGPointMake([[obj objectForKey:@"x"] integerValue], self.size.height - [[obj objectForKey:@"y"] integerValue]);
         wallPart.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:wallPath];
@@ -161,7 +161,7 @@
     finishShape.fillColor = [SKColor colorWithRed:1.0 green:1.0 blue:0 alpha:0.5];
     finishShape.lineWidth = 1.0;
     finishShape.zPosition = 300;
-    finishShape.position = CGPointMake(100, 200);// CGPointMake(finishArea.origin.x, finishArea.origin.y);
+    finishShape.position = CGPointMake(finishArea.origin.x, finishArea.origin.y);
     finishShape.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:finishPath];
     finishShape.physicsBody.categoryBitMask = finishCategory;
     finishShape.physicsBody.collisionBitMask = botCategory | finishCategory;

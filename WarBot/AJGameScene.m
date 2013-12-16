@@ -48,7 +48,7 @@
         
         [self addChild: [AJMenuNode menuLabelNodeWithName:@"PlayButton"
                                                      text:@"Play!"
-                                                 position:CGPointMake(10,10)
+                                                 position:CGPointMake(size.width / 2, size.height - 100)
                                                     block:^{
                                                         [self resume];
                                                     }]];
