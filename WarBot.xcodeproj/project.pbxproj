@@ -30,6 +30,8 @@
 		9141CD7017861FFF0041C643 /* AJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 913BEB1117861D7200E8A483 /* AJViewController.m */; };
 		915133291775BCC100FB4007 /* AJGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 915133281775BCC100FB4007 /* AJGameView.m */; };
 		915459EE177B8B9B00439D58 /* AJConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 915459ED177B8B9B00439D58 /* AJConstants.m */; };
+		9155FBCB185F901D008E8CF9 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9155FBC9185F901D008E8CF9 /* Icon.png */; };
+		9155FBCC185F901D008E8CF9 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9155FBCA185F901D008E8CF9 /* Icon@2x.png */; };
 		916DF52D177B748400A3BD97 /* AJGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 916DF52C177B748400A3BD97 /* AJGameScene.m */; };
 		916DF530177B75D300A3BD97 /* AJControlVew.m in Sources */ = {isa = PBXBuildFile; fileRef = 916DF52F177B75D300A3BD97 /* AJControlVew.m */; };
 		919D69C11757DF9E00C50707 /* AJCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 919D69C01757DF9E00C50707 /* AJCommand.m */; };
@@ -86,6 +88,8 @@
 		915133281775BCC100FB4007 /* AJGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJGameView.m; sourceTree = "<group>"; };
 		915459EC177B8B9B00439D58 /* AJConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJConstants.h; path = Utils/AJConstants.h; sourceTree = "<group>"; };
 		915459ED177B8B9B00439D58 /* AJConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJConstants.m; path = Utils/AJConstants.m; sourceTree = "<group>"; };
+		9155FBC9185F901D008E8CF9 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		9155FBCA185F901D008E8CF9 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		9160297E1775C4B80039A3D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		916DF52B177B748400A3BD97 /* AJGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJGameScene.h; sourceTree = "<group>"; };
 		916DF52C177B748400A3BD97 /* AJGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJGameScene.m; sourceTree = "<group>"; };
@@ -201,6 +205,8 @@
 		9136112E173E456200937A20 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9155FBC9185F901D008E8CF9 /* Icon.png */,
+				9155FBCA185F901D008E8CF9 /* Icon@2x.png */,
 				9136112F173E456200937A20 /* WarBot-Info.plist */,
 				91361130173E456200937A20 /* InfoPlist.strings */,
 				91361133173E456200937A20 /* main.m */,
@@ -337,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91361132173E456200937A20 /* InfoPlist.strings in Resources */,
+				9155FBCC185F901D008E8CF9 /* Icon@2x.png in Resources */,
 				91A67F3717A469EC00186F3F /* testLevel.png in Resources */,
 				9136113A173E456200937A20 /* Default.png in Resources */,
 				9136113C173E456200937A20 /* Default@2x.png in Resources */,
@@ -344,6 +351,7 @@
 				9136113E173E456200937A20 /* Default-568h@2x.png in Resources */,
 				91361141173E456200937A20 /* MainStoryboard.storyboard in Resources */,
 				91A67F3617A469E900186F3F /* testLevel.json in Resources */,
+				9155FBCB185F901D008E8CF9 /* Icon.png in Resources */,
 				9102253C184538A000A37343 /* level1.json in Resources */,
 				913BEAC517860F2700E8A483 /* bot.atlas in Resources */,
 			);
