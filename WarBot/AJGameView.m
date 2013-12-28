@@ -10,11 +10,11 @@
 
 @implementation AJGameView
 
--(id)initWithSize:(CGSize)size
+-(id)initWithSize:(CGSize)size name:(NSString *)levelName
 {
     if (self = [super init]) {
         self.size = size;
-        [self generateLevel:@"testLevel"];
+        [self generateLevel:levelName];
         
         
 	}
@@ -47,7 +47,7 @@
 
 -(void)generateLevel:(NSString *)levelName {
     NSError *error;
-    NSString *levelFileName = [[NSBundle mainBundle] pathForResource:@"level1" ofType:@"json"];
+    NSString *levelFileName = [[NSBundle mainBundle] pathForResource:levelName ofType:@"json"];
     NSData *levelData = [NSData dataWithContentsOfFile:levelFileName];
     NSDictionary *levelDict = [NSJSONSerialization
                           JSONObjectWithData:levelData
@@ -109,7 +109,7 @@
         wallPart.path = wallPath;
 //        wallPart.strokeColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
 //        wallPart.fillColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
-        wallPart.lineWidth = 0.0;
+        wallPart.lineWidth = 1.0;
         wallPart.zPosition = 200;
         wallPart.position = CGPointMake([[obj objectForKey:@"x"] integerValue], self.size.height - [[obj objectForKey:@"y"] integerValue]);
         wallPart.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:wallPath];
@@ -179,7 +179,9 @@
         SKSpriteNode *tile = [SKSpriteNode spriteNodeWithTexture:tiles[tileIndex-1]];
         int xOffset = (i % layerWidth) * tilewidth;
         int yOffset = (i / layerWidth) * tileheight;
-        tile.position = CGPointMake(xOffset, self.size.height - yOffset);
+        
+//        tile.position = CGPointMake(xOffset, yOffset);
+        tile.position = CGPointMake(tilewidth / 2, tileheight / 2);
         [layerTiles addObject:tile];
     }
     
@@ -189,7 +191,8 @@
         [ground addChild:layerTiles[i]];
     }
     ground.zPosition  = 10;
-    ground.position = CGPointMake(16, -16);
+//    ground.position = CGPointMake(16, -16);
+    ground.position = CGPointMake(0, 0);
     [self addChild:ground];
 }
 

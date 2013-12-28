@@ -22,5 +22,5 @@
 -(void) reset;
 
 -(void)generateLevel: (NSString *)levelName;
--(id)initWithSize:(CGSize)size;
+-(id)initWithSize:(CGSize)size name: (NSString *) levelName;
 @end

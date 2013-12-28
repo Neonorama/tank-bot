@@ -22,4 +22,6 @@
 -(void) resume;
 -(void) next;
 
+-(id)initWithSize:(CGSize)size options: (NSDictionary *) options;
+
 @end

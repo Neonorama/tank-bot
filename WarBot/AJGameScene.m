@@ -9,17 +9,18 @@
 #import "AJGameScene.h"
 #import "AJMenuNode.h"
 #import "AJFinishLevelScene.h"
+#import "AJMainMenuScene.h"
 
 @implementation AJGameScene
 
--(id)initWithSize:(CGSize)size 
+-(id)initWithSize:(CGSize)size options: (NSDictionary *) options
 {
     if (self = [super initWithSize:size]) {
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.4 blue:0.15 alpha:0.8];
 
         self.gameManager = [[AJGameManager alloc] init];
         
-        self.gameView = [[AJGameView alloc] initWithSize:size];
+        self.gameView = [[AJGameView alloc] initWithSize:size name: options[@"levelName"]];
         self.gameView.gameManager =  self.gameManager;
         self.gameView.position = CGPointMake(DEFAULT_COLS * DEFAULT_CELL_SIZE, 0);
 
@@ -48,9 +49,27 @@
         
         [self addChild: [AJMenuNode menuLabelNodeWithName:@"PlayButton"
                                                      text:@"Play!"
-                                                 position:CGPointMake(size.width / 2, size.height - 100)
+                                                 position:CGPointMake(50, 50)
+                                                     size:16
                                                     block:^{
                                                         [self resume];
+                                                    }]];
+        
+        [self addChild: [AJMenuNode menuLabelNodeWithName:@"ResetButton"
+                                                     text:@"Reset"
+                                                 position:CGPointMake(150, 50)
+                                                     size:16
+                                                    block:^{
+                                                        [self pause];
+                                                        [self reset];
+                                                    }]];
+        
+        [self addChild: [AJMenuNode menuLabelNodeWithName:@"MenuButton"
+                                                     text:@"Menu"
+                                                 position:CGPointMake(250, 50)
+                                                     size:16
+                                                    block:^{
+                                                        [self mainMenu];
                                                     }]];
         
     }
@@ -104,6 +123,14 @@
 {
     SKTransition *reveal = [SKTransition revealWithDirection:SKTransitionDirectionDown duration:0.5];
     AJFinishLevelScene *newScene = [[AJFinishLevelScene alloc] initWithSize: CGSizeMake(1024,768)];
+    //  Optionally, insert code to configure the new scene.
+    [self.scene.view presentScene: newScene transition: reveal];
+}
+
+- (void) mainMenu
+{
+    SKTransition *reveal = [SKTransition revealWithDirection:SKTransitionDirectionDown duration:0.5];
+    AJMainMenuScene *newScene = [[AJMainMenuScene alloc] initWithSize: CGSizeMake(1024,768)];
     //  Optionally, insert code to configure the new scene.
     [self.scene.view presentScene: newScene transition: reveal];
 }

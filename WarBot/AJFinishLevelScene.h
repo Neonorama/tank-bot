@@ -12,6 +12,4 @@
 
 @property BOOL contentCreated;
 
-- (void) play;
-
 @end

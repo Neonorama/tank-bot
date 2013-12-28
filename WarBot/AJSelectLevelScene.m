@@ -10,6 +10,12 @@
 #import "AJGameScene.h"
 #import "AJMenuNode.h"
 
+@interface AJSelectLevelScene ()
+
+@property (nonatomic, strong) __block AJGameScene *selectedScene;
+
+@end
+
 @implementation AJSelectLevelScene
 
 -(id)initWithSize:(CGSize)size
@@ -33,10 +39,29 @@
 - (void) createSceneContents {
     self.backgroundColor = [SKColor greenColor];
     self.scaleMode = SKSceneScaleModeAspectFit;
-    [self addChild: [AJMenuNode menuLabelNodeWithName:@"SelectLevel"
-                                                 text:@"Select level"
-                                             position:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame))
+    
+    NSMutableDictionary *level1Options = [[NSMutableDictionary alloc] init];
+    
+    [level1Options setObject:@"level1" forKey:@"levelName"];
+    
+    [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level1"
+                                                 text:@"Level 1"
+                                             position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 3)
+                                                 size:36
                                                 block:^{
+                                                    self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level1Options];
+                                                    [self play];
+                                                }]];
+    
+    
+    NSMutableDictionary *level2Options = [[NSMutableDictionary alloc] init];
+    [level2Options setObject:@"level2" forKey:@"levelName"];
+    [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level2"
+                                                 text:@"Level 2"
+                                             position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 2)
+                                                 size:36
+                                                block:^{
+                                                    self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level2Options];
                                                     [self play];
                                                 }]];
 }
@@ -56,9 +81,7 @@
 - (void) play
 {
     SKTransition *reveal = [SKTransition revealWithDirection:SKTransitionDirectionDown duration:1.0];
-    AJGameScene *newScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768)];
-    //  Optionally, insert code to configure the new scene.
-    [self.scene.view presentScene: newScene transition: reveal];
+    [self.scene.view presentScene: self.selectedScene transition: reveal];
 }
 
 @end

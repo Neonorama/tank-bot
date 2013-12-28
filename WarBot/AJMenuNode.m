@@ -18,12 +18,12 @@
     return self;
 }
 
--(id)initLabelWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position block:(void (^)(void))block {
+-(id)initLabelWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void (^)(void))block {
     self = [super init];
     if (self) {
         self.label = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
         self.label.text = text;
-        self.label.fontSize = 84;
+        self.label.fontSize = size;
         self.label.position = position;
         self.label.name = name;
         self.label.zPosition = 10;
@@ -34,8 +34,26 @@
     return self;
 }
 
-+(AJMenuNode *)menuLabelNodeWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position block:(void (^)(void))block {
-    return [[self alloc] initLabelWithName:name text:text position:position block: block];
+-(id)initSpriteWithName:(NSString *)name position:(CGPoint)position size:(int)size block:(void (^)(void))block {
+    self = [super init];
+    if (self) {
+        self.sprite = [SKSpriteNode spriteNodeWithImageNamed:name];
+        self.sprite.position = position;
+        self.sprite.name = name;
+        self.sprite.zPosition = 10;
+        [self addChild: self.sprite];
+        self.block = block;
+        self.name = name;
+    }
+    return self;
+}
+
++(AJMenuNode *)menuLabelNodeWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void (^)(void))block {
+    return [[self alloc] initLabelWithName:name text:text position:position size:size block: block];
+}
+
++(AJMenuNode *)menuSpriteNodeWithName:(NSString *)name position:(CGPoint)position size:(int)size block:(void (^)(void))block {
+    return [[self alloc] initSpriteWithName:name position:position size:size block:block];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

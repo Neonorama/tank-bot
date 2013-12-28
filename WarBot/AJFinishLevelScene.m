@@ -36,6 +36,7 @@
     [self addChild: [AJMenuNode menuLabelNodeWithName:@"BackToMenu"
                                                  text:@"Main menu"
                                              position:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame))
+                                                 size:48
                                                 block:^{
                                                     [self backToMainMenu];
                                                 }]];

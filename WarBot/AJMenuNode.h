@@ -17,8 +17,10 @@ typedef void (^MyBlock) (void);
 @property (nonatomic, retain) SKSpriteNode *sprite;
 @property (nonatomic, retain) NSString *name;
 
-- (id)initLabelWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position block:(void (^)(void))block;
+-(id)initLabelWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void (^)(void))block;
+-(id)initSpriteWithName:(NSString *)name position:(CGPoint)position size:(int)size block:(void (^)(void))block;
 
-+ (AJMenuNode *)menuLabelNodeWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position block:(void (^)(void))block;
++(AJMenuNode *)menuLabelNodeWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void (^)(void))block;
++(AJMenuNode *)menuSpriteNodeWithName:(NSString *)name position:(CGPoint)position size:(int)size block:(void (^)(void))block;
 
 @end

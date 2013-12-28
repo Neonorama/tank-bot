@@ -17,30 +17,30 @@
          "objects":[
                 {
                  "height":0,
-                 "name":"wall1",
+                 "name":"wall2",
                  "polygon":[
                         {
                          "x":0,
                          "y":0
                         }, 
                         {
-                         "x":181,
-                         "y":2
+                         "x":189,
+                         "y":1
                         }, 
                         {
-                         "x":181,
-                         "y":105
+                         "x":188,
+                         "y":104
                         }, 
                         {
-                         "x":59,
-                         "y":102
+                         "x":-73,
+                         "y":104
                         }, 
                         {
-                         "x":60,
-                         "y":53
+                         "x":-71,
+                         "y":56
                         }, 
                         {
-                         "x":-2,
+                         "x":-3,
                          "y":52
                         }],
                  "properties":
@@ -50,42 +50,12 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":469,
-                 "y":477
+                 "x":195,
+                 "y":608
                 }, 
                 {
                  "height":0,
-                 "name":"wall2",
-                 "polygon":[
-                        {
-                         "x":0,
-                         "y":0
-                        }, 
-                        {
-                         "x":13,
-                         "y":49
-                        }, 
-                        {
-                         "x":76,
-                         "y":31
-                        }, 
-                        {
-                         "x":57,
-                         "y":-16
-                        }],
-                 "properties":
-                    {
-
-                    },
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":409,
-                 "y":171
-                }, 
-                {
-                 "height":0,
-                 "name":"wall3",
+                 "name":"wall1",
                  "polygon":[
                         {
                          "x":0,
@@ -93,43 +63,19 @@
                         }, 
                         {
                          "x":33,
-                         "y":36
+                         "y":41
                         }, 
                         {
-                         "x":340,
-                         "y":28
+                         "x":82,
+                         "y":1
                         }, 
                         {
-                         "x":361,
-                         "y":97
+                         "x":49,
+                         "y":-39
                         }, 
                         {
-                         "x":343,
-                         "y":162
-                        }, 
-                        {
-                         "x":359,
-                         "y":225
-                        }, 
-                        {
-                         "x":340,
-                         "y":309
-                        }, 
-                        {
-                         "x":368,
-                         "y":368
-                        }, 
-                        {
-                         "x":436,
-                         "y":373
-                        }, 
-                        {
-                         "x":437,
-                         "y":-62
-                        }, 
-                        {
-                         "x":20,
-                         "y":-57
+                         "x":25,
+                         "y":-18
                         }],
                  "properties":
                     {
@@ -138,8 +84,132 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":258,
-                 "y":69
+                 "x":157,
+                 "y":164
+                }, 
+                {
+                 "height":0,
+                 "name":"3",
+                 "polygon":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":163,
+                         "y":2
+                        }, 
+                        {
+                         "x":160,
+                         "y":-62
+                        }, 
+                        {
+                         "x":-3,
+                         "y":-65
+                        }],
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":256,
+                 "y":410
+                }, 
+                {
+                 "height":0,
+                 "name":"4",
+                 "polygon":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":85,
+                         "y":-10
+                        }, 
+                        {
+                         "x":77,
+                         "y":212
+                        }, 
+                        {
+                         "x":1,
+                         "y":178
+                        }],
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":603,
+                 "y":236
+                }, 
+                {
+                 "height":0,
+                 "name":"5",
+                 "polygon":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":43,
+                         "y":41
+                        }, 
+                        {
+                         "x":305,
+                         "y":43
+                        }, 
+                        {
+                         "x":341,
+                         "y":-46
+                        }, 
+                        {
+                         "x":24,
+                         "y":-45
+                        }],
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":249,
+                 "y":59
+                }, 
+                {
+                 "height":0,
+                 "name":"6",
+                 "polygon":[
+                        {
+                         "x":0,
+                         "y":0
+                        }, 
+                        {
+                         "x":48,
+                         "y":-49
+                        }, 
+                        {
+                         "x":-2,
+                         "y":-106
+                        }, 
+                        {
+                         "x":-51,
+                         "y":-55
+                        }],
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":68,
+                 "y":365
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -153,7 +223,7 @@
          "name":"goals",
          "objects":[
                 {
-                 "height":60,
+                 "height":52,
                  "name":"start",
                  "properties":
                     {
@@ -161,12 +231,12 @@
                     },
                  "type":"",
                  "visible":true,
-                 "width":67,
-                 "x":186,
-                 "y":321
+                 "width":62,
+                 "x":206,
+                 "y":473
                 }, 
                 {
-                 "height":55,
+                 "height":62,
                  "name":"finish",
                  "properties":
                     {
@@ -174,9 +244,9 @@
                     },
                  "type":"",
                  "visible":true,
-                 "width":71,
-                 "x":441,
-                 "y":325
+                 "width":64,
+                 "x":453,
+                 "y":204
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -194,11 +264,11 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"level1.png",
+         "image":"level2.png",
          "imageheight":768,
          "imagewidth":704,
          "margin":0,
-         "name":"level1",
+         "name":"level2",
          "properties":
             {
 
