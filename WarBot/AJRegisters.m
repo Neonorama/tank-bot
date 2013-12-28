@@ -22,6 +22,8 @@
         for (int i = 0; i < DEFAULT_REGISTERS_LENGTH; i++) {
             [self.registers addObject:[NSNumber numberWithInt:0]];
         }
+        
+        [self setParam:@29 toRegister:kRegistersC];
     }
     return self;
 }

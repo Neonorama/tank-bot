@@ -5,20 +5,24 @@
 //  Created by Ilya Rezyapkin on 26.06.13.
 //  Copyright (c) 2013 Ilya Rezyapkin. All rights reserved.
 //
+#import <SpriteKit/SpriteKit.h>
 
-#import "CCLayer.h"
 #import "AJGameManager.h"
-#import "cocos2d.h"
 
-@interface AJControlVew : CCLayer
+@interface AJControlVew : SKScene
 
 @property AJGameManager *gameManager;
 @property NSMutableArray *available;
 @property NSMutableArray *program;
+@property NSMutableArray *registers;
 @property AJCommand *intermediateCommand;
+@property SKSpriteNode *intermediateSprite;
 
 - (void) showProg;
 - (void) showAvailable;
-- (CCSprite *) getCommandSprite: (AJCommand *) command;
+- (void) showRegisters;
+- (SKSpriteNode *) getCommandSprite: (AJCommand *) command;
+
+-(void)nextStep:(NSTimeInterval)delta;
 
 @end

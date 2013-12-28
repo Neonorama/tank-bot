@@ -6,16 +6,21 @@
 //  Copyright (c) 2013 Ilya Rezyapkin. All rights reserved.
 //
 
-#import "cocos2d.h"
-#import "CCLayer.h"
+#import <SpriteKit/SpriteKit.h>
 #import "AJGameManager.h"
 
-@interface AJGameView : CCLayer {
+@interface AJGameView : SKNode <SKPhysicsContactDelegate> {
     BOOL isMoving;
 }
 
-@property AJGameManager *gameManager;
-@property CCSprite *botBaseSprite;
-@property CCSprite *botCanonSprite;
+@property (nonatomic, retain) AJGameManager *gameManager;
+@property (nonatomic, assign) CGPoint startPoint;
+@property (nonatomic, assign) CGRect finishArea;
+@property (nonatomic, assign) CGSize size;
 
+-(void) nextStep:(NSTimeInterval)delta;
+-(void) reset;
+
+-(void)generateLevel: (NSString *)levelName;
+-(id)initWithSize:(CGSize)size name: (NSString *) levelName;
 @end

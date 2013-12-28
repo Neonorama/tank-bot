@@ -23,7 +23,7 @@
 
 #define DEFAULT_TIME_INTERVAL 0.5
 
-#define DEFAULT_COLS 6
+#define DEFAULT_COLS 5
 #define DEFAULT_CELL_SIZE 64
 
 CG_INLINE CGFloat
@@ -63,7 +63,7 @@ typedef enum {
 typedef enum {
     kRegistersA = 0,    // return register
     kRegistersB,        // program counter
-    kRegistersC,
+    kRegistersC,        // wall contact register
     kRegistersD,
     kRegistersE,
     kRegistersF,
@@ -71,5 +71,10 @@ typedef enum {
     kRegistersH
     
 } kRegisters;
+
+static const uint32_t botCategory       = 0x1 << 0;
+static const uint32_t wallCategory      = 0x1 << 1;
+static const uint32_t bulletCategory    = 0x1 << 2;
+static const uint32_t finishCategory    = 0x1 << 3;
 
 #endif

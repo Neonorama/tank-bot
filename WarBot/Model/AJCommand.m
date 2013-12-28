@@ -7,6 +7,7 @@
 //
 
 #import "AJCommand.h"
+#import "AJConstants.h"
 
 @implementation AJCommand
 
@@ -19,7 +20,7 @@
     self = [super init];
     if (self) {
         self.type = kCommandTypeDefault;
-        self.command = @"";
+        self.command = kCommandDefault;
         self.param = [NSNumber numberWithInt:0];
     }
     return self;

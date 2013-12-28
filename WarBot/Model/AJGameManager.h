@@ -26,9 +26,10 @@
 @property (nonatomic, retain) AJRegisters *registers;
 @property (nonatomic, retain) AJGameField *gameField;
 
-@property (nonatomic, retain) AJBot *bot;   // done
+@property (nonatomic, retain) AJBot *bot;
 
 - (void) nextStep;
 - (void) checkCurrentState;
+- (void) reset;
 
 @end

@@ -9,13 +9,13 @@
 #import "AJGameManager.h"
 #import "AJStateController.h"
 #import "AJCommand.h"
-#import "cocos2d.h"
 
 @implementation AJGameManager
 
 -(void)nextStep {
     NSLog(@"===============================================");
     [self checkCurrentState];
+    
     AJCommand *currCmd = [self.programField getCurrentCommand];
     NSLog(@"%@", currCmd);
     switch (currCmd.type) {
@@ -75,6 +75,11 @@
 
 -(void) ret {
     [self.registers ret];
+}
+
+-(void)reset {
+    [self.bot.chassis removeAllActions];
+    [self.bot.turret removeAllActions];
 }
 
 @end

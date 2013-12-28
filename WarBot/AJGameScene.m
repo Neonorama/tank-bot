@@ -7,62 +7,166 @@
 //
 
 #import "AJGameScene.h"
+#import "AJMenuNode.h"
+#import "AJFinishLevelScene.h"
+#import "AJMainMenuScene.h"
 
 @implementation AJGameScene
 
-+(CCScene *) scene
+-(id)initWithSize:(CGSize)size options: (NSDictionary *) options
 {
-	// 'scene' is an autorelease object.
-	CCScene *scene = [CCScene node];
-	
-	// 'layer' is an autorelease object.
-	AJGameScene *layer = [AJGameScene node];
-	
-	// add layer as a child to scene
-	[scene addChild: layer];
-	
-	// return the scene
-	return scene;
-}
+    if (self = [super initWithSize:size]) {
+        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.4 blue:0.15 alpha:0.8];
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        AJGameManager *gameManager = [[AJGameManager alloc] init];
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"bot.plist" textureFilename:@"bot.png"];
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"arrows.plist" textureFilename:@"arrows.png"];
-
-
-        self.gameView = [[AJGameView alloc] init];
-        self.gameView.gameManager = gameManager;
+        self.gameManager = [[AJGameManager alloc] init];
         
-        self.controlView = [[AJControlVew alloc] init];
-        
-        self.controlView.gameManager = gameManager;
+        self.gameView = [[AJGameView alloc] initWithSize:size name: options[@"levelName"]];
+        self.gameView.gameManager =  self.gameManager;
+        self.gameView.position = CGPointMake(DEFAULT_COLS * DEFAULT_CELL_SIZE, 0);
+
+        self.controlView = [[AJControlVew alloc] initWithSize:size];
+
+        self.controlView.gameManager =  self.gameManager;
         [self.controlView showProg];
         [self.controlView showAvailable];
-        
+        [self.controlView showRegisters];
+
         [self addChild:self.gameView];
         [self addChild:self.controlView];
         
-        [self schedule:@selector(update:) interval:DEFAULT_TIME_INTERVAL];
-    }
+        [self.gameView addChild:self.gameManager.bot.chassis];
+        self.gameManager.bot.chassis.position = self.gameView.startPoint;
+        self.gameManager.bot.chassis.zPosition = 10;
     
-    NSLog(@"%d",[[UIDevice currentDevice] orientation]);
+//        self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:DEFAULT_TIME_INTERVAL target:self selector:@selector(nextStep:) userInfo:nil repeats:YES];
+        
+        self.backgroundColor = [SKColor blackColor];
+        self.scaleMode = SKSceneScaleModeAspectFit;
+        self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+        self.physicsWorld.gravity = CGVectorMake(0,0);
+        self.physicsWorld.contactDelegate = self;
+        [self.gameManager.bot initPhysics];
+        
+        [self addChild: [AJMenuNode menuLabelNodeWithName:@"PlayButton"
+                                                     text:@"Play!"
+                                                 position:CGPointMake(50, 50)
+                                                     size:16
+                                                    block:^{
+                                                        [self resume];
+                                                    }]];
+        
+        [self addChild: [AJMenuNode menuLabelNodeWithName:@"ResetButton"
+                                                     text:@"Reset"
+                                                 position:CGPointMake(150, 50)
+                                                     size:16
+                                                    block:^{
+                                                        [self pause];
+                                                        [self reset];
+                                                    }]];
+        
+        [self addChild: [AJMenuNode menuLabelNodeWithName:@"MenuButton"
+                                                     text:@"Menu"
+                                                 position:CGPointMake(250, 50)
+                                                     size:16
+                                                    block:^{
+                                                        [self mainMenu];
+                                                    }]];
+        
+    }
     return self;
 }
 
--(void)update:(ccTime)delta {
-    [self.gameView update:delta];
-    [self.controlView update:delta];
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    NSArray* allTouches = [[event allTouches] allObjects];
+    
+    UITouch* touchOne = [allTouches objectAtIndex:0];
+    
+    CGPoint touchLocationOne = [touchOne locationInView:self.view];
+    
+    NSLog(@"Game scene touch %@", NSStringFromCGPoint(touchLocationOne));
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+}
+
+- (void) nextStep: (NSTimer*) timer {
+    [self.controlView nextStep:timer.timeInterval];
+    [self.gameView nextStep:timer.timeInterval];
 }
 
 -(void)pause {
-    [self pauseSchedulerAndActions];
+    [self.gameTimer invalidate];
+    self.gameTimer = nil;
 }
 
 -(void)resume {
-    [self resumeSchedulerAndActions];
+    [self.gameTimer invalidate];
+    self.gameTimer = nil;
+    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:DEFAULT_TIME_INTERVAL target:self selector:@selector(nextStep:) userInfo:nil repeats:YES];
 }
+
+-(void)next {
+    [self.controlView nextStep:DEFAULT_TIME_INTERVAL];
+    [self.gameView nextStep:DEFAULT_TIME_INTERVAL];
+}
+
+- (void) reset {
+    [self.gameView reset];
+    
+    
+    self.gameManager.bot.chassis.position = self.gameView.startPoint;
+}
+
+- (void) finish
+{
+    SKTransition *reveal = [SKTransition revealWithDirection:SKTransitionDirectionDown duration:0.5];
+    AJFinishLevelScene *newScene = [[AJFinishLevelScene alloc] initWithSize: CGSizeMake(1024,768)];
+    //  Optionally, insert code to configure the new scene.
+    [self.scene.view presentScene: newScene transition: reveal];
+}
+
+- (void) mainMenu
+{
+    SKTransition *reveal = [SKTransition revealWithDirection:SKTransitionDirectionDown duration:0.5];
+    AJMainMenuScene *newScene = [[AJMainMenuScene alloc] initWithSize: CGSizeMake(1024,768)];
+    //  Optionally, insert code to configure the new scene.
+    [self.scene.view presentScene: newScene transition: reveal];
+}
+
+- (void)didBeginContact:(SKPhysicsContact *)contact
+{
+    SKPhysicsBody *firstBody, *secondBody;
+    
+    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask)
+    {
+        firstBody = contact.bodyA;
+        secondBody = contact.bodyB;
+    }
+    else
+    {
+        firstBody = contact.bodyB;
+        secondBody = contact.bodyA;
+    }
+    
+    if ((secondBody.categoryBitMask & wallCategory) != 0)
+    {
+        NSLog(@"Wall contact!!!");
+        [self pause];
+        [self reset];
+    }
+    
+    if ((secondBody.categoryBitMask & finishCategory) != 0)
+    {
+        NSLog(@"Finish contact!!!");
+        [self pause];
+        [self finish];
+    }
+}
+
+-(void)dealloc {
+    
+}
+
 @end
