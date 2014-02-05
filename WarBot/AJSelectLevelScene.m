@@ -64,6 +64,51 @@
                                                     self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level2Options];
                                                     [self play];
                                                 }]];
+    
+    NSMutableDictionary *level3Options = [[NSMutableDictionary alloc] init];
+    [level3Options setObject:@"level3" forKey:@"levelName"];
+    [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level3"
+                                                 text:@"Level 3"
+                                             position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 1)
+                                                 size:36
+                                                block:^{
+                                                    self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level3Options];
+                                                    [self play];
+                                                }]];
+    
+    NSMutableDictionary *level4Options = [[NSMutableDictionary alloc] init];
+    [level4Options setObject:@"level4" forKey:@"levelName"];
+    [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level4"
+                                                 text:@"Level 4"
+                                             position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 3)
+                                                 size:36
+                                                block:^{
+                                                    self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level4Options];
+                                                    [self play];
+                                                }]];
+    
+    NSMutableDictionary *level5Options = [[NSMutableDictionary alloc] init];
+    [level5Options setObject:@"level5" forKey:@"levelName"];
+    [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level5"
+                                                 text:@"Level 5"
+                                             position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 2)
+                                                 size:36
+                                                block:^{
+                                                    self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level5Options];
+                                                    [self play];
+                                                }]];
+    
+    NSMutableDictionary *level6Options = [[NSMutableDictionary alloc] init];
+    [level6Options setObject:@"level6" forKey:@"levelName"];
+    [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level6"
+                                                 text:@"Level 6"
+                                             position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 1)
+                                                 size:36
+                                                block:^{
+                                                    self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level6Options];
+                                                    [self play];
+                                                }]];
+    
 }
 
 #pragma mark - touches

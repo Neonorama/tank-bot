@@ -109,7 +109,7 @@
         wallPart.path = wallPath;
 //        wallPart.strokeColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
 //        wallPart.fillColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
-        wallPart.lineWidth = 1.0;
+        wallPart.lineWidth = 0.0;
         wallPart.zPosition = 200;
         wallPart.position = CGPointMake([[obj objectForKey:@"x"] integerValue], self.size.height - [[obj objectForKey:@"y"] integerValue]);
         wallPart.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:wallPath];
@@ -157,9 +157,9 @@
 //    CGPathAddArc(finishPath, NULL, 0,0, 50, 0, M_PI*2, YES);
     
     finishShape.path = finishPath;
-    finishShape.strokeColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
-    finishShape.fillColor = [SKColor colorWithRed:1.0 green:1.0 blue:0 alpha:0.5];
-    finishShape.lineWidth = 1.0;
+//    finishShape.strokeColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
+//    finishShape.fillColor = [SKColor colorWithRed:1.0 green:1.0 blue:0 alpha:0.5];
+    finishShape.lineWidth = 0.0;
     finishShape.zPosition = 300;
     finishShape.position = CGPointMake(finishArea.origin.x, finishArea.origin.y);
     finishShape.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:finishPath];
@@ -167,6 +167,13 @@
     finishShape.physicsBody.collisionBitMask = botCategory | finishCategory;
     finishShape.physicsBody.contactTestBitMask = botCategory | finishCategory;
     [self addChild:finishShape];
+    
+    SKSpriteNode *finishSprite = [SKSpriteNode spriteNodeWithImageNamed:@"flag.png"];
+    finishSprite.position = CGPointMake(finishShape.position.x + finishShape.frame.size.height / 2, finishShape.position.y + finishShape.frame.size.width / 2);
+    finishSprite.zPosition = finishShape.zPosition + 1;
+    finishShape.xScale = 0.8;
+    finishShape.yScale = 0.8;
+    [self addChild:finishSprite];
     
     // Load tiles
 //    int layerHeight = [[layer objectForKey:@"height"] integerValue];
