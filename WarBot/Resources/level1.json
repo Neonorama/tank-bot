@@ -520,7 +520,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/WarBot\/Resources\/level_1.png",
+         "image":"level_1.png",
          "imageheight":768,
          "imagewidth":704,
          "margin":0,
