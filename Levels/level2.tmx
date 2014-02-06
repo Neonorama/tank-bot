@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="1" height="1" tilewidth="704" tileheight="768">
+ <tileset firstgid="1" name="level_2" tilewidth="704" tileheight="768">
+  <image source="../WarBot/Resources/level_2.png" width="704" height="768"/>
+ </tileset>
+ <layer name="ground" width="1" height="1">
+  <data encoding="base64" compression="zlib">
+   eJxjZGBgAAAACAAC
+  </data>
+ </layer>
+ <objectgroup name="wall" width="1" height="1">
+  <object x="253" y="62">
+   <polygon points="0,0 32,-34 148,-36 290,-36 328,-21 315,33 253,51 41,48"/>
+  </object>
+  <object x="241" y="179">
+   <polygon points="0,0 51,1 48,128 1,126"/>
+  </object>
+  <object x="46" y="176">
+   <polygon points="0,0 0,-12 48,-47 80,-13 79,-3 35,32"/>
+  </object>
+  <object x="30" y="280">
+   <polygon points="0,0 27,-29 78,-16 84,13 54,61 9,40"/>
+  </object>
+  <object x="39" y="506">
+   <polygon points="0,0 25,-12 44,-1 45,40 24,57 -6,43"/>
+  </object>
+  <object x="112" y="603">
+   <polygon points="0,0 120,3 120,104 -4,104"/>
+  </object>
+  <object x="388" y="630">
+   <polygon points="0,0 36,-33 69,-22 98,7 96,30 57,46 9,46"/>
+  </object>
+  <object x="555" y="678">
+   <polygon points="0,0 1,-17 56,-91 107,-63 107,-51 48,30"/>
+  </object>
+  <object x="623" y="398">
+   <polygon points="0,0 58,8 69,-50 69,-175 47,-192 -19,-178 -25,-152 -4,-125 -14,-91 -24,-39"/>
+  </object>
+  <object x="597" y="145">
+   <polygon points="0,0 0,-18 46,-51 75,-20 75,-4 30,29"/>
+  </object>
+  <object x="406" y="196">
+   <polygon points="0,0 56,0 56,-56 0,-56"/>
+  </object>
+  <object x="256" y="375">
+   <polygon points="0,0 26,13 134,13 158,-1 156,-41 135,-56 24,-53 3,-42"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="goals" width="1" height="1">
+  <object name="start" x="129" y="458" width="62" height="52"/>
+  <object name="finish" x="472" y="285" width="21" height="17"/>
+ </objectgroup>
+</map>

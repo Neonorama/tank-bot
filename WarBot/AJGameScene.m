@@ -104,7 +104,7 @@
 -(void)resume {
     [self.gameTimer invalidate];
     self.gameTimer = nil;
-    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:DEFAULT_TIME_INTERVAL target:self selector:@selector(nextStep:) userInfo:nil repeats:YES];
+    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:DEFAULT_TIME_INTERVAL*1.1f target:self selector:@selector(nextStep:) userInfo:nil repeats:YES];
 }
 
 -(void)next {

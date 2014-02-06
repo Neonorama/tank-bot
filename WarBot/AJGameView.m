@@ -101,9 +101,9 @@
     
     // Generate walls
     
-    NSArray *walls = [NSArray arrayWithArray:[wall objectForKey:@"objects"]];
+    NSArray *walls = [NSArray arrayWithArray:wall[@"objects"]];
     [walls enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        CGPathRef wallPath = [self createPathRefFromArrayOfPoint:[obj objectForKey:@"polygon"]];
+        CGPathRef wallPath = [self createPathRefFromArrayOfPoint:obj[@"polygon"]];
         
         SKShapeNode * wallPart = [SKShapeNode node];
         wallPart.path = wallPath;
@@ -111,7 +111,7 @@
 //        wallPart.fillColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
         wallPart.lineWidth = 0.0;
         wallPart.zPosition = 200;
-        wallPart.position = CGPointMake([[obj objectForKey:@"x"] integerValue], self.size.height - [[obj objectForKey:@"y"] integerValue]);
+        wallPart.position = CGPointMake([obj[@"x"] integerValue], self.size.height - [obj[@"y"] integerValue]);
         wallPart.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:wallPath];
         wallPart.physicsBody.categoryBitMask = wallCategory;
         wallPart.physicsBody.collisionBitMask = botCategory | wallCategory;
@@ -128,6 +128,7 @@
     
     NSDictionary __block *start;
     NSDictionary __block *finish;
+    NSMutableArray __block *barrels = [NSMutableArray array];
     
     [goals[@"objects"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj[@"name"] isEqualToString:@"start"] ) {
@@ -136,6 +137,17 @@
         if ([obj[@"name"] isEqualToString:@"finish"] ) {
             finish = (NSDictionary *)obj;
         }
+        if ([obj[@"name"] isEqualToString:@"barrel"] ) {
+            [barrels addObject:(NSDictionary *)obj];
+        }
+    }];
+    
+    [barrels enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        SKSpriteNode *barrel = [SKSpriteNode spriteNodeWithImageNamed:@"oil_tank.png"];
+        barrel.position = CGPointMake([obj[@"x"] integerValue], self.size.height - [obj[@"y"] integerValue]);
+        barrel.zPosition = 300;
+        [self addChild:barrel];
+        
     }];
 
     CGRect startArea = CGRectMake([start[@"x"] integerValue],
@@ -154,7 +166,6 @@
     
     CGMutablePathRef finishPath = CGPathCreateMutable();
     CGPathAddRect(finishPath, NULL, CGRectMake(0, 0, finishArea.size.width, finishArea.size.height));
-//    CGPathAddArc(finishPath, NULL, 0,0, 50, 0, M_PI*2, YES);
     
     finishShape.path = finishPath;
 //    finishShape.strokeColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];

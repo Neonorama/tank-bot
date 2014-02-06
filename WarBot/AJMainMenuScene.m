@@ -39,12 +39,20 @@
     self.scaleMode = SKSceneScaleModeAspectFit;
     [self addChild: [AJMenuNode menuLabelNodeWithName:@"PlayButton"
                                                  text:@"Play!"
-                                             position:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame))
+                                             position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 2)
                                                  size:48
-                                             block:^{
-                                                 [self play];
-                                             }]];
-
+                                                block:^{
+                                                    [self play];
+                                                }]];
+    
+    [self addChild: [AJMenuNode menuLabelNodeWithName:@"Randomize"
+                                                 text:@"Random lavel"
+                                             position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 1)
+                                                 size:48
+                                                block:^{
+                                                    [self play];
+                                                }]];
+    
 }
 
 #pragma mark - touches
