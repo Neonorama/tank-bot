@@ -36,6 +36,9 @@
 
 - (void) createSceneContents {
     self.backgroundColor = [SKColor blueColor];
+    SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
+    background.anchorPoint = CGPointMake(0, 0);
+    [self addChild:background];
     self.scaleMode = SKSceneScaleModeAspectFit;
     [self addChild: [AJMenuNode menuLabelNodeWithName:@"PlayButton"
                                                  text:@"Play!"
@@ -70,7 +73,8 @@
 
 - (void) play
 {
-    SKTransition *reveal = [SKTransition revealWithDirection:SKTransitionDirectionDown duration:1.0];
+    SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:0.5];
+    
     AJSelectLevelScene *newScene = [[AJSelectLevelScene alloc] initWithSize: CGSizeMake(1024,768)];
     //  Optionally, insert code to configure the new scene.
     [self.scene.view presentScene: newScene transition: reveal];

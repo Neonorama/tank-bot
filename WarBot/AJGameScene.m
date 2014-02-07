@@ -129,7 +129,7 @@
 
 - (void) mainMenu
 {
-    SKTransition *reveal = [SKTransition revealWithDirection:SKTransitionDirectionDown duration:0.5];
+    SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:0.5];
     AJMainMenuScene *newScene = [[AJMainMenuScene alloc] initWithSize: CGSizeMake(1024,768)];
     //  Optionally, insert code to configure the new scene.
     [self.scene.view presentScene: newScene transition: reveal];

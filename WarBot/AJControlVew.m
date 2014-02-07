@@ -68,7 +68,7 @@
         label.text = [NSString stringWithFormat: @"%d",i ];
         label.position = CGPointMake(-20, -20);
         label.name = @"index";
-        [commandSprite addChild:label];
+//        [commandSprite addChild:label];
         
         [self addChild:commandSprite];
         
@@ -149,7 +149,7 @@
     }
     
     label.zPosition = 1;
-    [commandSprite addChild:label];
+//    [commandSprite addChild:label];
     
     [commandSpriteBase addChild:commandSprite];
     return commandSpriteBase;

@@ -40,6 +40,10 @@
     self.backgroundColor = [SKColor greenColor];
     self.scaleMode = SKSceneScaleModeAspectFit;
     
+    SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
+    background.anchorPoint = CGPointMake(0, 0);
+    [self addChild:background];
+    
     NSMutableDictionary *level1Options = [[NSMutableDictionary alloc] init];
     
     [level1Options setObject:@"level1" forKey:@"levelName"];
@@ -125,7 +129,7 @@
 
 - (void) play
 {
-    SKTransition *reveal = [SKTransition revealWithDirection:SKTransitionDirectionDown duration:1.0];
+    SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:0.6];
     [self.scene.view presentScene: self.selectedScene transition: reveal];
 }
 

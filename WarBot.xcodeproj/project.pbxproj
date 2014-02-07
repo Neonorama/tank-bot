@@ -59,6 +59,8 @@
 		91F8378B18A28C780060CC81 /* level4.json in Resources */ = {isa = PBXBuildFile; fileRef = 91F8378518A28C780060CC81 /* level4.json */; };
 		91F8378C18A28C780060CC81 /* level5.json in Resources */ = {isa = PBXBuildFile; fileRef = 91F8378618A28C780060CC81 /* level5.json */; };
 		91F8378D18A28C780060CC81 /* level6.json in Resources */ = {isa = PBXBuildFile; fileRef = 91F8378718A28C780060CC81 /* level6.json */; };
+		91F8379018A5759D0060CC81 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 91F8378E18A5759D0060CC81 /* background.png */; };
+		91F8379118A5759D0060CC81 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91F8378F18A5759D0060CC81 /* background@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +146,8 @@
 		91F8378518A28C780060CC81 /* level4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = level4.json; path = Resources/level4.json; sourceTree = "<group>"; };
 		91F8378618A28C780060CC81 /* level5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = level5.json; path = Resources/level5.json; sourceTree = "<group>"; };
 		91F8378718A28C780060CC81 /* level6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = level6.json; path = Resources/level6.json; sourceTree = "<group>"; };
+		91F8378E18A5759D0060CC81 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		91F8378F18A5759D0060CC81 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +308,8 @@
 		916029801775D0FE0039A3D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				91F8378E18A5759D0060CC81 /* background.png */,
+				91F8378F18A5759D0060CC81 /* background@2x.png */,
 				91F8377F18A28A420060CC81 /* Levels */,
 				91F8378018A28A530060CC81 /* level_objects.atlas */,
 				913BEAC617860F3200E8A483 /* controls.atlas */,
@@ -411,6 +417,7 @@
 				91F8377B18A28A340060CC81 /* level_5@2x.png in Resources */,
 				91F8377D18A28A340060CC81 /* level_6@2x.png in Resources */,
 				91F8377318A28A340060CC81 /* level_1@2x.png in Resources */,
+				91F8379018A5759D0060CC81 /* background.png in Resources */,
 				91F8377618A28A340060CC81 /* level_3.png in Resources */,
 				91F8377218A28A340060CC81 /* level_1.png in Resources */,
 				913BEAC717860F3200E8A483 /* controls.atlas in Resources */,
@@ -425,6 +432,7 @@
 				91F8378818A28C780060CC81 /* level1.json in Resources */,
 				9155FBCB185F901D008E8CF9 /* Icon.png in Resources */,
 				913BEAC517860F2700E8A483 /* bot.atlas in Resources */,
+				91F8379118A5759D0060CC81 /* background@2x.png in Resources */,
 				91F8377C18A28A340060CC81 /* level_6.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
