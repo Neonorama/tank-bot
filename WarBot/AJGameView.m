@@ -195,8 +195,8 @@
     for (int i = 0; i < [layerData count]; i++) {
         int tileIndex = [layerData[i] integerValue];
         SKSpriteNode *tile = [SKSpriteNode spriteNodeWithTexture:tiles[tileIndex-1]];
-        int xOffset = (i % layerWidth) * tilewidth;
-        int yOffset = (i / layerWidth) * tileheight;
+//        int xOffset = (i % layerWidth) * tilewidth;
+//        int yOffset = (i / layerWidth) * tileheight;
         
 //        tile.position = CGPointMake(xOffset, yOffset);
         tile.position = CGPointMake(tilewidth / 2, tileheight / 2);

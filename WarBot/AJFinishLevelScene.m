@@ -32,6 +32,11 @@
 
 - (void) createSceneContents {
     self.backgroundColor = [SKColor purpleColor];
+    
+    SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
+    background.anchorPoint = CGPointMake(0, 0);
+    [self addChild:background];
+    
     self.scaleMode = SKSceneScaleModeAspectFit;
     [self addChild: [AJMenuNode menuLabelNodeWithName:@"BackToMenu"
                                                  text:@"Main menu"
@@ -56,7 +61,7 @@
 
 - (void) backToMainMenu
 {
-    SKTransition *reveal = [SKTransition revealWithDirection:SKTransitionDirectionDown duration:1.0];
+    SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:0.5];
     AJMainMenuScene *newScene = [[AJMainMenuScene alloc] initWithSize: CGSizeMake(1024,768)];
     //  Optionally, insert code to configure the new scene.
     [self.scene.view presentScene: newScene transition: reveal];

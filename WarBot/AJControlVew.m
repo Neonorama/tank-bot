@@ -64,11 +64,11 @@
 
         SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         label.fontSize = 10;
-        label.fontColor = [SKColor whiteColor];
+        label.fontColor = [SKColor colorWithRed:68/255 green:148/255 blue:192/255 alpha:0.8];
         label.text = [NSString stringWithFormat: @"%d",i ];
-        label.position = CGPointMake(-20, -20);
+        label.position = CGPointMake(-14, -24);
         label.name = @"index";
-//        [commandSprite addChild:label];
+        [commandSprite addChild:label];
         
         [self addChild:commandSprite];
         
@@ -137,6 +137,8 @@
         
     } else if ([command.command isEqualToString:kCommandJump]) {
         commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"func.png"];
+        label.zPosition = 1;
+        [commandSprite addChild:label];
         
     } else if ([command.command isEqualToString:kCommandRet]) {
         commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"ret.png"];
@@ -148,7 +150,7 @@
         commandSprite = [SKSpriteNode spriteNodeWithColor:[SKColor blackColor] size:CGSizeMake(DEFAULT_CELL_SIZE, DEFAULT_CELL_SIZE)];
     }
     
-    label.zPosition = 1;
+//    label.zPosition = 1;
 //    [commandSprite addChild:label];
     
     [commandSpriteBase addChild:commandSprite];
