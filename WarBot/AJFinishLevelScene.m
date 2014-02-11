@@ -42,9 +42,14 @@
                                                  text:@"Main menu"
                                              position:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame))
                                                  size:48
-                                                block:^{
+                                                block:^(id sender){
                                                     [self backToMainMenu];
                                                 }]];
+}
+
+- (void) clean {
+    [self removeAllActions];
+    [self removeAllChildren];
 }
 
 #pragma mark - touches
@@ -61,6 +66,7 @@
 
 - (void) backToMainMenu
 {
+    [self clean];
     SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:0.5];
     AJMainMenuScene *newScene = [[AJMainMenuScene alloc] initWithSize: CGSizeMake(1024,768)];
     //  Optionally, insert code to configure the new scene.

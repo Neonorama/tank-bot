@@ -9,6 +9,7 @@
 #import "AJSelectLevelScene.h"
 #import "AJGameScene.h"
 #import "AJMenuNode.h"
+#import "AJMainMenuScene.h"
 
 @interface AJSelectLevelScene ()
 
@@ -48,11 +49,12 @@
     
     [level1Options setObject:@"level1" forKey:@"levelName"];
     
+    
     [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level1"
                                                  text:@"Level 1"
                                              position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 3)
                                                  size:36
-                                                block:^{
+                                                block:^(id sender){
                                                     self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level1Options];
                                                     [self play];
                                                 }]];
@@ -64,7 +66,7 @@
                                                  text:@"Level 2"
                                              position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 2)
                                                  size:36
-                                                block:^{
+                                                block:^(id sender){
                                                     self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level2Options];
                                                     [self play];
                                                 }]];
@@ -75,7 +77,7 @@
                                                  text:@"Level 3"
                                              position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 1)
                                                  size:36
-                                                block:^{
+                                                block:^(id sender){
                                                     self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level3Options];
                                                     [self play];
                                                 }]];
@@ -86,7 +88,7 @@
                                                  text:@"Level 4"
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 3)
                                                  size:36
-                                                block:^{
+                                                block:^(id sender){
                                                     self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level4Options];
                                                     [self play];
                                                 }]];
@@ -97,7 +99,7 @@
                                                  text:@"Level 5"
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 2)
                                                  size:36
-                                                block:^{
+                                                block:^(id sender){
                                                     self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level5Options];
                                                     [self play];
                                                 }]];
@@ -108,29 +110,49 @@
                                                  text:@"Level 6"
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 1)
                                                  size:36
-                                                block:^{
+                                                block:^(id sender){
                                                     self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level6Options];
                                                     [self play];
                                                 }]];
     
 }
 
+- (void) clean {
+    [self removeAllActions];
+    [self removeAllChildren];
+}
+
 #pragma mark - touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    NSArray* allTouches = [[event allTouches] allObjects];
-//    
-//    UITouch* touchOne = [allTouches objectAtIndex:0];
-//    
-//    CGPoint touchLocationOne = [touchOne locationInNode:self];
+    NSArray* allTouches = [[event allTouches] allObjects];
+    
+    UITouch* touchOne = [allTouches objectAtIndex:0];
+    
+    CGPoint touchLocationOne = [touchOne locationInNode:self];
+    
+    if ([self.backToMenu containsPoint:touchLocationOne]) {
+        [self.backToMenu runAction:[SKAction scaleTo:1.1 duration:0.1] completion:^{
+            [self mainMenu];
+        }];
+    }
 }
 
 #pragma mark - Menu
 
 - (void) play
 {
+    [self clean];
     SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:0.6];
     [self.scene.view presentScene: self.selectedScene transition: reveal];
+}
+
+- (void) mainMenu
+{
+    [self clean];
+    SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:0.5];
+    AJMainMenuScene *newScene = [[AJMainMenuScene alloc] initWithSize: CGSizeMake(1024,768)];
+    [self.scene.view presentScene: newScene transition: reveal];
 }
 
 @end

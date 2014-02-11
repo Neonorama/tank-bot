@@ -11,7 +11,9 @@
 @interface AJSelectLevelScene : SKScene
 
 @property BOOL contentCreated;
+@property (nonatomic, strong) SKLabelNode *backToMenu;
 
 - (void) play;
+-(void) clean;
 
 @end

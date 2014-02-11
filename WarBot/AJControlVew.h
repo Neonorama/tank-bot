@@ -25,4 +25,6 @@
 
 -(void)nextStep:(NSTimeInterval)delta;
 
+-(void) clean;
+
 @end

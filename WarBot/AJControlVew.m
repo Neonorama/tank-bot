@@ -281,5 +281,10 @@
     [self showRegisters];
 }
 
+- (void) clean {
+    [self removeAllActions];
+    [self removeAllChildren];
+}
+
 
 @end

@@ -51,7 +51,7 @@
                                                      text:@"Play!"
                                                  position:CGPointMake(50, 50)
                                                      size:16
-                                                    block:^{
+                                                    block:^(id sender){
                                                         [self resume];
                                                     }]];
         
@@ -59,7 +59,7 @@
                                                      text:@"Reset"
                                                  position:CGPointMake(150, 50)
                                                      size:16
-                                                    block:^{
+                                                    block:^(id sender){
                                                         [self pause];
                                                         [self reset];
                                                     }]];
@@ -68,7 +68,7 @@
                                                      text:@"Menu"
                                                  position:CGPointMake(250, 50)
                                                      size:16
-                                                    block:^{
+                                                    block:^(id sender){
                                                         [self mainMenu];
                                                     }]];
         
@@ -129,9 +129,9 @@
 
 - (void) mainMenu
 {
+    [self clean];
     SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:0.5];
     AJMainMenuScene *newScene = [[AJMainMenuScene alloc] initWithSize: CGSizeMake(1024,768)];
-    //  Optionally, insert code to configure the new scene.
     [self.scene.view presentScene: newScene transition: reveal];
 }
 
@@ -163,6 +163,13 @@
         [self pause];
         [self finish];
     }
+}
+
+- (void) clean {
+    [self.gameView clean];
+    [self.controlView clean];
+    [self removeAllActions];
+    [self removeAllChildren];
 }
 
 -(void)dealloc {

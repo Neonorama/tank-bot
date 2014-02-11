@@ -21,6 +21,7 @@
 -(void) pause;
 -(void) resume;
 -(void) next;
+-(void) clean;
 
 -(id)initWithSize:(CGSize)size options: (NSDictionary *) options;
 

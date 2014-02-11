@@ -18,7 +18,7 @@
     return self;
 }
 
--(id)initLabelWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void (^)(void))block {
+-(id)initLabelWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size {
     self = [super init];
     if (self) {
         self.label = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
@@ -28,13 +28,40 @@
         self.label.name = name;
         self.label.zPosition = 10;
         [self addChild: self.label];
-        self.block = block;
         self.name = name;
+		isEnabled_ = YES;
+		isSelected_ = NO;
     }
     return self;
 }
 
--(id)initSpriteWithName:(NSString *)name position:(CGPoint)position size:(int)size block:(void (^)(void))block {
+-(id)initLabelWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void(^)(id sender))block {
+    self = [super init];
+    if (self) {
+        self.sprite = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
+        self.label = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        self.label.text = text;
+        self.label.fontSize = size;
+        self.label.name = name;
+        self.label.position = position;
+        self.sprite.position = position;
+        self.zPosition = 10;
+        
+        self.name = name;
+        
+        if( block )
+			block_ = [block copy];
+        
+
+        [self addChild: self.sprite];
+        [self addChild: self.label];
+        isEnabled_ = YES;
+		isSelected_ = NO;
+    }
+    return self;
+}
+
+-(id)initSpriteWithName:(NSString *)name position:(CGPoint)position size:(int)size block:(void(^)(id sender))block {
     self = [super init];
     if (self) {
         self.sprite = [SKSpriteNode spriteNodeWithImageNamed:name];
@@ -42,17 +69,25 @@
         self.sprite.name = name;
         self.sprite.zPosition = 10;
         [self addChild: self.sprite];
-        self.block = block;
+        if( block )
+			block_ = [block copy];
+        
+		isEnabled_ = YES;
+		isSelected_ = NO;
         self.name = name;
     }
     return self;
 }
 
-+(AJMenuNode *)menuLabelNodeWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void (^)(void))block {
++(AJMenuNode *)menuLabelNodeWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size {
+    return [[self alloc] initLabelWithName:name text:text position:position size:size];
+}
+
++(AJMenuNode *)menuLabelNodeWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void(^)(id sender))block {
     return [[self alloc] initLabelWithName:name text:text position:position size:size block: block];
 }
 
-+(AJMenuNode *)menuSpriteNodeWithName:(NSString *)name position:(CGPoint)position size:(int)size block:(void (^)(void))block {
++(AJMenuNode *)menuSpriteNodeWithName:(NSString *)name position:(CGPoint)position size:(int)size block:(void(^)(id sender))block {
     return [[self alloc] initSpriteWithName:name position:position size:size block:block];
 }
 
@@ -64,9 +99,12 @@
     CGPoint touchLocationOne = [touchOne locationInNode:self.parent];
     
     if ([[self childNodeWithName:self.name] containsPoint:touchLocationOne]) {
-        self.block();
+        [self activate];
     }
 }
 
+- (void) activate {
+    block_(self);
+}
 
 @end

@@ -40,11 +40,12 @@
     background.anchorPoint = CGPointMake(0, 0);
     [self addChild:background];
     self.scaleMode = SKSceneScaleModeAspectFit;
+    
     [self addChild: [AJMenuNode menuLabelNodeWithName:@"PlayButton"
                                                  text:@"Play!"
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 2)
                                                  size:48
-                                                block:^{
+                                                block:^(id sender){
                                                     [self play];
                                                 }]];
     
@@ -52,34 +53,48 @@
                                                  text:@"Random lavel"
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 1)
                                                  size:48
-                                                block:^{
+                                                block:^(id sender){
                                                     [self play];
                                                 }]];
     
 }
 
+- (void) clean {
+    [self removeAllActions];
+    [self removeAllChildren];
+}
+
 #pragma mark - touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    NSArray* allTouches = [[event allTouches] allObjects];
-//    
-//    UITouch* touchOne = [allTouches objectAtIndex:0];
-//    
-//    CGPoint touchLocationOne = [touchOne locationInNode:self];
+    NSArray* allTouches = [[event allTouches] allObjects];
     
+    UITouch* touchOne = [allTouches objectAtIndex:0];
+    
+    CGPoint touchLocationOne = [touchOne locationInNode:self];
+    
+//    if ([self.playButton containsPoint:touchLocationOne]) {
+//        [self.playButton runAction:[SKAction scaleTo:1.1 duration:0.1] completion:^{
+//            [self play];
+//            [self clean];
+//        }];
+//    }
 }
 
 #pragma mark - Menu
 
 - (void) play
 {
-    SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:0.5];
     
+    SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:0.5];
     AJSelectLevelScene *newScene = [[AJSelectLevelScene alloc] initWithSize: CGSizeMake(1024,768)];
     //  Optionally, insert code to configure the new scene.
     [self.scene.view presentScene: newScene transition: reveal];
 }
 
+-(void)dealloc{
+    
+}
 
 
 @end

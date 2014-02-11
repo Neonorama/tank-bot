@@ -8,19 +8,29 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-typedef void (^MyBlock) (void);
+//typedef void (^MyBlock) (void);
 
 @interface AJMenuNode : SKScene
 
-@property (nonatomic, strong) MyBlock block;
+{
+	// used for menu items using a block
+	void (^block_)(id sender);
+    
+	BOOL isEnabled_;
+	BOOL isSelected_;
+}
+
+//@property (nonatomic, strong) MyBlock block;
 @property (nonatomic, strong) SKLabelNode *label;
 @property (nonatomic, strong) SKSpriteNode *sprite;
 @property (nonatomic, copy) NSString *name;
 
--(id)initLabelWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void (^)(void))block;
--(id)initSpriteWithName:(NSString *)name position:(CGPoint)position size:(int)size block:(void (^)(void))block;
+-(id)initLabelWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size;
+-(id)initLabelWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void(^)(id sender))block;
+-(id)initSpriteWithName:(NSString *)name position:(CGPoint)position size:(int)size block:(void(^)(id sender))block;
 
-+(AJMenuNode *)menuLabelNodeWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void (^)(void))block;
-+(AJMenuNode *)menuSpriteNodeWithName:(NSString *)name position:(CGPoint)position size:(int)size block:(void (^)(void))block;
++(AJMenuNode *)menuLabelNodeWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size;
++(AJMenuNode *)menuLabelNodeWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void(^)(id sender))block;
++(AJMenuNode *)menuSpriteNodeWithName:(NSString *)name position:(CGPoint)position size:(int)size block:(void(^)(id sender))block;
 
 @end

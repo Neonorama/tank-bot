@@ -231,6 +231,14 @@
     return path;
 }
 
+- (void) clean {
+    [self removeAllActions];
+    [self removeAllChildren];
+}
+
+-(void)dealloc {
+    
+}
 
 
 
