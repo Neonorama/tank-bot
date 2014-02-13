@@ -13,6 +13,10 @@
 
 @implementation AJGameScene
 
++(AJGameScene *)sceneWithSize:(CGSize)size options:(NSDictionary *)options {
+    return [[self alloc] initWithSize:size options:options];
+}
+
 -(id)initWithSize:(CGSize)size options: (NSDictionary *) options
 {
     if (self = [super initWithSize:size]) {
@@ -172,8 +176,8 @@
     [self removeAllChildren];
 }
 
--(void)dealloc {
-    
+-(void)willMoveFromView:(SKView *)view {
+    [self clean];
 }
 
 @end

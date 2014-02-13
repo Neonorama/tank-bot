@@ -103,7 +103,9 @@
     
     NSArray *walls = [NSArray arrayWithArray:wall[@"objects"]];
     [walls enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        CGPathRef wallPath = [self createPathRefFromArrayOfPoint:obj[@"polygon"]];
+        
+        CGMutablePathRef wallPath = CGPathCreateMutable();
+        [self createPathRefFromArrayOfPoint:obj[@"polygon"] path: wallPath];
         
         SKShapeNode * wallPart = [SKShapeNode node];
         wallPart.path = wallPath;
@@ -118,6 +120,7 @@
         wallPart.physicsBody.contactTestBitMask = botCategory | wallCategory;
         
         [self addChild:wallPart];
+        CGPathRelease(wallPath);
     }];
     
 //    SKPhysicsBody *testWall = [SKPhysicsBody bodyWithEdgeLoopFromPath:wallPath];
@@ -214,9 +217,8 @@
     [self addChild:ground];
 }
 
--(CGPathRef) createPathRefFromArrayOfPoint:(NSArray *) pointsArray {
+-(void) createPathRefFromArrayOfPoint:(NSArray *) pointsArray path: ( CGMutablePathRef) path{
     
-    CGMutablePathRef path = CGPathCreateMutable();
     if (pointsArray && pointsArray.count > 0) {
         NSDictionary *val = [pointsArray objectAtIndex:0];
         CGPoint p = CGPointMake([val[@"x"] integerValue], [val[@"y"] integerValue]);
@@ -227,8 +229,6 @@
             CGPathAddLineToPoint(path, nil, p.x, p.y);
         }
     }
-    
-    return path;
 }
 
 - (void) clean {

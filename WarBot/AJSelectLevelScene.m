@@ -13,7 +13,7 @@
 
 @interface AJSelectLevelScene ()
 
-@property (nonatomic, strong) __block AJGameScene *selectedScene;
+@property (nonatomic) __block NSDictionary *selectedSceneOptions;
 
 @end
 
@@ -45,73 +45,71 @@
     background.anchorPoint = CGPointMake(0, 0);
     [self addChild:background];
     
-    NSMutableDictionary *level1Options = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *level1Options = [NSMutableDictionary dictionary];
     
     [level1Options setObject:@"level1" forKey:@"levelName"];
-    
-    
     [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level1"
                                                  text:@"Level 1"
                                              position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 3)
                                                  size:36
                                                 block:^(id sender){
-                                                    self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level1Options];
+                                                    _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level1Options];
                                                     [self play];
                                                 }]];
     
     
-    NSMutableDictionary *level2Options = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *level2Options = [NSMutableDictionary dictionary];
     [level2Options setObject:@"level2" forKey:@"levelName"];
     [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level2"
                                                  text:@"Level 2"
                                              position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 2)
                                                  size:36
                                                 block:^(id sender){
-                                                    self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level2Options];
+                                                    _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level2Options];
                                                     [self play];
                                                 }]];
     
-    NSMutableDictionary *level3Options = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *level3Options = [NSMutableDictionary dictionary];
     [level3Options setObject:@"level3" forKey:@"levelName"];
     [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level3"
                                                  text:@"Level 3"
                                              position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 1)
                                                  size:36
                                                 block:^(id sender){
-                                                    self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level3Options];
+                                                    _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level3Options];
                                                     [self play];
                                                 }]];
     
-    NSMutableDictionary *level4Options = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *level4Options = [NSMutableDictionary dictionary];
     [level4Options setObject:@"level4" forKey:@"levelName"];
     [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level4"
                                                  text:@"Level 4"
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 3)
                                                  size:36
                                                 block:^(id sender){
-                                                    self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level4Options];
+                                                    _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level4Options];
                                                     [self play];
                                                 }]];
     
-    NSMutableDictionary *level5Options = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *level5Options = [NSMutableDictionary dictionary];
     [level5Options setObject:@"level5" forKey:@"levelName"];
     [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level5"
                                                  text:@"Level 5"
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 2)
                                                  size:36
                                                 block:^(id sender){
-                                                    self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level5Options];
+                                                    _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level5Options];
                                                     [self play];
                                                 }]];
     
-    NSMutableDictionary *level6Options = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *level6Options = [NSMutableDictionary dictionary];
     [level6Options setObject:@"level6" forKey:@"levelName"];
     [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level6"
                                                  text:@"Level 6"
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 1)
                                                  size:36
                                                 block:^(id sender){
-                                                    self.selectedScene = [[AJGameScene alloc] initWithSize: CGSizeMake(1024,768) options:level6Options];
+                                                    _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level6Options];
                                                     [self play];
                                                 }]];
     
@@ -122,29 +120,29 @@
     [self removeAllChildren];
 }
 
+-(void)willMoveFromView:(SKView *)view {
+    [self clean];
+}
+
 #pragma mark - touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSArray* allTouches = [[event allTouches] allObjects];
-    
-    UITouch* touchOne = [allTouches objectAtIndex:0];
-    
-    CGPoint touchLocationOne = [touchOne locationInNode:self];
-    
-    if ([self.backToMenu containsPoint:touchLocationOne]) {
-        [self.backToMenu runAction:[SKAction scaleTo:1.1 duration:0.1] completion:^{
-            [self mainMenu];
-        }];
-    }
+//    NSArray* allTouches = [[event allTouches] allObjects];
+//    
+//    UITouch* touchOne = [allTouches objectAtIndex:0];
+//    
+//    CGPoint touchLocationOne = [touchOne locationInNode:self];
 }
 
 #pragma mark - Menu
 
 - (void) play
 {
-    [self clean];
+//    [self clean];
     SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:0.6];
-    [self.scene.view presentScene: self.selectedScene transition: reveal];
+    AJGameScene *newScene = [AJGameScene sceneWithSize: CGSizeMake(1024,768) options:_selectedSceneOptions];
+    
+    [self.scene.view presentScene: newScene transition: reveal];
 }
 
 - (void) mainMenu

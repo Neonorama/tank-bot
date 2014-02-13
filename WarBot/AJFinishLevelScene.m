@@ -52,6 +52,10 @@
     [self removeAllChildren];
 }
 
+-(void)willMoveFromView:(SKView *)view {
+    [self clean];
+}
+
 #pragma mark - touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

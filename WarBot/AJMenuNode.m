@@ -18,42 +18,21 @@
     return self;
 }
 
--(id)initLabelWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size {
-    self = [super init];
-    if (self) {
-        self.label = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        self.label.text = text;
-        self.label.fontSize = size;
-        self.label.position = position;
-        self.label.name = name;
-        self.label.zPosition = 10;
-        [self addChild: self.label];
-        self.name = name;
-		isEnabled_ = YES;
-		isSelected_ = NO;
-    }
-    return self;
-}
-
 -(id)initLabelWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void(^)(id sender))block {
     self = [super init];
     if (self) {
-        self.sprite = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
         self.label = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
         self.label.text = text;
         self.label.fontSize = size;
         self.label.name = name;
         self.label.position = position;
-        self.sprite.position = position;
-        self.zPosition = 10;
-        
+        self.label.zPosition = 10;
+    
         self.name = name;
         
         if( block )
 			block_ = [block copy];
         
-
-        [self addChild: self.sprite];
         [self addChild: self.label];
         isEnabled_ = YES;
 		isSelected_ = NO;
@@ -79,8 +58,11 @@
     return self;
 }
 
-+(AJMenuNode *)menuLabelNodeWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size {
-    return [[self alloc] initLabelWithName:name text:text position:position size:size];
+-(void)addBackSprite:(SKSpriteNode *)ground {
+    self.sprite = [SKSpriteNode spriteNodeWithTexture:ground.texture];
+    [self addChild: self.sprite];
+    self.sprite.position = self.label.position;
+    self.sprite.zPosition = 5;
 }
 
 +(AJMenuNode *)menuLabelNodeWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void(^)(id sender))block {

@@ -25,12 +25,11 @@
 @property (nonatomic, strong) SKSpriteNode *sprite;
 @property (nonatomic, copy) NSString *name;
 
--(id)initLabelWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size;
 -(id)initLabelWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void(^)(id sender))block;
 -(id)initSpriteWithName:(NSString *)name position:(CGPoint)position size:(int)size block:(void(^)(id sender))block;
 
-+(AJMenuNode *)menuLabelNodeWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size;
 +(AJMenuNode *)menuLabelNodeWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void(^)(id sender))block;
 +(AJMenuNode *)menuSpriteNodeWithName:(NSString *)name position:(CGPoint)position size:(int)size block:(void(^)(id sender))block;
 
+-(void)addBackSprite:(SKSpriteNode *)ground;
 @end

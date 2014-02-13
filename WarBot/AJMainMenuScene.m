@@ -37,25 +37,33 @@
 - (void) createSceneContents {
     self.backgroundColor = [SKColor blueColor];
     SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
+    SKSpriteNode *buttonBackground = [SKSpriteNode spriteNodeWithImageNamed:@"button"];
+    
     background.anchorPoint = CGPointMake(0, 0);
     [self addChild:background];
     self.scaleMode = SKSceneScaleModeAspectFit;
     
-    [self addChild: [AJMenuNode menuLabelNodeWithName:@"PlayButton"
+    
+    AJMenuNode *playButton = [AJMenuNode menuLabelNodeWithName:@"PlayButton"
                                                  text:@"Play!"
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 2)
                                                  size:48
                                                 block:^(id sender){
                                                     [self play];
-                                                }]];
+                                                }];
+    [playButton addBackSprite:buttonBackground];
     
-    [self addChild: [AJMenuNode menuLabelNodeWithName:@"Randomize"
+    AJMenuNode *randButton = [AJMenuNode menuLabelNodeWithName:@"Randomize"
                                                  text:@"Random lavel"
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 1)
                                                  size:48
                                                 block:^(id sender){
                                                     [self play];
-                                                }]];
+                                                }];
+    [randButton addBackSprite:buttonBackground];
+    
+    [self addChild:playButton];
+    [self addChild:randButton];
     
 }
 
@@ -64,32 +72,31 @@
     [self removeAllChildren];
 }
 
+-(void)willMoveFromView:(SKView *)view {
+    [self clean];
+}
+
 #pragma mark - touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSArray* allTouches = [[event allTouches] allObjects];
-    
-    UITouch* touchOne = [allTouches objectAtIndex:0];
-    
-    CGPoint touchLocationOne = [touchOne locationInNode:self];
-    
-//    if ([self.playButton containsPoint:touchLocationOne]) {
-//        [self.playButton runAction:[SKAction scaleTo:1.1 duration:0.1] completion:^{
-//            [self play];
-//            [self clean];
-//        }];
-//    }
+//    NSArray* allTouches = [[event allTouches] allObjects];
+//    
+//    UITouch* touchOne = [allTouches objectAtIndex:0];
+//    
+//    CGPoint touchLocationOne = [touchOne locationInNode:self];
 }
 
 #pragma mark - Menu
 
 - (void) play
 {
-    
-    SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:0.5];
-    AJSelectLevelScene *newScene = [[AJSelectLevelScene alloc] initWithSize: CGSizeMake(1024,768)];
-    //  Optionally, insert code to configure the new scene.
-    [self.scene.view presentScene: newScene transition: reveal];
+    [self runAction:[SKAction sequence:@[[SKAction runBlock:^{
+        SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:0.5];
+        AJSelectLevelScene *newScene = [[AJSelectLevelScene alloc] initWithSize: CGSizeMake(1024,768)];
+        [self.scene.view presentScene: newScene transition: reveal];
+    }], [SKAction runBlock:^{
+        [self clean];
+    }]]]];
 }
 
 -(void)dealloc{
