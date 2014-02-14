@@ -59,7 +59,7 @@
 }
 
 - (void) initPhysics {
-    self.chassis.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.chassis.size];
+    self.chassis.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.chassis.size.height / 3];
     self.chassis.physicsBody.categoryBitMask = botCategory;
     self.chassis.physicsBody.collisionBitMask = botCategory | wallCategory;
     self.chassis.physicsBody.contactTestBitMask = botCategory | wallCategory;

@@ -42,76 +42,84 @@
     self.scaleMode = SKSceneScaleModeAspectFit;
     
     SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
+    SKSpriteNode *buttonBackground = [SKSpriteNode spriteNodeWithImageNamed:@"button"];
+    
     background.anchorPoint = CGPointMake(0, 0);
     [self addChild:background];
     
-    NSMutableDictionary *level1Options = [NSMutableDictionary dictionary];
+    NSMutableDictionary *level1Options = [NSMutableDictionary dictionaryWithObject:@"level1" forKey:@"levelName"];
+    NSMutableDictionary *level2Options = [NSMutableDictionary dictionaryWithObject:@"level2" forKey:@"levelName"];
+    NSMutableDictionary *level3Options = [NSMutableDictionary dictionaryWithObject:@"level3" forKey:@"levelName"];
+    NSMutableDictionary *level4Options = [NSMutableDictionary dictionaryWithObject:@"level4" forKey:@"levelName"];
+    NSMutableDictionary *level5Options = [NSMutableDictionary dictionaryWithObject:@"level5" forKey:@"levelName"];
+    NSMutableDictionary *level6Options = [NSMutableDictionary dictionaryWithObject:@"level6" forKey:@"levelName"];
     
-    [level1Options setObject:@"level1" forKey:@"levelName"];
-    [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level1"
+    AJMenuNode *btnLevel1 = [AJMenuNode menuLabelNodeWithName:@"Level1"
                                                  text:@"Level 1"
                                              position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 3)
                                                  size:36
                                                 block:^(id sender){
                                                     _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level1Options];
                                                     [self play];
-                                                }]];
+                                                }];
     
-    
-    NSMutableDictionary *level2Options = [NSMutableDictionary dictionary];
-    [level2Options setObject:@"level2" forKey:@"levelName"];
-    [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level2"
+    AJMenuNode *btnLevel2 = [AJMenuNode menuLabelNodeWithName:@"Level2"
                                                  text:@"Level 2"
                                              position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 2)
                                                  size:36
                                                 block:^(id sender){
                                                     _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level2Options];
                                                     [self play];
-                                                }]];
+                                                }];
     
-    NSMutableDictionary *level3Options = [NSMutableDictionary dictionary];
-    [level3Options setObject:@"level3" forKey:@"levelName"];
-    [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level3"
+    AJMenuNode *btnLevel3 = [AJMenuNode menuLabelNodeWithName:@"Level3"
                                                  text:@"Level 3"
                                              position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 1)
                                                  size:36
                                                 block:^(id sender){
                                                     _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level3Options];
                                                     [self play];
-                                                }]];
+                                                }];
     
-    NSMutableDictionary *level4Options = [NSMutableDictionary dictionary];
-    [level4Options setObject:@"level4" forKey:@"levelName"];
-    [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level4"
+    AJMenuNode *btnLevel4 = [AJMenuNode menuLabelNodeWithName:@"Level4"
                                                  text:@"Level 4"
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 3)
                                                  size:36
                                                 block:^(id sender){
                                                     _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level4Options];
                                                     [self play];
-                                                }]];
+                                                }];
     
-    NSMutableDictionary *level5Options = [NSMutableDictionary dictionary];
-    [level5Options setObject:@"level5" forKey:@"levelName"];
-    [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level5"
+    AJMenuNode *btnLevel5 = [AJMenuNode menuLabelNodeWithName:@"Level5"
                                                  text:@"Level 5"
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 2)
                                                  size:36
                                                 block:^(id sender){
                                                     _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level5Options];
                                                     [self play];
-                                                }]];
+                                                }];
     
-    NSMutableDictionary *level6Options = [NSMutableDictionary dictionary];
-    [level6Options setObject:@"level6" forKey:@"levelName"];
-    [self addChild: [AJMenuNode menuLabelNodeWithName:@"Level6"
+    AJMenuNode *btnLevel6 = [AJMenuNode menuLabelNodeWithName:@"Level6"
                                                  text:@"Level 6"
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 1)
                                                  size:36
                                                 block:^(id sender){
                                                     _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level6Options];
                                                     [self play];
-                                                }]];
+                                                }];
+    [btnLevel1 addBackSprite:buttonBackground];
+    [btnLevel2 addBackSprite:buttonBackground];
+    [btnLevel3 addBackSprite:buttonBackground];
+    [btnLevel4 addBackSprite:buttonBackground];
+    [btnLevel5 addBackSprite:buttonBackground];
+    [btnLevel6 addBackSprite:buttonBackground];
+
+    [self addChild:btnLevel1];
+    [self addChild:btnLevel2];
+    [self addChild:btnLevel3];
+    [self addChild:btnLevel4];
+    [self addChild:btnLevel5];
+    [self addChild:btnLevel6];
     
 }
 
