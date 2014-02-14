@@ -146,11 +146,14 @@
 
 - (void) play
 {
-//    [self clean];
+
     SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:0.6];
     AJGameScene *newScene = [AJGameScene sceneWithSize: CGSizeMake(1024,768) options:_selectedSceneOptions];
+
+    [self runAction:[SKAction waitForDuration:0.5] completion:^{
+        [self.scene.view presentScene: newScene transition: reveal];
+    }];
     
-    [self.scene.view presentScene: newScene transition: reveal];
 }
 
 - (void) mainMenu
