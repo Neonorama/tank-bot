@@ -14,6 +14,6 @@
 @property (nonatomic, strong) SKLabelNode *playButton;
 
 - (void) play;
--(void) clean;
+- (void) clean;
 
 @end

@@ -61,6 +61,8 @@
 		91F8378D18A28C780060CC81 /* level6.json in Resources */ = {isa = PBXBuildFile; fileRef = 91F8378718A28C780060CC81 /* level6.json */; };
 		91F8379018A5759D0060CC81 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 91F8378E18A5759D0060CC81 /* background.png */; };
 		91F8379118A5759D0060CC81 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91F8378F18A5759D0060CC81 /* background@2x.png */; };
+		91F8379318ADE6980060CC81 /* menu_background.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 91F8379218ADE6980060CC81 /* menu_background.m4a */; };
+		91F8379518ADE7230060CC81 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F8379418ADE7230060CC81 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -148,6 +150,8 @@
 		91F8378718A28C780060CC81 /* level6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = level6.json; path = Resources/level6.json; sourceTree = "<group>"; };
 		91F8378E18A5759D0060CC81 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		91F8378F18A5759D0060CC81 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		91F8379218ADE6980060CC81 /* menu_background.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = menu_background.m4a; sourceTree = "<group>"; };
+		91F8379418ADE7230060CC81 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91F8379518ADE7230060CC81 /* AVFoundation.framework in Frameworks */,
 				913BEAC317860E5A00E8A483 /* SpriteKit.framework in Frameworks */,
 				91CCBDE9177E22E20079DC88 /* CoreText.framework in Frameworks */,
 				91361128173E456200937A20 /* UIKit.framework in Frameworks */,
@@ -207,6 +212,7 @@
 		91361126173E456200937A20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				91F8379418ADE7230060CC81 /* AVFoundation.framework */,
 				913BEAC217860E5A00E8A483 /* SpriteKit.framework */,
 				91CCBDE8177E22E20079DC88 /* CoreText.framework */,
 				9160297E1775C4B80039A3D2 /* QuartzCore.framework */,
@@ -308,6 +314,7 @@
 		916029801775D0FE0039A3D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				91F8379218ADE6980060CC81 /* menu_background.m4a */,
 				91F8378E18A5759D0060CC81 /* background.png */,
 				91F8378F18A5759D0060CC81 /* background@2x.png */,
 				91F8377F18A28A420060CC81 /* Levels */,
@@ -409,6 +416,7 @@
 				91F8377518A28A340060CC81 /* level_2@2x.png in Resources */,
 				9155FBCC185F901D008E8CF9 /* Icon@2x.png in Resources */,
 				9136113A173E456200937A20 /* Default.png in Resources */,
+				91F8379318ADE6980060CC81 /* menu_background.m4a in Resources */,
 				91F8377A18A28A340060CC81 /* level_5.png in Resources */,
 				91F8378118A28A530060CC81 /* level_objects.atlas in Resources */,
 				9136113C173E456200937A20 /* Default@2x.png in Resources */,
