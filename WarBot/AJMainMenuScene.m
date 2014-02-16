@@ -54,7 +54,7 @@
     [playButton addBackSprite:buttonBackground];
     
     AJMenuNode *randButton = [AJMenuNode menuLabelNodeWithName:@"Randomize"
-                                                 text:@"Random lavel"
+                                                 text:@"Random"
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 1)
                                                  size:48
                                                 block:^(id sender){

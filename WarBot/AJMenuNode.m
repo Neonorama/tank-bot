@@ -61,7 +61,7 @@
 -(void)addBackSprite:(SKSpriteNode *)ground {
     self.sprite = [SKSpriteNode spriteNodeWithTexture:ground.texture];
     [self addChild: self.sprite];
-    self.sprite.position = self.label.position;
+    self.sprite.position = CGPointMake(self.label.position.x, self.label.position.y + self.label.fontSize * 0.4);
     self.sprite.zPosition = 5;
 }
 
