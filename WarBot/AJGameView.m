@@ -116,8 +116,8 @@
         wallPart.position = CGPointMake([obj[@"x"] integerValue], self.size.height - [obj[@"y"] integerValue]);
         wallPart.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:wallPath];
         wallPart.physicsBody.categoryBitMask = wallCategory;
-        wallPart.physicsBody.collisionBitMask = botCategory | wallCategory;
-        wallPart.physicsBody.contactTestBitMask = botCategory | wallCategory;
+        wallPart.physicsBody.collisionBitMask = 0;
+        wallPart.physicsBody.contactTestBitMask = botCategory | bulletCategory;
         
         [self addChild:wallPart];
         CGPathRelease(wallPath);
@@ -149,6 +149,10 @@
         SKSpriteNode *barrel = [SKSpriteNode spriteNodeWithImageNamed:@"oil_tank.png"];
         barrel.position = CGPointMake([obj[@"x"] integerValue], self.size.height - [obj[@"y"] integerValue]);
         barrel.zPosition = 300;
+        barrel.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:5];
+        barrel.physicsBody.categoryBitMask = goalCategory;
+        barrel.physicsBody.collisionBitMask = 0;
+        barrel.physicsBody.contactTestBitMask = botCategory | bulletCategory;
         [self addChild:barrel];
         
     }];
@@ -178,8 +182,8 @@
     finishShape.position = CGPointMake(finishArea.origin.x, finishArea.origin.y);
     finishShape.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:finishPath];
     finishShape.physicsBody.categoryBitMask = finishCategory;
-    finishShape.physicsBody.collisionBitMask = botCategory | finishCategory;
-    finishShape.physicsBody.contactTestBitMask = botCategory | finishCategory;
+    finishShape.physicsBody.collisionBitMask = 0;
+    finishShape.physicsBody.contactTestBitMask = botCategory;
     [self addChild:finishShape];
     
     SKSpriteNode *finishSprite = [SKSpriteNode spriteNodeWithImageNamed:@"flag.png"];
@@ -191,7 +195,7 @@
     
     // Load tiles
 //    int layerHeight = [[layer objectForKey:@"height"] integerValue];
-    int layerWidth = [[layer objectForKey:@"width"] integerValue];
+//    int layerWidth = [[layer objectForKey:@"width"] integerValue];
     NSArray *layerData = [layer objectForKey:@"data"];
     NSMutableArray *layerTiles = [NSMutableArray arrayWithCapacity:[layerData count]];
     

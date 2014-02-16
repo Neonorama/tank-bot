@@ -140,6 +140,16 @@
         label.zPosition = 1;
         [commandSprite addChild:label];
         
+    } else if ([command.command isEqualToString:kCommandFire]) {
+        SKLabelNode *fireLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        fireLabel.text = @"Fire!";
+        fireLabel.fontSize = 20;
+        fireLabel.position = CGPointMake(0, -8);
+        [commandSprite addChild:fireLabel];
+//        commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"func.png"];
+//        label.zPosition = 1;
+//        [commandSprite addChild:label];
+        
     } else if ([command.command isEqualToString:kCommandRet]) {
         commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"ret.png"];
         

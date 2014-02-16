@@ -61,8 +61,8 @@
 - (void) initPhysics {
     self.chassis.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.chassis.size.height / 3];
     self.chassis.physicsBody.categoryBitMask = botCategory;
-    self.chassis.physicsBody.collisionBitMask = botCategory | wallCategory;
-    self.chassis.physicsBody.contactTestBitMask = botCategory | wallCategory;
+    self.chassis.physicsBody.collisionBitMask = 0;
+    self.chassis.physicsBody.contactTestBitMask =  wallCategory | finishCategory;
 }
 
 #pragma mark - Implementation chassis methods
@@ -119,6 +119,26 @@
 
 - (void) fire {
     NSLog(@"Fire");
+    
+    SKSpriteNode * bullet = [SKSpriteNode spriteNodeWithImageNamed:@"bullet.png"];
+    bullet.zRotation = self.turret.zRotation - M_PI_2;
+    bullet.position = self.chassis.position;
+//    bullet.position = [self.parent convertPoint:self.chassis.position fromNode:self.parent];
+    bullet.zPosition = 15;
+    [self.parent addChild:bullet];
+    
+    float distance = 1000.0f;
+    CGVector direction = CGVectorMake(distance * cosf(self.turret.zRotation + self.chassis.zRotation), distance * sinf(self.turret.zRotation + self.chassis.zRotation));
+    
+    SKAction * actionMove = [SKAction moveBy:direction duration:5.0];
+    SKAction * actionMoveDone = [SKAction removeFromParent];
+    
+    bullet.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:5];
+    bullet.physicsBody.categoryBitMask = bulletCategory;
+    bullet.physicsBody.collisionBitMask = 0;
+    bullet.physicsBody.contactTestBitMask = wallCategory | goalCategory;
+
+    [bullet runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
 }
 
 - (void) turnTurret:(NSNumber *) angle {

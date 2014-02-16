@@ -41,6 +41,7 @@
         [self.gameView addChild:self.gameManager.bot.chassis];
         self.gameManager.bot.chassis.position = self.gameView.startPoint;
         self.gameManager.bot.chassis.zPosition = 10;
+        self.gameManager.bot.parent = self.gameView;
     
 //        self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:DEFAULT_TIME_INTERVAL target:self selector:@selector(nextStep:) userInfo:nil repeats:YES];
         
@@ -153,24 +154,40 @@
         secondBody = contact.bodyA;
     }
     
-    if ((secondBody.categoryBitMask & wallCategory) != 0)
+    if ((firstBody.categoryBitMask & botCategory) != 0 &&
+        (secondBody.categoryBitMask & wallCategory) != 0)
     {
         NSLog(@"Wall contact!!!");
         [self pause];
         [self reset];
     }
     
-    if ((secondBody.categoryBitMask & finishCategory) != 0)
+    if ((firstBody.categoryBitMask & botCategory) != 0 &&
+        (secondBody.categoryBitMask & finishCategory) != 0)
     {
         NSLog(@"Finish contact!!!");
         [self pause];
         [self finish];
     }
+    
+    if ((firstBody.categoryBitMask & bulletCategory) != 0 &&
+        (secondBody.categoryBitMask & goalCategory) != 0)
+    {
+        [self bullet:firstBody.node didCollideWithGoal:secondBody.node];
+    }
+}
+
+- (void)bullet:(SKSpriteNode *)bullet didCollideWithGoal:(SKSpriteNode *)goal {
+    NSLog(@"Hit");
+    [bullet removeFromParent];
+    [goal removeFromParent];
 }
 
 - (void) clean {
+    [self pause];
     [self.gameView clean];
     [self.controlView clean];
+    [self.gameManager reset];
     [self removeAllActions];
     [self removeAllChildren];
 }

@@ -41,6 +41,7 @@
     self = [super init];
     if (self) {
         self.bot = [AJBot defaultBot];
+        
         self.programField = [AJProgramField defaultField];
         [self.programField setDelegate:self];
         
