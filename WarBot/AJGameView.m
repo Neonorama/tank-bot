@@ -14,9 +14,11 @@
 {
     if (self = [super init]) {
         self.size = size;
-        [self generateLevel:levelName];
-        
-        
+        if ([levelName isEqualToString:@"random"]) {
+            [self generateRandomLevel];
+        } else {
+            [self generateLevel:levelName];
+        }
 	}
 	return self;
 }
@@ -43,6 +45,47 @@
 //    CGPoint touchLocationOne = [touchOne locationInView:self.view];
 //    
 //    NSLog(@"Game view touch %@", NSStringFromCGPoint(touchLocationOne));
+}
+
+-(void)generateRandomLevel {
+    SKTextureAtlas *levelObjects = [SKTextureAtlas atlasNamed:@"level_objects.atlas"];
+    SKSpriteNode *ground = [SKSpriteNode spriteNodeWithImageNamed:@"ground.png"];
+    
+    ground.anchorPoint = CGPointMake(0, 0);
+    [self addChild:ground];
+    
+    self.startPoint = CGPointMake(100, 100);
+    self.finishArea  = CGRectMake(300, 400, 100, 100);
+    
+    [self putFinishInRect:self.finishArea];
+}
+
+-(void) putFinishInRect: (CGRect)rect {
+    
+    SKShapeNode * finishShape = [SKShapeNode node];
+    
+    CGMutablePathRef finishPath = CGPathCreateMutable();
+    CGPathAddRect(finishPath, NULL, CGRectMake(0, 0, rect.size.width, rect.size.height));
+    
+    finishShape.path = finishPath;
+    //    finishShape.strokeColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
+    //    finishShape.fillColor = [SKColor colorWithRed:1.0 green:1.0 blue:0 alpha:0.5];
+    finishShape.lineWidth = 0.0;
+    finishShape.zPosition = 300;
+    finishShape.position = CGPointMake(rect.origin.x, rect.origin.y);
+    finishShape.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:finishPath];
+    finishShape.physicsBody.categoryBitMask = finishCategory;
+    finishShape.physicsBody.collisionBitMask = 0;
+    finishShape.physicsBody.contactTestBitMask = botCategory;
+    [self addChild:finishShape];
+    
+    SKSpriteNode *finishSprite = [SKSpriteNode spriteNodeWithImageNamed:@"flag.png"];
+    finishSprite.position = CGPointMake(finishShape.position.x + finishShape.frame.size.height / 2, finishShape.position.y + finishShape.frame.size.width / 2);
+    finishSprite.zPosition = finishShape.zPosition + 1;
+    finishShape.xScale = 0.8;
+    finishShape.yScale = 0.8;
+    [self addChild:finishSprite];
+    
 }
 
 -(void)generateLevel:(NSString *)levelName {
@@ -169,29 +212,7 @@
 
     self.startPoint = CGPointMake(CGRectGetMidX(startArea), CGRectGetMidY(startArea)) ;
     
-    SKShapeNode * finishShape = [SKShapeNode node];
-    
-    CGMutablePathRef finishPath = CGPathCreateMutable();
-    CGPathAddRect(finishPath, NULL, CGRectMake(0, 0, finishArea.size.width, finishArea.size.height));
-    
-    finishShape.path = finishPath;
-//    finishShape.strokeColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
-//    finishShape.fillColor = [SKColor colorWithRed:1.0 green:1.0 blue:0 alpha:0.5];
-    finishShape.lineWidth = 0.0;
-    finishShape.zPosition = 300;
-    finishShape.position = CGPointMake(finishArea.origin.x, finishArea.origin.y);
-    finishShape.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:finishPath];
-    finishShape.physicsBody.categoryBitMask = finishCategory;
-    finishShape.physicsBody.collisionBitMask = 0;
-    finishShape.physicsBody.contactTestBitMask = botCategory;
-    [self addChild:finishShape];
-    
-    SKSpriteNode *finishSprite = [SKSpriteNode spriteNodeWithImageNamed:@"flag.png"];
-    finishSprite.position = CGPointMake(finishShape.position.x + finishShape.frame.size.height / 2, finishShape.position.y + finishShape.frame.size.width / 2);
-    finishSprite.zPosition = finishShape.zPosition + 1;
-    finishShape.xScale = 0.8;
-    finishShape.yScale = 0.8;
-    [self addChild:finishSprite];
+    [self putFinishInRect:finishArea];
     
     // Load tiles
 //    int layerHeight = [[layer objectForKey:@"height"] integerValue];

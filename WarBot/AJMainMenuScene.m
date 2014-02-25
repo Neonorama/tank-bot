@@ -9,6 +9,7 @@
 #import "AJMainMenuScene.h"
 #import "AJSelectLevelScene.h"
 #import "AJMenuNode.h"
+#import "AJGameScene.h"
 
 #define PlayTagButton 101
 
@@ -58,7 +59,7 @@
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 1)
                                                  size:48
                                                 block:^(id sender){
-                                                    [self play];
+                                                    [self playRandom];
                                                 }];
     [randButton addBackSprite:buttonBackground];
     
@@ -97,6 +98,16 @@
     }], [SKAction runBlock:^{
         [self clean];
     }]]]];
+}
+
+- (void) playRandom
+{
+    SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:0.6];
+    AJGameScene *newScene = [AJGameScene sceneWithSize: CGSizeMake(1024,768) options:@{@"levelName": @"random"}];
+    
+    [self runAction:[SKAction waitForDuration:0.5] completion:^{
+        [self.scene.view presentScene: newScene transition: reveal];
+    }];
 }
 
 -(void)dealloc{
