@@ -8,6 +8,12 @@
 
 #import "AJGameView.h"
 
+#define PATH_LENGTH 48
+#define PointUP(CGPoint)    CGPointMake(CGPoint.x,CGPoint.y + 1)
+#define PointRight(CGPoint) CGPointMake(CGPoint.x + 1,CGPoint.y)
+#define PointDown(CGPoint)  CGPointMake(CGPoint.x,CGPoint.y - 1)
+#define PointLeft(CGPoint)  CGPointMake(CGPoint.x - 1,CGPoint.y)
+
 @implementation AJGameView
 
 -(id)initWithSize:(CGSize)size name:(NSString *)levelName
@@ -54,10 +60,339 @@
     ground.anchorPoint = CGPointMake(0, 0);
     [self addChild:ground];
     
-    self.startPoint = CGPointMake(100, 100);
-    self.finishArea  = CGRectMake(300, 400, 100, 100);
+    // Поле 11 х 12
+    // Выбираем начальную точку случайным образом
+    int randStart = arc4random() % (11 *12); //
+    int startX = randStart % 11;
+    int startY = randStart / 11;
+    
+    self.startPoint = CGPointMake(64 * startX +32, 64 * startY +32);
+    
+    // Делаем PATH_LENGTH шага пути для 100% прохождения уровня
+    NSMutableArray *pathPoints = [NSMutableArray arrayWithCapacity:PATH_LENGTH];
+    CGPoint startPoint = CGPointMake(startX, startY);
+    
+    [pathPoints addObject:[NSValue valueWithCGPoint:startPoint]];
+    
+    CGPoint nextPoint = startPoint;
+    CGPoint currPoint = startPoint;
+    for (int i = 1; i < PATH_LENGTH; i++) {
+       
+        do {
+            // проверяем точку внутри поля
+            if ((currPoint.x > 0 && currPoint.x < 10) && (currPoint.y > 0 && currPoint.y < 11)) {
+                int dir = arc4random() % 4 + 1; // выбираем направление 1 - вверх, 2 - вправо, 3 - вниз, 4 - влево
+                switch (dir) {
+                    case 1:
+                        nextPoint = PointUP(currPoint);
+                        break;
+                        
+                    case 2:
+                        nextPoint = PointRight(currPoint);
+                        break;
+                        
+                    case 3:
+                        nextPoint = PointDown(currPoint);
+                        break;
+                        
+                    case 4:
+                        nextPoint = PointLeft(currPoint);
+                        break;
+                        
+                    default:
+                        break;
+                }
+                
+                if ([self point:PointUP(currPoint) existsInPathPoints:pathPoints] &&
+                    [self point:PointLeft(currPoint) existsInPathPoints:pathPoints] &&
+                    [self point:PointRight(currPoint) existsInPathPoints:pathPoints] &&
+                    [self point:PointDown(currPoint) existsInPathPoints:pathPoints]) {
+                    break;
+                }
+            };
+        
+            // точка на левой границе
+            if ((currPoint.x == 0) && (currPoint.y > 0 && currPoint.y < 11)) {
+                int dir = arc4random() % 3+ 1; // выбираем направление 1 - вверх, 2 - вправо, 3 - вниз
+                switch (dir) {
+                    case 1:
+                        nextPoint = PointUP(currPoint);
+                        break;
+                        
+                    case 2:
+                        nextPoint = PointRight(currPoint);
+                        break;
+                        
+                    case 3:
+                        nextPoint = PointDown(currPoint);
+                        break;
+                        
+                    default:
+                        break;
+                }
+                
+                if ([self point:PointUP(currPoint) existsInPathPoints:pathPoints] &&
+                    [self point:PointRight(currPoint) existsInPathPoints:pathPoints] &&
+                    [self point:PointDown(currPoint) existsInPathPoints:pathPoints]) {
+                    break;
+                }
+            };
+            
+            // точка на правой границе
+            if ((currPoint.x == 10) && (currPoint.y > 0 && currPoint.y < 11)) {
+                int dir = arc4random() % 3+ 1; // выбираем направление 1 - вверх, 2 - вниз, 3 - влево
+                switch (dir) {
+                    case 1:
+                        nextPoint = PointUP(currPoint);
+                        break;
+                        
+                    case 2:
+                        nextPoint = PointDown(currPoint);
+                        break;
+                        
+                    case 3:
+                        nextPoint = PointLeft(currPoint);
+                        break;
+                        
+                    default:
+                        break;
+                }
+                
+                if ([self point:PointUP(currPoint) existsInPathPoints:pathPoints] &&
+                    [self point:PointLeft(currPoint) existsInPathPoints:pathPoints] &&
+                    [self point:PointDown(currPoint) existsInPathPoints:pathPoints]) {
+                    break;
+                }
+            };
+            
+            // точка на верхней границе
+            if ((currPoint.x > 0 && currPoint.x < 10) && (currPoint.y == 11)) {
+                int dir = arc4random() % 3+ 1; // выбираем направление 1 - вправо, 2 - вниз, 3 - влево
+                switch (dir) {
+                        
+                    case 1:
+                        nextPoint = PointRight(currPoint);
+                        break;
+                        
+                    case 2:
+                        nextPoint = PointDown(currPoint);
+                        break;
+                        
+                    case 3:
+                        nextPoint = PointLeft(currPoint);
+                        break;
+                        
+                    default:
+                        break;
+                }
+                
+                if  ([self point:PointLeft(currPoint) existsInPathPoints:pathPoints] &&
+                    [self point:PointRight(currPoint) existsInPathPoints:pathPoints] &&
+                    [self point:PointDown(currPoint) existsInPathPoints:pathPoints]) {
+                    break;
+                }
+            };
+            
+            // точка на нижней границе
+            if ((currPoint.x > 0 && currPoint.x < 10) && (currPoint.y == 0)) {
+                int dir = arc4random() % 3+ 1; // выбираем направление 1 - вверх, 2 - вправо, 3 - влево
+                switch (dir) {
+                    case 1:
+                        nextPoint = PointUP(currPoint);
+                        break;
+                        
+                    case 2:
+                        nextPoint = PointRight(currPoint);
+                        break;
+                        
+                    case 3:
+                        nextPoint = PointLeft(currPoint);
+                        break;
+                        
+                    default:
+                        break;
+                }
+                
+                if ([self point:PointUP(currPoint) existsInPathPoints:pathPoints] &&
+                    [self point:PointLeft(currPoint) existsInPathPoints:pathPoints] &&
+                    [self point:PointRight(currPoint) existsInPathPoints:pathPoints]) {
+                    break;
+                }
+            };
+            
+            // 0,0
+            if ((currPoint.x == 0) && (currPoint.y == 0)) {
+                int dir = arc4random() % 2+ 1; // выбираем направление 1 - вверх, 2 - вправо
+                switch (dir) {
+                    case 1:
+                        nextPoint = PointUP(currPoint);
+                        break;
+                        
+                    case 2:
+                        nextPoint = PointRight(currPoint);
+                        break;
+                        
+                    default:
+                        break;
+                };
+                
+                if ([self point:PointUP(currPoint) existsInPathPoints:pathPoints] &&
+                    [self point:PointRight(currPoint) existsInPathPoints:pathPoints]) {
+                    break;
+                }
+            };
+            
+            // 10,0
+            if ((currPoint.x == 10) && (currPoint.y == 0)) {
+                int dir = arc4random() % 2+ 1; // выбираем направление 1 - вверх, 2 - влево
+                switch (dir) {
+                    case 1:
+                        nextPoint = PointUP(currPoint);
+                        break;
+                        
+                    case 2:
+                        nextPoint = PointLeft(currPoint);
+                        break;
+                        
+                    default:
+                        break;
+                };
+                
+                if ([self point:PointUP(currPoint) existsInPathPoints:pathPoints] &&
+                    [self point:PointLeft(currPoint) existsInPathPoints:pathPoints]) {
+                    break;
+                }
+            };
+            
+            // 10,11
+            if ((currPoint.x == 10) && (currPoint.y == 11)) {
+                int dir = arc4random() % 2+ 1; // выбираем направление 1 - влево, 2 - вниз
+                switch (dir) {
+                    case 1:
+                        nextPoint = PointLeft(currPoint);
+                        break;
+                        
+                    case 2:
+                        nextPoint = PointDown(currPoint);
+                        break;
+                        
+                    default:
+                        break;
+                };
+                
+                if ([self point:PointLeft(currPoint) existsInPathPoints:pathPoints] &&
+                    [self point:PointDown(currPoint) existsInPathPoints:pathPoints]) {
+                    break;
+                }
+            };
+            
+            // 0,11
+            if ((currPoint.x == 0) && (currPoint.y == 11)) {
+                int dir = arc4random() % 2+ 1; // выбираем направление 1 - вниз, 2 - вправо
+                switch (dir) {
+                    case 1:
+                        nextPoint = PointDown(currPoint);
+                        break;
+                        
+                    case 2:
+                        nextPoint = PointRight(currPoint);
+                        break;
+                        
+                    default:
+                        break;
+                };
+                
+                if ([self point:PointRight(currPoint) existsInPathPoints:pathPoints] &&
+                    [self point:PointDown(currPoint) existsInPathPoints:pathPoints]) {
+                    break;
+                }
+            };
+            
+            
+        } while ([self point:nextPoint existsInPathPoints:pathPoints]);
+        
+        [pathPoints addObject:[NSValue valueWithCGPoint:nextPoint]];
+        
+        currPoint = nextPoint;
+        
+    }
+    
+//    [pathPoints enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//        CGPoint p = [obj CGPointValue];
+//        
+//        SKSpriteNode *ttt = [SKSpriteNode spriteNodeWithTexture:[levelObjects textureNamed:@"box1.png"]];
+//        ttt.position = CGPointMake(64 * p.x +32, 64 * p.y +32);
+//        [self addChild:ttt];
+//    }];
+    
+    
+    for (int i = 0; i < 11; i ++) {
+        for (int j = 0; j < 12; j++) {
+            CGPoint point = CGPointMake(i, j);
+            
+            if (![self point:point existsInPathPoints:pathPoints]) {
+
+                SKTexture *texture;
+                int rnd = arc4random() % 15;
+                BOOL place = YES;
+                switch (rnd) {
+                    case 0:
+                        texture = [levelObjects textureNamed:@"barrel1.png"];
+                        break;
+                    case 1:
+                        texture = [levelObjects textureNamed:@"box3.png"];
+                        break;
+                    case 2:
+                        texture = [levelObjects textureNamed:@"bush.png"];
+                        break;
+                    case 3:
+                        texture = [levelObjects textureNamed:@"box1.png"];
+                        break;
+                    case 4:
+                        texture = [levelObjects textureNamed:@"barrel2.png"];
+                        break;
+                    case 5:
+                        texture = [levelObjects textureNamed:@"box2.png"];
+                        break;
+                    case 7:
+                        texture = [levelObjects textureNamed:@"box4.png"];
+                        break;
+                        
+                    default:
+                        place = NO;
+                        break;
+                }
+                
+                if (place) {
+                    SKPhysicsBody *physics = [SKPhysicsBody bodyWithCircleOfRadius:5.0f];
+                    SKSpriteNode *levelObject = [SKSpriteNode spriteNodeWithTexture:texture];
+                    
+                    physics.categoryBitMask = wallCategory;
+                    physics.collisionBitMask = 0;
+                    physics.contactTestBitMask = botCategory | bulletCategory;
+                    levelObject.physicsBody = physics;
+                    levelObject.position = CGPointMake(64 * point.x +32, 64 * point.y +32);
+                    [self addChild:levelObject];
+                }
+            }
+        }
+    }
+    
+    
+    self.finishArea  = CGRectMake(64 * nextPoint.x +32, 64 * nextPoint.y +32, 5, 5);
     
     [self putFinishInRect:self.finishArea];
+}
+
+-(BOOL)point:(CGPoint) point existsInPathPoints: (NSMutableArray *)points {
+    __block BOOL exists = NO;
+    [points enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (CGPointEqualToPoint(point, [obj CGPointValue])) {
+            exists = YES;
+        }
+    }];
+    
+    return exists;
 }
 
 -(void) putFinishInRect: (CGRect)rect {
