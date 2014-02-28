@@ -53,16 +53,26 @@
     
     
     AJMenuNode *playButton = [AJMenuNode menuLabelNodeWithName:@"PlayButton"
-                                              text:NSLocalizedString(@"Play", nil)
-                                             position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 2)
+                                              text:NSLocalizedString(@"Tutorials", nil)
+                                             position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 3)
                                                  size:48
                                                 block:^(id sender){
                                                     [self play];
                                                 }];
     [playButton addBackSprite:buttonBackground];
     
+    AJMenuNode *campaignButton = [AJMenuNode menuLabelNodeWithName:@"Campaign"
+                                                          text:NSLocalizedString(@"Campaign", nil)
+                                                      position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 2)
+                                                          size:48
+                                                         block:^(id sender){
+                                                             
+                                                         }];
+    
+    [campaignButton addBackSprite:buttonBackground];
+    
     AJMenuNode *randButton = [AJMenuNode menuLabelNodeWithName:@"Randomize"
-                                                 text:@"Random"
+                                                 text:NSLocalizedString(@"Random", nil)
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 1)
                                                  size:48
                                                 block:^(id sender){
@@ -72,8 +82,17 @@
     
     [self addChild:playButton];
     [self addChild:randButton];
+    [self addChild:campaignButton];
     
-    NSLog(NSLocalizedString(@"Play",nil));
+    SKLabelNode *coming = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    coming.text = NSLocalizedString(@"Coming soon", nil);
+    coming.fontColor = [UIColor redColor];
+    coming.position = CGPointMake(30, 5);
+    coming.zRotation = M_PI / 10;
+//    coming.blendMode = SKBlendModeMultiply;
+    
+    [campaignButton.label addChild:coming];
+    
 }
 
 - (void) clean {

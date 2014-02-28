@@ -55,7 +55,7 @@
     NSMutableDictionary *level6Options = [NSMutableDictionary dictionaryWithObject:@"level6" forKey:@"levelName"];
     
     AJMenuNode *btnLevel1 = [AJMenuNode menuLabelNodeWithName:@"Level1"
-                                                 text:@"Level 1"
+                                                 text:[NSLocalizedString(@"Level", nil) stringByAppendingString:@" 1"]
                                              position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 3)
                                                  size:36
                                                 block:^(id sender){
@@ -64,7 +64,7 @@
                                                 }];
     
     AJMenuNode *btnLevel2 = [AJMenuNode menuLabelNodeWithName:@"Level2"
-                                                 text:@"Level 2"
+                                                 text:[NSLocalizedString(@"Level", nil) stringByAppendingString:@" 2"]
                                              position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 2)
                                                  size:36
                                                 block:^(id sender){
@@ -73,7 +73,7 @@
                                                 }];
     
     AJMenuNode *btnLevel3 = [AJMenuNode menuLabelNodeWithName:@"Level3"
-                                                 text:@"Level 3"
+                                                 text:[NSLocalizedString(@"Level", nil) stringByAppendingString:@" 3"]
                                              position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 1)
                                                  size:36
                                                 block:^(id sender){
@@ -82,7 +82,7 @@
                                                 }];
     
     AJMenuNode *btnLevel4 = [AJMenuNode menuLabelNodeWithName:@"Level4"
-                                                 text:@"Level 4"
+                                                 text:[NSLocalizedString(@"Level", nil) stringByAppendingString:@" 4"]
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 3)
                                                  size:36
                                                 block:^(id sender){
@@ -91,7 +91,7 @@
                                                 }];
     
     AJMenuNode *btnLevel5 = [AJMenuNode menuLabelNodeWithName:@"Level5"
-                                                 text:@"Level 5"
+                                                 text:[NSLocalizedString(@"Level", nil) stringByAppendingString:@" 5"]
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 2)
                                                  size:36
                                                 block:^(id sender){
@@ -100,7 +100,7 @@
                                                 }];
     
     AJMenuNode *btnLevel6 = [AJMenuNode menuLabelNodeWithName:@"Level6"
-                                                 text:@"Level 6"
+                                                 text:[NSLocalizedString(@"Level", nil) stringByAppendingString:@" 6"]
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 1)
                                                  size:36
                                                 block:^(id sender){
