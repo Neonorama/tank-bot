@@ -53,7 +53,7 @@
     
     
     AJMenuNode *playButton = [AJMenuNode menuLabelNodeWithName:@"PlayButton"
-                                                 text:@"Play!"
+                                              text:NSLocalizedString(@"Play", nil)
                                              position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 2)
                                                  size:48
                                                 block:^(id sender){
@@ -72,6 +72,8 @@
     
     [self addChild:playButton];
     [self addChild:randButton];
+    
+    NSLog(NSLocalizedString(@"Play",nil));
 }
 
 - (void) clean {
