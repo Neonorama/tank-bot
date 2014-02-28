@@ -75,6 +75,7 @@
     
     SKAction *move = [SKAction moveTo:t duration:DEFAULT_TIME_INTERVAL];
     [self.chassis runAction:move];
+    [self.chassis runAction:[SKAction playSoundFileNamed:@"bot_engine.m4a" waitForCompletion:NO]];
     
     NSLog(@"Move forward by %d", distance_);
 }
@@ -87,6 +88,7 @@
     
     SKAction *move = [SKAction moveTo:t duration:DEFAULT_TIME_INTERVAL];
     [self.chassis runAction:move];
+    [self.chassis runAction:[SKAction playSoundFileNamed:@"bot_engine.m4a" waitForCompletion:NO]];
     
     NSLog(@"Move backward by %d", distance_);
 }
@@ -95,6 +97,7 @@
     int angle_ = [angle intValue] ;
     SKAction *rotate = [SKAction rotateByAngle:angle_ duration:DEFAULT_TIME_INTERVAL];
     [self.chassis runAction:rotate];
+    [self.chassis runAction:[SKAction playSoundFileNamed:@"bot_engine.m4a" waitForCompletion:NO]];
     
     NSLog(@"Turn by %d", angle_);
 }
@@ -102,7 +105,9 @@
 - (void) turnLeft:(NSNumber *) angle {
     float angle_ = [angle floatValue] * M_PI / 180.0;
     SKAction *rotate = [SKAction rotateByAngle:angle_ duration:DEFAULT_TIME_INTERVAL];
+    
     [self.chassis runAction:rotate];
+    [self.chassis runAction:[SKAction playSoundFileNamed:@"bot_engine.m4a" waitForCompletion:NO]];
     
     NSLog(@"Turn left by %d", [angle intValue]);
 }
@@ -111,6 +116,7 @@
     float angle_ = [angle floatValue] * M_PI / 180.0;
     SKAction *rotate = [SKAction rotateByAngle:-angle_ duration:DEFAULT_TIME_INTERVAL];
     [self.chassis runAction:rotate];
+    [self.chassis runAction:[SKAction playSoundFileNamed:@"bot_engine.m4a" waitForCompletion:NO]];
     
     NSLog(@"Turn right by %d", [angle intValue]);
 }
