@@ -145,6 +145,8 @@
     bullet.physicsBody.contactTestBitMask = wallCategory | goalCategory;
 
     [bullet runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
+    
+    [self.turret runAction:[SKAction playSoundFileNamed:@"fire.m4a" waitForCompletion:NO]];
 }
 
 - (void) turnTurret:(NSNumber *) angle {
