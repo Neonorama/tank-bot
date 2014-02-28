@@ -152,6 +152,7 @@
     SKAction *rotate = [SKAction rotateByAngle:angle_ duration:DEFAULT_TIME_INTERVAL];
     
     [self.turret runAction:rotate];
+    [self.turret runAction:[SKAction playSoundFileNamed:@"bot_turret.m4a" waitForCompletion:NO]];
     
     NSLog(@"Turn turret by %d", [angle intValue]);
 }
@@ -160,7 +161,8 @@
     float angle_ = [angle floatValue] * M_PI / 180.0;
     SKAction *rotate = [SKAction rotateByAngle:angle_ duration:DEFAULT_TIME_INTERVAL];
     [self.turret runAction:rotate];
-    
+    [self.turret runAction:[SKAction playSoundFileNamed:@"bot_turret.m4a" waitForCompletion:NO]];
+
     NSLog(@"Turn turret left by %d", [angle intValue]);
 }
 
@@ -168,7 +170,8 @@
     float angle_ = [angle floatValue] * M_PI / 180.0;
     SKAction *rotate = [SKAction rotateByAngle:-angle_ duration:DEFAULT_TIME_INTERVAL];
     [self.turret runAction:rotate];
-    
+    [self.turret runAction:[SKAction playSoundFileNamed:@"bot_turret.m4a" waitForCompletion:NO]];
+
     NSLog(@"Turn turret right by %d", [angle intValue]);
 }
 
