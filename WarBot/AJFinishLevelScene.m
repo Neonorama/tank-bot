@@ -71,6 +71,7 @@
 - (void) backToMainMenu
 {
     SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:0.5];
+    reveal.pausesIncomingScene = YES;
     AJMainMenuScene *newScene = [[AJMainMenuScene alloc] initWithSize: CGSizeMake(1024,768)];
     //  Optionally, insert code to configure the new scene.
     [self.scene.view presentScene: newScene transition: reveal];

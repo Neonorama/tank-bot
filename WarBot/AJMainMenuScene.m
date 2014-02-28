@@ -33,6 +33,13 @@
         [self createSceneContents];
         self.contentCreated = YES;
     }
+    
+    [self runAction:[SKAction waitForDuration:0.01] completion:^{
+        NSString *sparkPath = [[NSBundle mainBundle] pathForResource:@"sparks" ofType:@"sks"];
+        SKEmitterNode *spark = [NSKeyedUnarchiver unarchiveObjectWithFile:sparkPath];
+        spark.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
+        [self addChild:spark];
+    }];
 }
 
 - (void) createSceneContents {
@@ -65,7 +72,6 @@
     
     [self addChild:playButton];
     [self addChild:randButton];
-    
 }
 
 - (void) clean {

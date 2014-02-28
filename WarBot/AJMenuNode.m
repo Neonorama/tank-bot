@@ -86,6 +86,7 @@
 }
 
 - (void) activate {
+    [self runAction:[SKAction playSoundFileNamed:@"button_click.m4a" waitForCompletion:NO]];
     block_(self);
 }
 

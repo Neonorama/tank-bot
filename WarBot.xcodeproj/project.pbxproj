@@ -65,6 +65,9 @@
 		91F8379518ADE7230060CC81 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F8379418ADE7230060CC81 /* AVFoundation.framework */; };
 		D757976418BCCFAF00E17401 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = D757976218BCCFAF00E17401 /* ground.png */; };
 		D757976518BCCFAF00E17401 /* ground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D757976318BCCFAF00E17401 /* ground@2x.png */; };
+		D7C0D0F518C09212000BDB8B /* button_click.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D7C0D0F418C09212000BDB8B /* button_click.m4a */; };
+		D7C0D0FA18C092F9000BDB8B /* sparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = D7C0D0F818C092F9000BDB8B /* sparks.sks */; };
+		D7C0D0FB18C092F9000BDB8B /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C0D0F918C092F9000BDB8B /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -156,6 +159,9 @@
 		91F8379418ADE7230060CC81 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D757976218BCCFAF00E17401 /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ground.png; path = Resources/ground.png; sourceTree = "<group>"; };
 		D757976318BCCFAF00E17401 /* ground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ground@2x.png"; path = "Resources/ground@2x.png"; sourceTree = "<group>"; };
+		D7C0D0F418C09212000BDB8B /* button_click.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = button_click.m4a; sourceTree = "<group>"; };
+		D7C0D0F818C092F9000BDB8B /* sparks.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sparks.sks; sourceTree = "<group>"; };
+		D7C0D0F918C092F9000BDB8B /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,9 +324,10 @@
 		916029801775D0FE0039A3D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D7C0D0F718C092D1000BDB8B /* Effects */,
+				D7C0D0F618C09219000BDB8B /* Sound */,
 				D757976218BCCFAF00E17401 /* ground.png */,
 				D757976318BCCFAF00E17401 /* ground@2x.png */,
-				91F8379218ADE6980060CC81 /* menu_background.m4a */,
 				91F8378E18A5759D0060CC81 /* background.png */,
 				91F8378F18A5759D0060CC81 /* background@2x.png */,
 				91F8377F18A28A420060CC81 /* Levels */,
@@ -363,6 +370,24 @@
 				91F8377118A28A340060CC81 /* level_6@2x.png */,
 			);
 			name = Levels;
+			sourceTree = "<group>";
+		};
+		D7C0D0F618C09219000BDB8B /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				D7C0D0F418C09212000BDB8B /* button_click.m4a */,
+				91F8379218ADE6980060CC81 /* menu_background.m4a */,
+			);
+			name = Sound;
+			sourceTree = "<group>";
+		};
+		D7C0D0F718C092D1000BDB8B /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				D7C0D0F818C092F9000BDB8B /* sparks.sks */,
+				D7C0D0F918C092F9000BDB8B /* spark.png */,
+			);
+			name = Effects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,10 +443,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				91361132173E456200937A20 /* InfoPlist.strings in Resources */,
+				D7C0D0FB18C092F9000BDB8B /* spark.png in Resources */,
 				91F8378D18A28C780060CC81 /* level6.json in Resources */,
 				91F8377518A28A340060CC81 /* level_2@2x.png in Resources */,
 				9155FBCC185F901D008E8CF9 /* Icon@2x.png in Resources */,
 				9136113A173E456200937A20 /* Default.png in Resources */,
+				D7C0D0FA18C092F9000BDB8B /* sparks.sks in Resources */,
 				91F8379318ADE6980060CC81 /* menu_background.m4a in Resources */,
 				91F8377A18A28A340060CC81 /* level_5.png in Resources */,
 				91F8378118A28A530060CC81 /* level_objects.atlas in Resources */,
@@ -446,6 +473,7 @@
 				91F8377918A28A340060CC81 /* level_4@2x.png in Resources */,
 				91361141173E456200937A20 /* MainStoryboard.storyboard in Resources */,
 				91F8378818A28C780060CC81 /* level1.json in Resources */,
+				D7C0D0F518C09212000BDB8B /* button_click.m4a in Resources */,
 				9155FBCB185F901D008E8CF9 /* Icon.png in Resources */,
 				913BEAC517860F2700E8A483 /* bot.atlas in Resources */,
 				91F8379118A5759D0060CC81 /* background@2x.png in Resources */,
