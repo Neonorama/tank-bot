@@ -42,6 +42,9 @@
         self.gameManager.bot.chassis.position = self.gameView.startPoint;
         self.gameManager.bot.chassis.zPosition = 10;
         self.gameManager.bot.parent = self.gameView;
+//        self.gameManager.bot.track.zPosition = 10;
+        self.gameManager.bot.track1.targetNode = self.gameView;
+        self.gameManager.bot.track2.targetNode = self.gameView;
     
 //        self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:DEFAULT_TIME_INTERVAL target:self selector:@selector(nextStep:) userInfo:nil repeats:YES];
         
@@ -286,6 +289,10 @@
 
 -(void)willMoveFromView:(SKView *)view {
     [self clean];
+}
+
+-(void)update:(NSTimeInterval)currentTime {
+//    [self.gameManager.bot update];
 }
 
 @end

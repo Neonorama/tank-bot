@@ -37,6 +37,17 @@
         [self.turret addChild:turret_];
         
         [self.chassis addChild:self.turret];
+        
+        NSString *trackPath = [[NSBundle mainBundle] pathForResource:@"track" ofType:@"sks"];
+        self.track1 = [NSKeyedUnarchiver unarchiveObjectWithFile:trackPath];
+        self.track1.position = CGPointMake(self.chassis.position.x-20, self.chassis.position.y+15);
+        [self.chassis addChild:self.track1];
+        self.track1.name = @"track1";
+        
+        self.track2 = [NSKeyedUnarchiver unarchiveObjectWithFile:trackPath];
+        self.track2.position = CGPointMake(self.chassis.position.x-20, self.chassis.position.y-15);
+        [self.chassis addChild:self.track2];
+        self.track2.name = @"track1";
     }
     return self;
 }
@@ -63,13 +74,20 @@
 - (void) initPhysics {
     self.chassis.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.chassis.size.height / 3];
     self.chassis.physicsBody.categoryBitMask = botCategory;
-    self.chassis.physicsBody.collisionBitMask = 0;
+    self.chassis.physicsBody.collisionBitMask = wallCategory | finishCategory;
     self.chassis.physicsBody.contactTestBitMask =  wallCategory | finishCategory;
 }
 
 #pragma mark - Implementation chassis methods
 
 - (void) moveForward:(NSNumber *) distance {
+    
+//    NSString *trackPath = [[NSBundle mainBundle] pathForResource:@"track" ofType:@"sks"];
+//    SKEmitterNode *trackT = [NSKeyedUnarchiver unarchiveObjectWithFile:trackPath];
+//    trackT.position = CGPointMake(self.chassis.position.x, self.chassis.position.y);
+//    trackT.name = @"track";
+//    [self.parent addChild:trackT];
+    
     int distance_ = [distance intValue];
     CGPoint t = self.chassis.position;
     t.x += round(distance_ * cosf(self.chassis.zRotation));
@@ -142,7 +160,7 @@
     
     bullet.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:5];
     bullet.physicsBody.categoryBitMask = bulletCategory;
-    bullet.physicsBody.collisionBitMask = 0;
+    bullet.physicsBody.collisionBitMask = wallCategory | goalCategory;
     bullet.physicsBody.contactTestBitMask = wallCategory | goalCategory;
     
     SKAction *sound = [SKAction playSoundFileNamed:@"fire.m4a" waitForCompletion:NO];
@@ -202,9 +220,8 @@
     return newBot;
 }
 
-
-
-
-
+- (void)update {
+    
+}
 
 @end

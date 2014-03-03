@@ -318,7 +318,7 @@
         if (CGRectContainsPoint(((SKSpriteNode *)[command objectForKey:@"sprite"]).frame, touchLocationOne))
         {
             AJCommand *cmd =[command objectForKey:@"command"];
-            SKSpriteNode *cmdSprite = (SKSpriteNode *)[command objectForKey:@"sprite"];
+//            SKSpriteNode *cmdSprite = (SKSpriteNode *)[command objectForKey:@"sprite"];
             
             if ([cmd.command isEqualToString:kCommandJump]) {
                 NSString *indexString = ((SKLabelNode *)[self.intermediateSprite childNodeWithName:@"index"]).text;
