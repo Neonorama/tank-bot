@@ -120,6 +120,37 @@
     }
 }
 
+-(void)showProgCellByIndex:(int)idx {
+    
+//    [self.program removeObjectAtIndex:idx];
+    int xOffset, yOffset;
+    NSDictionary *prog = self.gameManager.programField.commands;
+        
+    xOffset = (idx % DEFAULT_COLS) * DEFAULT_CELL_SIZE + DEFAULT_CELL_SIZE / 2;
+    yOffset = (idx / DEFAULT_COLS) * DEFAULT_CELL_SIZE + DEFAULT_CELL_SIZE / 2 + 25;
+    
+    CGPoint position = CGPointMake(xOffset, self.size.height - yOffset);
+    AJCommand *command = [prog objectForKey:[NSString stringWithFormat:@"%d",idx]];
+    SKSpriteNode *commandSprite = [self getCommandSprite: command];
+    commandSprite.position = position;
+    
+    SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+    label.fontSize = 10;
+    label.fontColor = [SKColor colorWithRed:68/255 green:148/255 blue:192/255 alpha:0.8];
+    label.text = [NSString stringWithFormat: @"%d", idx];
+    label.position = CGPointMake(-14, -24);
+    label.name = @"index";
+    [commandSprite addChild:label];
+    
+    [self addChild:commandSprite];
+    
+    NSMutableDictionary *commandTMP = [[NSMutableDictionary alloc] initWithCapacity:2];
+    [commandTMP setObject:command forKey:@"command"];
+    [commandTMP setObject:commandSprite forKey:@"sprite"];
+    
+    self.program[idx] = commandTMP;
+}
+
 -(void)showAvailable {
     int xOffset, yOffset;
     NSArray *prog = self.gameManager.availableCommands.availableCommands;
@@ -276,7 +307,9 @@
             SKAction *scale = [SKAction scaleTo:1.0 duration:0.2];
             SKAction *remove = [SKAction removeFromParent];
             SKAction *group = [SKAction group:@[move, scale]];
-            [self.intermediateSprite runAction:[SKAction sequence:@[group, remove]]];
+            [self.intermediateSprite runAction:[SKAction sequence:@[group, remove]] completion:^{
+                [self showProgCellByIndex:[self.program indexOfObject:command]];
+            }];
         }
     }
     
@@ -304,11 +337,11 @@
     }
     
     
-    [self performSelector:@selector(refresh) withObject:nil afterDelay:0.2];
+//    [self performSelector:@selector(refresh) withObject:nil afterDelay:0.2];
     self.intermediateCommand = nil;
     
     touchEnabled = NO;
-    [self runAction:[SKAction waitForDuration:0.5] completion:^{
+    [self runAction:[SKAction waitForDuration:0.3] completion:^{
         touchEnabled = YES;
     }];
 }
