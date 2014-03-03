@@ -50,6 +50,9 @@
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsWorld.gravity = CGVectorMake(0,0);
         self.physicsWorld.contactDelegate = self;
+        self.physicsBody.categoryBitMask = worldCategory;
+        self.physicsBody.contactTestBitMask = botCategory | bulletCategory;
+        self.physicsBody.collisionBitMask = botCategory | bulletCategory;
         [self.gameManager.bot initPhysics];
         
         SKSpriteNode *buttonMenuSprite = [SKSpriteNode spriteNodeWithImageNamed:@"menu"];

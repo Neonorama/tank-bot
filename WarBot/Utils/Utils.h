@@ -77,5 +77,6 @@ static const uint32_t wallCategory      = 0x1 << 1;
 static const uint32_t bulletCategory    = 0x1 << 2;
 static const uint32_t finishCategory    = 0x1 << 3;
 static const uint32_t goalCategory      = 0x1 << 4;
+static const uint32_t worldCategory      = 0x1 << 5;
 
 #endif

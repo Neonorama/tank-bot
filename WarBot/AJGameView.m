@@ -529,7 +529,7 @@
         barrel.zPosition = 1;
         barrel.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:5];
         barrel.physicsBody.categoryBitMask = goalCategory;
-        barrel.physicsBody.collisionBitMask = 0;
+        barrel.physicsBody.collisionBitMask = botCategory | bulletCategory;
         barrel.physicsBody.contactTestBitMask = botCategory | bulletCategory;
         [self addChild:barrel];
         
