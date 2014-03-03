@@ -23,8 +23,9 @@
 - (void) showRegisters;
 - (SKSpriteNode *) getCommandSprite: (AJCommand *) command;
 
--(void)nextStep:(NSTimeInterval)delta;
+- (void) nextStep:(NSTimeInterval)delta;
 
--(void) clean;
+- (void) clean;
+- (void) cleanProg;
 
 @end

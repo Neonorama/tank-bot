@@ -63,6 +63,7 @@
     [self addChild: self.sprite];
     self.sprite.position = CGPointMake(self.label.position.x, self.label.position.y + self.label.fontSize * 0.4);
     self.sprite.zPosition = 5;
+    self.sprite.name = self.name;
 }
 
 +(AJMenuNode *)menuLabelNodeWithName:(NSString *)name text:(NSString *)text position:(CGPoint)position size:(int)size block:(void(^)(id sender))block {
@@ -80,9 +81,9 @@
     
     CGPoint touchLocationOne = [touchOne locationInNode:self.parent];
     
-    if ([[self childNodeWithName:self.name] containsPoint:touchLocationOne]) {
-        [self activate];
-    }
+    if ([self  containsPoint:touchLocationOne]) {
+            [self activate];
+        }
 }
 
 - (void) activate {

@@ -56,7 +56,7 @@
     
     AJMenuNode *btnLevel1 = [AJMenuNode menuLabelNodeWithName:@"Level1"
                                                  text:[NSLocalizedString(@"Level", nil) stringByAppendingString:@" 1"]
-                                             position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 3)
+                                             position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 5 * 3)
                                                  size:36
                                                 block:^(id sender){
                                                     _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level1Options];
@@ -65,7 +65,7 @@
     
     AJMenuNode *btnLevel2 = [AJMenuNode menuLabelNodeWithName:@"Level2"
                                                  text:[NSLocalizedString(@"Level", nil) stringByAppendingString:@" 2"]
-                                             position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 2)
+                                             position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 5 * 2)
                                                  size:36
                                                 block:^(id sender){
                                                     _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level2Options];
@@ -74,7 +74,7 @@
     
     AJMenuNode *btnLevel3 = [AJMenuNode menuLabelNodeWithName:@"Level3"
                                                  text:[NSLocalizedString(@"Level", nil) stringByAppendingString:@" 3"]
-                                             position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 4 * 1)
+                                             position:CGPointMake(self.frame.size.width / 4, self.frame.size.height / 5 * 1)
                                                  size:36
                                                 block:^(id sender){
                                                     _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level3Options];
@@ -83,7 +83,7 @@
     
     AJMenuNode *btnLevel4 = [AJMenuNode menuLabelNodeWithName:@"Level4"
                                                  text:[NSLocalizedString(@"Level", nil) stringByAppendingString:@" 4"]
-                                             position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 3)
+                                             position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 5 * 3)
                                                  size:36
                                                 block:^(id sender){
                                                     _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level4Options];
@@ -92,7 +92,7 @@
     
     AJMenuNode *btnLevel5 = [AJMenuNode menuLabelNodeWithName:@"Level5"
                                                  text:[NSLocalizedString(@"Level", nil) stringByAppendingString:@" 5"]
-                                             position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 2)
+                                             position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 5 * 2)
                                                  size:36
                                                 block:^(id sender){
                                                     _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level5Options];
@@ -101,7 +101,7 @@
     
     AJMenuNode *btnLevel6 = [AJMenuNode menuLabelNodeWithName:@"Level6"
                                                  text:[NSLocalizedString(@"Level", nil) stringByAppendingString:@" 6"]
-                                             position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 4 * 1)
+                                             position:CGPointMake(self.frame.size.width / 4 * 3, self.frame.size.height / 5 * 1)
                                                  size:36
                                                 block:^(id sender){
                                                     _selectedSceneOptions = [NSDictionary dictionaryWithDictionary:level6Options];
@@ -120,6 +120,17 @@
     [self addChild:btnLevel4];
     [self addChild:btnLevel5];
     [self addChild:btnLevel6];
+    
+    SKSpriteNode *buttonGround = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
+    AJMenuNode *menuButton = [AJMenuNode menuLabelNodeWithName:@"BackToMenu"
+                                                          text:@"Back to menu"
+                                                      position:CGPointMake(self.frame.size.width / 4,self.frame.size.height / 5 * 4 + 50)
+                                                          size:36
+                                                         block:^(id sender){
+                                                             [self backToMainMenu];
+                                                         }];
+    [menuButton addBackSprite:buttonGround];
+    [self addChild:menuButton];
     
 }
 
@@ -146,7 +157,6 @@
 
 - (void) play
 {
-
     SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:0.6];
     AJGameScene *newScene = [AJGameScene sceneWithSize: CGSizeMake(1024,768) options:_selectedSceneOptions];
 
@@ -156,11 +166,12 @@
     
 }
 
-- (void) mainMenu
+- (void) backToMainMenu
 {
-    [self clean];
     SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:0.5];
+    reveal.pausesIncomingScene = YES;
     AJMainMenuScene *newScene = [[AJMainMenuScene alloc] initWithSize: CGSizeMake(1024,768)];
+
     [self.scene.view presentScene: newScene transition: reveal];
 }
 

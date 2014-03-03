@@ -38,13 +38,23 @@
     [self addChild:background];
     
     self.scaleMode = SKSceneScaleModeAspectFit;
-    [self addChild: [AJMenuNode menuLabelNodeWithName:@"BackToMenu"
-                                                 text:@"Main menu"
-                                             position:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame))
-                                                 size:48
+    
+    SKLabelNode *winLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    winLabel.text = @"You win!";
+    winLabel.position = CGPointMake(self.size.width /2, self.size.height /2);
+    winLabel.fontSize = 48;
+    [self addChild:winLabel];
+    
+    SKSpriteNode *buttonGround = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
+    AJMenuNode *menuButton = [AJMenuNode menuLabelNodeWithName:@"BackToMenu"
+                                                 text:@"Back to menu"
+                                             position:CGPointMake(250,self.frame.size.height - 100)
+                                                 size:36
                                                 block:^(id sender){
                                                     [self backToMainMenu];
-                                                }]];
+                                                }];
+    [menuButton addBackSprite:buttonGround];
+    [self addChild:menuButton];
 }
 
 - (void) clean {

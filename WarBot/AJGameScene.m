@@ -29,7 +29,7 @@
         self.gameView.position = CGPointMake(DEFAULT_COLS * DEFAULT_CELL_SIZE, 0);
 
         self.controlView = [[AJControlVew alloc] initWithSize:size];
-
+//        self.controlView.zPosition = 100;
         self.controlView.gameManager =  self.gameManager;
         [self.controlView showProg];
         [self.controlView showAvailable];
@@ -52,30 +52,62 @@
         self.physicsWorld.contactDelegate = self;
         [self.gameManager.bot initPhysics];
         
-        [self addChild: [AJMenuNode menuLabelNodeWithName:@"PlayButton"
-                                                     text:@"Play!"
-                                                 position:CGPointMake(50, 50)
+        SKSpriteNode *buttonMenuSprite = [SKSpriteNode spriteNodeWithImageNamed:@"menu"];
+        SKSpriteNode *buttonPlaySprite = [SKSpriteNode spriteNodeWithImageNamed:@"play.png"];
+        SKSpriteNode *buttonResetSprite = [SKSpriteNode spriteNodeWithImageNamed:@"reset"];
+        SKSpriteNode *buttonTrashSprite = [SKSpriteNode spriteNodeWithImageNamed:@"trash"];
+        SKSpriteNode *buttonPauseSprite = [SKSpriteNode spriteNodeWithImageNamed:@"pause"];
+        
+        AJMenuNode *buttonPlay = [AJMenuNode menuLabelNodeWithName:@"PlayButton"
+                                                     text:@"  "
+                                                 position:CGPointMake(160, 50)
                                                      size:16
                                                     block:^(id sender){
                                                         [self resume];
-                                                    }]];
+                                                    }];
+        [buttonPlay addBackSprite:buttonPlaySprite];
+        [self addChild:buttonPlay];
         
-        [self addChild: [AJMenuNode menuLabelNodeWithName:@"ResetButton"
-                                                     text:@"Reset"
-                                                 position:CGPointMake(150, 50)
+        AJMenuNode *buttonReset = [AJMenuNode menuLabelNodeWithName:@"ResetButton"
+                                                     text:@"  "
+                                                 position:CGPointMake(96, 50)
                                                      size:16
                                                     block:^(id sender){
                                                         [self pause];
                                                         [self reset];
-                                                    }]];
+                                                    }];
+        [buttonReset addBackSprite:buttonResetSprite];
+        [self addChild:buttonReset];
         
-        [self addChild: [AJMenuNode menuLabelNodeWithName:@"MenuButton"
-                                                     text:@"Menu"
-                                                 position:CGPointMake(250, 50)
-                                                     size:16
-                                                    block:^(id sender){
-                                                        [self mainMenu];
-                                                    }]];
+        AJMenuNode *buttonMenu = [AJMenuNode menuLabelNodeWithName:@"MenuButton"
+                                                              text:@"  "
+                                                          position:CGPointMake(32, 50)
+                                                              size:16
+                                                             block:^(id sender){
+                                                                 [self mainMenu];
+                                                             }];
+        [buttonMenu addBackSprite:buttonMenuSprite];
+        [self addChild:buttonMenu];
+        
+        AJMenuNode *buttonPause = [AJMenuNode menuLabelNodeWithName:@"PauseButton"
+                                                              text:@"  "
+                                                          position:CGPointMake(224, 50)
+                                                              size:16
+                                                             block:^(id sender){
+                                                                 [self pause];
+                                                             }];
+        [buttonPause addBackSprite:buttonPauseSprite];
+        [self addChild:buttonPause];
+        
+        AJMenuNode *buttonTrash = [AJMenuNode menuLabelNodeWithName:@"TrashButton"
+                                                              text:@"  "
+                                                          position:CGPointMake(290, 50)
+                                                              size:16
+                                                             block:^(id sender){
+                                                                 [self cleanProg];
+                                                             }];
+        [buttonTrash addBackSprite:buttonTrashSprite];
+        [self addChild:buttonTrash];
         
     }
     return self;
@@ -122,6 +154,10 @@
     
     
     self.gameManager.bot.chassis.position = self.gameView.startPoint;
+}
+
+- (void) cleanProg {
+    [self.controlView cleanProg];
 }
 
 - (void) finish
@@ -174,7 +210,28 @@
         (secondBody.categoryBitMask & goalCategory) != 0)
     {
         [self bullet:firstBody.node didCollideWithGoal:secondBody.node];
+        
+        [self explosionOnPosition:[self convertPoint:secondBody.node.position fromNode:self.gameView]];
     }
+}
+
+- (void) explosionOnPosition: (CGPoint)position {
+    NSString *sparkPath = [[NSBundle mainBundle] pathForResource:@"boom" ofType:@"sks"];
+    SKEmitterNode *spark = [NSKeyedUnarchiver unarchiveObjectWithFile:sparkPath];
+    spark.position = position;
+    [self addChild:spark];
+    
+    [self runAction:[SKAction waitForDuration:0.2] completion:^{
+        NSString *smokePath = [[NSBundle mainBundle] pathForResource:@"smoke" ofType:@"sks"];
+        SKEmitterNode *smoke = [NSKeyedUnarchiver unarchiveObjectWithFile:smokePath];
+        smoke.position = position;
+        [self addChild:smoke];
+        
+        NSString *firePath = [[NSBundle mainBundle] pathForResource:@"fire" ofType:@"sks"];
+        SKEmitterNode *fire = [NSKeyedUnarchiver unarchiveObjectWithFile:firePath];
+        fire.position = position;
+        [self addChild:fire];
+    }];
 }
 
 - (void)bullet:(SKSpriteNode *)bullet didCollideWithGoal:(SKSpriteNode *)goal {

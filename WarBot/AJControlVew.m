@@ -14,18 +14,55 @@
 -(id)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size]) {
-//        self.backgroundColor = [SKColor colorWithRed:0.3 green:0.4 blue:0.1 alpha:0.8];
-        SKSpriteNode *ground = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0] size:CGSizeMake(DEFAULT_CELL_SIZE*DEFAULT_COLS, size.height)];
-        ground.anchorPoint = CGPointMake(0, 0);
         self.available = [NSMutableArray array];
         self.program = [NSMutableArray array];
         self.registers = [NSMutableArray array];
         self.intermediateCommand = nil;
         self.intermediateSprite = [[SKSpriteNode alloc] init];
         
-        [self addChild:ground];
+        [self createContent];
     }
     return self;
+}
+
+- (void) createContent {
+    SKSpriteNode *ground = [SKSpriteNode spriteNodeWithImageNamed:@"command_background.png"];
+    ground.anchorPoint = CGPointMake(0, 0);
+    [self addChild:ground];
+    
+    SKLabelNode *progLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    progLabel.text = NSLocalizedString(@"Program field", nil);
+    progLabel.fontSize = 16;
+    progLabel.fontColor = [SKColor blackColor];
+    progLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    progLabel.position = CGPointMake(10, self.size.height - 20);
+    [self addChild:progLabel];
+    
+    SKLabelNode *availLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    availLabel.text = NSLocalizedString(@"Available commands", nil);
+    availLabel.fontSize = 16;
+    availLabel.fontColor = [SKColor blackColor];
+    availLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    availLabel.position = CGPointMake(10, 255);
+    [self addChild:availLabel];
+    
+    SKShapeNode *border1 = [SKShapeNode node];
+    border1.path = CGPathCreateWithRect(CGRectMake(0, 0, 320, 100), nil);
+    border1.strokeColor = [SKColor blackColor];
+    border1.lineWidth = 2;
+    [self addChild:border1];
+    
+    SKShapeNode *border2 = [SKShapeNode node];
+    border2.path = CGPathCreateWithRect(CGRectMake(0, 100, 320, 180), nil);
+    border2.strokeColor = [SKColor blackColor];
+    border2.lineWidth = 2;
+    [self addChild:border2];
+    
+    SKShapeNode *border3 = [SKShapeNode node];
+    border3.path = CGPathCreateWithRect(CGRectMake(0, 280, 320, self.size.height - 280), nil);
+    border3.strokeColor = [SKColor blackColor];
+    border3.lineWidth = 2;
+    [self addChild:border3];
 }
 
 - (void) showRegisters {
@@ -37,7 +74,7 @@
         
         label.position = CGPointMake(DEFAULT_CELL_SIZE * i / 2 + DEFAULT_CELL_SIZE / 2, 10);
         
-        [self addChild:label];
+//        [self addChild:label];
         [self.registers addObject:label];
     }
 }
@@ -55,7 +92,7 @@
     for (int i = 0; i < prog.count; i++) {
 
         xOffset = (i % DEFAULT_COLS) * DEFAULT_CELL_SIZE + DEFAULT_CELL_SIZE / 2;
-        yOffset = (i / DEFAULT_COLS) * DEFAULT_CELL_SIZE + DEFAULT_CELL_SIZE / 2;
+        yOffset = (i / DEFAULT_COLS) * DEFAULT_CELL_SIZE + DEFAULT_CELL_SIZE / 2 + 25;
     
         CGPoint position = CGPointMake(xOffset, self.size.height - yOffset);
         AJCommand *command = [prog objectForKey:[NSString stringWithFormat:@"%d",i]];
@@ -88,7 +125,7 @@
     for (int i = 0; i < prog.count; i++) {
         
         xOffset = (i % DEFAULT_COLS) * DEFAULT_CELL_SIZE + DEFAULT_CELL_SIZE / 2;
-        yOffset = (i / DEFAULT_COLS) * DEFAULT_CELL_SIZE + DEFAULT_CELL_SIZE / 2 + (self.gameManager.programField.commands.count / DEFAULT_COLS + 1) * DEFAULT_CELL_SIZE + 20;
+        yOffset = (i / DEFAULT_COLS) * DEFAULT_CELL_SIZE + DEFAULT_CELL_SIZE / 2 + (self.gameManager.programField.commands.count / DEFAULT_COLS + 1) * DEFAULT_CELL_SIZE + 70;
         
         CGPoint position = CGPointMake(xOffset, self.size.height - yOffset);
         position = CGPointMake(position.x, position.y);
@@ -141,14 +178,7 @@
         [commandSprite addChild:label];
         
     } else if ([command.command isEqualToString:kCommandFire]) {
-        SKLabelNode *fireLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
-        fireLabel.text = @"Fire!";
-        fireLabel.fontSize = 20;
-        fireLabel.position = CGPointMake(0, -8);
-        [commandSprite addChild:fireLabel];
-//        commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"func.png"];
-//        label.zPosition = 1;
-//        [commandSprite addChild:label];
+        commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"fire.png"];
         
     } else if ([command.command isEqualToString:kCommandRet]) {
         commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"ret.png"];
@@ -280,15 +310,17 @@
     [self.available removeAllObjects];
     [self.registers removeAllObjects];
     
-    
-    SKSpriteNode *background = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0] size:CGSizeMake(DEFAULT_CELL_SIZE*DEFAULT_COLS, self.size.height)];
-    background.anchorPoint = CGPointMake(0, 0);
-    
-    [self addChild:background];
+    [self createContent];
     
     [self showProg];
     [self showAvailable];
     [self showRegisters];
+}
+
+- (void) cleanProg {
+    [self.gameManager.programField removeAllCommands];
+
+    [self refresh];
 }
 
 - (void) clean {

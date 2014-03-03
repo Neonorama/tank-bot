@@ -406,7 +406,7 @@
     //    finishShape.strokeColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
     //    finishShape.fillColor = [SKColor colorWithRed:1.0 green:1.0 blue:0 alpha:0.5];
     finishShape.lineWidth = 0.0;
-    finishShape.zPosition = 300;
+//    finishShape.zPosition = 10;
     finishShape.position = CGPointMake(rect.origin.x, rect.origin.y);
     finishShape.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:finishPath];
     finishShape.physicsBody.categoryBitMask = finishCategory;
@@ -490,7 +490,7 @@
 //        wallPart.strokeColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
 //        wallPart.fillColor = [SKColor colorWithRed:1.0 green:0 blue:0 alpha:0.5];
         wallPart.lineWidth = 0.0;
-        wallPart.zPosition = 200;
+//        wallPart.zPosition = 10;
         wallPart.position = CGPointMake([obj[@"x"] integerValue], self.size.height - [obj[@"y"] integerValue]);
         wallPart.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:wallPath];
         wallPart.physicsBody.categoryBitMask = wallCategory;
@@ -526,7 +526,7 @@
     [barrels enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         SKSpriteNode *barrel = [SKSpriteNode spriteNodeWithImageNamed:@"oil_tank.png"];
         barrel.position = CGPointMake([obj[@"x"] integerValue], self.size.height - [obj[@"y"] integerValue]);
-        barrel.zPosition = 300;
+        barrel.zPosition = 1;
         barrel.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:5];
         barrel.physicsBody.categoryBitMask = goalCategory;
         barrel.physicsBody.collisionBitMask = 0;
@@ -571,7 +571,7 @@
     for (int i = 0; i < [layerTiles count]; i++) {
         [ground addChild:layerTiles[i]];
     }
-    ground.zPosition  = 10;
+//    ground.zPosition  = 1;
 //    ground.position = CGPointMake(16, -16);
     ground.position = CGPointMake(0, 0);
     [self addChild:ground];

@@ -12,3 +12,14 @@
 "Campaign" = "Campaign";
 "Coming soon" = "Coming soon";
 "Level" = "Level";
+"Program field" = "Program field";
+"Available commands" = "Available commands";
+
+"Instructions" = "Instructions";
+"- Move tank backward" = "- Move tank backward";
+"- Move tank forward" = "- Move tank forward";
+"- Turn tank left" = "- Turn tank left";
+"- Turn tank right" = "- Turn tank right";
+"- Turn turret left" = "- Turn turret left";
+"- Turn turret right" = "- Turn turret right";
+

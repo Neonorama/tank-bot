@@ -51,6 +51,15 @@
     [self.commands setObject:[AJCommand commandWithType:kCommandTypeDefault command:kCommandDefault param:@0] forKey:[NSString stringWithFormat:@"%d",index]];
 }
 
+- (void) removeAllCommands {
+    
+    [self.commands removeAllObjects];
+    for (int i = 0; i < DEFAULT_PROGRAM_LENGTH; i++) {
+        AJCommand *defaultCommand = [[AJCommand alloc] init];
+        [self addCommand:defaultCommand atIndex:i];
+    }
+}
+
 -(void)jump:(NSNumber *)param{
     [self.delegate jump:param];
 }

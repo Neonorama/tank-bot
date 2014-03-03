@@ -27,6 +27,8 @@
         SKSpriteNode *turret_ = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_tower.png"]];
         chassis_.zRotation = 0;
         turret_.zRotation = 0;
+        turret_.position = CGPointMake(-3, 0);
+        turret_.anchorPoint = CGPointMake(0.48, 0.5);
         
         self.chassis = [SKSpriteNode spriteNodeWithColor:Nil size:chassis_.size];
         [self.chassis addChild:chassis_];
@@ -128,15 +130,14 @@
     
     SKSpriteNode * bullet = [SKSpriteNode spriteNodeWithImageNamed:@"bullet.png"];
     bullet.zRotation = self.turret.zRotation - M_PI_2;
-    bullet.position = self.chassis.position;
-//    bullet.position = [self.parent convertPoint:self.chassis.position fromNode:self.parent];
-    bullet.zPosition = 15;
+    bullet.position = CGPointMake(self.chassis.position.x, self.chassis.position.y);
+    
     [self.parent addChild:bullet];
     
     float distance = 1000.0f;
     CGVector direction = CGVectorMake(distance * cosf(self.turret.zRotation + self.chassis.zRotation), distance * sinf(self.turret.zRotation + self.chassis.zRotation));
     
-    SKAction * actionMove = [SKAction moveBy:direction duration:5.0];
+    SKAction * actionMove = [SKAction moveBy:direction duration:4.0];
     SKAction * actionMoveDone = [SKAction removeFromParent];
     
     bullet.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:5];
@@ -146,7 +147,10 @@
 
     [bullet runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
     
-    [self.turret runAction:[SKAction playSoundFileNamed:@"fire.m4a" waitForCompletion:NO]];
+    SKAction *sound = [SKAction playSoundFileNamed:@"fire.m4a" waitForCompletion:NO];
+    SKAction *wait = [SKAction waitForDuration:DEFAULT_TIME_INTERVAL];
+    
+    [self.turret runAction:[SKAction group:@[sound, wait]]];
 }
 
 - (void) turnTurret:(NSNumber *) angle {
