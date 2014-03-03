@@ -28,7 +28,6 @@
 + (id) botWithChassisName: (NSString *) chassisName andTurretName: (NSString *) turretName;
 
 - (void) initPhysics;
-- (void) update;
 
 // Chassis methods
 - (void) moveForward:(NSNumber *) distance;

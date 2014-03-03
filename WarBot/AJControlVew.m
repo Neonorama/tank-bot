@@ -232,8 +232,8 @@
 
 -(void)nextStep:(NSTimeInterval)delta {
     int index = [self.gameManager getCurrentCommandIndex];
-    SKAction *scale1 = [SKAction scaleBy:1.2 duration:delta /2];
-    SKAction *scale2 = [SKAction scaleTo:1 duration:delta /2];
+    SKAction *scale1 = [SKAction scaleBy:1.2 duration:DEFAULT_TIME_INTERVAL /2];
+    SKAction *scale2 = [SKAction scaleTo:1 duration:DEFAULT_TIME_INTERVAL /2];
     [[[self.program objectAtIndex:index] objectForKey:@"sprite"] runAction:[SKAction sequence:@[scale1, scale2]]];
     [self updateRegisters];
 }

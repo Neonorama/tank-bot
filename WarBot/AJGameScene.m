@@ -291,8 +291,4 @@
     [self clean];
 }
 
--(void)update:(NSTimeInterval)currentTime {
-//    [self.gameManager.bot update];
-}
-
 @end
