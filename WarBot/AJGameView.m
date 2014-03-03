@@ -368,7 +368,7 @@
                     SKSpriteNode *levelObject = [SKSpriteNode spriteNodeWithTexture:texture];
                     
                     physics.categoryBitMask = wallCategory;
-                    physics.collisionBitMask = 0;
+                    physics.collisionBitMask = botCategory | bulletCategory;
                     physics.contactTestBitMask = botCategory | bulletCategory;
                     levelObject.physicsBody = physics;
                     levelObject.position = CGPointMake(64 * point.x +32, 64 * point.y +32);
@@ -410,7 +410,7 @@
     finishShape.position = CGPointMake(rect.origin.x, rect.origin.y);
     finishShape.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:finishPath];
     finishShape.physicsBody.categoryBitMask = finishCategory;
-    finishShape.physicsBody.collisionBitMask = 0;
+    finishShape.physicsBody.collisionBitMask = botCategory;
     finishShape.physicsBody.contactTestBitMask = botCategory;
     [self addChild:finishShape];
     
@@ -494,7 +494,7 @@
         wallPart.position = CGPointMake([obj[@"x"] integerValue], self.size.height - [obj[@"y"] integerValue]);
         wallPart.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath:wallPath];
         wallPart.physicsBody.categoryBitMask = wallCategory;
-        wallPart.physicsBody.collisionBitMask = 0;
+        wallPart.physicsBody.collisionBitMask = botCategory | bulletCategory;
         wallPart.physicsBody.contactTestBitMask = botCategory | bulletCategory;
         
         [self addChild:wallPart];

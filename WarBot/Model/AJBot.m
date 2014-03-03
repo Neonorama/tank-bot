@@ -144,12 +144,12 @@
     bullet.physicsBody.categoryBitMask = bulletCategory;
     bullet.physicsBody.collisionBitMask = 0;
     bullet.physicsBody.contactTestBitMask = wallCategory | goalCategory;
-
-    [bullet runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
     
     SKAction *sound = [SKAction playSoundFileNamed:@"fire.m4a" waitForCompletion:NO];
     SKAction *wait = [SKAction waitForDuration:DEFAULT_TIME_INTERVAL];
+    SKAction *bulletWait = [SKAction waitForDuration:DEFAULT_TIME_INTERVAL / 2];
     
+    [bullet runAction:[SKAction sequence:@[bulletWait, actionMove, actionMoveDone]]];
     [self.turret runAction:[SKAction group:@[sound, wait]]];
 }
 

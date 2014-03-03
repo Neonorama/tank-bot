@@ -216,6 +216,14 @@
         
         [self explosionOnPosition:[self convertPoint:secondBody.node.position fromNode:self.gameView]];
     }
+    
+    if ((firstBody.categoryBitMask & wallCategory) != 0 &&
+        (secondBody.categoryBitMask & bulletCategory) != 0)
+    {
+        [self bullet:secondBody.node didCollideWithWall:firstBody.node];
+        
+        [self wallExplosionOnPosition:[self convertPoint:secondBody.node.position fromNode:self.gameView]];
+    }
 }
 
 - (void) explosionOnPosition: (CGPoint)position {
@@ -237,10 +245,34 @@
     }];
 }
 
+- (void) wallExplosionOnPosition: (CGPoint)position {
+    NSString *sparkPath = [[NSBundle mainBundle] pathForResource:@"boom" ofType:@"sks"];
+    SKEmitterNode *spark = [NSKeyedUnarchiver unarchiveObjectWithFile:sparkPath];
+    spark.position = position;
+    [self addChild:spark];
+    
+//    [self runAction:[SKAction waitForDuration:0.2] completion:^{
+//        NSString *smokePath = [[NSBundle mainBundle] pathForResource:@"smoke" ofType:@"sks"];
+//        SKEmitterNode *smoke = [NSKeyedUnarchiver unarchiveObjectWithFile:smokePath];
+//        smoke.position = position;
+//        [self addChild:smoke];
+//        
+//        NSString *firePath = [[NSBundle mainBundle] pathForResource:@"fire" ofType:@"sks"];
+//        SKEmitterNode *fire = [NSKeyedUnarchiver unarchiveObjectWithFile:firePath];
+//        fire.position = position;
+//        [self addChild:fire];
+//    }];
+}
+
 - (void)bullet:(SKSpriteNode *)bullet didCollideWithGoal:(SKSpriteNode *)goal {
     NSLog(@"Hit");
     [bullet removeFromParent];
     [goal removeFromParent];
+}
+
+- (void)bullet:(SKSpriteNode *)bullet didCollideWithWall:(SKSpriteNode *)goal {
+    NSLog(@"Hit");
+    [bullet removeFromParent];
 }
 
 - (void) clean {
