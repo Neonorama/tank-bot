@@ -22,6 +22,7 @@
         self.intermediateCommand = nil;
         self.intermediateSprite = [[SKSpriteNode alloc] init];
         touchEnabled = YES;
+        
         [self createContent];
     }
     return self;

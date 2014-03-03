@@ -50,7 +50,7 @@
         
         self.backgroundColor = [SKColor blackColor];
         self.scaleMode = SKSceneScaleModeAspectFit;
-        self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+        self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(320, 0, 1024-320, 768)];
         self.physicsWorld.gravity = CGVectorMake(0,0);
         self.physicsWorld.contactDelegate = self;
         self.physicsBody.categoryBitMask = worldCategory;
@@ -198,6 +198,14 @@
     
     if ((firstBody.categoryBitMask & botCategory) != 0 &&
         (secondBody.categoryBitMask & wallCategory) != 0)
+    {
+        NSLog(@"Wall contact!!!");
+        [self pause];
+        [self reset];
+    }
+    
+    if ((firstBody.categoryBitMask & botCategory) != 0 &&
+        (secondBody.categoryBitMask & worldCategory) != 0)
     {
         NSLog(@"Wall contact!!!");
         [self pause];

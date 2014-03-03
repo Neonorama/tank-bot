@@ -40,12 +40,12 @@
         
         NSString *trackPath = [[NSBundle mainBundle] pathForResource:@"track" ofType:@"sks"];
         self.track1 = [NSKeyedUnarchiver unarchiveObjectWithFile:trackPath];
-        self.track1.position = CGPointMake(self.chassis.position.x-20, self.chassis.position.y+15);
+        self.track1.position = CGPointMake(self.chassis.position.x, self.chassis.position.y+15);
         [self.chassis addChild:self.track1];
         self.track1.name = @"track1";
         
         self.track2 = [NSKeyedUnarchiver unarchiveObjectWithFile:trackPath];
-        self.track2.position = CGPointMake(self.chassis.position.x-20, self.chassis.position.y-15);
+        self.track2.position = CGPointMake(self.chassis.position.x, self.chassis.position.y-15);
         [self.chassis addChild:self.track2];
         self.track2.name = @"track1";
     }
@@ -168,7 +168,7 @@
     SKAction *bulletWait = [SKAction waitForDuration:DEFAULT_TIME_INTERVAL / 2];
     
     [bullet runAction:[SKAction sequence:@[bulletWait, actionMove, actionMoveDone]]];
-    [self.turret runAction:[SKAction group:@[sound, wait]]];
+    [self.turret runAction:[SKAction group:@[bulletWait, sound, wait]]];
 }
 
 - (void) turnTurret:(NSNumber *) angle {
