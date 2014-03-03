@@ -9,7 +9,9 @@
 #import "AJControlVew.h"
 #import "AJConstants.h"
 
-@implementation AJControlVew
+@implementation AJControlVew {
+    __block BOOL touchEnabled;
+}
 
 -(id)initWithSize:(CGSize)size
 {
@@ -19,7 +21,7 @@
         self.registers = [NSMutableArray array];
         self.intermediateCommand = nil;
         self.intermediateSprite = [[SKSpriteNode alloc] init];
-        
+        touchEnabled = YES;
         [self createContent];
     }
     return self;
@@ -213,28 +215,30 @@
     
     CGPoint touchLocationOne = [touchOne locationInNode:self.parent];
     
-    for (NSDictionary *command in self.available)
-    {
-        if (CGRectContainsPoint(((SKSpriteNode *)[command objectForKey:@"sprite"]).frame, touchLocationOne))
+    if (touchEnabled) {
+        for (NSDictionary *command in self.available)
         {
-            self.intermediateSprite = [(SKSpriteNode *)[command objectForKey:@"sprite"] copy];
-            [self addChild:self.intermediateSprite];
-            SKAction *scale = [SKAction scaleTo:1.5 duration:0.3];
-            [self.intermediateSprite runAction:scale];
-            
-            self.intermediateCommand = [[command objectForKey:@"command"] copy];
+            if (CGRectContainsPoint(((SKSpriteNode *)[command objectForKey:@"sprite"]).frame, touchLocationOne))
+            {
+                self.intermediateSprite = [(SKSpriteNode *)[command objectForKey:@"sprite"] copy];
+                [self addChild:self.intermediateSprite];
+                SKAction *scale = [SKAction scaleTo:1.5 duration:0.3];
+                [self.intermediateSprite runAction:scale];
+                
+                self.intermediateCommand = [[command objectForKey:@"command"] copy];
+            }
         }
-    }
-    
-    for (NSDictionary *command in self.program)
-    {
-        if (CGRectContainsPoint(((SKSpriteNode *)[command objectForKey:@"sprite"]).frame, touchLocationOne))
+        
+        for (NSDictionary *command in self.program)
         {
-            self.intermediateSprite = [(SKSpriteNode *)[command objectForKey:@"sprite"] copy];
-            [self addChild:self.intermediateSprite];
-            SKAction *scale = [SKAction scaleTo:1.5 duration:0.3];
-            [self.intermediateSprite runAction:scale];
-            self.intermediateCommand = [[command objectForKey:@"command"] copy];
+            if (CGRectContainsPoint(((SKSpriteNode *)[command objectForKey:@"sprite"]).frame, touchLocationOne))
+            {
+                self.intermediateSprite = [(SKSpriteNode *)[command objectForKey:@"sprite"] copy];
+                [self addChild:self.intermediateSprite];
+                SKAction *scale = [SKAction scaleTo:1.5 duration:0.3];
+                [self.intermediateSprite runAction:scale];
+                self.intermediateCommand = [[command objectForKey:@"command"] copy];
+            }
         }
     }
 }
@@ -302,6 +306,11 @@
     
     [self performSelector:@selector(refresh) withObject:nil afterDelay:0.2];
     self.intermediateCommand = nil;
+    
+    touchEnabled = NO;
+    [self runAction:[SKAction waitForDuration:0.5] completion:^{
+        touchEnabled = YES;
+    }];
 }
 
 - (void) refresh {
