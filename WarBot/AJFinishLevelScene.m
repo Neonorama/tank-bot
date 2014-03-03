@@ -40,14 +40,14 @@
     self.scaleMode = SKSceneScaleModeAspectFit;
     
     SKLabelNode *winLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    winLabel.text = @"You win!";
+    winLabel.text = NSLocalizedString(@"Level complete!", nil);
     winLabel.position = CGPointMake(self.size.width /2, self.size.height /2);
-    winLabel.fontSize = 48;
+    winLabel.fontSize = 64;
     [self addChild:winLabel];
     
     SKSpriteNode *buttonGround = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
     AJMenuNode *menuButton = [AJMenuNode menuLabelNodeWithName:@"BackToMenu"
-                                                 text:@"Back to menu"
+                                                 text:NSLocalizedString(@"Back to menu", nil)
                                              position:CGPointMake(250,self.frame.size.height - 100)
                                                  size:36
                                                 block:^(id sender){

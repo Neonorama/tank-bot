@@ -123,7 +123,7 @@
     
     SKSpriteNode *buttonGround = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
     AJMenuNode *menuButton = [AJMenuNode menuLabelNodeWithName:@"BackToMenu"
-                                                          text:@"Back to menu"
+                                                          text:NSLocalizedString(@"Back to menu", nil)
                                                       position:CGPointMake(self.frame.size.width / 4,self.frame.size.height / 5 * 4 + 50)
                                                           size:36
                                                          block:^(id sender){
