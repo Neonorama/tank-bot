@@ -27,6 +27,8 @@
         SKSpriteNode *turret_ = [SKSpriteNode spriteNodeWithTexture:[texture textureNamed:@"bot_tower.png"]];
         chassis_.zRotation = 0;
         turret_.zRotation = 0;
+        turret_.position = CGPointMake(-3, 0);
+        turret_.anchorPoint = CGPointMake(0.48, 0.5);
         
         self.chassis = [SKSpriteNode spriteNodeWithColor:Nil size:chassis_.size];
         [self.chassis addChild:chassis_];
@@ -35,6 +37,17 @@
         [self.turret addChild:turret_];
         
         [self.chassis addChild:self.turret];
+        
+        NSString *trackPath = [[NSBundle mainBundle] pathForResource:@"track" ofType:@"sks"];
+        self.track1 = [NSKeyedUnarchiver unarchiveObjectWithFile:trackPath];
+        self.track1.position = CGPointMake(self.chassis.position.x, self.chassis.position.y+15);
+        [self.chassis addChild:self.track1];
+        self.track1.name = @"track1";
+        
+        self.track2 = [NSKeyedUnarchiver unarchiveObjectWithFile:trackPath];
+        self.track2.position = CGPointMake(self.chassis.position.x, self.chassis.position.y-15);
+        [self.chassis addChild:self.track2];
+        self.track2.name = @"track1";
     }
     return self;
 }
@@ -59,15 +72,22 @@
 }
 
 - (void) initPhysics {
-    self.chassis.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.chassis.size];
+    self.chassis.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.chassis.size.height / 3];
     self.chassis.physicsBody.categoryBitMask = botCategory;
-    self.chassis.physicsBody.collisionBitMask = botCategory | wallCategory;
-    self.chassis.physicsBody.contactTestBitMask = botCategory | wallCategory;
+    self.chassis.physicsBody.collisionBitMask = wallCategory | finishCategory;
+    self.chassis.physicsBody.contactTestBitMask =  wallCategory | finishCategory;
 }
 
 #pragma mark - Implementation chassis methods
 
 - (void) moveForward:(NSNumber *) distance {
+    
+//    NSString *trackPath = [[NSBundle mainBundle] pathForResource:@"track" ofType:@"sks"];
+//    SKEmitterNode *trackT = [NSKeyedUnarchiver unarchiveObjectWithFile:trackPath];
+//    trackT.position = CGPointMake(self.chassis.position.x, self.chassis.position.y);
+//    trackT.name = @"track";
+//    [self.parent addChild:trackT];
+    
     int distance_ = [distance intValue];
     CGPoint t = self.chassis.position;
     t.x += round(distance_ * cosf(self.chassis.zRotation));
@@ -75,6 +95,7 @@
     
     SKAction *move = [SKAction moveTo:t duration:DEFAULT_TIME_INTERVAL];
     [self.chassis runAction:move];
+    [self.chassis runAction:[SKAction playSoundFileNamed:@"bot_engine.m4a" waitForCompletion:NO]];
     
     NSLog(@"Move forward by %d", distance_);
 }
@@ -87,6 +108,7 @@
     
     SKAction *move = [SKAction moveTo:t duration:DEFAULT_TIME_INTERVAL];
     [self.chassis runAction:move];
+    [self.chassis runAction:[SKAction playSoundFileNamed:@"bot_engine.m4a" waitForCompletion:NO]];
     
     NSLog(@"Move backward by %d", distance_);
 }
@@ -95,6 +117,7 @@
     int angle_ = [angle intValue] ;
     SKAction *rotate = [SKAction rotateByAngle:angle_ duration:DEFAULT_TIME_INTERVAL];
     [self.chassis runAction:rotate];
+    [self.chassis runAction:[SKAction playSoundFileNamed:@"bot_engine.m4a" waitForCompletion:NO]];
     
     NSLog(@"Turn by %d", angle_);
 }
@@ -102,7 +125,9 @@
 - (void) turnLeft:(NSNumber *) angle {
     float angle_ = [angle floatValue] * M_PI / 180.0;
     SKAction *rotate = [SKAction rotateByAngle:angle_ duration:DEFAULT_TIME_INTERVAL];
+    
     [self.chassis runAction:rotate];
+    [self.chassis runAction:[SKAction playSoundFileNamed:@"bot_engine.m4a" waitForCompletion:NO]];
     
     NSLog(@"Turn left by %d", [angle intValue]);
 }
@@ -111,6 +136,7 @@
     float angle_ = [angle floatValue] * M_PI / 180.0;
     SKAction *rotate = [SKAction rotateByAngle:-angle_ duration:DEFAULT_TIME_INTERVAL];
     [self.chassis runAction:rotate];
+    [self.chassis runAction:[SKAction playSoundFileNamed:@"bot_engine.m4a" waitForCompletion:NO]];
     
     NSLog(@"Turn right by %d", [angle intValue]);
 }
@@ -119,6 +145,30 @@
 
 - (void) fire {
     NSLog(@"Fire");
+    
+    SKSpriteNode * bullet = [SKSpriteNode spriteNodeWithImageNamed:@"bullet.png"];
+    bullet.zRotation = self.turret.zRotation - M_PI_2;
+    bullet.position = CGPointMake(self.chassis.position.x, self.chassis.position.y);
+    
+    [self.parent addChild:bullet];
+    
+    float distance = 1000.0f;
+    CGVector direction = CGVectorMake(distance * cosf(self.turret.zRotation + self.chassis.zRotation), distance * sinf(self.turret.zRotation + self.chassis.zRotation));
+    
+    SKAction * actionMove = [SKAction moveBy:direction duration:4.0];
+    SKAction * actionMoveDone = [SKAction removeFromParent];
+    
+    bullet.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:5];
+    bullet.physicsBody.categoryBitMask = bulletCategory;
+    bullet.physicsBody.collisionBitMask = wallCategory | goalCategory;
+    bullet.physicsBody.contactTestBitMask = wallCategory | goalCategory;
+    
+    SKAction *sound = [SKAction playSoundFileNamed:@"fire.m4a" waitForCompletion:NO];
+    SKAction *wait = [SKAction waitForDuration:DEFAULT_TIME_INTERVAL];
+    SKAction *bulletWait = [SKAction waitForDuration:DEFAULT_TIME_INTERVAL / 2];
+    
+    [bullet runAction:[SKAction sequence:@[bulletWait, actionMove, actionMoveDone]]];
+    [self.turret runAction:[SKAction group:@[bulletWait, sound, wait]]];
 }
 
 - (void) turnTurret:(NSNumber *) angle {
@@ -126,6 +176,7 @@
     SKAction *rotate = [SKAction rotateByAngle:angle_ duration:DEFAULT_TIME_INTERVAL];
     
     [self.turret runAction:rotate];
+    [self.turret runAction:[SKAction playSoundFileNamed:@"bot_turret.m4a" waitForCompletion:NO]];
     
     NSLog(@"Turn turret by %d", [angle intValue]);
 }
@@ -134,7 +185,8 @@
     float angle_ = [angle floatValue] * M_PI / 180.0;
     SKAction *rotate = [SKAction rotateByAngle:angle_ duration:DEFAULT_TIME_INTERVAL];
     [self.turret runAction:rotate];
-    
+    [self.turret runAction:[SKAction playSoundFileNamed:@"bot_turret.m4a" waitForCompletion:NO]];
+
     NSLog(@"Turn turret left by %d", [angle intValue]);
 }
 
@@ -142,7 +194,8 @@
     float angle_ = [angle floatValue] * M_PI / 180.0;
     SKAction *rotate = [SKAction rotateByAngle:-angle_ duration:DEFAULT_TIME_INTERVAL];
     [self.turret runAction:rotate];
-    
+    [self.turret runAction:[SKAction playSoundFileNamed:@"bot_turret.m4a" waitForCompletion:NO]];
+
     NSLog(@"Turn turret right by %d", [angle intValue]);
 }
 

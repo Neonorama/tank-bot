@@ -32,14 +32,38 @@
 
 - (void) createSceneContents {
     self.backgroundColor = [SKColor purpleColor];
+    
+    SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
+    background.anchorPoint = CGPointMake(0, 0);
+    [self addChild:background];
+    
     self.scaleMode = SKSceneScaleModeAspectFit;
-    [self addChild: [AJMenuNode menuLabelNodeWithName:@"BackToMenu"
-                                                 text:@"Main menu"
-                                             position:CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame))
-                                                 size:48
-                                                block:^{
+    
+    SKLabelNode *winLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    winLabel.text = NSLocalizedString(@"Level complete!", nil);
+    winLabel.position = CGPointMake(self.size.width /2, self.size.height /2);
+    winLabel.fontSize = 64;
+    [self addChild:winLabel];
+    
+    SKSpriteNode *buttonGround = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
+    AJMenuNode *menuButton = [AJMenuNode menuLabelNodeWithName:@"BackToMenu"
+                                                 text:NSLocalizedString(@"Back to menu", nil)
+                                             position:CGPointMake(250,self.frame.size.height - 100)
+                                                 size:36
+                                                block:^(id sender){
                                                     [self backToMainMenu];
-                                                }]];
+                                                }];
+    [menuButton addBackSprite:buttonGround];
+    [self addChild:menuButton];
+}
+
+- (void) clean {
+    [self removeAllActions];
+    [self removeAllChildren];
+}
+
+-(void)willMoveFromView:(SKView *)view {
+    [self clean];
 }
 
 #pragma mark - touches
@@ -56,7 +80,8 @@
 
 - (void) backToMainMenu
 {
-    SKTransition *reveal = [SKTransition revealWithDirection:SKTransitionDirectionDown duration:1.0];
+    SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:0.5];
+    reveal.pausesIncomingScene = YES;
     AJMainMenuScene *newScene = [[AJMainMenuScene alloc] initWithSize: CGSizeMake(1024,768)];
     //  Optionally, insert code to configure the new scene.
     [self.scene.view presentScene: newScene transition: reveal];

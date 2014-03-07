@@ -12,4 +12,6 @@
 
 @property BOOL contentCreated;
 
+-(void) clean;
+
 @end

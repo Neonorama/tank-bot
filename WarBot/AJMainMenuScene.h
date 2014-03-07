@@ -11,7 +11,9 @@
 @interface AJMainMenuScene : SKScene
 
 @property BOOL contentCreated;
+@property (nonatomic, strong) SKLabelNode *playButton;
 
 - (void) play;
+- (void) clean;
 
 @end

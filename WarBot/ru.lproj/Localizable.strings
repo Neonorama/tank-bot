@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  WarBot
+
+  Created by PROG2 on 28.02.14.
+  Copyright (c) 2014 Ilya Rezyapkin. All rights reserved.
+*/
+
+"Play" = "Играть";
+"Tutorials" = "Обучение";
+"Random" = "Сгенерировать";
+"Campaign" = "Кампания";
+"Coming soon" = "Выход скоро!";
+"Level" = "Уровень";
+"Program field" = "Программа";
+"Available commands" = "Доступные команды";
+
+"Instructions" = "Инструкция";
+"- Move tank backward" = "- Переместить танк назад";
+"- Move tank forward" = "- Переместить танк вперед";
+"- Turn tank left" = "- Повернуть танк налево";
+"- Turn tank right" = "- Повернуть танк направо";
+"- Turn turret left" = "- Повернуть башню налево";
+"- Turn turret right" = "- Повернуть башню направо";
+"- Fire on target" = "- Cтрельба по цели";
+"- Function. Drag the cell of the" = "- Функция. Перетащите ячейку из поля";
+"program field on functional cell" = "программы на ячейку функции из доступных";
+"from available to set the function." = "команд для установки знячения перехода.";
+"- Return from function" = "- Возврат из функции";
+"Back to menu" = "Назад";
+"Level complete!" = "Уровень пройден!";

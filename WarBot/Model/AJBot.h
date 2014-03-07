@@ -18,9 +18,11 @@
 
 @property (nonatomic, retain) SKSpriteNode *chassis;
 @property (nonatomic, retain) SKSpriteNode *turret;
+@property (nonatomic, retain) SKEmitterNode *track1;
+@property (nonatomic, retain) SKEmitterNode *track2;
 
 //@property (nonatomic, assign) id stateController;
-//@property (nonatomic, weak) SKNode *view;
+@property (nonatomic, weak) SKNode *parent;
 
 + (id) defaultBot;
 + (id) botWithChassisName: (NSString *) chassisName andTurretName: (NSString *) turretName;

@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  WarBot
+
+  Created by PROG2 on 28.02.14.
+  Copyright (c) 2014 Ilya Rezyapkin. All rights reserved.
+*/
+
+"Play" = "Play";
+"Tutorials" = "Tutorials";
+"Random" = "Generate";
+"Campaign" = "Campaign";
+"Coming soon" = "Coming soon";
+"Level" = "Level";
+"Program field" = "Program field";
+"Available commands" = "Available commands";
+
+"Instructions" = "Instructions";
+"- Move tank backward" = "- Move tank backward";
+"- Move tank forward" = "- Move tank forward";
+"- Turn tank left" = "- Turn tank left";
+"- Turn tank right" = "- Turn tank right";
+"- Turn turret left" = "- Turn turret left";
+"- Turn turret right" = "- Turn turret right";
+"- Fire on target" = "- Fire on target";
+"- Function. Drag the cell of the" = "- Function. Drag the cell of the";
+"program field on functional cell" = "program field on functional cell";
+"from available to set the function." = "from available to set the function.";
+"- Return from function" = "- Return from function";
+"Back to menu" = "Back to menu";
+"Level complete!" = "Level complete!";

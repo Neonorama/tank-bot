@@ -13,15 +13,17 @@
 
 @interface AJGameScene : SKScene <SKPhysicsContactDelegate>
 
-@property (nonatomic, strong) AJGameManager *gameManager;
-@property (nonatomic, strong) AJGameView *gameView;
-@property (nonatomic, strong) AJControlVew *controlView;
-@property (nonatomic, strong) NSTimer *gameTimer;
+@property (nonatomic) AJGameManager *gameManager;
+@property (nonatomic) AJGameView *gameView;
+@property (nonatomic) AJControlVew *controlView;
+@property (nonatomic) NSTimer *gameTimer;
 
 -(void) pause;
 -(void) resume;
 -(void) next;
+-(void) clean;
 
++(AJGameScene *) sceneWithSize:(CGSize)size options: (NSDictionary *) options;
 -(id)initWithSize:(CGSize)size options: (NSDictionary *) options;
 
 @end

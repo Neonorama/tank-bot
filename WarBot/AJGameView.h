@@ -13,13 +13,14 @@
     BOOL isMoving;
 }
 
-@property (nonatomic, retain) AJGameManager *gameManager;
+@property (nonatomic, strong) AJGameManager *gameManager;
 @property (nonatomic, assign) CGPoint startPoint;
 @property (nonatomic, assign) CGRect finishArea;
 @property (nonatomic, assign) CGSize size;
 
 -(void) nextStep:(NSTimeInterval)delta;
 -(void) reset;
+-(void) clean;
 
 -(void)generateLevel: (NSString *)levelName;
 -(id)initWithSize:(CGSize)size name: (NSString *) levelName;
