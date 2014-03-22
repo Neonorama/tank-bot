@@ -208,7 +208,7 @@
         
     } else if ([command.command isEqualToString:kCommandJump]) {
         commandSprite = [SKSpriteNode spriteNodeWithImageNamed:@"func.png"];
-        label.zPosition = 1;
+//        label.zPosition = 1;
         [commandSprite addChild:label];
         
     } else if ([command.command isEqualToString:kCommandFire]) {
@@ -319,12 +319,23 @@
         if (CGRectContainsPoint(((SKSpriteNode *)[command objectForKey:@"sprite"]).frame, touchLocationOne))
         {
             AJCommand *cmd =[command objectForKey:@"command"];
-//            SKSpriteNode *cmdSprite = (SKSpriteNode *)[command objectForKey:@"sprite"];
             
             if ([cmd.command isEqualToString:kCommandJump]) {
+                SKSpriteNode *cmdSprite = (SKSpriteNode *)[command objectForKey:@"sprite"];
+                move = [SKAction moveTo:cmdSprite.position duration:0.2];
+                SKAction *scale = [SKAction scaleTo:1.0 duration:0.2];
+                SKAction *remove = [SKAction removeFromParent];
+                SKAction *group = [SKAction group:@[move, scale]];
+                [self.intermediateSprite runAction:[SKAction sequence:@[group, remove]] completion:^{
+                    [self.available removeAllObjects];
+                    [self showAvailable];
+                }];
+            
+            
                 NSString *indexString = ((SKLabelNode *)[self.intermediateSprite childNodeWithName:@"index"]).text;
                 cmd.param = [NSNumber numberWithInteger:[indexString integerValue]];
                 NSLog(@"Jump command detect!!! %@", indexString);
+                inProg = YES;
             }
         }
     }
