@@ -12,6 +12,19 @@
 		910225451847CD0100A37343 /* AJSelectLevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 910225441847CD0100A37343 /* AJSelectLevelScene.m */; };
 		910225481847CF5C00A37343 /* AJFinishLevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 910225471847CF5C00A37343 /* AJFinishLevelScene.m */; };
 		9102254B184B97AF00A37343 /* AJMenuNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9102254A184B97AF00A37343 /* AJMenuNode.m */; };
+		911AA4CB18C5B9A8005C36F4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4CA18C5B9A8005C36F4 /* Images.xcassets */; };
+		911AA4D718C5B9CC005C36F4 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4CC18C5B9CC005C36F4 /* Icon-72.png */; };
+		911AA4D818C5B9CC005C36F4 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4CD18C5B9CC005C36F4 /* Icon-72@2x.png */; };
+		911AA4D918C5B9CC005C36F4 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4CE18C5B9CC005C36F4 /* Icon-76.png */; };
+		911AA4DA18C5B9CC005C36F4 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4CF18C5B9CC005C36F4 /* Icon-76@2x.png */; };
+		911AA4DB18C5B9CC005C36F4 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4D018C5B9CC005C36F4 /* Icon-120.png */; };
+		911AA4DC18C5B9CC005C36F4 /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4D118C5B9CC005C36F4 /* Icon-iPad-Spotlight-iOS7@2x.png */; };
+		911AA4DD18C5B9CC005C36F4 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4D218C5B9CC005C36F4 /* Icon-Small-50.png */; };
+		911AA4DE18C5B9CC005C36F4 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4D318C5B9CC005C36F4 /* Icon-Small.png */; };
+		911AA4DF18C5B9CC005C36F4 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4D418C5B9CC005C36F4 /* Icon-Small@2x.png */; };
+		911AA4E018C5B9CC005C36F4 /* Icon-Spotlight-iOS7.png in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4D518C5B9CC005C36F4 /* Icon-Spotlight-iOS7.png */; };
+		911AA4E118C5B9CC005C36F4 /* Icon-Spotlight-iOS7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4D618C5B9CC005C36F4 /* Icon-Spotlight-iOS7@2x.png */; };
+		911AA4E318C5BAA4005C36F4 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4E218C5BAA4005C36F4 /* Images-2.xcassets */; };
 		912242E2174030C800A52C86 /* AJGameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 912242E1174030C800A52C86 /* AJGameManager.m */; };
 		91361128173E456200937A20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91361127173E456200937A20 /* UIKit.framework */; };
 		9136112A173E456200937A20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91361129173E456200937A20 /* Foundation.framework */; };
@@ -92,6 +105,19 @@
 		910225471847CF5C00A37343 /* AJFinishLevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJFinishLevelScene.m; sourceTree = "<group>"; };
 		91022549184B97AF00A37343 /* AJMenuNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJMenuNode.h; sourceTree = "<group>"; };
 		9102254A184B97AF00A37343 /* AJMenuNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJMenuNode.m; sourceTree = "<group>"; };
+		911AA4CA18C5B9A8005C36F4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		911AA4CC18C5B9CC005C36F4 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		911AA4CD18C5B9CC005C36F4 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		911AA4CE18C5B9CC005C36F4 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		911AA4CF18C5B9CC005C36F4 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
+		911AA4D018C5B9CC005C36F4 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
+		911AA4D118C5B9CC005C36F4 /* Icon-iPad-Spotlight-iOS7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad-Spotlight-iOS7@2x.png"; sourceTree = "<group>"; };
+		911AA4D218C5B9CC005C36F4 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		911AA4D318C5B9CC005C36F4 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		911AA4D418C5B9CC005C36F4 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		911AA4D518C5B9CC005C36F4 /* Icon-Spotlight-iOS7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Spotlight-iOS7.png"; sourceTree = "<group>"; };
+		911AA4D618C5B9CC005C36F4 /* Icon-Spotlight-iOS7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Spotlight-iOS7@2x.png"; sourceTree = "<group>"; };
+		911AA4E218C5BAA4005C36F4 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		912242E0174030C800A52C86 /* AJGameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJGameManager.h; path = Model/AJGameManager.h; sourceTree = "<group>"; };
 		912242E1174030C800A52C86 /* AJGameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJGameManager.m; path = Model/AJGameManager.m; sourceTree = "<group>"; };
 		912242E31740345D00A52C86 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Utils/Utils.h; sourceTree = "<group>"; };
@@ -274,6 +300,8 @@
 				91361137173E456200937A20 /* AJAppDelegate.m */,
 				9136113F173E456200937A20 /* MainStoryboard.storyboard */,
 				916029801775D0FE0039A3D2 /* Resources */,
+				911AA4CA18C5B9A8005C36F4 /* Images.xcassets */,
+				911AA4E218C5BAA4005C36F4 /* Images-2.xcassets */,
 				9136112E173E456200937A20 /* Supporting Files */,
 			);
 			path = WarBot;
@@ -282,6 +310,17 @@
 		9136112E173E456200937A20 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				911AA4CC18C5B9CC005C36F4 /* Icon-72.png */,
+				911AA4CD18C5B9CC005C36F4 /* Icon-72@2x.png */,
+				911AA4CE18C5B9CC005C36F4 /* Icon-76.png */,
+				911AA4CF18C5B9CC005C36F4 /* Icon-76@2x.png */,
+				911AA4D018C5B9CC005C36F4 /* Icon-120.png */,
+				911AA4D118C5B9CC005C36F4 /* Icon-iPad-Spotlight-iOS7@2x.png */,
+				911AA4D218C5B9CC005C36F4 /* Icon-Small-50.png */,
+				911AA4D318C5B9CC005C36F4 /* Icon-Small.png */,
+				911AA4D418C5B9CC005C36F4 /* Icon-Small@2x.png */,
+				911AA4D518C5B9CC005C36F4 /* Icon-Spotlight-iOS7.png */,
+				911AA4D618C5B9CC005C36F4 /* Icon-Spotlight-iOS7@2x.png */,
 				9155FBC9185F901D008E8CF9 /* Icon.png */,
 				9155FBCA185F901D008E8CF9 /* Icon@2x.png */,
 				9136112F173E456200937A20 /* WarBot-Info.plist */,
@@ -455,6 +494,11 @@
 				CLASSPREFIX = AJ;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Ilya Rezyapkin";
+				TargetAttributes = {
+					91361123173E456200937A20 = {
+						DevelopmentTeam = 66ETEX8BB6;
+					};
+				};
 			};
 			buildConfigurationList = 9136111F173E456200937A20 /* Build configuration list for PBXProject "WarBot" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -480,24 +524,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				911AA4DC18C5B9CC005C36F4 /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,
 				91361132173E456200937A20 /* InfoPlist.strings in Resources */,
+				911AA4DD18C5B9CC005C36F4 /* Icon-Small-50.png in Resources */,
 				D7C0D0FB18C092F9000BDB8B /* spark.png in Resources */,
 				91DA9B0F18C36CCF00A23AE2 /* fire.sks in Resources */,
 				91F8378D18A28C780060CC81 /* level6.json in Resources */,
 				91F8377518A28A340060CC81 /* level_2@2x.png in Resources */,
+				911AA4E118C5B9CC005C36F4 /* Icon-Spotlight-iOS7@2x.png in Resources */,
 				9155FBCC185F901D008E8CF9 /* Icon@2x.png in Resources */,
+				911AA4DE18C5B9CC005C36F4 /* Icon-Small.png in Resources */,
 				91DA9B0818C27DCA00A23AE2 /* command_background.png in Resources */,
 				D7D933BB18C0E1FE0025F276 /* Localizable.strings in Resources */,
 				9136113A173E456200937A20 /* Default.png in Resources */,
 				91DA9B0918C27DCA00A23AE2 /* command_background@2x.png in Resources */,
+				911AA4E018C5B9CC005C36F4 /* Icon-Spotlight-iOS7.png in Resources */,
 				D7966CFD18C0CBC800FADFE3 /* bot_turret.m4a in Resources */,
 				D7C0D0FA18C092F9000BDB8B /* sparks.sks in Resources */,
 				91F8379318ADE6980060CC81 /* menu_background.m4a in Resources */,
+				911AA4E318C5BAA4005C36F4 /* Images-2.xcassets in Resources */,
 				91DA9B0B18C36B2000A23AE2 /* boom.sks in Resources */,
 				91F8377A18A28A340060CC81 /* level_5.png in Resources */,
 				D755937318C49E72003EB337 /* track.sks in Resources */,
 				D7966CFB18C0C10500FADFE3 /* bot_engine.m4a in Resources */,
 				91F8378118A28A530060CC81 /* level_objects.atlas in Resources */,
+				911AA4DF18C5B9CC005C36F4 /* Icon-Small@2x.png in Resources */,
 				9136113C173E456200937A20 /* Default@2x.png in Resources */,
 				91F8378C18A28C780060CC81 /* level5.json in Resources */,
 				91F8378B18A28C780060CC81 /* level4.json in Resources */,
@@ -506,18 +557,24 @@
 				91F8377D18A28A340060CC81 /* level_6@2x.png in Resources */,
 				91F8377318A28A340060CC81 /* level_1@2x.png in Resources */,
 				D7966CFF18C0CE7200FADFE3 /* fire.m4a in Resources */,
+				911AA4D718C5B9CC005C36F4 /* Icon-72.png in Resources */,
 				91F8379018A5759D0060CC81 /* background.png in Resources */,
 				D757976518BCCFAF00E17401 /* ground@2x.png in Resources */,
+				911AA4D918C5B9CC005C36F4 /* Icon-76.png in Resources */,
 				91F8377618A28A340060CC81 /* level_3.png in Resources */,
 				91F8377218A28A340060CC81 /* level_1.png in Resources */,
 				913BEAC717860F3200E8A483 /* controls.atlas in Resources */,
+				911AA4D818C5B9CC005C36F4 /* Icon-72@2x.png in Resources */,
 				D755937418C49E72003EB337 /* bokeh.png in Resources */,
 				91F8378918A28C780060CC81 /* level2.json in Resources */,
+				911AA4CB18C5B9A8005C36F4 /* Images.xcassets in Resources */,
 				91F8378A18A28C780060CC81 /* level3.json in Resources */,
 				91F8377818A28A340060CC81 /* level_4.png in Resources */,
 				91F8377418A28A340060CC81 /* level_2.png in Resources */,
 				91F8377718A28A340060CC81 /* level_3@2x.png in Resources */,
+				911AA4DB18C5B9CC005C36F4 /* Icon-120.png in Resources */,
 				9136113E173E456200937A20 /* Default-568h@2x.png in Resources */,
+				911AA4DA18C5B9CC005C36F4 /* Icon-76@2x.png in Resources */,
 				91F8377918A28A340060CC81 /* level_4@2x.png in Resources */,
 				91361141173E456200937A20 /* MainStoryboard.storyboard in Resources */,
 				91F8378818A28C780060CC81 /* level1.json in Resources */,
@@ -617,7 +674,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
@@ -637,13 +694,14 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ILYA REZYAPKIN";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ILYA REZYAPKIN";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
@@ -655,14 +713,17 @@
 		91361148173E456200937A20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ILYA REZYAPKIN (637ZXQ6LTG)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WarBot/WarBot-Prefix.pch";
 				INFOPLIST_FILE = "WarBot/WarBot-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CD523812-6181-45A8-BB11-97EBF9CDA750";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
@@ -672,14 +733,17 @@
 		91361149173E456200937A20 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ILYA REZYAPKIN (637ZXQ6LTG)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WarBot/WarBot-Prefix.pch";
 				INFOPLIST_FILE = "WarBot/WarBot-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CD523812-6181-45A8-BB11-97EBF9CDA750";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
