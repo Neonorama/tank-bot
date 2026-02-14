@@ -24,7 +24,6 @@
 		911AA4DF18C5B9CC005C36F4 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4D418C5B9CC005C36F4 /* Icon-Small@2x.png */; };
 		911AA4E018C5B9CC005C36F4 /* Icon-Spotlight-iOS7.png in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4D518C5B9CC005C36F4 /* Icon-Spotlight-iOS7.png */; };
 		911AA4E118C5B9CC005C36F4 /* Icon-Spotlight-iOS7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4D618C5B9CC005C36F4 /* Icon-Spotlight-iOS7@2x.png */; };
-		911AA4E318C5BAA4005C36F4 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 911AA4E218C5BAA4005C36F4 /* Images-2.xcassets */; };
 		912242E2174030C800A52C86 /* AJGameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 912242E1174030C800A52C86 /* AJGameManager.m */; };
 		91361128173E456200937A20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91361127173E456200937A20 /* UIKit.framework */; };
 		9136112A173E456200937A20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91361129173E456200937A20 /* Foundation.framework */; };
@@ -117,7 +116,6 @@
 		911AA4D418C5B9CC005C36F4 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		911AA4D518C5B9CC005C36F4 /* Icon-Spotlight-iOS7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Spotlight-iOS7.png"; sourceTree = "<group>"; };
 		911AA4D618C5B9CC005C36F4 /* Icon-Spotlight-iOS7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Spotlight-iOS7@2x.png"; sourceTree = "<group>"; };
-		911AA4E218C5BAA4005C36F4 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 		912242E0174030C800A52C86 /* AJGameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AJGameManager.h; path = Model/AJGameManager.h; sourceTree = "<group>"; };
 		912242E1174030C800A52C86 /* AJGameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AJGameManager.m; path = Model/AJGameManager.m; sourceTree = "<group>"; };
 		912242E31740345D00A52C86 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Utils/Utils.h; sourceTree = "<group>"; };
@@ -301,7 +299,6 @@
 				9136113F173E456200937A20 /* MainStoryboard.storyboard */,
 				916029801775D0FE0039A3D2 /* Resources */,
 				911AA4CA18C5B9A8005C36F4 /* Images.xcassets */,
-				911AA4E218C5BAA4005C36F4 /* Images-2.xcassets */,
 				9136112E173E456200937A20 /* Supporting Files */,
 			);
 			path = WarBot;
@@ -505,6 +502,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				ru,
 				fr,
@@ -542,7 +540,6 @@
 				D7966CFD18C0CBC800FADFE3 /* bot_turret.m4a in Resources */,
 				D7C0D0FA18C092F9000BDB8B /* sparks.sks in Resources */,
 				91F8379318ADE6980060CC81 /* menu_background.m4a in Resources */,
-				911AA4E318C5BAA4005C36F4 /* Images-2.xcassets in Resources */,
 				91DA9B0B18C36B2000A23AE2 /* boom.sks in Resources */,
 				91F8377A18A28A340060CC81 /* level_5.png in Resources */,
 				D755937318C49E72003EB337 /* track.sks in Resources */,
@@ -720,7 +717,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WarBot/WarBot-Prefix.pch";
 				INFOPLIST_FILE = "WarBot/WarBot-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -740,7 +737,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WarBot/WarBot-Prefix.pch";
 				INFOPLIST_FILE = "WarBot/WarBot-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
