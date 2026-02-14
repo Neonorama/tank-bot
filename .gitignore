@@ -1,3 +1,4 @@
 *.xcbkptlist
 WarBot.xccheckout
 UserInterfaceState.xcuserstate
+.DS_Store
